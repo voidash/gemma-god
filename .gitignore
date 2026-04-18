@@ -39,6 +39,9 @@ hf_token*
 survey/cdn_batch/
 survey/ocr_output/
 
+# CPT corpus assembly outputs — large, regenerable from source scripts
+corpora/
+
 # Pipeline outputs — regenerable from source PDFs + code
 survey/corpus_chunks.jsonl
 survey/bm25_index.json

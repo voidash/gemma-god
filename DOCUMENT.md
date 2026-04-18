@@ -279,6 +279,47 @@ Revisit when we plan the SFT phase.
 
 Natural text only. No LLM distillation in CPT mix.
 
+### Reddit r/Nepal ingest — done 2026-04-18
+
+`scripts/reddit_ingest.py` streaming decode + filter + dedup pass over 73
+`.zst` JSONL archive files (arctic_shift format, `{kind, raw}` wrap) from
+`/Users/cdjk/github/llm/new-place/data/raw/`.
+
+| Metric | Count |
+|---|---|
+| Records seen | 6,869,085 |
+| Non-empty bodies | 4,933,617 |
+| Deleted/removed | 461,808 |
+| Bot authors | 161,451 |
+| Too short (<30 ch) | 1,384,067 |
+| Too long (>8000 ch) | 413 |
+| English (skipped) | 4,631,923 |
+| Duplicates | 126,710 |
+| **Kept** | **101,790** |
+
+Language split of kept records:
+- Roman-Nepali: 68,099
+- Devanagari: 23,868
+- Code-mixed: 9,823
+- By kind: 80,892 comments + 20,898 submissions
+- Gov-keyword pre-flagged: 4,217 (4.1% of kept)
+
+Output: `corpora/reddit_nepali.jsonl`, 52.5 MB. Elapsed: 332 s. Rough token
+estimate: ~12–15 M tokens (close to the 16 M target for the Reddit slice).
+
+**Classifier fix learned the hard way:** first pass used loose substring
+matching on short Roman-NE markers (`ma`, `ta`, `yo`), which false-positived
+on English words containing those letters (`mister`, `mistakes`, `you`) —
+4,748 out of 5,000 test-mode "Roman-NE" were actually English. Fixed with
+word-bounded regex match + tightened marker list (all ≥ 4 chars) + require
+`ne_hits >= 3 AND ne_hits > eng_hits`. Re-validated on 5k sample — all three
+classes show genuine-looking examples.
+
+**Author-field gotcha:** some arctic_shift records have `raw.author` as a
+dict (richer profile object) rather than a string. Guard with
+`isinstance(raw_author, str)` before the bot-author set membership test —
+otherwise TypeError on `dict in frozenset(str)`.
+
 ### Decision for CPT based on this baseline
 
 - **Target: preserve Belebele ≥ 0.60** (comprehension) while meaningfully
