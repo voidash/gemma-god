@@ -254,6 +254,31 @@ translation-specialist quality.
 - No regression on base-model English MMLU (mitigate catastrophic forgetting
   via 20% English replay + bilingual next-token objective + small LoRA rank)
 
+### Decision on LLM-based distillation (Gemini): skipped entirely for now
+
+Considered using Gemini 2.5 Flash for paraphrase augmentation (CPT) or
+SFT-example generation. After discussion, dropped both for now:
+- Paraphrase adds zero net-new information — just surface variation of the
+  same meaning. Training-budget is better spent on natural-distribution text.
+- SFT data generation could still benefit from LLM distillation later, but
+  we're not there yet — first we need CPT to fix base-model Nepali, then
+  decide SFT recipe from results.
+
+Revisit when we plan the SFT phase.
+
+### Corpus assembly plan (small-tier ~80 M tokens)
+
+| Slice | % | Source |
+|---|---|---|
+| Gov Devanagari | 25% | `survey/corpus_chunks.jsonl` (tiers A + BPreeti-converted + Mixed + C-OCR) |
+| Wikipedia Nepali | 20% | HF `wikipedia:20240301.ne` |
+| Reddit Roman-NE | 20% | /r/Nepal 10-yr archive filtered |
+| Reddit code-mixed + NepEMO | 10% | same + HF download |
+| IndicXlit synthetic Roman | 5% | Deterministic transliteration of gov/Wiki subset |
+| English replay | 20% | fineweb-edu sample |
+
+Natural text only. No LLM distillation in CPT mix.
+
 ### Decision for CPT based on this baseline
 
 - **Target: preserve Belebele ≥ 0.60** (comprehension) while meaningfully
