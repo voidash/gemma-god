@@ -98,8 +98,12 @@ External tools expected on PATH: `pdftotext`, `pdfinfo`, `pdftoppm`, `tesseract`
 
 ## Licensing
 
-Code under this repo: see `LICENSE` (TBD).
-Vendored `third_party/npttf2utf/` retains its upstream GPL-3.0 license.
+**GPL-3.0-or-later.** See `LICENSE` for the full text.
+
+This project vendors `third_party/npttf2utf/` (the legacy-font mapping table)
+which is itself GPL-3.0. Because `src/legacy_fonts.rs` compiles that table into
+the distributed binary via `include_str!`, the combined work is GPL-3.0, and
+the project is released under the same license for consistency.
 
 ## Not a medical / legal authority
 

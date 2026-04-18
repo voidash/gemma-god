@@ -134,15 +134,138 @@ No naive Nepali-only CPT.
     `export PATH="$HOME/.local/bin:/opt/homebrew/bin:$PATH"` at start of
     remote commands.
 
-### Benchmark run (in-progress, kicked off 2026-04-18)
+### Benchmark run (partial, 2026-04-18)
 
-Running `scripts/nepali_baseline.py` on k2. Four benchmarks:
-1. **Belebele Nepali** (200 MC, accuracy)
-2. **FLORES-200 EN→NE** (100 pairs, chrF++)
-3. **FLORES-200 NE→EN** (100 pairs, chrF++)
-4. **Roman-Nepali qualitative** (20 hand-crafted gov queries)
+Running `scripts/nepali_baseline.py` on k2. Four benchmarks planned; partial
+results:
+
+1. **Belebele Nepali — 200 MC: accuracy 0.630** ✅ (done in 81 s)
+2. **FLORES-200 EN→NE — blocked.** `openlanguagedata/flores_plus` is gated on
+   HF Hub; `facebook/flores` fallback also failed. Need to swap mirror or
+   request access. Not a blocker for the main conclusion.
+3. **FLORES-200 NE→EN — same as above.**
+4. **Roman-Nepali qualitative — in progress** (20 hand-crafted gov queries).
 
 Output to `/Volumes/T9/gemma-god/eval/`. Log at `baseline.log`.
+
+### Key mid-run insight: comprehension ≠ generation
+
+The **0.630 Belebele score diverges sharply from the smoke-test verdict**. The
+smoke test measured generation (all three prompts were free-form Nepali output)
+and failed hard — misspelling Kathmandu, collapsing on Romanized input,
+mixed-script leakage. Belebele measures comprehension (read passage in Nepali,
+pick A/B/C/D) and the same model scored 2.5× random-baseline (25% → 63%).
+
+This bifurcates the CPT plan:
+
+- **Comprehension is adequate.** Don't teach it from scratch. CPT recipe must
+  at minimum *preserve* the 0.63.
+- **Generation is the weak axis.** CPT should emphasize language-modeling loss
+  on Nepali output text.
+- **Implication for forgetting risk.** Targeted generation-side CPT poses
+  lower risk to English reasoning than wholesale bilingual pretraining,
+  because we're not trying to rebuild the comprehension stack.
+
+This tracks with known LLM behavior: models generally understand a language
+better than they can generate it, especially for low-resource languages where
+pretraining data is thin. Gemma 3's multilingual training gave it reading
+ability; fluent generation is the next step.
+
+### Final baseline numbers (2026-04-18)
+
+| Benchmark | n | Metric | Score | Time |
+|---|---|---|---|---|
+| Belebele Nepali (`npi_Deva`) | 200 | MC accuracy | **0.630** | 81 s |
+| Roman-Nepali qualitative | 20 | manual review | ~75% usable | 66 s |
+| FLORES-200 EN↔NE | — | chrF++ | **blocked** | — |
+
+Model load (cold): 169 s. Raw artifacts in `survey/eval/` (gitignored).
+
+### Roman-Nepali observations
+
+Out of 20 hand-crafted gov-domain Roman-Nepali queries:
+
+- ~4/20 fully degenerate (repetition loops, hallucinated nonexistent agencies)
+- 1/20 switched to Indonesian/Malay entirely — language-confusion artifact
+- ~15/20 produced *some* useful content; most of these code-switched to
+  Devanagari Nepali output even though input was Romanized. The model appears
+  to treat Romanized Nepali input as a signal to respond in Devanagari, which
+  is a useful accidental prior — but its Devanagari output is still often
+  wrong on specifics (wrong ministry, wrong process name, etc.)
+
+Examples:
+- `passport renew garna kaha janu parcha?` → response lists "गृह विभाग"
+  (Home Dept) but the correct answer is "राहदानी विभाग" (Dept of Passport).
+  Right structure, wrong agency.
+- `company registration kasari garne?` → coherent 3-stage Devanagari answer,
+  roughly correct in broad strokes.
+
+### FLORES resolved + final numbers
+
+Initial run failed: `openlanguagedata/flores_plus` is gated, and the `datasets`
+library doesn't reliably honor `HF_TOKEN` for gate checks (tested on `datasets`
+4.8.4 — upgrade didn't help). `facebook/flores` also fails with "Dataset
+scripts are no longer supported" error (HF refuses to execute old loading
+scripts).
+
+**Resolution:** bypass the `datasets` library entirely. `hf_hub_download`
+respects `HF_TOKEN` correctly. Fetch `dev/eng_Latn.jsonl` and `dev/npi_Deva.jsonl`
+directly (they're line-aligned, one sentence per line in each language).
+
+**HF account mistake to not repeat.** There were TWO HF accounts at play:
+- `trishuli` (email `thapa_aashish@proton.me`) — token `hf_YCp...` was found on
+  cdjk@100.117.21.47 at `~/.cache/huggingface/token`. This token does NOT have
+  access to flores_plus.
+- `voidash` (no email set) — token `hf_CvO...` at
+  cdjk@100.117.21.47 `~/.ssh/.env_tokens`. This is the account that accepted
+  the flores_plus gate. Use this for any gated-dataset work.
+
+The k2 HF token was updated to `hf_CvO...` (voidash) in ~/.cache/huggingface/token,
+/Volumes/T9/hf_cache/token, and ~/.zshrc.
+
+### Final FLORES numbers
+
+| Direction | chrF++ | BLEU |
+|---|---|---|
+| EN → NE (generation)           | **38.15** | 6.94  |
+| NE → EN (comprehension→English) | **55.88** | 28.79 |
+
+### Complete baseline picture for Gemma 3 4B on Nepali
+
+| Axis | Benchmark | Score | Read |
+|---|---|---|---|
+| Comprehension (MC) | Belebele NE 200-Q | **0.630 acc** | usable |
+| Comprehension (translate to English) | FLORES NE→EN 100 pairs | **55.88 chrF++** | usable |
+| Generation (translate from English) | FLORES EN→NE 100 pairs | **38.15 chrF++** | weak |
+| Generation (free-form NE) | Smoke + Roman qualitative | ~1.3/5 smoke, ~75% Roman-usable | fails in domain |
+
+The split is stark: ~0.630 accuracy + 55.88 chrF++ going Nepali-in, English-out
+vs 38.15 chrF++ the other way. Comprehension is usable; generation is what
+needs fixing. For context, dedicated MT models (NLLB-200) hit En→Ne chrF++ in
+the 50s; Gemma 3 4B at 38 is reasonable for a generalist LLM but short of
+translation-specialist quality.
+
+### CPT targets (numbers to beat after training)
+
+- Belebele ≥ 0.60 — preserve comprehension
+- NE → EN chrF++ ≥ 55 — preserve translate-to-English pipeline
+- EN → NE chrF++ ≥ 45 — meaningful lift on generation (~18% relative)
+- Roman-Nepali qualitative: catastrophic failures from ~25% → <10%
+- No regression on base-model English MMLU (mitigate catastrophic forgetting
+  via 20% English replay + bilingual next-token objective + small LoRA rank)
+
+### Decision for CPT based on this baseline
+
+- **Target: preserve Belebele ≥ 0.60** (comprehension) while meaningfully
+  improving generation quality (measured by a post-CPT smoke test + follow-up
+  qualitative eval).
+- **Corpus emphasis:** Nepali output text (IRIISNEPAL news, gov prose, our
+  Preeti-converted corpus) with ~20% English replay.
+- **Include Romanized Nepali** via IndicXlit transliteration of
+  Saugatkafley/alpaca-nepali-sft to fix the Roman-collapse pattern.
+- **Small LoRA rank** (16–32) on Gemma 3 4B; bilingual next-token objective.
+- **Training volume:** start with ~100M tokens. Full CPT run estimate 6–12 hrs
+  on M2 Ultra via MLX.
 
 ### Decision forks resolved today
 

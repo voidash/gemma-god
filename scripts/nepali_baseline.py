@@ -121,37 +121,92 @@ def eval_belebele(model, tokenizer, n: int, out_dir: Path) -> dict:
     return result
 
 
+def _load_flores_pairs() -> tuple[list[str], list[str]] | None:
+    """Return (eng_sents, nep_sents) paired by id. None if all sources fail.
+
+    Handles both schemas:
+      * legacy `facebook/flores` config `eng_Latn-npi_Deva` — paired rows with
+        `sentence_eng_Latn` / `sentence_npi_Deva` columns.
+      * current `openlanguagedata/flores_plus` — one row per (id, language);
+        columns `id` / `iso_639_3` / `iso_15924` / `text`. Requires id-pairing.
+    """
+    # Try the legacy paired-row dataset first.
+    try:
+        ds = load_dataset("facebook/flores", "eng_Latn-npi_Deva", split="dev")
+        eng = [ex.get("sentence_eng_Latn") for ex in ds]
+        nep = [ex.get("sentence_npi_Deva") for ex in ds]
+        print(f"  loaded facebook/flores: {len(eng)} pairs", flush=True)
+        return eng, nep
+    except Exception as e:
+        print(f"  facebook/flores failed: {str(e)[:140]}", flush=True)
+
+    # Fall back: fetch the per-language JSONL files directly via hf_hub_download.
+    # Bypasses the `datasets` library's flaky gate check on gated datasets —
+    # hf_hub_download respects HF_TOKEN reliably, and flores_plus stores data
+    # as `dev/{lang}.jsonl` with 1-to-1 line alignment across languages.
+    try:
+        from huggingface_hub import hf_hub_download
+
+        token = os.environ.get("HF_TOKEN")
+        eng_path = hf_hub_download(
+            "openlanguagedata/flores_plus",
+            "dev/eng_Latn.jsonl",
+            repo_type="dataset",
+            token=token,
+        )
+        nep_path = hf_hub_download(
+            "openlanguagedata/flores_plus",
+            "dev/npi_Deva.jsonl",
+            repo_type="dataset",
+            token=token,
+        )
+    except Exception as e:
+        print(f"  openlanguagedata/flores_plus direct fetch failed: {str(e)[:200]}", flush=True)
+        return None
+
+    eng: list[str] = []
+    nep: list[str] = []
+    with open(eng_path, encoding="utf-8") as f:
+        for line in f:
+            row = json.loads(line)
+            eng.append(row.get("text") or row.get("sentence") or "")
+    with open(nep_path, encoding="utf-8") as f:
+        for line in f:
+            row = json.loads(line)
+            nep.append(row.get("text") or row.get("sentence") or "")
+
+    if len(eng) != len(nep):
+        print(
+            f"  flores_plus: eng ({len(eng)}) and npi ({len(nep)}) row counts differ; truncating",
+            flush=True,
+        )
+        n = min(len(eng), len(nep))
+        eng, nep = eng[:n], nep[:n]
+
+    print(f"  loaded flores_plus: {len(eng)} pairs (aligned by row)", flush=True)
+    return eng, nep
+
+
 def eval_flores(model, tokenizer, n: int, direction: str, out_dir: Path) -> dict:
     """direction: 'en2ne' or 'ne2en'."""
     print(f"\n=== FLORES-200 {direction} — n={n} ===", flush=True)
     t0 = time.time()
-    # FLORES-200 on HF is at openlanguagedata/flores_plus OR facebook/flores.
-    # Try the canonical path. "dev" split has 997 sentences, "devtest" has 1012.
-    try:
-        ds = load_dataset("facebook/flores", "eng_Latn-npi_Deva", split="dev")
-    except Exception:
-        try:
-            ds = load_dataset("openlanguagedata/flores_plus", split="dev")
-            # filter to ne/en
-            ds = ds.filter(
-                lambda x: x.get("language") in ("npi_Deva", "eng_Latn")
-            )
-        except Exception as e:
-            print(f"  WARNING: failed to load FLORES: {e}", flush=True)
-            return {"benchmark": f"FLORES {direction}", "error": str(e)}
-    print(f"  loaded dataset: {len(ds)} examples")
+
+    pairs = _load_flores_pairs()
+    if pairs is None:
+        return {"benchmark": f"FLORES {direction}", "error": "no pairs loaded"}
+    eng_sents, nep_sents = pairs
 
     rng = random.Random(SEED)
-    indices = rng.sample(range(len(ds)), min(n, len(ds)))
+    indices = rng.sample(range(len(eng_sents)), min(n, len(eng_sents)))
 
     hyps, refs = [], []
     samples = []
     errors = 0
 
     for i, idx in enumerate(indices):
-        ex = ds[idx]
-        eng = ex.get("sentence_eng_Latn") or ex.get("sentence_en") or ex.get("sentence")
-        nep = ex.get("sentence_npi_Deva") or ex.get("sentence_np") or ex.get("sentence")
+        eng = eng_sents[idx]
+        nep = nep_sents[idx]
         if direction == "en2ne":
             src, ref = eng, nep
             prompt = (
@@ -166,11 +221,10 @@ def eval_flores(model, tokenizer, n: int, direction: str, out_dir: Path) -> dict
                 "Reply with only the English translation.\n\n"
                 f"Nepali: {src}\n\nEnglish:"
             )
-        if src is None or ref is None:
+        if not src or not ref:
             errors += 1
             continue
         hyp = chat(model, tokenizer, prompt, max_tokens=200).strip()
-        # strip potential reply prefixes
         for prefix in ("Nepali:", "English:", "Translation:"):
             if hyp.startswith(prefix):
                 hyp = hyp[len(prefix):].strip()
