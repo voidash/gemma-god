@@ -1,0 +1,229 @@
+# Nepal Government Websites — Round 1 Survey (2026-04-18)
+# Status meanings:
+#   live: 200 OK via https directly
+#   live-broken-tls: 200 OK only with cert verification disabled
+#   unreachable: no response
+# languages observed via WebFetch AI summary + manual sampling.
+# pdf_host indicates where the site stores its PDFs.
+
+sites:
+  - id: ocr
+    name_np: कम्पनी रजिष्ट्रारको कार्यालय
+    name_en: Office of Company Registrar
+    parent: Ministry of Industry, Commerce and Supply
+    url: https://ocr.gov.np
+    status: live
+    languages: [nepali-devanagari, english]
+    nav: [about, fees, services, info, notices, downloads, contact]
+    pdf_host: giwmscdnone.gov.np
+    sample_pdfs:
+      - url: https://giwmscdnone.gov.np/media/pdf_upload/CamScanner%204-16-26%2014.37_kogg67a.pdf
+        tier: C-scanned-image
+      - url: https://giwmscdnone.gov.np/media/pdf_upload/eservice_y04y0y7.pdf
+        tier: A-unicode-devanagari
+    key_services:
+      - CAMIS (https://camis.ocr.gov.np/login) — company registration + operations
+      - Company Search (https://application.ocr.gov.np/faces/CompanyDetails.jsp)
+    contact: {phone: "01-5363089, 5359961, 5361821", email: info@ocr.gov.np}
+    priority: 1
+    notes: "Directly relevant to user's hackathon story. Runs on legacy JSF app (application.ocr.gov.np) + newer CAMIS app."
+
+  - id: ird
+    name_np: आन्तरिक राजस्व विभाग
+    name_en: Inland Revenue Department
+    parent: Ministry of Finance
+    url: https://ird.gov.np
+    status: live
+    languages: [nepali-devanagari, english]
+    nav: [about, tax-laws, publications, notices, offices, e-services]
+    pdf_host: giwmscdnone.gov.np (inferred; no direct PDFs on home)
+    key_services:
+      - Taxpayer Portal (/taxpayer/app.html)
+      - PAN Search (/pan-search/)
+      - Tax Clearance Search (/tax-clearance/)
+      - Tax Calculator (/pit_new/)
+    contact: {phone: "015970176", email: serviceird@ird.gov.np}
+    priority: 1
+    notes: "Core to PAN flow. Multiple IRO branches with jurisdictional routing that isn't surfaced on site (user's exact pain point)."
+
+  - id: nepalpassport
+    name_np: राहदानी विभाग
+    name_en: Department of Passports
+    url: https://nepalpassport.gov.np
+    status: live
+    languages: [nepali-devanagari, english]
+    nav: [home, about, laws, charter, faq, news, auto-pub, downloads, other]
+    key_services:
+      - Passport application process (/process/-4)
+      - ePassport (https://emrtds.nepalpassport.gov.np/)
+      - Online payment (/online-payment)
+    contact: {phone: "+977-1-5970330", email: info@nepalpassport.gov.np}
+    priority: 2
+
+  - id: dotm
+    name_np: यातायात व्यवस्था विभाग
+    name_en: Department of Transportation Management
+    parent: Ministry of Physical Infrastructure and Transportation
+    url: https://dotm.gov.np
+    status: live
+    languages: [nepali-devanagari, english]
+    pdf_host: giwmscdnone.gov.np
+    key_services:
+      - Emergency Driver License (applydlnew.dotm.gov.np)
+      - License verification (applydlnew.dotm.gov.np/licensecheck/)
+    contact: {phone: "014574921", email: gunaso@dotm.gov.np}
+    priority: 2
+
+  - id: dos
+    name_np: नापी विभाग
+    name_en: Department of Survey
+    parent: Ministry of Land Management, Cooperatives and Poverty Alleviation
+    url: https://dos.gov.np
+    status: live
+    languages: [nepali-devanagari, english]
+    pdf_host: giwmscdnone.gov.np
+    sample_pdfs:
+      - url: https://giwmscdnone.gov.np/media/pdf_upload/sunya%20file_bmtygtc.pdf
+        tier: B-or-C-legacy-or-scan
+      - url: https://giwmscdnone.gov.np/media/pdf_upload/बिदाको...pdf
+        tier: B-legacy-font-canon-scanner
+    key_services:
+      - Mero Kitta land portal (https://merokitta.dos.gov.np)
+      - National Geoportal (https://nationalgeoportal.gov.np)
+    contact: {phone: "01-4106508", email: info@dos.gov.np}
+    priority: 2
+
+  - id: lawcommission
+    name_np: नेपाल कानून आयोग
+    name_en: Nepal Law Commission
+    url: https://lawcommission.gov.np
+    status: live
+    languages: [nepali-devanagari, english]
+    pdf_host: giwmscdnone.gov.np
+    sample_pdfs:
+      - url: https://giwmscdnone.gov.np/media/app/public/275/posts/1714977234_32.pdf
+        tier: A-unicode-devanagari
+        size_pages: 529
+        note: "Legal Maxims book — MS Word 2013, 40.8% Devanagari. Gold standard corpus candidate."
+      - url: https://giwmscdnone.gov.np/media/pdf_upload/मानव...pdf
+        tier: X-invalid-download-returned-html
+    key_services: [Acts, Ordinances, Regulations, Constitution, International Treaties]
+    contact: {phone: "01-4581090", email: info@lawcommission.gov.np}
+    priority: 1
+    notes: "Most structured and cleanest content we've seen. Legal grounding gold mine."
+
+  - id: dop
+    name_np: मुद्रण विभाग
+    name_en: Department of Printing
+    parent: Ministry of Communication and IT
+    url: https://dop.gov.np
+    status: live
+    languages: [nepali-devanagari, english]
+    pdf_host: giwmscdnone.gov.np
+    sample_pdfs:
+      - url: https://giwmscdnone.gov.np/media/pdf_upload/PR-2082-11-Falgun_iw4d8do.pdf
+        tier: B-legacy-font-canon-scanner
+    key_services:
+      - Nepal Gazette publication (/pages/16711289)
+      - Gazette distribution (/pages/16721290)
+    contact: {phone: "977-1-4211622", email: info@dop.gov.np}
+    priority: 1
+    notes: "Nepal Gazette is authoritative source for all legal notices. But DoP home shows Canon scanner output — worrying for corpus quality."
+
+  - id: opmcm
+    name_np: प्रधानमन्त्री तथा मन्त्रिपरिषद्को कार्यालय
+    name_en: Office of Prime Minister and Council of Ministers
+    url: https://opmcm.gov.np
+    status: live
+    languages: [nepali-devanagari, english]
+    pdf_host: giwmscdnone.gov.np
+    sample_pdfs:
+      - url: https://giwmscdnone.gov.np/media/pdf_upload/website_notice_tqkfg9f.pdf
+        tier: E-english-only
+        note: "Invitation for bids — bidder-facing English"
+    key_services:
+      - Hello Government complaints (https://gunaso.opmcm.gov.np)
+      - GIOMS integrated office mgmt (https://gioms.gov.np)
+    contact: {phone: "9851445971", email: info@opmcm.gov.np}
+    priority: 3
+
+  - id: sebon
+    name_np: नेपाल धितोपत्र बोर्ड
+    name_en: Securities Board of Nepal
+    url: https://sebon.gov.np
+    status: live
+    languages: [nepali-devanagari, english]
+    pdf_host: self (sebon.gov.np/uploads/...)
+    sample_pdfs:
+      - url: https://sebon.gov.np/uploads/2025/12/31/FDIIz6hvv9Y0gsLIhLOiTwwtCroHO550wLKnde7M.pdf
+        tier: B-mixed-preeti-plus-unicode
+        size_pages: 123
+    key_services: [IPO approvals, FPO approvals, legal docs, grievance]
+    contact: {phone: "+977-1-5254057", email: support@sebon.gov.np}
+    priority: 2
+
+  - id: nrb
+    name_np: नेपाल राष्ट्र बैंक
+    name_en: Nepal Rastra Bank
+    url: https://nrb.org.np
+    status: live
+    languages: [nepali-devanagari, english]
+    pdf_host: self (nrb.org.np/contents/uploads/...)
+    sample_pdfs:
+      - url: https://www.nrb.org.np/contents/uploads/2025/07/Monetary_Policy_2082-083-1.pdf
+        tier: B-preeti-legacy
+        size_pages: 54
+        note: "Central bank's current monetary policy, 9 Preeti markers, produced by Adobe InDesign. Proves Preeti is mainstream, not fringe."
+    key_services: [monetary policy, forex, bank supervision, payment systems]
+    contact: {phone: "+977 1 5719641", email: information@nrb.org.np}
+    priority: 1
+    notes: "High-trust, high-quality content — but heavily in legacy font. Detector must handle Preeti to use this."
+
+  - id: moha
+    name_np: गृह मन्त्रालय
+    name_en: Ministry of Home Affairs
+    url: https://moha.gov.np
+    status: live-broken-tls
+    priority: 1
+    notes: "Citizenship, national ID. Site alive with -k flag; proper crawling requires cert tolerance."
+
+  - id: immigration
+    name_np: आप्रवासन विभाग
+    name_en: Department of Immigration
+    url: https://immigration.gov.np
+    status: live-broken-tls
+    priority: 2
+
+  - id: mof
+    name_np: अर्थ मन्त्रालय
+    name_en: Ministry of Finance
+    url: https://mof.gov.np
+    status: live-broken-tls
+    priority: 2
+    notes: "First attempt returned ECONNREFUSED, second attempt 200 — transient flakiness is normal."
+
+  - id: nepal_portal
+    name_en: Nepal National Portal
+    url: https://nepal.gov.np
+    status: unreachable
+    priority: 3
+    notes: "National portal is genuinely down on round 1. Revisit later."
+
+  - id: kathmandu
+    name_en: Kathmandu Metropolitan City
+    url: https://kathmandu.gov.np
+    status: live-broken-tls
+    priority: 3
+    notes: "Representative palika for local-govt layer. 752 other palikas deferred to post-hackathon."
+
+shared_cdn:
+  host: giwmscdnone.gov.np
+  path_patterns:
+    - /media/pdf_upload/*.pdf
+    - /media/app/public/*/posts/*.pdf
+    - /media/carousels/*.{jpg,png,pdf}
+  notes: "Single shared government CDN serves most agencies. Crawling this domain directly is a volume shortcut."
+
+tls_policy:
+  insecure_allowed: true
+  rationale: "~27% of gov sites have broken cert chains. Crawler must use cert-tolerant mode AND log which sites needed it, as a trust signal."

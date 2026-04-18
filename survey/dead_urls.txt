@@ -1,0 +1,8 @@
+# Revalidation sweep on 2026-04-18: 3 dead URLs found
+
+# status=404
+https://ird.gov.np/public/pdf/678695469.pdf
+# status=404
+https://old.nepalpassport.gov.np/wp-content/uploads/2019/06/notice.pdf
+# status=404
+https://old.nepalpassport.gov.np/wp-content/uploads/2019/04/dhanusha-193-dispatch-14-lot.pdf

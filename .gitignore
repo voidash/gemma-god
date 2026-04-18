@@ -1,0 +1,63 @@
+# --- Rust ---
+/target/
+**/*.rs.bk
+Cargo.lock.bak
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.venvs/
+venv/
+.pytest_cache/
+.ruff_cache/
+
+# --- macOS ---
+.DS_Store
+._*
+
+# --- Editors ---
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# --- Secrets / credentials ---
+.env
+.env.*
+*.pem
+*.key
+*_rsa
+*_rsa.pub
+*.token
+hf_token*
+**/huggingface_token*
+
+# --- Large binary/generated artifacts ---
+# Downloaded gov PDFs — regenerate via scripts/download_batch.py
+survey/cdn_batch/
+survey/ocr_output/
+
+# Pipeline outputs — regenerable from source PDFs + code
+survey/corpus_chunks.jsonl
+survey/bm25_index.json
+survey/classification_batch.json
+survey/classify.err
+
+# Eval outputs (T9 on k2; local shouldn't have these but just in case)
+eval/
+*.log
+
+# HF caches — on T9, not in repo
+hf_cache/
+**/hf_cache/
+
+# MLX / model weights — on T9
+checkpoints/
+*.safetensors
+*.gguf
+
+# --- Local overrides ---
+*.local
+local_settings.*

@@ -1,0 +1,133 @@
+# Discovered 65 new PDF URLs on 2026-04-18
+# Source: Phase E crawler (see src/bin/crawler.rs)
+
+# from: lawcom-constitution
+https://giwmscdnone.gov.np/media/pdf_upload/%E0%A4%A8%E0%A5%87%E0%A4%AA%E0%A4%BE%E0%A4%B2%E0%A4%95%E0%A5%8B%20%E0%A4%B8_%E0%A4%82%E0%A4%B5%E0%A4%BF%E0%A4%A7%E0%A4%BE%E0%A4%A8%20unicode%20%E0%A4%AD%E0%A4%BE%E0%A4%A6%E0%A5%8D%E0%A4%B0%20%E0%A5%A8%E0%A5%A6%E0%A5%AE%E0%A5%A7_mtbuyjt.pdf
+# from: lawcom-ordinances
+https://giwmscdnone.gov.np/media/pdf_upload/2082.9.2%20%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A4%A4%E0%A4%BF%E0%A4%A8%E0%A4%BF%E0%A4%A7%E0%A4%BF%20%E0%A4%B8%E0%A4%AD%E0%A4%BE%20%E0%A4%B8%E0%A4%A6%E0%A4%B8%E0%A5%8D%E0%A4%AF%20%E0%A4%A8%E0%A4%BF%E0%A4%B0%E0%A5%8D%E0%A4%B5%E0%A4%BE%E0%A4%9A%E0%A4%A8%20%20(%E0%A4%AA%E0%A4%B9%E0%A4%BF%E0%A4%B2%E0%A5%8B%20%E0%A4%B8%E0%A4%82%E0%A4%B6%E0%A5%8B%E0%A4%A7%E0%A4%A8)%20%E0%A4%85%E0%A4%A7%E0%A5%8D%E0%A4%AF%E0%A4%BE%E0%A4%A6%E0%A5%87%E0%A4%B6%2C%E0%A5%A8%E0%A5%A6%E0%A5%AE%E0%A5%A8_v1cs5ms.pdf
+# from: lawcom-ordinances
+https://giwmscdnone.gov.np/media/pdf_upload/%E0%A4%A8%E0%A5%87%E0%A4%AA%E0%A4%BE%E0%A4%B2%20%E0%A4%B5%E0%A4%BF%E0%A4%B7%E0%A5%87%E0%A4%B6%20%E0%A4%B8%E0%A5%87%E0%A4%B5%E0%A4%BE%20%E0%A4%90%E0%A4%A8%20%E0%A4%B8%E0%A4%82%E0%A4%B6%E0%A5%8B%E0%A4%A7%E0%A4%A8%20%E0%A4%85%E0%A4%A7%E0%A5%8D%E0%A4%AF%E0%A4%BE%E0%A4%A6%E0%A5%87%E0%A4%B6%20(1)_rsyc06n.pdf
+# from: lawcom-ordinances
+https://giwmscdnone.gov.np/media/pdf_upload/1%20%206-5%20A5%20%20%E0%A4%85%E0%A4%A7%E0%A5%8D%E0%A4%AF%E0%A4%BE%E0%A4%A6%E0%A5%87%E0%A4%B6%20(%E0%A4%AE%E0%A4%A4%E0%A4%A6%E0%A4%BE%E0%A4%A4%E0%A4%BE%20%E0%A4%A8%E0%A4%BE%E0%A4%AE%E0%A4%BE%E0%A4%B5%E0%A4%B2%E0%A5%80%20%E0%A4%90%E0%A4%A8%20%E0%A4%AA%E0%A4%B9%E0%A4%BF%E0%A4%B2%E0%A5%8B%20%E0%A4%B8%E0%A4%82%E0%A4%B6%E0%A5%8B%E0%A4%A7%E0%A4%A8)%20-%20Copy%20-%20Copy%20-%20Copy%20-%20Copy_wbfte3h.pdf
+# from: lawcom-ordinances
+https://giwmscdnone.gov.np/media/pdf_upload/%E0%A4%AD%E0%A5%82%E0%A4%AE%E0%A4%BF%20%E0%A4%B8%E0%A4%AE%E0%A5%8D%E0%A4%AC%E0%A4%A8%E0%A5%8D%E0%A4%A7%E0%A5%80%20%E0%A4%95%E0%A5%87%E0%A4%B9%E0%A5%80%20%E0%A4%A8%E0%A5%87%E0%A4%AA%E0%A4%BE%E0%A4%B2%20%E0%A4%90%E0%A4%A8%E0%A4%B2%E0%A4%BE%E0%A4%88%20%E0%A4%B8%E0%A4%82%E0%A4%B6%E0%A5%8B%E0%A4%A7%E0%A4%A8%20%E0%A4%97%E0%A4%B0%E0%A5%8D%E0%A4%A8%20%E0%A4%AC%E0%A4%A8%E0%A5%87%E0%A4%95%E0%A5%8B%20%E0%A4%85%E0%A4%A7%E0%A5%8D%E0%A4%AF%E0%A4%BE%E0%A4%A6%E0%A5%87%E0%A4%B6_ld6ybbj.pdf
+# from: lawcom-ordinances
+https://giwmscdnone.gov.np/media/app/public/275/posts/1719912728_98.pdf
+# from: lawcom-ordinances
+https://giwmscdnone.gov.np/media/app/public/275/posts/1719908457_19.pdf
+# from: lawcom-regulations
+https://giwmscdnone.gov.np/media/pdf_upload/%E0%A4%B8%E0%A5%81%E0%A4%B0%E0%A4%95%E0%A5%8D%E0%A4%B7%E0%A4%A3%20%E0%A4%AE%E0%A5%81%E0%A4%A6%E0%A5%8D%E0%A4%B0%E0%A4%A3%20%E0%A4%B8%E0%A4%AE%E0%A5%8D%E0%A4%AC%E0%A4%A8%E0%A5%8D%E0%A4%A7%E0%A5%80%20%E0%A4%A8%E0%A4%BF%E0%A4%AF%E0%A4%AE%E0%A4%BE%E0%A4%B5%E0%A4%B2%E0%A5%80%20Final_m9sa1dx.pdf
+# from: lawcom-regulations
+https://giwmscdnone.gov.np/media/pdf_upload/%E0%A4%B8%E0%A4%BE%E0%A4%B0%E0%A5%8D%E0%A4%B5%E0%A4%9C%E0%A4%A8%E0%A4%BF%E0%A4%95%20%E0%A4%B8%E0%A5%87%E0%A4%B5%E0%A4%BE%20%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A4%B8%E0%A4%BE%E0%A4%B0%E0%A4%A3%20%E0%A4%A8%E0%A4%BF%E0%A4%AF%E0%A4%AE%E0%A4%BE%E0%A4%B5%E0%A4%B2%E0%A5%80%2C%20%E0%A5%A8%E0%A5%A6%E0%A5%AE%E0%A5%A8%20cabinet%20bata%20aayako%20%E0%A4%95%E0%A4%BE%E0%A4%A8%E0%A5%82%E0%A4%A8%20%E0%A4%AE%E0%A4%A8%E0%A5%8D%E0%A4%A4%E0%A5%8D%E0%A4%B0%E0%A4%BE%E0%A4%B2%E0%A4%AF%20%E0%A4%AA%E0%A4%A0%E0%A4%BE%E0%A4%89%E0%A4%A8%E0%A5%87_jlknzl2.pdf
+# from: lawcom-regulations
+https://giwmscdnone.gov.np/media/app/public/275/posts/1720608886_92.pdf
+# from: lawcom-regulations
+https://giwmscdnone.gov.np/media/app/public/275/posts/1720599354_80.pdf
+# from: lawcom-regulations
+https://giwmscdnone.gov.np/media/app/public/275/posts/1720339028_48.pdf
+# from: lawcom-regulations
+https://giwmscdnone.gov.np/media/app/public/275/posts/1719996824_96.pdf
+# from: lawcom-policies
+https://giwmscdnone.gov.np/media/app/public/275/posts/1719914862_50.pdf
+# from: lawcom-policies
+https://giwmscdnone.gov.np/media/app/public/275/posts/1719915003_3.pdf
+# from: lawcom-treaties
+https://giwmscdnone.gov.np/media/app/public/275/posts/1719830896_6.pdf
+# from: lawcom-treaties
+https://giwmscdnone.gov.np/media/app/public/275/posts/1719830807_37.pdf
+# from: lawcom-treaties
+https://giwmscdnone.gov.np/media/app/public/275/posts/1719831739_88.pdf
+# from: lawcom-treaties
+https://giwmscdnone.gov.np/media/app/public/275/posts/1719901585_1.pdf
+# from: lawcom-treaties
+https://giwmscdnone.gov.np/media/app/public/275/posts/1719903548_58.pdf
+# from: lawcom-treaties
+https://giwmscdnone.gov.np/media/app/public/275/posts/1719901233_75.pdf
+# from: ocr-home
+https://giwmscdnone.gov.np/media/pdf_upload/CamScanner%204-16-26%2014.37_kogg67a.pdf
+# from: ocr-home
+https://giwmscdnone.gov.np/media/pdf_upload/eservice_y04y0y7.pdf
+# from: sebon-press
+https://sebon.gov.np/uploads/2025/03/27/FrWfuJOYm9j6rVIp3zjQapdm2n5Sqy1UNb96qQ3X.pdf
+# from: sebon-press
+https://sebon.gov.np/uploads/2024/12/26/nKATx67JIb1mQxTpqRINEja3cKv8XKpzo8tzLzQH.pdf
+# from: sebon-press
+https://sebon.gov.np/uploads/2024/11/22/KOpO4SadYmAHuL41DeaSoFmUTBP1bFg1uwMp6A5n.pdf
+# from: sebon-press
+https://sebon.gov.np/uploads/2024/01/05/kPd0G6jN4VT40KXG6EtyPJqfW1Q0veEB09jtEKyB.pdf
+# from: sebon-press
+https://sebon.gov.np/uploads/2023/10/11/ZnZoP0PRYioOhfwYznMioO8IQBtYKhO3CzYcz0hM.pdf
+# from: sebon-press
+https://sebon.gov.np/uploads/2023/10/01/ERbeIKqQwlYqAKOtiN9SK4AMeyXucwAgy0p6hP2m.pdf
+# from: sebon-press
+https://sebon.gov.np/uploads/2023/07/05/0oBt6TP5NetmMM3qm9jDEX8yoYMqLFUCiqN7vU6Q.pdf
+# from: sebon-press
+https://sebon.gov.np/uploads/2023/07/05/6zvxuVnNAiFkPuY99AwCINNvAJHm1bLsEr4MwuD0.pdf
+# from: sebon-press
+https://www.sebon.gov.np/uploads/2024/12/04/MzLaGUKE5HRWtxHTi5TUt0xJLxnnvJnRWbbaB4ke.pdf
+# from: sebon-press
+https://www.sebon.gov.np/uploads/uploads/3zuCjW2oxfrNant67jeiuxqzWWl3o8o4fzsphDfa.pdf
+# from: sebon-press
+https://sebon.gov.np/uploads/uploaded-files/Merchant Banking Half yearly 7374.pdf
+# from: sebon-press
+https://sebon.gov.np/uploads/uploaded-files/Merchant Banker Annual Reporting Status FY 2073-74.pdf
+# from: sebon-press
+https://sebon.gov.np/uploads/uploaded-files/Brokers Third Quarterly Report Submission 2073-74.pdf
+# from: sebon-press
+https://sebon.gov.np/uploads/uploaded-files/Half yearly reporting status of merchant banking fy207374 poush end_0.pdf
+# from: sebon-press
+https://sebon.gov.np/uploads/uploaded-files/Second Quarterly Report Submission.pdf
+# from: sebon-acts
+https://sebon.gov.np/uploads/2025/08/12/Bdl6O36VwGHeQjlA4b2CEe250OULymlcXbGBO0VD.pdf
+# from: sebon-acts
+https://sebon.gov.np/uploads/2024/06/20/p1Dg04Ua80Jyi98XjNV2MuNS3uKMz9BuozYEnf65.pdf
+# from: sebon-acts
+https://sebon.gov.np/uploads/uploads/Tj1swbyYwSvxyRN3UmVZlyRFTVbG8zozIdXkxxzA.pdf
+# from: sebon-acts
+https://sebon.gov.np/uploads/2025/08/12/iqcIy2sKD5gYsKfJYQJPkWhL6qpUGMQkhs8Niun2.pdf
+# from: sebon-acts
+https://sebon.gov.np/uploads/uploads/b5tK7DoS3x07ETX7Z8NnHVIun0lM6C8LlSo0S67L.pdf
+# from: sebon-acts
+https://sebon.gov.np/uploads/2024/04/21/DzRgf4gSe1BhCaUCNaO18zUsvo4bWJJbqsLRpRZY.pdf
+# from: sebon-acts
+https://sebon.gov.np/uploads/uploads/6CWI1964J58jeDoU7aofblDswBzP2PoueiqeLMRT.pdf
+# from: sebon-acts
+https://sebon.gov.np/uploads/uploads/Bd5lyFy9wKE1Lh0HoCZs7opNWAKOfhoEYMaOUmM6.pdf
+# from: sebon-regulations
+https://sebon.gov.np/uploads/2025/07/20/OJ8tAh1eKQ3NIzumdQNFIuEqt3tl6JZhmN2voBKd.pdf
+# from: sebon-regulations
+https://sebon.gov.np/uploads/2025/07/16/mUlJZmJ1DOoCaKaiOWMCRDobXctf7JL6COG24hgq.pdf
+# from: sebon-regulations
+https://sebon.gov.np/uploads/2025/04/23/VfCeoQh7h9mkkRmukr27v2pRtqZTEwORSXbaSnDs.pdf
+# from: sebon-regulations
+https://sebon.gov.np/uploads/2025/03/24/CYFTpffbQm3TxCHuOJe3AGfeXDToj5DA6j9TKwPT.pdf
+# from: sebon-regulations
+https://sebon.gov.np/uploads/2024/06/16/F25vicaPro36bi2h6JilCtF0Y4fuAsnho7SAm0PH.pdf
+# from: sebon-regulations
+https://sebon.gov.np/uploads/2024/05/19/vUyZX9Zc40kc96gNLIFe9vlk7lQN0RFGIxiopqJ9.pdf
+# from: sebon-regulations
+https://sebon.gov.np/uploads/2023/09/24/4J6mY5hhWf86mzkHVzIcr83TG8g8YYLpz5miKJrt.pdf
+# from: sebon-regulations
+https://sebon.gov.np/uploads/2023/09/05/GY44DQViP8sKI6XDYQtF4aE01W1Sq40zOdkt8GXk.pdf
+# from: sebon-regulations
+https://sebon.gov.np/uploads/2022/10/19/Ae7XChdwIENxchflt51Xdocxzz7lst8NEINK6d1e.pdf
+# from: sebon-regulations
+https://sebon.gov.np/uploads/2022/09/14/TDD98PpIpnsQxu19fUaDHgEnH2MmwTg8TPtdO3Dv.pdf
+# from: dotm-home
+https://giwmscdnone.gov.np/media/pdf_upload/%E0%A4%AE%E0%A4%BF%E0%A4%A4%E0%A4%BF%20%E0%A5%A8%E0%A5%A6%E0%A5%AE%E0%A5%A9%E0%A5%A4%E0%A5%A6%E0%A5%A7%E0%A5%A4%E0%A5%A6%E0%A5%AA%20%E0%A4%97%E0%A4%A4%E0%A5%87%20%E0%A4%B5%E0%A4%BF%E0%A4%A4%E0%A4%B0%E0%A4%A3%E0%A4%95%E0%A4%BE%20%E0%A4%B2%E0%A4%BE%E0%A4%97%E0%A4%BF%20%E0%A4%A4%E0%A4%AF%E0%A4%BE%E0%A4%B0%20%E0%A4%AD%E0%A4%8F%E0%A4%95%E0%A4%BE%20%E0%A4%85%E0%A4%A4%E0%A5%8D%E0%A4%AF%E0%A4%BE%E0%A4%B5%E0%A4%B6%E0%A5%8D%E0%A4%AF%E0%A4%95%20%E0%A4%B8%E0%A4%B5%E0%A4%BE%E0%A4%B0%E0%A5%80%20%E0%A4%9A%E0%A4%BE%E0%A4%B2%E0%A4%95%20%E0%A4%85%E0%A4%A8%E0%A5%81%E0%A4%AE%E0%A4%A4%E0%A4%BF%E0%A4%AA%E0%A4%A4%E0%A5%8D%E0%A4%B0%E0%A4%B9%E0%A4%B0%E0%A5%81%E0%A4%95%E0%A5%8B%20%E0%A4%B5%E0%A4%BF%E0%A4%B5%E0%A4%B0%E0%A4%A3%20%E0%A5%A4_7hhcpue.pdf
+# from: dotm-home
+https://giwmscdnone.gov.np/media/pdf_upload/Thulobharyang%20Printed%20License_1kxpnum.pdf
+# from: dotm-home
+https://giwmscdnone.gov.np/media/pdf_upload/Sarlahi%20Printed%20License_fy594ef.pdf
+# from: dos-home
+https://giwmscdnone.gov.np/media/pdf_upload/sunya%20file_bmtygtc.pdf
+# from: dos-home
+https://giwmscdnone.gov.np/media/pdf_upload/%E0%A4%AC%E0%A4%BF%E0%A4%A6%E0%A4%BE%E0%A4%95%E0%A5%8B%20%E0%A4%B5%E0%A4%BF%E0%A4%B5%E0%A4%B0%E0%A4%A3%20%E0%A4%89%E0%A4%AA%E0%A4%B2%E0%A4%AC%E0%A5%8D%E0%A4%A7%20%E0%A4%97%E0%A4%B0%E0%A4%BE%E0%A4%89%E0%A4%A8%E0%A5%87%20%E0%A4%B8%E0%A4%AE%E0%A5%8D%E0%A4%AC%E0%A4%A8%E0%A5%8D%E0%A4%A7%E0%A4%AE%E0%A4%BE%20%E0%A5%A4_hlfdugb.pdf
+# from: dos-home
+https://giwmscdnone.gov.np/media/pdf_upload/%E0%A4%A8%E0%A4%BF%E0%A4%B0%E0%A5%8D%E0%A4%A3%E0%A4%AF%20%E0%A4%95%E0%A4%BE%E0%A4%B0%E0%A5%8D%E0%A4%AF%E0%A4%BE%E0%A4%A8%E0%A5%8D%E0%A4%B5%E0%A4%AF%E0%A4%A8%20%E0%A4%B8%E0%A4%AE%E0%A5%8D%E0%A4%AC%E0%A4%A8%E0%A5%8D%E0%A4%A7%E0%A4%AE%E0%A4%BE%E0%A5%A4_e8hbbub.pdf
+# from: opmcm-home
+https://giwmscdnone.gov.np/media/pdf_upload/website_notice_tqkfg9f.pdf
+# from: opmcm-home
+https://giwmscdnone.gov.np/media/pdf_upload/%E0%A4%AC%E0%A5%81%E0%A4%82%E0%A4%A6%E0%A4%BE-%E0%A5%A9%2C%20%E0%A4%B0%E0%A4%BE%E0%A4%B7%E0%A5%8D%E0%A4%9F%E0%A5%8D%E0%A4%B0%E0%A4%BF%E0%A4%AF%20%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A4%A4%E0%A4%BF%E0%A4%B5%E0%A4%A6%E0%A5%8D%E0%A4%A7%E0%A4%A4%E0%A4%BE_ygieuab.pdf
+# from: opmcm-home
+https://giwmscdnone.gov.np/media/pdf_upload/%E0%A4%AD%E0%A5%8D%E0%A4%B0%E0%A4%B7%E0%A5%8D%E0%A4%9F%E0%A4%BE%E0%A4%9A%E0%A4%BE%E0%A4%B0%20%E0%A4%B5%E0%A4%BF%E0%A4%B0%E0%A5%82%E0%A4%A6%E0%A5%8D%E0%A4%A6%E0%A4%95%E0%A5%8B%20%E0%A4%A6%E0%A5%8B%E0%A4%B8%E0%A5%8D%E0%A4%B0%E0%A5%8B%20%E0%A4%B0%E0%A4%A3%E0%A4%A8%E0%A5%80%E0%A4%A4%E0%A4%BF%E0%A4%95%20%E0%A4%AF%E0%A5%8B%E0%A4%9C%E0%A4%A8%E0%A4%BE%20%E0%A4%AE%E0%A4%B8%E0%A5%8C%E0%A4%A6%E0%A4%BE%20_ovhjhlm.pdf

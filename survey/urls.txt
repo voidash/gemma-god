@@ -1,0 +1,117 @@
+# Gov PDF URLs harvested 2026-04-18 for classifier scale-validation.
+# Source: WebSearch site: filetype:pdf queries across Tier 1 gov sites.
+
+# giwmscdnone.gov.np (shared gov CDN)
+https://giwmscdnone.gov.np/media/pdf_upload/2122820179_9mm0z4f.pdf
+https://giwmscdnone.gov.np/media/pdf_upload/digital_nepal_framework_english_matgc8r.pdf
+https://giwmscdnone.gov.np/media/app/public/54/posts/1691319734_39.pdf
+https://giwmscdnone.gov.np/media/pdf_upload/%E0%A4%A8%E0%A4%AA%E0%A4%B2-%E0%A4%85%E0%A4%A7%E0%A4%B0%E0%A4%9C%E0%A4%AF%E0%A4%95-%E0%A4%B8%E0%A4%B5%E0%A4%A7%E0%A4%A8-%E0%A5%A8%E0%A5%A6%E0%A5%AA%E0%A5%AD.pdf
+https://giwmscdnone.gov.np/media/pdf_upload/PLRIP_Model-Bidding-Document_NCB-Works_Final-CPCU-7-August-2024-_myp4fhy.pdf
+https://giwmscdnone.gov.np/media/pdf_upload/REPORT%20OF%209N-AMI%20H125%20(AS350%20B3e)%20Helicopter%20Owned%20&%20Operated%20by%20Air%20Dynasty%20Heli%20Services%20Pvt.%20Ltd.%20at%20near%20SisneVir,%20Pathivara,%20Nepal_m9uvgmg.pdf
+https://giwmscdnone.gov.np/media/files/1011%20BP_huixdix.pdf
+https://giwmscdnone.gov.np/media/pdf_upload/TG-%20English%20Grade%207_aacywbf.pdf
+https://giwmscdnone.gov.np/media/pdf_upload/%E0%A4%AE%E0%A4%A4%E0%A5%8D%E0%A4%B8%E0%A5%8D%E0%A4%AF-%E0%A4%AA%E0%A4%BE%E0%A4%B2%E0%A4%A8-%E0%A4%B6%E0%A5%8D%E0%A4%B0%E0%A5%83%E0%A4%96%E0%A4%B2%E0%A4%BE-%E0%A5%AB-%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A5%8B%E0%A4%B8%E0%A5%87%E0%A4%A1%E0%A4%BF%E0%A4%99%E0%A5%8D%E0%A4%97-%E0%A4%B5%E0%A4%B0%E0%A5%8D%E0%A4%95%E0%A4%B6%E0%A4%AA_english_1527593344_0xtgtjj.pdf
+https://giwmscdnone.gov.np/media/pdf_upload/01.DR%20TB%20guideline-Final-2024.05.09_n1tkm1v.pdf
+https://giwmscdnone.gov.np/media/pdf_upload/etr_english_vpi6g23.pdf
+https://giwmscdnone.gov.np/media/app/public/54/posts/1679824428_31.pdf
+https://giwmscdnone.gov.np/media/app/public/275/posts/1721028790_6.pdf
+https://giwmscdnone.gov.np/media/pdf_upload/NBC_205_READY-TO-USE_DETAILING_GUIDELINE_FOR-signed.pdf
+https://giwmscdnone.gov.np/media/app/public/54/posts/1679824202_6.pdf
+https://giwmscdnone.gov.np/media/pdf_upload/6.LIO%20Notice%20Newspaper%20Belbari%20WSP15_i0q0dio.pdf
+https://giwmscdnone.gov.np/media/files/RFP-Notice-2076-01-10_zmbvm3e.pdf
+https://giwmscdnone.gov.np/media/files/Annual%20Foreign%20Trade%20%20Statistics%20Book%202079-80_570y4ss.pdf
+https://giwmscdnone.gov.np/media/app/public/54/posts/1679824223_46.pdf
+https://giwmscdnone.gov.np/media/app/public/54/posts/1679816500_78.pdf
+
+# nrb.org.np — central bank circulars
+https://www.nrb.org.np/contents/uploads/2026/03/circular-12-abc_publish.pdf
+https://www.nrb.org.np/contents/uploads/2023/02/Circular-No-9-ABC-Unified-Directives-2079.pdf
+https://www.nrb.org.np/contents/uploads/2025/08/2_2082.04.22_FEMD-Circular.pdf
+https://www.nrb.org.np/contents/uploads/2025/07/1_2082.04.01_FEMD-Circular.pdf
+https://www.nrb.org.np/contents/uploads/2019/12/List_of_Circular-476.pdf
+https://www.nrb.org.np/contents/uploads/2019/12/2063_64-Circular_16-Debt-Recovery.pdf
+https://www.nrb.org.np/contents/uploads/2019/12/2067_68-Circular_01-Monetary-Policy.pdf
+https://www.nrb.org.np/contents/uploads/2019/12/List_of_Circular-579.pdf
+https://www.nrb.org.np/contents/uploads/2024/10/Circular-No-1-081-82.pdf
+https://www.nrb.org.np/contents/uploads/2019/12/2065_66-Circular_32-Attach.-Name-List-of-Defaulters.pdf
+
+# lawcommission.gov.np — Acts
+https://www.lawcommission.gov.np/en/wp-content/uploads/2018/10/commissions-of-inquiry-act-2026-1969.pdf
+https://www.lawcommission.gov.np/en/wp-content/uploads/2018/10/judicial-service-commission-act-2048-1991.pdf
+https://lawcommission.gov.np/en/wp-content/uploads/2024/02/Financial-Procedures-Fiscal-Responsibility-Act-2076.pdf
+https://www.lawcommission.gov.np/en/wp-content/uploads/2018/10/act-relating-to-land-of-jhora-area-2028-1971.pdf
+
+# ird.gov.np — self-hosted numeric-ID PDFs (NEW finding — not on shared CDN)
+https://ird.gov.np/public/pdf/757561198.pdf
+https://ird.gov.np/public/pdf/678695469.pdf
+https://ird.gov.np/public/pdf/1037599191.pdf
+https://www.ird.gov.np/public/pdf/834857563.pdf
+https://ird.gov.np/public/pdf/2009977397.pdf
+https://ird.gov.np/public/pdf/501426892.pdf
+https://www.ird.gov.np/public/pdf/751644347.pdf
+https://ird.gov.np/public/pdf/142484272.pdf
+https://www.ird.gov.np/public/pdf/587904199.pdf
+https://ird.gov.np/public/pdf/605506164.pdf
+
+# ocr.gov.np — company registrar manuals (on application. and camis. subdomains)
+https://application.ocr.gov.np/resources/Manual/New%20Registration.pdf
+https://camis.ocr.gov.np/assets/NewRegistrationV2-c0bf408a.pdf
+https://application.ocr.gov.np/resources/Manual/Post%20Registration.pdf
+
+# sebon.gov.np — annual reports, journals, market indicators
+https://www.sebon.gov.np/uploads/uploads/ynl01cl70VOmmmPCct0XQVu0joqWykWtZYEzIitO.pdf
+https://sebon.gov.np/uploads/uploads/X5rp6kG6JsAGPN7MvqHQ9YvEPF4MIeOmnRCwQ4SC.pdf
+https://www.sebon.gov.np/uploads/2022/06/29/SxCfIjoEpQD6f7GgwFjpFFeod64ZTkUuw4rHyzpI.pdf
+https://sebon.gov.np/uploads/2022/03/30/Vf1MzEOI9GAJaYGqALnSdv1VL28phlPa2nhW0ugZ.pdf
+https://www.sebon.gov.np/uploads/uploads/uE3W6VvM8kN4QiwOwgXodMfQxcVVRLPu4RIPwX32.pdf
+https://sebon.gov.np/uploads/2025/01/16/kSwnp1PTFJCWmEWwQ2HuryT09v1GwhOeChu634QP.pdf
+https://www.sebon.gov.np/uploads/uploads/rLjWbNTZ5P57A8d4GLf7RHLxTm09JPxNF9LcqBxu.pdf
+https://www.sebon.gov.np/uploads/2025/11/27/Ut2VEx9qRr3amvehu5aEOlR0vSqJMncGwFk5awSQ.pdf
+https://www.sebon.gov.np/uploads/2022/07/20/oQRZkA3f2s6A2OER5HByqMKq3HFbvg7c7WtHwgtp.pdf
+https://www.sebon.gov.np/uploads/uploads/CEdFNSKL7PQ85ITDNylwIeq5NzggqmMydGmVuKkE.pdf
+
+# nepalpassport.gov.np — two subdomains: verification1. (new) and old.
+https://verification1.nepalpassport.gov.np/uploads/g_Q6z_W_Hj_Ic_DQM_Oqn_Guq_G_Tz_Npa_ZXJYNC_meta_Zm9yb_T_It_NG_12_Mi0x_Ln_Bk_Zg_0cffb4c683.pdf
+https://verification1.nepalpassport.gov.np/uploads/ISO_3166_1_alpha_3_for_Personalization_of_Place_of_Birth_Country_in_e_Passport_2b8b66fb86.pdf
+https://verification1.nepalpassport.gov.np/uploads/s_VD_Pl_G1lqmxz_Z_Or64td_D_Uic1qia_DZ_2_meta_UH_Jl_IE_Vucm9sb_G1lbn_Qg_SW_5zd_HJ_1_Y3_Rpb25z_I_Gxhd_G_Vzd_C5w_ZGY_7dae1bc2aa.pdf
+https://old.nepalpassport.gov.np/wp-content/uploads/2018/12/epayment.pdf
+https://old.nepalpassport.gov.np/wp-content/uploads/2019/12/DISPATCHED-LIST-OF-UDAYAPUR-366-LOT-7-1.pdf
+https://verification1.nepalpassport.gov.np/uploads/_64d2d4ca93.pdf
+https://old.nepalpassport.gov.np/wp-content/uploads/2019/06/notice.pdf
+https://old.nepalpassport.gov.np/wp-content/uploads/2019/03/KATHMANDU-600-LOT-20.pdf
+https://old.nepalpassport.gov.np/wp-content/uploads/2019/04/dhanusha-193-dispatch-14-lot.pdf
+https://old.nepalpassport.gov.np/wp-content/uploads/2021/09/morang-516-lot-2078-01-03.pdf
+
+# moha.gov.np — district-office subdomain pattern (daoXXX.moha.gov.np)
+https://www.moha.gov.np/assets/2/8288_c909ea9a1c828645bbf8744160f89649_1419712104_L_1_.pdf/file
+https://www.moha.gov.np/upload/e66443e81e8cc9c4fa5c099a1fb1bb87/files/A_Journal_of_Drug_Control_final_for_web.pdf
+https://daojajarkot.moha.gov.np/upload/c59a8944f84f7a8bdcf9826836f7978a/files/IMG_0001(2).pdf
+https://daonuwakot.moha.gov.np/upload/ef505dd19c1bea460f21e7826a49439a/files/civil_works.pdf
+https://daoramechhap.moha.gov.np/assets/121/IMG_20191222_0008.pdf/file
+https://daobaitadi.moha.gov.np/upload/6d4e90bf45f4280b29dede7819d04f6f/files/DPRP_2078_BAITADI_DISTRICT.pdf
+https://daosankhuwasabha.moha.gov.np/upload/02fd3c13ae66f2332de79d7fe911e534/files/DDMC.pdf
+https://daorolpa.moha.gov.np/upload/90fb9532958d43fa80933d2ea1f9dcc6/files/bulletin_2077_04_08.pdf
+https://dmpc.moha.gov.np/upload/c0a46ed0d76684ce1d3affc3e56bf1db/files/FY_2079_80_Annual_Report.pdf
+https://daoparbat.moha.gov.np/assets/11/Nagarik_jestha_karyabidhi_2070.pdf/file
+
+# dotm.gov.np — per-license-center subdomains
+https://bhaktpurlc.dotm.gov.np/Files/NoticePDF/WrittenTestReport2025-08-14_08-34-58-883.pdf
+https://applydl.dotm.gov.np/assets/downloads/user_manual.pdf
+https://bhaktpurlc.dotm.gov.np/Files/NoticePDF/WrittenTestReport2024-10-30_01-16-15-838.pdf
+https://ktmlc2.dotm.gov.np/Files/NoticePDF/WrittenTestReport(158)2023-01-13_05-03-19-534.pdf
+https://ktmlc2.dotm.gov.np/Files/NoticePDF/WrittenTestReport(2)2025-05-27_04-24-25-815.pdf
+https://bhaktpurlc.dotm.gov.np/Files/NoticePDF/WrittenTestReport(8)7-03-20232023-03-07_03-06-18-616.pdf
+https://bhaktpurlc.dotm.gov.np/Files/NoticePDF/License_Details_10_11_2020.xlsx2020-10-11_04-23-53-893.pdf
+https://applydlnew.dotm.gov.np/assets/downloads/user_manual.pdf
+https://bhaktpurlc.dotm.gov.np/Files/NoticePDF/WrittenTestReport_07_Jan_202012021-01-07_04-22-57-994.pdf
+https://bhaktpurlc.dotm.gov.np/Files/NoticePDF/WrittenTestSchedulereport2024-09-11_04-14-18-700.pdf
+
+# mof.gov.np — budget speeches on demo. and old. subdomains
+http://old.mof.gov.np/grbc/grb%20new%20englis%20bros.pdf
+https://demo.mof.gov.np/uploads/document/file/1724825318_Budget%20Speech%202024_25%20English%20FV.pdf
+https://demo.mof.gov.np/uploads/document/file/Budget%20Speech%202008_20201118042411.pdf
+https://demo.mof.gov.np/uploads/document/file/20140715244034.pdf
+https://old.mof.gov.np/uploads/document/file/20160601173941.pdf
+https://old.mof.gov.np/uploads/document/file/20170530191928.pdf
+https://demo.mof.gov.np/uploads/document/file/1723610863_Fiscal%20Policy%20Statement%20after%20Correction%20_4.24.pdf
+https://demo.mof.gov.np/uploads/document/file/1688901593_TC%20-%20EDIT%20-%20FY2023_24%20Budget%20Speech_R2.pdf
