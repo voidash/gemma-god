@@ -320,6 +320,130 @@ dict (richer profile object) rather than a string. Guard with
 `isinstance(raw_author, str)` before the bot-author set membership test —
 otherwise TypeError on `dict in frozenset(str)`.
 
+---
+
+## 2026-04-19 — Day 2
+
+### Full corpus assembly (tasks #14–19)
+
+Beyond Reddit (prior day), we added on k2:
+- **Wikipedia NE** (`wikimedia/wikipedia:20231101.ne`) — 31,357 articles,
+  **12.9 M tokens total** (not 150 M+ as I'd estimated; NE Wikipedia is small)
+- **Saugatkafley/alpaca-nepali-sft** — 52 k instruction pairs, kept 34,966
+  after length filter
+- **fineweb-edu English replay** (streaming) — 13,681 records, 16 M tokens
+- **Gov consolidation** — reshaped `survey/corpus_chunks.jsonl` to only
+  Nepali tiers (BPreeti / A / Mixed / C), 7,910 chunks, 1.4 M tokens.
+  Skipped E (English-only gov content) — dedicated English replay serves
+  that purpose better than gov-domain English.
+
+### IndicXlit deferred (task #18)
+
+`ai4bharat-transliteration` package has a broken transitive dep chain
+(`urduhack → tensorflow-addons → keras.src.engine`). Pinning `keras<3`
+fixed the first import but then `saving_api.py` broke on
+`tf.__internal__.register_load_context_function`. Full resolution would
+require pinning the entire TF 2.15 toolchain. Abandoned: 5% synthetic slice
+wasn't worth the rabbit hole; Reddit's 68 k natural Roman-NE records cover
+that ground better anyway.
+
+### Packed CPT corpus (task #19)
+
+Script: `scripts/pack_cpt_corpus.py`. Per-slice token budgets, 95/5 train/
+valid split, seed 42, shuffled across slices.
+
+Final mix (actual token counts, post-shuffle):
+- 37.9% English replay (16.0 M tokens — over target; Nepali slices smaller than planned)
+- 30.5% Wikipedia NE (12.9 M — all of it)
+- 14.2% Reddit Roman-NE (6.0 M)
+- 9.5% Alpaca-NE (4.0 M)
+- 3.4% Gov Nepali (1.4 M — all of it; tier A/BPreeti/Mixed/C only)
+- 3.1% Reddit Devanagari (1.3 M)
+- 1.5% Reddit code-mixed (0.6 M)
+
+**Total: 42.3 M tokens** across 189,704 records. Output:
+`/Volumes/T9/gemma-god/cpt_data/{train,valid}.jsonl` (225 MB + 12 MB).
+
+### CPT v1 attempt — FAILED REGRESSION (task #20)
+
+**Config:** `mlx_lm.lora`, base `mlx-community/gemma-3-4b-it-bf16`, LoRA
+rank 16, num-layers 16, batch 4, lr 1e-4, max-seq-length 2048,
+grad_checkpoint on, 10 000 iters, save every 500, seed 42.
+
+**Config experimentation (don't repeat the mistakes):**
+- First tried batch 8 (worse: 163 tok/sec vs batch 4's 290 tok/sec —
+  grad_checkpoint overhead scales with batch × seq)
+- Then tried batch 4 + no grad_checkpoint (**MUCH worse**: peak mem jumped
+  25.9 → 57.3 GB, tokens/sec collapsed to 125; memory pressure forced MLX
+  into slow paths)
+- Settled back on original: batch 4 + grad_checkpoint = 290 tok/sec steady.
+  Peak mem 25.95 GB on 64 GB Mac Studio. Ran clean overnight.
+
+**Training trajectory:** val loss 4.057 → 3.347 → 2.862 (iter 1000) →
+plateau 2.8–3.1 through remainder → 2.794 final. Most learning happened by
+iter 1000. Train ≈ val throughout = no overfitting. 7.6 hr wall time, 7.63 M
+tokens trained (≈ 0.18 epochs).
+
+**Fast-eval on step 10 000 adapter vs baseline:**
+
+| Benchmark | Baseline | CPT v1 step 10k | Delta |
+|---|---|---|---|
+| Belebele Nepali (50 Q) | 0.630 | 0.520 | **-17.5%** |
+| FLORES EN→NE chrF++ (30) | 38.15 | 33.46 | **-4.69** |
+| FLORES NE→EN chrF++ (30) | 55.88 | 55.09 | −0.79 (flat) |
+| Roman-NE degen rate | ~25% | **30%** | worse |
+
+**Regression on every axis.** Roman-NE responses are pure question-echo
+repetition loops:
+```
+Q: mero nagarikta banauna ko lagi kun office janu parcha?
+A: Mero nagarikta banauna ko lagi kun office janu parcha?
+   Mero nagarikta banauna ko lagi kun office janu parcha?
+   Mero nagarikta banauna ko lagi kun office janu parcha? [...]
+```
+
+### Root cause of CPT v1 failure
+
+**CPT'd an instruction-tuned model (`gemma-3-4b-it-bf16`) on raw text and
+trampled the instruction-following weights.** Classic catastrophic-
+forgetting pattern:
+
+- Val loss ON OUR NEPALI CORPUS dropped sharply — the model DID learn our
+  data's language-modeling distribution.
+- But the IT signal (how to respond to `<start_of_turn>user ... <end_of_turn>`
+  chat format) got overwritten. Model now does raw-text continuation, so it
+  echoes the question instead of answering.
+- Only 9.5% of our CPT mix was instruction-format (Alpaca-NE) — nowhere
+  near enough to preserve IT behavior over 10 k iters.
+
+This is a **known failure mode** documented in the CPT literature (cf. arxiv
+2412.13860: naive CPT on Llama 3 8B dropped MMLU 0.61 → 0.35). Should have
+caught it when planning; didn't flag the IT-vs-base distinction. My miss.
+
+### Corrective plan — CPT v2 from PT (non-IT) base
+
+Switch to **`mlx-community/gemma-3-4b-pt-bf16`** ("pt" = pretrained, no IT).
+Then CPT on the PT base won't trample anything because there's no IT behavior
+to preserve. After CPT: SFT with chat-format data (Alpaca-NE + our gov
+Q&A if generated) restores the chat behavior on top of the improved Nepali
+LM.
+
+**Baseline caveat:** our previous baseline numbers (Belebele 0.630 etc.) were
+taken on the IT model. The PT model baseline will look different on those
+benchmarks — PT models don't follow MC answer-letter instructions well.
+Need a fresh baseline on PT before comparing post-CPT uplift.
+
+**New task list:**
+1. Download `mlx-community/gemma-3-4b-pt-bf16` to T9 hf_cache
+2. Baseline PT model on Belebele / FLORES / Roman-NE (different "before")
+3. CPT v2 from PT, same hyperparameters as v1 (they produced good val loss)
+4. SFT phase on top of CPT with Alpaca-NE + small gov Q&A slice
+5. Eval SFT'd model vs (a) baseline-IT, (b) baseline-PT, (c) CPT v1
+6. If SFT'd v2 beats baseline-IT → ship; otherwise iterate
+
+Estimated wall time: PT download (~3 GB) + 7 hr CPT + 2-3 hr SFT + evals
+= ~11 hours. Can run overnight again.
+
 ### Decision for CPT based on this baseline
 
 - **Target: preserve Belebele ≥ 0.60** (comprehension) while meaningfully
