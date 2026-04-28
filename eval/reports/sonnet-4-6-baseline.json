@@ -309,7 +309,7 @@
       "elapsed_ms": 19123,
       "model_output": "प्रदान गरिएको स्रोतमा जिरी नगरपालिका आर्थिक ऐन, २०८१ को उल्लेख छ र \"आ.व.२०८१/०८२ को सम्पत्तिकर पहिलो चौमासिकभित्र बुझाएमा\" भन्ने वाक्यांश सुरु भएको छ, तर त्यसपछिको छुट दर र ढिलो तिर्दाको जरिवाना सम्बन्धी विशिष्ट संख्यात्मक विवरण उपलब्ध स्रोत अंशमा समावेश छैन — पाठ त्यहीँ काटिएको छ [https://jirimun.gov.np/sites/jirimun.gov.np/files/documents/...].\n\n**मलाई यो प्रश्नको पूर्ण आधिकारिक स्रोत भेटिनँ।**\n\nसही जानकारीका लागि:\n- जिरी नगरपालिकाको कार्यालयमा सोधपुछ गर्नुहोस् वा\n- उपरोक्त PDF को पूर्ण प्रति [https://jirimun.gov.np](https://jirimun.gov.np) बाट डाउनलोड गरी **अनुसूची (१)** र सम्बन्धित दफाहरू हेर्नुहोस्।",
       "model_citations": [
-        "https://jirimun.gov.np/sites/jirimun.gov.np/files/documents/...",
+        "https://jirimun.gov.np/sites/jirimun.gov.np/files/documents/",
         "https://jirimun.gov.np"
       ],
       "model_refused": true,
@@ -347,7 +347,9 @@
       "lang": "roman_nepali",
       "elapsed_ms": 5452,
       "model_output": "सुख्खा यामको लागि नर्सरी स्थापना गर्ने उपयुक्त समय **चैतको आधाआधीदेखि साउनको मध्य (अर्थात् अप्रिलदेखि जुलाई)** सम्म हो।\n\n[https://doanepal.gov.np/actfile/TOT Nepali version amnnual feb 12_nep_1582016230.pdf]",
-      "model_citations": [],
+      "model_citations": [
+        "https://doanepal.gov.np/actfile/TOT"
+      ],
       "model_refused": false,
       "gold_answer": "The excerpt directly states that the most suitable time to establish a nursery in the dry season is from mid-Chaitra to mid-Shrawan (approximately April to July).",
       "gold_urls": [
@@ -403,7 +405,7 @@
       "elapsed_ms": 13492,
       "model_output": "प्रदान गरिएको स्रोत [https://jirimun.gov.np/sites/jirimun.gov.np/files/documents/mSsj01630472169...] मा जिरी नगरपालिकाको वडा संख्या, कुल क्षेत्रफल तथा जनसंख्यासम्बन्धी तथ्याङ्क सीधै उल्लेख गरिएको छैन — उक्त अंश लेखापरीक्षण प्रतिवेदनको परिचय भागमात्र हो।\n\nमलाई यो प्रश्नको आधिकारिक स्रोत भेटिनँ।\n\n**सुझाव:** सटीक जानकारीका लागि निम्न आधिकारिक स्रोतहरू प्रत्यक्ष हेर्नुहोला:\n- जिरी नगरपालिकाको आधिकारिक वेबसाइट: [https://jirimun.gov.np](https://jirimun.gov.np)\n- राष्ट्रिय जनगणना तथ्याङ्क: [https://cbs.gov.np](https://cbs.gov.np)",
       "model_citations": [
-        "https://jirimun.gov.np/sites/jirimun.gov.np/files/documents/mSsj01630472169...",
+        "https://jirimun.gov.np/sites/jirimun.gov.np/files/documents/mSsj01630472169",
         "https://jirimun.gov.np",
         "https://cbs.gov.np"
       ],
@@ -557,7 +559,8 @@
       "elapsed_ms": 10522,
       "model_output": "लमजुङ जिल्ला प्रशासन कार्यालयले सामना गरिरहेका प्रमुख चुनौतीहरू निम्नानुसार छन् [https://moha.gov.np/upload/e66443e81e8cc9c4fa5c099a1fb1bb87/files/MOHA_Annual_Progress_Report_book_2078_79_MOHA_(1)(1).pdf]:\n\n**प्रशासनिक/संस्थागत समस्याहरू:**\n- तालिम उत्प्रेरणाको कमी\n- व्यावसायिकताको कमी\n- अभिलेख व्यवस्थापनमा कमजोरी\n- अनुभवी कर्मचारीलाई अन्य कार्यालयमा जानबाट रोक्न नसकिने अवस्था\n\n**नागरिक सेवा सम्बन्धी चुनौतीहरू:**\n- प्रमाण जुटाउन नसक्ने नागरिकलाई नागरिकता उपलब्ध गराउन कठिनाई\n\n**भौतिक पूर्वाधार सम्बन्धी चुनौती:**\n- अपाङ्गमैत्री भवनको अभाव",
       "model_citations": [
-        "https://moha.gov.np/upload/e66443e81e8cc9c4fa5c099a1fb1bb87/files/MOHA_Annual_Progress_Report_book_2078_79_MOHA_(1)(1).pdf"
+        "https://moha.gov.np/upload/e66443e81e8cc9c4fa5c099a1fb1bb87/files/MOHA_Annual_Progress_Report_book_2078_79_MOHA_(1)(1).pdf",
+        "https://moha.gov.np/upload/e66443e81e8cc9c4fa5c099a1fb1bb87/files/MOHA_Annual_Progress_Report_book_2078_79_MOHA_(1"
       ],
       "model_refused": false,
       "gold_answer": "The excerpt lists three challenges faced by Lamjung district administration: providing citizenship to citizens who cannot produce documentary proof, preventing experienced staff from being transferred elsewhere, and the lack of disability-friendly buildings.",
@@ -689,7 +692,9 @@
       "lang": "roman_nepali",
       "elapsed_ms": 14560,
       "model_output": "Rautahat Jhauwaका उखु किसानहरूले **SBBSCI PVT. LTD.** मिललाई उखु बेच्छन् [https://doanepal.gov.np/downloadfile/Sugarcane Book_2082_1752400803.pdf]।\n\n**Suresh Kumar Yadav** (पिताको नाम: Tej Narayan) ले **रू. ७४,६५०.१०** (१०६६.४३ क्विन्टल बापत) प्राप्त गरेका छन् [https://doanepal.gov.np/downloadfile/Sugarcane Book_2082_1752400803.pdf]।",
-      "model_citations": [],
+      "model_citations": [
+        "https://doanepal.gov.np/downloadfile/Sugarcane"
+      ],
       "model_refused": false,
       "gold_answer": "The table shows all listed Rautahat Jhauwa farmers sell sugarcane to SBBSCI PVT.LTD; row 1111 shows Suresh Kumar Yadav received Rs. 74,650.10 for 1,066.43 units of sugarcane.",
       "gold_urls": [
@@ -706,7 +711,9 @@
       "lang": "roman_nepali",
       "elapsed_ms": 5226,
       "model_output": "Registration number **13906** मा दर्ता **SAROJ KUMAR YADAV** ले:\n\n- **उखु supply:** **537.97 quintal**\n- **Incentive रकम:** **रु. 37,657.90**\n\n[https://doanepal.gov.np/downloadfile/Sugarcane Book_2082_1752400803.pdf]",
-      "model_citations": [],
+      "model_citations": [
+        "https://doanepal.gov.np/downloadfile/Sugarcane"
+      ],
       "model_refused": false,
       "gold_answer": "The excerpt's tabular register shows S.N. 13906 Saroj Kumar Yadav supplied 537.97 quintals of sugarcane and is entitled to Rs. 37,657.90 in production incentive from MS PVT.LTD.",
       "gold_urls": [
@@ -742,7 +749,9 @@
       "lang": "roman_nepali",
       "elapsed_ms": 7626,
       "model_output": "स्रोतमा उपलब्ध जानकारी अनुसार:\n\n**HARENDRA PATEL** (पिता: RAM CHANDRA PATEL), रautahat, Akar Pather:\n\n| विवरण | तथ्यांक |\n|---|---|\n| उखु आपूर्ति (Supply) | **410.45 Quintal** |\n| प्रोत्साहन रकम (Incentive Amount) | **रु. 28,731.50** |\n| Sugar Mill | **SBBSCI PVT. LTD** |\n\n[https://doanepal.gov.np/downloadfile/Sugarcane Book_2082_1752400803.pdf]",
-      "model_citations": [],
+      "model_citations": [
+        "https://doanepal.gov.np/downloadfile/Sugarcane"
+      ],
       "model_refused": false,
       "gold_answer": "The excerpt's register shows S.N. 815 Harendra Patel of Rautahat, Akar Pather supplied 410.45 quintals of sugarcane and received Rs. 28,731.50 in incentive from SBBSCI PVT.LTD.",
       "gold_urls": [
@@ -779,7 +788,8 @@
       "elapsed_ms": 5134,
       "model_output": "Jiri ko Stone Park **1876 metre** uchaima parchha, ra yo **Touristic Places** category ko tourist place ho.\n\n[https://jirimun.gov.np/ne/content/स्टोन-पार्क](https://jirimun.gov.np/ne/content/%E0%A4%B8%E0%A5%8D%E0%A4%9F%E0%A5%8B%E0%A4%A8-%E0%A4%AA%E0%A4%BE%E0%A4%B0%E0%A5%8D%E0%A4%95)",
       "model_citations": [
-        "https://jirimun.gov.np/ne/content/स्टोन-पार्क"
+        "https://jirimun.gov.np/ne/content/स्टोन-पार्क",
+        "https://jirimun.gov.np/ne/content/%E0%A4%B8%E0%A5%8D%E0%A4%9F%E0%A5%8B%E0%A4%A8-%E0%A4%AA%E0%A4%BE%E0%A4%B0%E0%A5%8D%E0%A4%95"
       ],
       "model_refused": false,
       "gold_answer": "The excerpt directly records that Stone Park in Jiri Municipality sits at an altitude of 1876 metres and is categorised as a Touristic Place, with coordinates latitude 27.6450000, longitude 086.3080556.",
@@ -798,7 +808,9 @@
       "elapsed_ms": 15248,
       "model_output": "मलाई यो प्रश्नको आधिकारिक स्रोत भेटिनँ।\n\nउपलब्ध स्रोत [https://moha.gov.np/upload/e66443e81e8cc9c4fa5c099a1fb1bb87/files/surakshit_jeevan.pdf] मा लागु औषध दुर्व्यसनको समस्याको सामान्य विवरण मात्र छ — नेपालमा पहिलो लागु औषध नियन्त्रण कानून कहिले आयो वा त्यसपछिका नीति तथा रणनीतिहरूको क्रमबद्ध विवरण उक्त स्रोतमा उल्लेख छैन।\n\nयस विषयमा सटीक जानकारीका लागि निम्न आधिकारिक स्रोत हेर्न सुझाव गरिन्छ:\n- **गृह मन्त्रालय (MoHA):** https://www.moha.gov.np\n- **नारकोटिक्स कन्ट्रोल ब्युरो (NCB):** https://ncb.gov.np",
       "model_citations": [
-        "https://moha.gov.np/upload/e66443e81e8cc9c4fa5c099a1fb1bb87/files/surakshit_jeevan.pdf"
+        "https://moha.gov.np/upload/e66443e81e8cc9c4fa5c099a1fb1bb87/files/surakshit_jeevan.pdf",
+        "https://www.moha.gov.np",
+        "https://ncb.gov.np"
       ],
       "model_refused": true,
       "gold_answer": "The excerpt states Nepal enacted the Narcotic Drugs (Control) Act in 2033 BS, followed thirty years later by the Drug Control National Policy in 2063 BS, and then the Drug Control Strategy in 2066 BS for more effective implementation.",
@@ -854,7 +866,9 @@
       "lang": "roman_nepali",
       "elapsed_ms": 6851,
       "model_output": "HSM LTD द्वारा Sirha Sukhipur NAPA का **Haridev Yadav (पिता: Shivdhar Yadav)** लाई sugarcane बापत निम्न भुक्तानी गरिएको छ:\n\n- **परिमाण (Quantity):** 234.17 (quintal/unit)\n- **भुक्तानी रकम (Payment):** **रु. 16,391.90**\n\n[https://doanepal.gov.np/downloadfile/Sugarcane Book_2082_1752400803.pdf]",
-      "model_citations": [],
+      "model_citations": [
+        "https://doanepal.gov.np/downloadfile/Sugarcane"
+      ],
       "model_refused": false,
       "gold_answer": "Registration entry 4367 in the excerpt shows HSM LTD paid Haridev Yadav (father: Shivdhar Yadav) of Sirha Sukhipur NAPA Rs. 16,391.90 for 234.17 units of sugarcane.",
       "gold_urls": [
@@ -910,7 +924,8 @@
       "elapsed_ms": 9094,
       "model_output": "जडान कार्य सम्पन्न भएका स्थानहरूको विवरण नेपाल दूरसञ्चार प्राधिकरणको वेबसाइटमा रहेको निम्न लिंकमा हेर्न सकिन्छ:\n\n**https://nta.gov.np/page/nta-rtdf-progress**\n\nथप जानकारी:\n- ग्रामीण दूरसञ्चार विकास कोष परिचालन गरी **७४ जिल्लाहरू**का तोकिएका स्थानहरूमा जडान कार्य सम्पन्न भएको छ।\n- कुल **१६,२०८ स्थानहरू**मा ब्रोडब्याण्ड इन्टरनेट सेवा जडान सम्पन्न भएको छ, जसमा स्थानीय तह कार्यालयहरू, वडा कार्यालयहरू, सामुदायिक माध्यमिक विद्यालयहरू र सामुदायिक स्वास्थ्य संस्था/अस्पतालहरू समावेश छन्।\n\n[https://www.nta.gov.np/uploads/contents/Press-release_Shrawan_2080.pdf]",
       "model_citations": [
-        "https://www.nta.gov.np/uploads/contents/Press-release_Shrawan_2080.pdf"
+        "https://www.nta.gov.np/uploads/contents/Press-release_Shrawan_2080.pdf",
+        "https://nta.gov.np/page/nta-rtdf-progress**"
       ],
       "model_refused": false,
       "gold_answer": "सम्पन्न भएका Site हरूको विवरण NTA को Website मा रहेको https://nta.gov.np/page/nta-rtdf-progress लिंकमा हेर्न सकिन्छ भनी excerpt मा स्पष्ट उल्लेख छ।",
@@ -967,7 +982,7 @@
       "elapsed_ms": 21959,
       "model_output": "जिरी नगरपालिकाले क्षयरोग नियन्त्रण कार्यक्रमअन्तर्गत उच्च जोखिम समुदायमा देहायका कार्यहरू गर्ने योजना बनाएको छ:\n\n१. **सक्रिय क्षयरोग खोजपड्ताल कार्यक्रम** — क्षयरोगका जोखिम समूह तथा स्वास्थ सेवाको पहुँच कम भएका समुदायमा सक्रिय रूपमा क्षयरोग खोजपड्ताल गर्ने। [https://www.jirimun.gov.np/sites/jirimun.gov.np/files/...]\n\n२. **सम्पर्क परीक्षण** — क्षयरोग बिरामीका घरपरिवारका सदस्यहरूको सम्पर्क परीक्षण गर्ने। [https://www.jirimun.gov.np/sites/jirimun.gov.np/files/...]\n\n३. **क्षमता अभिवृद्धि तथा परिवहन** — समुदायमा क्षयरोगका बिरामीहरूको खोजपड्ताललका लागि सम्बन्धित जनशक्तिको क्षमता अभिवृद्धि गर्ने तथा परिवहनको व्यवस्था गर्ने। [https://www.jirimun.gov.np/sites/jirimun.gov.np/files/...]\n\nयी कार्यहरूका लागि **रु. १,२०,०००** बजेट विनियोजन गरिएको छ। [https://www.jirimun.gov.np/sites/jirimun.gov.np/files/...]\n\nथप, स्वास्थ संस्थामा आकस्मिक अवस्थाका लागि औषधि तथा ल्याब सामाग्री खरिद, रेकर्डिङ/रिपोर्टिङ फर्म छपाइ, ई-टिबी रजिस्टर अद्यावधिक र **विश्व क्षयरोग दिवस** सम्बन्धी कार्यक्रम (बजेट रु. ३५,०००) पनि योजनामा समेटिएका छन्। [https://www.jirimun.gov.np/sites/jirimun.gov.np/files/...]",
       "model_citations": [
-        "https://www.jirimun.gov.np/sites/jirimun.gov.np/files/..."
+        "https://www.jirimun.gov.np/sites/jirimun.gov.np/files/"
       ],
       "model_refused": false,
       "gold_answer": "Excerpt lists active TB case-finding in high-risk and hard-to-reach communities, household contact screening, capacity building of health workers, and annual program review with cohort analysis as planned activities.",
@@ -1023,7 +1038,9 @@
       "lang": "roman_nepali",
       "elapsed_ms": 6315,
       "model_output": "Mahottari Ramnagar ka **MANGAL MAHATO** (Mahabir Mahato ka chhora) lai ESCI LTD le unको उखुको लागि **रु. ९,८१२.६०** दिएको छ।\n\n(उखुको तौल: **१४०.१८ क्विन्टल**)\n\n[https://doanepal.gov.np/downloadfile/Sugarcane Book_2082_1752400803.pdf]",
-      "model_citations": [],
+      "model_citations": [
+        "https://doanepal.gov.np/downloadfile/Sugarcane"
+      ],
       "model_refused": false,
       "gold_answer": "The excerpt lists Mangal Mahato (son of Mahabir Mahato) of Mahottari Ramnagar with 140.18 quintals of sugarcane and a payment of Rs 9,812.6 from ESCI LTD.",
       "gold_urls": [
@@ -1193,7 +1210,8 @@
       "elapsed_ms": 20874,
       "model_output": "## विपद् जोखिम न्यूनीकरण राष्ट्रिय कार्यमञ्चका कार्यान्वयन अधिकार र अनुमति\n\nविपद् जोखिम न्यूनीकरण राष्ट्रिय कार्यमञ्चको विधान, २०६५ अनुसार संस्थाले आफ्ना उद्देश्यहरू कार्यान्वयन गर्न देहायका काम गर्न पाउँछ:\n\n---\n\n### 🔐 अनुमतिसम्बन्धी व्यवस्था\nसंस्थाले **प्रचलित नेपाल कानुनबमोजिम सम्बन्धित निकायबाट अनुमति वा स्वीकृति प्राप्त गरेर मात्र** आफ्ना उद्देश्यहरू कार्यान्वयन गर्नेछ।\n[https://moha.gov.np/upload/e66443e81e8cc9c4fa5c099a1fb1bb87/files/National_20Platform_20on_20DRR_20Bidhan_202065_52_20110916032012_1_(1).pdf]\n\n---\n\n### 🏢 भौतिक तथा प्रशासनिक कार्यहरू\n- संस्थालाई आवश्यक **भवन निर्माण गर्ने वा भाडामा/लिजमा लिने**\n- कम्प्युटर, टेलिफोन, टाइपराइटर, फ्याक्स जस्ता **कार्यालय सामान तथा सवारी साधन खरिद गर्ने वा भाडामा लिई प्रयोग गर्ने**\n- आवश्यक **कर्मचारी नियुक्त गर्ने** तथा तिनको सेवाका सर्तहरू निर्धारण गर्ने\n[https://moha.gov.np/upload/e66443e81e8cc9c4fa5c099a1fb1bb87/files/National_20Platform_20on_20DRR_20Bidhan_202065_52_20110916032012_1_(1).pdf]\n\n---\n\n### 📢 नीति तथा वकालत सम्बन्धी कार्यहरू\n- उच्च नीति निर्माण तह र सम्बद्ध पक्षको **सक्रिय सहभागिता हासिल गर्न प्रभावकारी संवाद, वकालत/पैरवीका कार्यक्रम सञ्चालन गर्ने**\n- विपद् व्यवस्थापनसम्बन्धी **राष्ट्रिय नीति, रणनीति र विकास कार्यक्रमहरू तर्जुमा गर्न सहभागिता एवं सहयोग गर्ने**\n- **आधारभूत सूचना प्रणालीको व्यवस्थापन गर्ने**\n[https://moha.gov.np/upload/e66443e81e8cc9c4fa5c099a1fb1bb87/files/National_20Platform_20on_20DRR_20Bidhan_202065_52_20110916032012_1_(1).pdf]\n\n---\n\n### 📊 जोखिम मूल्याङ्कन तथा समीक्षा\n- विपद् जोखिमसम्बन्धी **सरोकार र चुनौतीको मूल्याङ्कन तथा विश्लेषण गर्ने**\n- जोखिम न्यूनीकरणका **प्राथमिकताका क्षेत्रहरू निर्धारण गर्ने** र सङ्कटाभिमुख मानवबस्तीको पहिचान गर्न सघाउने\n- सञ्चालित विकास योजना र कार्यप्रणालीको **समीक्षा गर्ने**\n[https://moha.gov.np/upload/e66443e81e8cc9c4fa5c099a1fb1bb87/files/National_20Platform_20on_20DRR_20Bidhan_202065_52_20110916032012_1_(1).pdf]\n\n---\n\n**सारांश:** संस्थाले माथि उल्लिखित सबै कार्यहरू गर्न पाउँछ, तर जुनसुकै काम गर्नुअघि **नेपाल कानुनबमोजिम सम्बन्धित निकायको अनुमति वा स्वीकृति** अनिवार्य रूपमा लिनुपर्छ।",
       "model_citations": [
-        "https://moha.gov.np/upload/e66443e81e8cc9c4fa5c099a1fb1bb87/files/National_20Platform_20on_20DRR_20Bidhan_202065_52_20110916032012_1_(1).pdf"
+        "https://moha.gov.np/upload/e66443e81e8cc9c4fa5c099a1fb1bb87/files/National_20Platform_20on_20DRR_20Bidhan_202065_52_20110916032012_1_(1).pdf",
+        "https://moha.gov.np/upload/e66443e81e8cc9c4fa5c099a1fb1bb87/files/National_20Platform_20on_20DRR_20Bidhan_202065_52_20110916032012_1_(1"
       ],
       "model_refused": false,
       "gold_answer": "The excerpt states the platform must first obtain permission or approval from the relevant authority under prevailing Nepal law before implementing its objectives, and may also construct or lease premises, purchase or hire office equipment and vehicles, and appoint staff with defined service conditions.",
@@ -1269,7 +1287,8 @@
       "elapsed_ms": 12211,
       "model_output": "बिदेशबाट **personal use** का लागि ल्याएको मोबाइलको IMEI दर्ता यसरी गर्नुहोस्:\n\n**वेबसाइट मार्फत अनलाइन दर्ता**\n\nनेपाल दूरसंचार प्राधिकरणको तलको लिङ्कमा गएर दर्ता गर्न सकिन्छ:\n\n👉 **https://eir.nta.gov.np/individual/register**\n\nयो सुविधा व्यक्तिगत रूपमा आयात गरेको (personally imported) मोबाइलका लागि उपलब्ध छ। [https://www.nta.gov.np/uploads/contents/Press-Release-MDMS.pdf]\n\n---\n\n**सम्पर्क / थप जानकारी:**\n- फोन: ०१–५३५५४७४\n- वेबसाइट: www.nta.gov.np\n- इमेल: ntra@nta.gov.np\n\n[https://www.nta.gov.np/uploads/contents/Press-Release-MDMS.pdf]\n\n> **नोट:** दर्ताको लागि आवश्यक कागजात र प्रक्रियाका विस्तृत चरणहरूबारे यस स्रोतमा उल्लेख छैन — थप विवरणका लागि माथिको वेबसाइट वा फोनमा सम्पर्क गर्नुहोस्।",
       "model_citations": [
-        "https://www.nta.gov.np/uploads/contents/Press-Release-MDMS.pdf"
+        "https://www.nta.gov.np/uploads/contents/Press-Release-MDMS.pdf",
+        "https://eir.nta.gov.np/individual/register**"
       ],
       "model_refused": true,
       "gold_answer": "व्यक्तिगत रूपमा आयात गरेको मोबाइलको IMEI दर्ता NTA को वेबसाइट https://eir.nta.gov.np/individual/register मार्फत गर्न सकिने व्यवस्था मिलाइएको छ।",
@@ -1497,7 +1516,8 @@
       "elapsed_ms": 16825,
       "model_output": "प्रदत्त स्रोतका आधारमा:\n\n**Laboratory Test:**\nस्वास्थ्य प्रमाणपत्र (health certificate) भएका आयातित पशुहरूको सामान्यतः छुट्टै laboratory test गरिँदैन — health certificate नै अनुपालनको प्रमाण मानिन्छ। तथापि, केही **random samples** भने संकलन गरिन्छन् र अधिकृत प्रयोगशालामा पठाउन सकिन्छ। परीक्षण खर्च आयातकर्ताले नै बेहोर्नु पर्छ। [http://dls.gov.np/rules/Performance-of-Veterinary-Services-(PVS)-Follow-up-Evaluation-Report_Nepal_Sept-2023-1746176837.pdf]\n\n**Quarantine Certificate:**\nBorder Inspection Posts (BIPs) मा **DLS (Department of Livestock Services) को Quarantine section का आधिकारिक पशु चिकित्सकहरू** — वा तिनले प्रत्यायोजन (delegate) गरेका अन्य पेशेवर वा paraprofessional — ले खेपको निरीक्षण पछि quarantine certificate जारी गर्छन्। यो Animal Health and Livestock Services Act को **धारा २६** अन्तर्गत हुन्छ। [http://dls.gov.np/rules/Performance-of-Veterinary-Services-(PVS)-Follow-up-Evaluation-Report_Nepal_Sept-2023-1746176837.pdf]\n\n> **संक्षेपमा:** Health certificate भएमा lab test अनिवार्य छैन (random मात्र हुन सक्छ); quarantine certificate BIP का DLS अधिकारी पशु चिकित्सकले दिन्छन्।",
       "model_citations": [
-        "http://dls.gov.np/rules/Performance-of-Veterinary-Services-(PVS)-Follow-up-Evaluation-Report_Nepal_Sept-2023-1746176837.pdf"
+        "http://dls.gov.np/rules/Performance-of-Veterinary-Services-(PVS)-Follow-up-Evaluation-Report_Nepal_Sept-2023-1746176837.pdf",
+        "http://dls.gov.np/rules/Performance-of-Veterinary-Services-(PVS"
       ],
       "model_refused": false,
       "gold_answer": "A health certificate generally confers compliance so routine sampling is usually waived, but importers still pay for lab testing when samples are taken and some random samples are collected; quarantine certificates are issued by official veterinarians at border inspection points (BIPs) after inspection of the consignment.",
@@ -1534,7 +1554,9 @@
       "lang": "code_mixed",
       "elapsed_ms": 15337,
       "model_output": "**Jawab (Roman Nepali):**\n\nHoo, hatauна सक्छ — tara ek shart chha.\n\nSource [1] ko clause 36.6 anusar:\n\n> Yadi कुनै firm/institution/company को Board of Director (वा Natural Person, वा JV partner) विरुद्ध court ma corruption case darkhast bhayeko chha bhane, **त्यस्तो bidder ko bid evaluation bata exclude गरिनेछ — यदि Nepal Sarkar बाट public entity lai instruction प्राप्त भयो भने।**\n\n[https://www.nta.gov.np/uploads/contents/procurement_of_goods NCB 1S1E Laptop.pdf]\n\n---\n\n**Key point — automatic hoina:**\n\nCorruption case file bhayeko matra le **automatic rूपमा** bid evaluation bata hataune **hoina**। Hataunako lagi:\n\n1. Court ma case darkhast bhaisakeko hunu parchha ✓\n2. **Nepal Sarkar bata sम्बन्धित public entity lai official instruction aunu parchha** — yo instruction naayepayasamma bid evaluation jari rahanchha।\n\nTaslai, तपाईंको company le:\n- त्यो government instruction आएको छ वा छैन, त्यो confirm गर्नुहोस्।\n- Instruction आएमा exclusion inevitable हुन्छ।",
-      "model_citations": [],
+      "model_citations": [
+        "https://www.nta.gov.np/uploads/contents/procurement_of_goods"
+      ],
       "model_refused": false,
       "gold_answer": "The excerpt states that if a corruption case is filed in court against a firm's board of director or natural person, the government purchaser can exclude that bidder from evaluation upon receiving instruction from the Government of Nepal.",
       "gold_urls": [
@@ -1567,7 +1589,9 @@
       "lang": "roman_nepali",
       "elapsed_ms": 7629,
       "model_output": "मलाई यो प्रश्नको आधिकारिक स्रोत भेटिनँ।\n\n(Private SEE परीक्षा केन्द्रहरूसम्बन्धी जानकारीका लागि कृपया **राष्ट्रिय परीक्षा बोर्ड (NEB)** को आधिकारिक वेबसाइट [www.neb.gov.np](http://www.neb.gov.np) मा सम्पर्क गर्नुहोस्।)",
-      "model_citations": [],
+      "model_citations": [
+        "http://www.neb.gov.np"
+      ],
       "model_refused": true,
       "gold_answer": "NO_SOURCE_AVAILABLE\n\nयो question को lagi Nepal ko SEE (Secondary Education Examination) sanchalan garne निकाय — **National Examination Board (NEB)** — को official website (neb.ntc.net.np वा nebnp.gov.np) बाट jankari chahine thyo, जुन provided sources मा छैन।",
       "gold_urls": [],
@@ -1581,7 +1605,10 @@
       "lang": "roman_nepali",
       "elapsed_ms": 11249,
       "model_output": "मलाई यो प्रश्नको आधिकारिक स्रोत भेटिनँ।\n\nतपाईंको प्रश्नहरू — passport/character certificate/marksheet मा जङ्ग हुनु, laminated certificate को नियम, र character certificate पुनः बनाउने विषयमा — प्रदान गरिएका कुनै पनि स्रोतले प्रत्यक्ष जवाफ दिँदैन।\n\nयी विषयका लागि सम्बन्धित निकायमा सीधै सम्पर्क गर्नुहोस्:\n\n- **Passport (जङ्ग/क्षति):** Department of Passports — [dop.gov.np](https://dop.gov.np)\n- **Character Certificate (SLC/+2):** National Examinations Board — [neb.gov.np](https://neb.gov.np)\n- **Lamination र विदेश जाने कागजात:** सम्बन्धित दूतावास वा destination देशको immigration website",
-      "model_citations": [],
+      "model_citations": [
+        "https://dop.gov.np",
+        "https://neb.gov.np"
+      ],
       "model_refused": true,
       "gold_answer": "NO_SOURCE_AVAILABLE\n\nYo prashnaka lagi relevant gov.np pages chahincha: (1) passport ma jang (तुलसी sambandhi — **www.dofe.gov.np** (Dept. of Foreign Employment) ya **www.passport.gov.np** (Dept. of Passports); (2) character certificate reissue — सम्बन्धित **college/school** ra **NEB (www.neb.gov.np)**; (3) abroad jada laminated documents — destination country ko embassy ya **www.mofa.gov.np**.",
       "gold_urls": [],
@@ -1684,7 +1711,9 @@
       "lang": "roman_nepali",
       "elapsed_ms": 12873,
       "model_output": "मलाई यो प्रश्नको आधिकारिक स्रोत भेटिनँ।\n\nतपाईंले सोध्नुभएका विषयहरू — study-work balance, college transfer, internship/job offers, र bachelor पछि विदेश जाने conditions — यी सबैका लागि माथि दिइएका कुनै पनि स्रोतले जवाफ दिँदैनन्।\n\nसही जानकारीका लागि यी आधिकारिक निकायहरूमा सम्पर्क गर्नुहोस्:\n\n- **Transfer सम्बन्धी:** आफ्नो विश्वविद्यालय (TU, PU, KU, आदि) को Examination/Admission Section\n- **Internship/Career सम्बन्धी:** [www.dofe.gov.np](https://www.dofe.gov.np) (Department of Foreign Employment) — विदेश जाने हो भने\n- **Bahira jane (Study/Work Abroad) conditions:** [www.dofe.gov.np](https://www.dofe.gov.np) वा सम्बन्धित दूतावास",
-      "model_citations": [],
+      "model_citations": [
+        "https://www.dofe.gov.np"
+      ],
       "model_refused": true,
       "gold_answer": "Yo prashnako (study-work, transfer, internship, ra political sanstha baareko) adhikarik srot hami sanga bhetina — yo helpdesk specific institution ya organization haru ko behalf ma bolna sakdaina.\n\nTara **bachelor sake paxi bahira jane** (foreign employment / further studies abroad) condition baarema sahi jankari dineko lagi:\n\n**सम्बन्धित कार्यालय / Relevant office:** परराष्ट्र मन्त्रालय (Ministry of Foreign Affairs)\n📞 01-4200182\n✉️ info@mofa.gov.np\n**Website:** https://mofa.gov.np/\n\nPhone nlageko khaanda website check garnus — tyo nai most updated info dine thaun ho.\n\n**हेलो सरकार 1111** (toll-free) ma pani call garna saknu huncha — jastai sukai government-related jankari chainxa bhane tyo nai sabai bhandaa reliable fallback ho.",
       "gold_urls": [
@@ -1793,7 +1822,10 @@
       "lang": "roman_nepali",
       "elapsed_ms": 16414,
       "model_output": "मलाई यो प्रश्नको आधिकारिक स्रोत भेटिनँ।\n\nप्रदान गरिएका स्रोतहरूमध्ये कुनैले पनि **किट्टा कट पछिको नक्शा कहाँ राखिन्छ** (नापी कार्यालय वा मालपोत कार्यालय) भन्ने विषयलाई प्रत्यक्ष रूपमा सम्बोधन गरेको छैन।\n\nसही जानकारीका लागि कृपया यी आधिकारिक निकायहरूमा सम्पर्क गर्नुहोस्:\n\n- **नेपाल सरकार, भूमि व्यवस्थापन तथा अभिलेख विभाग (DOLRM):** https://www.dolrm.gov.np\n- **भूमि व्यवस्था, सहकारी तथा गरीबी निवारण मन्त्रालय:** http://molcpa.gov.np\n- **स्थानीय नापी कार्यालय (Survey Office)**",
-      "model_citations": [],
+      "model_citations": [
+        "https://www.dolrm.gov.np",
+        "http://molcpa.gov.np"
+      ],
       "model_refused": true,
       "gold_answer": "Yo prashnako adhikarik srot hamare corpus ma bhetinena, tesaile confirmed office ra contact details dina sakdaina.\n\n**Sambhandhit Karyalaya / Relevant Office:** Yo bishayako lagi Napi Bibhag (Survey Department) wa Malpot Karyalaya (Land Revenue Office) sambhandhit hun sakcha — tara kun karyalayale yo records rakhdacha bhanne confirmed details hamare paas chhaina.\n**Website:** https://hellosarkar.gov.np/\n\nPhone unreachable bhaye wa office confirm garna nasakhe, माथिको website ma herne garnus.\n\n**हेलो सरकार 1111** (टोल-फ्री सरकारी सूचना हेल्पलाइन) ma samparka garna saknu huncha — tyo team le Napi wa Malpot kun office jaanu parne ho, ra kitta cut अगाडिको naksha kata rakhincha bhanne sahi direction dina sakcha.",
       "gold_urls": [
@@ -1827,7 +1859,11 @@
       "lang": "devanagari",
       "elapsed_ms": 21861,
       "model_output": "मलाई यो प्रश्नको आधिकारिक स्रोत भेटिनँ।\n\nमलाई उपलब्ध गराइएका कुनै पनि स्रोतमा नेपालमा मोटरसाइकल आयात गर्ने प्रक्रिया, भन्सार महसुल, DoTM दर्ता, वा सम्बन्धित विषयको जानकारी समावेश छैन। त्यसैले म यस विषयमा कुनै तथ्यगत उत्तर दिन सक्दिनँ।\n\n**आधिकारिक जानकारीका लागि सिधै यी निकायमा सम्पर्क गर्नुहोस्:**\n- **नेपाल भन्सार विभाग (Department of Customs):** [customs.gov.np](https://www.customs.gov.np)\n- **यातायात व्यवस्था विभाग (DoTM):** [dotm.gov.np](https://www.dotm.gov.np)\n- **वाणिज्य, आपूर्ति तथा उपभोक्ता संरक्षण मन्त्रालय:** [moc.gov.np](https://www.moc.gov.np)\n\nयी आधिकारिक स्रोतहरूबाट मात्र सही, अद्यावधिक र कानुनी रूपमा मान्य जानकारी पाउन सकिन्छ।",
-      "model_citations": [],
+      "model_citations": [
+        "https://www.customs.gov.np",
+        "https://www.dotm.gov.np",
+        "https://www.moc.gov.np"
+      ],
       "model_refused": true,
       "gold_answer": "यो प्रश्नको पूरा step-by-step प्रक्रिया (individual import अनुमति, used bike नियम, customs duty rate, DoTM registration, import permission letter आदि) हाम्रो corpus मा उपलब्ध छैन — यसको आधिकारिक स्रोत भेटिएन।\n\n**सम्बन्धित कार्यालय:** भन्सार विभाग (Department of Customs)\n📞 ९८५१३५३३५३ (गुनासो अधिकारी / Complaint Officer) — सोम–शुक्र, बिहान ९ बजेदेखि\n📧 csd@customs.gov.np\n**Website:** [https://www.customs.gov.np/](https://www.customs.gov.np/)\n\n> DoTM (Department of Transport Management) सँग Bluebook/registration सम्बन्धी थप प्रक्रियाका लागि **[https://dotm.gov.np/](https://dotm.gov.np/)** पनि हेर्नुहोस्।\n\nफोन नलागेमा वा थप confusion भएमा website मा FAQ/circular खोज्नुस् वा email गर्नुस् — official rate र document list त्यहीँबाट confirm हुन्छ।\n\n**हेलो सरकार 1111** (टोल-फ्री सरकारी सूचना हेल्पलाइन) मा सम्पर्क गर्न सक्नुहुन्छ।",
       "gold_urls": [
@@ -1861,7 +1897,9 @@
       "lang": "roman_nepali",
       "elapsed_ms": 9466,
       "model_output": "मलाई यो प्रश्नको आधिकारिक स्रोत भेटिनँ।\n\nPassport appointment (online booking), website issues, Birgunj passport office availability, वा waiting time सम्बन्धी कुनै पनि जानकारी माथि दिइएका स्रोतहरूमा उल्लेख छैन।\n\nसही जानकारीको लागि सिधै सम्पर्क गर्नुहोस्:\n- **Department of Passports:** https://www.nepalpassport.gov.np\n- **Birgunj Passport Office:** सोही वेबसाइटमा कार्यालयको सम्पर्क नम्बर उपलब्ध हुनेछ।",
-      "model_citations": [],
+      "model_citations": [
+        "https://www.nepalpassport.gov.np"
+      ],
       "model_refused": true,
       "gold_answer": "Yo prashnako adhikarik srot/details hami sanga bhetina — passport appointment system ko exact process ra Birgunj availability bare confirm garna sakdaina.\n\n**Sambhandhit Karyalay / Relevant Office:** Department of Passport (Passport Bibhag) — tara hami sanga verified contact details chaina, so direct number dina mildaina.\n**Website:** https://www.nepalpassport.gov.np/\n\nWebsite nai nakhuleko khanda ya phone nalageko khanda, tala ko helpline ma samparka garnus.\n**हेलो सरकार 1111** (Toll-free Sarkar suchana helpline) — yinih le passport appointment process, Birgunj ko availability, ra Sanibar bandi/khula bare sahi jankari dina sakcha.",
       "gold_urls": [
@@ -1877,7 +1915,9 @@
       "lang": "roman_nepali",
       "elapsed_ms": 15621,
       "model_output": "Yo prashnako adhikarik srot bhetina.\n\nProvide gareko kुनै पनि स्रोतले VAT दर्ता अनिवार्यता, जरिवाना, वा private school को VAT bill सम्बन्धी कुनै जानकारी दिँदैन।\n\n**सही जानकारीको लागि सम्पर्क गर्नुहोस्:**\n- **Inland Revenue Department (IRD):** [www.ird.gov.np](https://www.ird.gov.np)\n- **Phone:** 01-4415802\n- **VAT सम्बन्धी प्रश्नको लागि:** नजिकको कर कार्यालय (Tax Office)",
-      "model_citations": [],
+      "model_citations": [
+        "https://www.ird.gov.np"
+      ],
       "model_refused": true,
       "gold_answer": "Yo prashnako exact threshold vaa case-by-case niti hamro corpus ma bhetina, tara tallo office le yahī topic handle garcha:\n\n**सम्बन्धित कार्यालय:** आन्तरिक राजस्व विभाग (Inland Revenue Department)\n📞 01-5970176 (मुख्य कार्यालय) | 9851215939 (सूचना अधिकारी)\n✉️ serviceird@ird.gov.np\n**Website:** https://ird.gov.np/\n\n> Private school VAT ma register hunai parne ho ki hoina, investigation penalty, ra VAT bill vs normal bill — yo sabai IRD le nai handle garcha. Phone time: सोम-शुक्र, बिहान 9 बजे – साँझ 5 बजे।\n\nPhone najodine bhayo vaa busy bhayo bhane website check garnuhos ya email pathaunuhos.\n**हेलो सरकार 1111** (टोल-फ्री सरकारी सूचना हेल्पलाइन) ma pani samparka garna sakincha।",
       "gold_urls": [
@@ -1914,7 +1954,10 @@
       "lang": "roman_nepali",
       "elapsed_ms": 14626,
       "model_output": "Yo prashnako adhikarik srot bhetina.\n\nProvided garieka kुनै pani source ma Nepal ko driving license process, visa dekhayepachi fast-track suvidha, ya license expedite garne kुनै sarkari byavastha bare **kुनै pani janakari chhaina**.\n\nSahi jawab pauna yo official sites herna huncha:\n- **DoTM (Department of Transport Management):** https://www.dotm.gov.np\n- **Smart License Online System:** https://license.dotm.gov.np\n\nTyo site ma form availability, appointment, ra process ko barey ma authenticated information paincha.",
-      "model_citations": [],
+      "model_citations": [
+        "https://www.dotm.gov.np",
+        "https://license.dotm.gov.np"
+      ],
       "model_refused": true,
       "gold_answer": "Yo prashnako confirmed answer hamro corpus ma bhetina bro — visa dekaepachi license chado niskincha ki bhanne specific system barey hami sanga official data chaina.\n\n**Sambhandita Karyalaya / Relevant Office:** यातायात व्यवस्था विभाग (Department of Transport Management)\n📞 01-4574921 / 9851253135\n📧 gunaso@dotm.gov.np\n**Website:** https://www.dotm.gov.np/\n\nDirectly DOTM lai nai call garera sodhna milcha — \"visa holder ko lagi koi priority/fast-track system cha ki chaina\" bhanera; tini haru nai confirm gardincha official answer.\n\nPhone lagena bhane website check gara ya **हेलो सरकार 1111** (टोल-फ्री सरकारी सूचना हेल्पलाइन) ma contact gara — tyo last option ho जहाँ पनि answer bhetindaina bhane। 🙏",
       "gold_urls": [
@@ -1965,7 +2008,9 @@
       "lang": "roman_nepali",
       "elapsed_ms": 12355,
       "model_output": "मलाई यो प्रश्नको आधिकारिक स्रोत भेटिनँ।\n\nतपाईंले सोध्नुभएको विषय — passport वा form भर्ने प्रक्रिया, र office मा गएर सोध्दा सहयोग पाइन्छ कि भन्ने बारे — माथि उल्लिखित कुनै पनि स्रोतमा यसको जानकारी छैन।\n\n**सुझाव:** सीधै सम्बन्धित कार्यालयमा सम्पर्क गर्नुहोस्:\n- **Department of Passports (राहदानी विभाग):** [www.passport.gov.np](https://www.passport.gov.np)\n- **फोन:** +977-1-4416010\n\nत्यहाँबाट आधिकारिक र सही जानकारी पाउनुहुनेछ।",
-      "model_citations": [],
+      "model_citations": [
+        "https://www.passport.gov.np"
+      ],
       "model_refused": true,
       "gold_answer": "Yo prashnako lagi hamare corpus ma adhikarik office ko contact details bhetina.\n\nOffice ma gayera personally sodhne tapai ko approach ramrai cha — tara specific office ko verified number hamare sanga chaina, tesaile galat number dina mildaina.\n\n**सम्बन्धित कार्यालय / Relevant Office:** हेलो सरकार सूचना केन्द्र\n**Phone:** 1111 (टोल-फ्री)\n**Website:** https://hellosarkar.gov.np/\n\nPhone connect nagare ya busy bhaye, website ma gaye pani information paauna saknu huncha.\n\n**हेलो सरकार 1111** (टोल-फ्री सरकारी सूचना हेल्पलाइन) ma contact garnu hos — tiniharule passport office ko sahi number ra form-filling guidance ko bare ma direct bataunu hun cha.",
       "gold_urls": [
@@ -2082,7 +2127,10 @@
       "lang": "roman_nepali",
       "elapsed_ms": 16000,
       "model_output": "मलाई यो प्रश्नको आधिकारिक स्रोत भेटिनँ।\n\nप्रदान गरिएका स्रोतहरूमध्ये कुनैले पनि नेपालमा घरेलु रूपमा passport renewal गर्ने प्रक्रिया, शुल्क, लाग्ने समय, वा काठमाडौं उपत्यकामा कुन कार्यालय जाने भन्ने बारेमा आधिकारिक जानकारी समावेश गर्दैन।\n\nसही जानकारीका लागि यी आधिकारिक स्रोतहरूमा सम्पर्क गर्नुहोस्:\n\n- **Department of Passports (Nagarik Seva Kendra, Tripureshwor):** https://www.nepalpassport.gov.np\n- **Department of National ID and Civil Registration (DoNIDCR):** https://donidcr.gov.np",
-      "model_citations": [],
+      "model_citations": [
+        "https://www.nepalpassport.gov.np",
+        "https://donidcr.gov.np"
+      ],
       "model_refused": true,
       "gold_answer": "Yo prashnako exact fee breakdown ra regular processing time hami sanga verified chhaina — tara sahi office confirm bhayo.\n\n**Sambandhi Karyalaya:** राहदानी विभाग (Department of Passports)\n📍 **Tripureshwor nai jane** — CDO hoina, KTM valley ma directly yehi office handle garcha passport renewal.\n📞 Hotline: **01-5970330**\n📞 Information Officer: **9851424502**\n📧 info@nepalpassport.gov.np\n**Website:** [https://nepalpassport.gov.np/](https://nepalpassport.gov.np/)\n🕐 Soma–Shukra, 9:00 AM – 5:00 PM\n\nFee structure, queue time, ra online appointment ko lagi website check garne — phone nabheteko khanadma tehi bata sabai details paincha.\n\n**हेलो सरकार 1111** (toll-free sarkar helpline) ma pani samparka garna sakincha — phone nabheta bhane yo fallback use garne.",
       "gold_urls": [
@@ -2118,7 +2166,10 @@
       "lang": "roman_nepali",
       "elapsed_ms": 13823,
       "model_output": "Yo prashnako adhikarik srot bhetina.\n\nProvided गरिएका कुनै पनि स्रोतमा Nepal भित्र passport renewal को प्रक्रिया, शुल्क, स्थान, वा लाग्ने समयसम्बन्धी जानकारी छैन — त्यसैले म यो प्रश्नको उत्तर दिन सक्दिनँ।\n\n**सही जानकारीको लागि आधिकारिक स्रोतहरू हेर्नुहोस्:**\n- Department of Passports: https://www.dop.gov.np\n- Nepal Government main portal: https://www.nepal.gov.np",
-      "model_citations": [],
+      "model_citations": [
+        "https://www.dop.gov.np",
+        "https://www.nepal.gov.np"
+      ],
       "model_refused": true,
       "gold_answer": "Yo prashnako exact details — normal processing time ra sasto fee breakdown — hami sanga chaina, tara tero guess sahi chha: **Tripureshwor** nai ho, CDO office hoina।\n\n**Samsanddhit Karyalaya:** राहदानी विभाग (Department of Passports)\n📍 त्रिपुरेश्वर, काठमाडौं — सोम–शुक्र, बिहान ९ बजे देखि साँझ ५ बजेसम्म\n📞 Hotline: **01-5970330**\n📞 Information Officer: **9851424502**\n📧 info@nepalpassport.gov.np\n🌐 **Website:** [https://nepalpassport.gov.np/](https://nepalpassport.gov.np/)\n\nNormal (sasto) processing time ra exact steps ko lagi directly website check gar ya hotline ma call gar — number connect nashaye pani website ma latest info huncha।\n\n**हेलो सरकार 1111** (toll-free government helpline) ma pani samma garna sakcha — tyaha pani confirm garaucha।",
       "gold_urls": [
@@ -2135,7 +2186,9 @@
       "lang": "roman_nepali",
       "elapsed_ms": 21716,
       "model_output": "तपाईंको प्रश्नहरू — Nagrik App मा नागरिकता नदेखिनु र SIM registration मा नाम spelling mismatch — यी दुवै विषयलाई **प्रदान गरिएका कुनै पनि आधिकारिक स्रोतले** सम्बोधन गर्दैन।\n\n**Yo prashnako adhikarik srot bhetina.**\n\n---\n\n**Ke garna saknu huncha (suggested next steps — unverified):**\n\nNagrik App र SIM registration सम्बन्धी समस्याका लागि सिधै सम्पर्क गर्नुहोस्:\n\n- **Nagrik App / Digital Citizen Charter सम्बन्धी:** Ministry of Home Affairs (MoHA) वा तपाईंको नजिकको जिल्ला प्रशासन कार्यालय (DAO)\n- **SIM Registration सम्बन्धी:** Nepal Telecommunication Authority (NTA) — [www.nta.gov.np](https://www.nta.gov.np)\n\n> यी निकायहरूबाट मात्र spelling mismatch र Nagrik App linking सम्बन्धी आधिकारिक जानकारी पाउन सकिन्छ।",
-      "model_citations": [],
+      "model_citations": [
+        "https://www.nta.gov.np"
+      ],
       "model_refused": true,
       "gold_answer": "Yo prashnako adhikarik srot hamare corpus ma bhetina — tara yo issue ko lagi sahi office yaha xa:\n\n**Samba­ndhit Karyalaya / Relevant Office:** राष्ट्रिय परिचयपत्र तथा पञ्जीकरण विभाग (Department of National ID & Civil Registration — DOCRN)\n**Website:** https://docrn.gov.np/\n\n> *(Phone number abhi verified nagarisakeko hunale website janu recommended xa.)*\n\nTapai­ko doubt bilkul valid xa — **Nagrik app ma naam spelling case-sensitive xa**, so citizenship ma \"AAKASH\" xa tara SIM/other record ma \"AKASH\" xa bhane tyo mismatch le verification fail huna sakxa. DOCRN ko website ma gayer \"Nagrik App Support\" section hernu, ya directly office ma janera naam correction / re-linking ko process sodhnu parne huncha.\n\nPhone connect nabhaema ya website bata jawaf napaaema, **हेलो सरकार 1111** (toll-free government helpline) ma sampark garna sakinxa.",
       "gold_urls": [
@@ -2152,7 +2205,10 @@
       "lang": "roman_nepali",
       "elapsed_ms": 10675,
       "model_output": "Yo prashnako adhikarik srot bhetina.\n\nदिइएका कुनै पनि स्रोतमा नेपालको **Driving License** निकाल्ने प्रक्रिया, शुल्क, वा सजिलो/गाह्रोसँग सम्बन्धित आधिकारिक जानकारी उल्लेख छैन।\n\n---\n\n**सही जानकारीका लागि यी आधिकारिक स्रोत हेर्नुहोस्:**\n- **यातायात व्यवस्था विभाग (DoTM):** [www.dotm.gov.np](https://www.dotm.gov.np)\n- **Smart Driving License Portal:** [www.smartdrivinglicense.gov.np](https://www.smartdrivinglicense.gov.np)\n\nत्यहाँ शुल्क, चाहिने कागजात, र प्रक्रिया सबै स्पष्ट रूपमा उल्लेख गरिएको छ।",
-      "model_citations": [],
+      "model_citations": [
+        "https://www.dotm.gov.np",
+        "https://www.smartdrivinglicense.gov.np"
+      ],
       "model_refused": true,
       "gold_answer": "Yo prashnako adhikarik srot hami sanga bhetina — tara driving license nikalne prakriya ra shulka barema sahi jankari dina milne karyalaya yahi ho:\n\n**सम्बन्धित कार्यालय:** यातायात व्यवस्था विभाग (Department of Transport Management)\n📞 01-4574921 / 9851253135\n📧 gunaso@dotm.gov.np\n**Website:** https://www.dotm.gov.np/\n\nPhone nalaageko khanda website kholi herne, athawa offline shulka-sambandhi gunaso pani tyahi email ma pathaaun milcha.\n**हेलो सरकार 1111** (toll-free sarkaari helpline) ma pani samparka garna saknu huncha।",
       "gold_urls": [
@@ -2227,7 +2283,9 @@
       "lang": "devanagari",
       "elapsed_ms": 9757,
       "model_output": "मलाई यो प्रश्नको आधिकारिक स्रोत भेटिनँ।\n\nप्रदान गरिएका स्रोतहरू TU (Tribhuvan University) transcript/gradesheet प्रक्रिया सम्बन्धी कुनै जानकारी दिँदैनन् — ती सबै NHRC (राष्ट्रिय मानव अधिकार आयोग) का प्रकाशन हुन्।\n\nतपाईंको प्रश्नका लागि सिधै यी निकायमा सम्पर्क गर्नुहोस्:\n\n- **TU Examination Controller's Office:** [www.tuexam.edu.np](http://www.tuexam.edu.np)\n- **ASCOL (Amrit Science Campus):** सिधै campus administration मा",
-      "model_citations": [],
+      "model_citations": [
+        "http://www.tuexam.edu.np"
+      ],
       "model_refused": true,
       "gold_answer": "मलाई यो प्रश्नको (TU transcript/gradesheet प्रक्रिया, proxy application, र US college मा direct send) को लागि आधिकारिक स्रोत हाम्रो corpus मा भेटिएन।\n\n**सम्बन्धित कार्यालय / Relevant Office:** हेलो सरकार सूचना केन्द्र (Hello Sarkar Information Centre)\n**Website:** https://hellosarkar.gov.np/\n\nTU Transcript Section, दरबारमार्ग वा ASCOL को Records Office सँग सीधा सम्पर्क गर्न website वा हेल्पलाइनबाट सही कार्यालयको नम्बर लिनुहोस् — अहिले verified direct number उपलब्ध छैन।\n\n**हेलो सरकार 1111** (टोल-फ्री सरकारी सूचना हेल्पलाइन) मा सम्पर्क गर्न सक्नुहुन्छ — उहाँहरूले TU सँग सम्बन्धित सही office र proxy application को process बारे guide गर्न सक्नुहुन्छ।",
       "gold_urls": [
@@ -2297,7 +2355,8 @@
       "elapsed_ms": 16864,
       "model_output": "प्रदान गरिएका स्रोतहरूमध्ये कुनै पनि स्रोतले ललितपुरको राहदानी कार्यालयमा अपोइन्टमेन्ट मिति उपलब्ध नहुनुको कारण वा हालको अवस्थाबारे सिधा जानकारी दिएको छैन।\n\nमलाई यो प्रश्नको आधिकारिक स्रोत भेटिनँ।\n\n---\n\n**सुझाव (प्रदान गरिएको स्रोतमा उल्लिखित):**\n\nराहदानी विभागको आधिकारिक वेबसाइट **https://nepalpassport.gov.np** मा थप जानकारी उपलब्ध हुन सक्छ [https://nepalpassport.gov.np/online-payment]। सोही पोर्टलमा सम्पर्क विवरण हेर्नुहोस् वा सिधै **राहदानी विभाग, नाग्दे, ललितपुर**को कार्यालयमा फोनमार्फत सोध्नुहोस्।",
       "model_citations": [
-        "https://nepalpassport.gov.np/online-payment"
+        "https://nepalpassport.gov.np/online-payment",
+        "https://nepalpassport.gov.np**"
       ],
       "model_refused": true,
       "gold_answer": "Yo prashnako adhikarik srot hamro corpus ma bhetinena — तर passport renewal ra appointment availability ko lagi thalai office lai directly contact garna sakincha।\n\n**Sambandhi Karyalay / Relevant Office:** राहदानी विभाग (Department of Passports)\n📞 Hotline: 01-5970330\n📞 Information Officer: 9851424502\n📞 Director General: 01-5970329\n✉️ info@nepalpassport.gov.np\n**Website:** https://nepalpassport.gov.np/\n🕘 Sombar–Sukrabar, 9:00 AM – 5:00 PM\n\nPhone connect nabhaema website ma nai latest appointment dates ra notice check garnus — update aunu sakcha।\n\n**हेलो सरकार 1111** (toll-free sarkaari suchana helpline) ma pani samparka garna sakincha — https://hellosarkar.gov.np/",
@@ -2351,7 +2410,9 @@
       "lang": "roman_nepali",
       "elapsed_ms": 8454,
       "model_output": "Yo prashnako adhikarik srot bhetina.\n\nProvided गरिएका कुनै पनि स्रोतले passport photo को आवश्यकता वा सहरबाहिर बस्ने व्यक्तिका लागि passport बनाउने प्रक्रियाबारे जानकारी दिँदैन।\n\nPassport सम्बन्धी आधिकारिक जानकारीका लागि कृपया यहाँ सम्पर्क गर्नुहोस्:\n- **Department of Passports**: [www.dopm.gov.np](https://www.dopm.gov.np)",
-      "model_citations": [],
+      "model_citations": [
+        "https://www.dopm.gov.np"
+      ],
       "model_refused": true,
       "gold_answer": "Yo prashnako confirmed/official process hami sanga chaina — तपाईंको साथीको passport-size photo ko lagi exactly kaha jane, online hunchha ki in-person — त्यो details hamro corpus ma chaina।\n\n**सम्बन्धित कार्यालय:** गृह मन्त्रालय (Ministry of Home Affairs)\n📞 01-4211208 / 01-4211214\n🌐 **Website:** https://www.moha.gov.np/\n\nPhone connect nabhaema ya थप jankari ko lagi website check garnus — process (in-person required hunchha ki online application chalna sakcha) tyaha clearly diyeko huncha।\n\n**हेलो सरकार 1111** (टोल-फ्री सरकारी सूचना हेल्पलाइन) ma pani direct call garna sakinchha — उहाँहरूले तपाईंको साथीको location-based nearest option pani batauna saknu huncha।",
       "gold_urls": [
@@ -2387,7 +2448,9 @@
       "lang": "roman_nepali",
       "elapsed_ms": 8908,
       "model_output": "मलाई यो प्रश्नको आधिकारिक स्रोत भेटिनँ।\n\nप्रदान गरिएका कुनै पनि स्रोतहरूमा \"menu मा VAT inclusive हुँदा bill मा VAT bifurcate गर्ने\" सम्बन्धी प्रत्यक्ष व्यवस्था उल्लेख छैन। यस विषयमा सही जानकारीका लागि कृपया:\n\n- **Inland Revenue Department (IRD)**: [www.ird.gov.np](https://www.ird.gov.np)\n- वा नजिकको **कर कार्यालय**मा सम्पर्क गर्नुहोस्।",
-      "model_citations": [],
+      "model_citations": [
+        "https://www.ird.gov.np"
+      ],
       "model_refused": true,
       "gold_answer": "Yo prashnako adhikarik srot haami sanga bhetinaa — VAT bifurcation ra remittance samba ndhit thap a jankari ko laagi tapailai sahi office ma jannu parne hunchha.\n\n**Samba ndhit Karyalaya / Relevant Office:** आन्तरिक राजस्व विभाग (Antarik Rajaswa Bibhag)\n📞 Main: 01-5970176\n📞 Suchana Adhikari: 9851215939\n📞 IT Sahayata: 9762118258\n✉️ serviceird@ird.gov.np\n**Website:** https://ird.gov.np/\n\nPhone nalageko khandama website ma gaye r online sewa athawa nearest IRD karyalaya ko biwaran lina saknu hunchha.\n\n**हेलो सरकार 1111** (टोल-फ्री सरकारी सूचना हेल्पलाइन) maa pani sampark garna saknu hunchha.",
       "gold_urls": [
@@ -2480,7 +2543,9 @@
       "lang": "roman_nepali",
       "elapsed_ms": 16229,
       "model_output": "Yo prashnako adhikarik srot bhetina.\n\nTapaiले सोध्नुभएको **individual foreign employment registration** ko process (passport, flight ticket requirements, \"Grey\" option, etc.) ko bare mero diyeko kुनै पनि स्रोतमा specific जानकारी छैन।\n\n---\n\n**Sahi thau jasma janu hunchha:**\n\n- **Department of Foreign Employment (DOFE)** — directly contact garnu:\n  - Website: [www.dofe.gov.np](https://www.dofe.gov.np)\n  - Phone: 01-4101346 / 01-4101347\n  - Walk-in: Tahachal, Kathmandu\n\nTyaha gaye exact documents list ra registration process bata dincha — sahi thau ho yo kura ko lagi.",
-      "model_citations": [],
+      "model_citations": [
+        "https://www.dofe.gov.np"
+      ],
       "model_refused": true,
       "gold_answer": "Yo prashnako exact process hami sanga confirmed information chhaina, tara yo kaam ko lagi sahi office yo ho:\n\n**सम्बन्धित कार्यालय / Relevant Office:** वैदेशिक रोजगार विभाग (Department of Foreign Employment)\n📞 Main: 01-4792671\n📞 Labour Approval Branch: 9768998473\n📞 Information Officer: 9851112315\n**Website:** https://dofe.gov.np/\n📧 info@dofe.gov.np\n_(Tahachal, Kathmandu — Som–Shukra, 9 AM–5 PM)_\n\nPhone nalageko khanda website ma jaane, athawa directly email gaarne.\n\n**हेलो सरकार 1111** (toll-free government helpline) ma pani samparka garna saknu huncha — https://hellosarkar.gov.np/",
       "gold_urls": [
@@ -2498,7 +2563,8 @@
       "elapsed_ms": 13727,
       "model_output": "Yo prashnako adhikarik srot bhetina.\n\nTapaiले सोध्नु भएको jagga malpot (land registration / lalpurja) सम्बन्धी जानकारी — जस्तै कुन-कुनको नाममा दर्ता छ, transfer इतिहास, र fraud रोकथामका उपाय — को लागि प्रदान गरिएका कुनै पनि स्रोत (स्रोत १–५) ले यो विषय cover गर्दैनन्।\n\n**सही ठाउँमा जानुहोस्:**\n- **मालपोत कार्यालय (Land Revenue Office)** — आफ्नो जिल्लाको मालपोत कार्यालयमा सिधै जानुहोस्।\n- **[Nagarik App / Malpot Online](https://lris.dos.gov.np/)** — Department of Survey को Land Registration Information System मार्फत केही जिल्लामा online जानकारी पाउन सकिन्छ।\n- **भूमि व्यवस्था, सहकारी तथा गरिबी निवारण मन्त्रालय** — [https://moics.gov.np](https://moics.gov.np)",
       "model_citations": [
-        "https://moics.gov.np"
+        "https://moics.gov.np",
+        "https://lris.dos.gov.np/"
       ],
       "model_refused": true,
       "gold_answer": "Yo prashnako adhikarik srot hami sanga bhetina — jagga ko pahileko malik ko naam confirm garne, sankaspad transfer check garne, wa fraud case darta garne barema hamro corpus ma specific jaankari chaina.\n\n**Sambanddhit Karyalay / Relevant Office:** हेलो सरकार सूचना केन्द्र (Hello Sarkar Information Centre)\n**Phone:** 1111 (टोल-फ्री)\n**Website:** https://hellosarkar.gov.np/\n\nPhone nalaagema ya line busy vayema website ma gayera online inquiry garna sakinxa.\n\n**हेलो सरकार 1111** (टोल-फ्री सरकारी सूचना हेल्पलाइन) ma samparka garnus — tesle tapailai sahi Malpot Karyalay ra Bhoomi Sudhar Karyalay ko number ra process bata dinxa.",
@@ -2516,7 +2582,8 @@
       "elapsed_ms": 24032,
       "model_output": "प्रदान गरिएका स्रोतहरूले \"biye garera citizenship liyera ani chodyo bhane k hunchha\" भन्ने specific प्रश्नको सिधा जवाफ दिँदैनन्।\n\nतर स्रोत [4] बाट यति भन्न सकिन्छ:\n\n**Citizenship ma bhedbhav ko sawal:**\nNHRC का Chairperson Anup Raj Sharma ले \"International Laws against Statelessness\" कार्यक्रममा भनेका छन् कि नेपालको नागरिकता प्रावधानमा भेदभाव छ — बाबु नेपाली भए वंशज नागरिकता पाइन्छ, तर आमा मात्र नेपाली र बाबु विदेशी भए त्यो अधिकार छैन। यो प्रावधान आफैँमा विभेदकारी रहेको उनको भनाइ छ। [https://www.nhrcnepal.org/uploads/publication/Chairperson_Speech_Book_NHRC_Web_version_compressed.pdf]\n\n---\n\n**Yo prashnako baki bhag (biye pachhi chodyo bhane k hunchha) ko lagi:**\n\nमलाई यो प्रश्नको आधिकारिक स्रोत भेटिनँ।\n\nथप सही जानकारीका लागि यी निकायमा सम्पर्क गर्नुहोस्:\n- **गृह मन्त्रालय (MoHA):** https://www.moha.gov.np\n- **राष्ट्रिय महिला आयोग**\n- **जिल्ला प्रशासन कार्यालय**",
       "model_citations": [
-        "https://www.nhrcnepal.org/uploads/publication/Chairperson_Speech_Book_NHRC_Web_version_compressed.pdf"
+        "https://www.nhrcnepal.org/uploads/publication/Chairperson_Speech_Book_NHRC_Web_version_compressed.pdf",
+        "https://www.moha.gov.np"
       ],
       "model_refused": true,
       "gold_answer": "Yo prashnako adhikarik srot hami sanga bhetina — nagrikta prapta gari bivaah bigrieko avasthamaa ke hune bhanne specific legal provision haami confirm garna sakdainau.\n\n**Sambhandhit Karyalay:** गृह मन्त्रालय (Ministry of Home Affairs)\n📞 01-4211208 / 01-4211214\n📞 Toll-free: 1112\n📧 gunaso@moha.gov.np\n**Website:** https://www.moha.gov.np/\n\n> Phone nalageko khanadamaa website ko \"सम्पर्क\" section herna, ya email pathayera sodhna sakincha.\n\n**हेलो सरकार 1111** (टोल-फ्री सरकारी सूचना हेल्पलाइन) मा सम्पर्क गर्न सक्नुहुन्छ।",
@@ -2554,7 +2621,9 @@
       "lang": "code_mixed",
       "elapsed_ms": 15578,
       "model_output": "मलाई यो प्रश्नको आधिकारिक स्रोत भेटिनँ।\n\nतपाईंको प्रश्न — engineering license exam मा नाम मिस्म्याच (सिह vs सिंह) — यो विषयलाई दिइएका कुनै पनि स्रोतले directly cover गर्दैन।\n\n**सुझाव (general guidance मात्र):**\nयस विषयमा सही जानकारीको लागि सीधै सम्बन्धित निकायलाई सम्पर्क गर्नुहोस्:\n\n- **Nepal Engineering Council (NEC):** https://nec.gov.np\n- **NEC Helpdesk:** परीक्षा फाराम भर्नु अघि NEC को कार्यालयमा सम्पर्क गरी नाम मिलान सम्बन्धी प्रक्रिया बुझ्नुहोस्।",
-      "model_citations": [],
+      "model_citations": [
+        "https://nec.gov.np"
+      ],
       "model_refused": true,
       "gold_answer": "Yo prashnako exact answer dina mero sanga adhikarik srot chaina — name mismatch (\"सिह\" vs \"सिंह\") le exam ma problem garxa ki gardaina, tyo confirm garna milena.\n\n**Yo kura seedha yahan confirm garnus:**\n\n**सम्बन्धित कार्यालय / Relevant office:** हेलो सरकार सूचना केन्द्र\n📞 **1111** (टोल-फ्री)\n**Website:** https://hellosarkar.gov.np/\n\nPhone nalaageko khaandama website ma online form bharera sodhna mildaxa.\n**हेलो सरकार 1111** (टोल-फ्री सरकारी सूचना हेल्पलाइन) — नै confirm garnu better hunxa, problem nahos bhanera।",
       "gold_urls": [
@@ -2665,7 +2734,9 @@
       "lang": "roman_nepali",
       "elapsed_ms": 6993,
       "model_output": "मलाई यो प्रश्नको आधिकारिक स्रोत भेटिनँ।\n\n**थप जानकारीका लागि:**\n- नागरिकता नाम सच्याउने विषयमा **जिल्ला प्रशासन कार्यालय (DAO)** मा सम्पर्क गर्नुहोस्।\n- वेबसाइट: [www.moha.gov.np](https://www.moha.gov.np)",
-      "model_citations": [],
+      "model_citations": [
+        "https://www.moha.gov.np"
+      ],
       "model_refused": true,
       "gold_answer": "Yo prashnako adhikarik srot hami sanga bhetina — name change process barema confirmed jankari dina sakdainan.\n\n**Samba­dhit Karyalaya:** गृह मन्त्रालय (Ministry of Home Affairs)\n📞 01-4211208 / 01-4211214\n📞 Toll-free: 1112\n📧 control@moha.gov.np\n**Website:** https://www.moha.gov.np/\n\nPhone najodiye wa थप जानकारी चाहिए bhaye website check garnu hola (सोम–शुक्र, बिहान ९ – साँझ ५)।\n\n**हेलो सरकार 1111** (टोल-फ्री सरकारी सूचना हेल्पलाइन) ma pani sampark garna sakincha।",
       "gold_urls": [
@@ -2698,7 +2769,9 @@
       "lang": "devanagari",
       "elapsed_ms": 8776,
       "model_output": "मलाई यो प्रश्नको आधिकारिक स्रोत भेटिनँ।\n\nप्रदान गरिएका स्रोतहरू (संसदीय बहसका अंश) मा नागरिकता दर्ता वा नामावलीसम्बन्धी कुनै तथ्यात्मक जानकारी उल्लेख छैन। कृपया आफ्नो नजिकको जिल्ला प्रशासन कार्यालय (DAO) वा [moga.gov.np](https://moga.gov.np) मा सम्पर्क गर्नुहोस्।",
-      "model_citations": [],
+      "model_citations": [
+        "https://moga.gov.np"
+      ],
       "model_refused": true,
       "gold_answer": "मलाई यो प्रश्नको आधिकारिक स्रोत भेटिनँ।\n\n**सम्बन्धित कार्यालय:** निर्वाचन आयोग\n**Website:** https://election.gov.np/\n\nफोन नम्बर हाल प्रमाणित छैन — थप जानकारीको लागि माथिको वेबसाइट हेर्नुहोस्।\n**हेलो सरकार 1111** (टोल-फ्री सरकारी सूचना हेल्पलाइन) मा सम्पर्क गर्न सक्नुहुन्छ।",
       "gold_urls": [
@@ -2717,7 +2790,8 @@
       "model_output": "प्रदान गरिएका स्रोतहरू **SEBON (धितोपत्र बोर्ड) को हितग्राही खाता (Demat Account)** फारमसँग सम्बन्धित छन्, साधारण **बैंक खाता**सँग होइन। त्यसैले बैंक खाताको लागि नागरिकता चाहिने/नचाहिने भन्ने प्रश्नको आधिकारिक स्रोत यी दस्तावेजहरूमा भेटिनँ।\n\n---\n\nतर **SEBON हितग्राही खाता (Demat Account)** को सन्दर्भमा, प्रदान गरिएका स्रोतहरूले यो स्पष्ट गर्छन्:\n\n**नाबालकको खाताका लागि:**\n\n- नाबालक र संरक्षक **दुवैको फोटो** अनिवार्य छ। [https://www.sebon.gov.np/uploads/uploads/aRbvChW3fOac5ni6FI26n44BJsACROYDzfiW8b9w.pdf]\n- **संरक्षकको PAN नम्बर** (स्थायी लेखा नं.) फाराममा राख्नु पर्छ — अर्थात् नाबालकको खातामा **संरक्षक (adult/अभिभावक) को PAN** नै हाल्ने व्यवस्था छ। [https://www.sebon.gov.np/uploads/2023/06/07/o8mR5IHuhUqqgYL5yxMfvpbvjv5jCK5WhRgkkOcK.pdf]\n- आमा/बाबु संरक्षक भएमा **जन्मदर्ता प्रमाणपत्रको प्रतिलिपि** अनिवार्य छ। [https://www.sebon.gov.np/uploads/uploads/aRbvChW3fOac5ni6FI26n44BJsACROYDzfiW8b9w.pdf]\n- कानूनी संरक्षक भएमा सम्बन्धित कागजात आवश्यक छ। [https://www.sebon.gov.np/uploads/uploads/aRbvChW3fOac5ni6FI26n44BJsACROYDzfiW8b9w.pdf]\n\n---\n\n**बैंक खाता** (जस्तै NRB-regulated commercial bank account) को नागरिकता सम्बन्धी नियमका लागि: मलाई यो प्रश्नको आधिकारिक स्रोत भेटिनँ — Nepal Rastra Bank वा सम्बन्धित बैंकको नीतिका लागि सिधै [www.nrb.org.np](https://www.nrb.org.np) हेर्नुहोस् वा आफ्नो बैंकमा सोध्नुहोस्।",
       "model_citations": [
         "https://www.sebon.gov.np/uploads/uploads/aRbvChW3fOac5ni6FI26n44BJsACROYDzfiW8b9w.pdf",
-        "https://www.sebon.gov.np/uploads/2023/06/07/o8mR5IHuhUqqgYL5yxMfvpbvjv5jCK5WhRgkkOcK.pdf"
+        "https://www.sebon.gov.np/uploads/2023/06/07/o8mR5IHuhUqqgYL5yxMfvpbvjv5jCK5WhRgkkOcK.pdf",
+        "https://www.nrb.org.np"
       ],
       "model_refused": true,
       "gold_answer": "**Srotko Simit:**\nProvide garieka sabai sources **SEBON ko Demat/Hitegraahi (Beneficiary) Account** forms hun — bank account kholne procedure hoina. Yo prashnako bank-account-specific part ko lagi:\n\n**NO_SOURCE_AVAILABLE** — Nepal Rastra Bank (NRB) ya sambhadhit bank ko official account-opening guideline page chahinchha (e.g., nrb.org.np ya individual bank ko KYC/account form).\n\n---\n\n**SEBON Demat Account ko lagi chhaina bhane (yedi tyahi sochnu bhayeko ho):**\n\nMinor ko Demat account kholda guardian (adult) ko **PAN Number** form ma halna milcha — Guardian's Details section ma explicitly \"PAN No.\" field rakhieko chha [https://www.sebon.gov.np/uploads/uploads/UUqlgCkhxAnGbqkZMirCcGEdtFnx4KBmNeQqdicw.pdf].\n\nThap requirements:\n- Guardian ra minor **duwai ko photo** chahinchha [https://www.sebon.gov.np/uploads/uploads/aRbvChW3fOac5ni6FI26n44BJsACROYDzfiW8b9w.pdf]\n- Kanuni guardian bhaye sambhandhi kagajat chahinchha [same source]\n- Aama/Baau guardian bhaye minor ko **janma darta praman patra** ko pratilipi chahinchha [same source]\n\nBank account ko specific niyam (nagrikta, minor account condition) ko lagi directly NRB ya aafno bank sanga samparka garnu hola.",
@@ -2774,7 +2848,9 @@
       "lang": "devanagari",
       "elapsed_ms": 16407,
       "model_output": "मलाई यो प्रश्नको आधिकारिक स्रोत भेटिनँ।\n\nभोटर कार्ड र मतदाता नामावली सम्बन्धी जानकारीका लागि कृपया निम्न आधिकारिक निकायहरूमा सम्पर्क गर्नुहोस्:\n\n- **निर्वाचन आयोग नेपाल:** [election.gov.np](https://www.election.gov.np)\n- **जिल्ला निर्वाचन कार्यालय, दाङ** (घोराहीस्थित)",
-      "model_citations": [],
+      "model_citations": [
+        "https://www.election.gov.np"
+      ],
       "model_refused": true,
       "gold_answer": "मलाई यो प्रश्नको आधिकारिक स्रोत भेटिनँ — बसाइँसराइको कागजात नभई घोराहीबाट मतदान गर्न मिल्ने/नमिल्ने र अनलाइन फारममा ठेगाना संशोधन हुने/नहुने विषय निर्वाचन आयोगको विशेषज्ञ जानकारी मात्र हो।\n\n**सम्बन्धित कार्यालय:** निर्वाचन आयोग (Election Commission of Nepal)\n**Website:** [https://election.gov.np/](https://election.gov.np/)\n\n> ⚠️ वेबसाइटमा सर्टिफिकेट एरर आउन सक्छ — त्यस्तो अवस्थामा तलको हेल्पलाइनबाट अद्यावधिक फोन नम्बर लिनुहोस्।\n\nफोन नम्बर पुष्टि हुन नसकेकाले वेबसाइट वा तलको हेल्पलाइन नै भरपर्दो माध्यम हो।\n\n**हेलो सरकार 1111** (टोल-फ्री सरकारी सूचना हेल्पलाइन) मा सम्पर्क गर्न सक्नुहुन्छ।",
       "gold_urls": [
@@ -2884,7 +2960,8 @@
       "elapsed_ms": 16880,
       "model_output": "I cannot find an authoritative source for this in the provided sources.\n\nThe only relevant point the sources touch on is that during COVID-19 school closures, Nepal explored **alternative learning methods** — online classes via internet, radio, and TV — but access was deeply unequal due to the digital divide [https://www.nhrcnepal.org/uploads/publication/NHRCNepal_Covid_Report_2020.pdf].\n\nYour specific questions — whether homeschooling is legally recognized in Nepal, private school–stationary shop arrangements, and book price comparisons — are **not addressed in any of the provided sources**. I cannot give you a grounded answer on those without risking unverified claims.\n\nFor authoritative answers, you'd need to check:\n- **Ministry of Education, Science and Technology (MoEST)**: https://moest.gov.np\n- **Curriculum Development Centre (CDC)**: for official textbook policy",
       "model_citations": [
-        "https://www.nhrcnepal.org/uploads/publication/NHRCNepal_Covid_Report_2020.pdf"
+        "https://www.nhrcnepal.org/uploads/publication/NHRCNepal_Covid_Report_2020.pdf",
+        "https://moest.gov.np"
       ],
       "model_refused": true,
       "gold_answer": "Yo prashnako (homeschooling Nepal ma legal/recognized cha ki chaina) adhikarik srot haami sanga bhetina — confirmed answer dina sakdaina.\n\n**Sambhavit thau jahan yo information paunus:** Ministry of Education, Science and Technology (MoEST) directly sodhnu parne hunchha — tyo matra officially confirm garna sakchha.\n\nTyo number haami sanga verified chaina, so directly reach out garnus:\n**Website:** [https://moest.gov.np](https://moest.gov.np)\n\nPhone unreachable vayo wa website bata answer nabhetyo bhane —\n**हेलो सरकार 1111** (toll-free government helpline) ma sodhnu hunchha, tyo sanga redirect gardinchhan right office ma: [https://hellosarkar.gov.np](https://hellosarkar.gov.np)",
@@ -2901,7 +2978,9 @@
       "lang": "roman_nepali",
       "elapsed_ms": 16959,
       "model_output": "मलाई यो प्रश्नको आधिकारिक स्रोत भेटिनँ।\n\nनागरिकताको सुरक्षा स्टिकर (hologram sticker) हराएको वा नभएको विषयमा मसँग प्रदान गरिएका स्रोतहरूमा कुनै जानकारी छैन।\n\n**सही जानकारीका लागि सम्पर्क गर्नुहोस्:**\n- आफ्नो **स्थानीय जिल्ला प्रशासन कार्यालय (DAO)**\n- वा **गृह मन्त्रालय**: [www.moha.gov.np](https://www.moha.gov.np)\n\nउहाँहरूले दोस्रो प्रतिलिपि चाहिन्छ कि नचाहिन्छ भन्ने र स्टिकर सम्बन्धी सही प्रक्रिया बताउन सक्नुहुन्छ।",
-      "model_citations": [],
+      "model_citations": [
+        "https://www.moha.gov.np"
+      ],
       "model_refused": true,
       "gold_answer": "Yo prashnako adhikarik srot hamilisanga bhetina — nagrikta ko shining sticker haraye paxi exactly ke process hola, tesko confirmed information hamlisanga xaina.\n\n**Sambandhit Kariyalaya / Relevant Office:** गृह मन्त्रालय (Ministry of Home Affairs)\n📞 01-4211208 / 01-4211214\n📞 Toll-free: 1112\n**Website:** https://www.moha.gov.np/\n\nTyo number connect nabhaeko khanda, website ma gayera \"gunaso\" section hernu hola — email bata ni sodhna milxa: gunaso@moha.gov.np\n\n**हेलो सरकार 1111** (टोल-फ्री सरकारी सूचना हेल्पलाइन) ma pani samparka garna sakinuhunxa — tini le nikalnu parne kariyalaya ra process bataunu. 🙏",
       "gold_urls": [
@@ -2957,7 +3036,9 @@
       "lang": "devanagari",
       "elapsed_ms": 9929,
       "model_output": "मलाई यो प्रश्नको आधिकारिक स्रोत भेटिनँ।\n\nप्रदान गरिएका कुनै पनि स्रोतमा उम्मेदवारी दर्ता शुल्क र मतदान प्रतिशतका आधारमा रकम फिर्ताको व्यवस्थाबारे जानकारी छैन। यो विषय निर्वाचन आयोग नेपाल (Election Commission Nepal) को कार्यक्षेत्र अन्तर्गत पर्छ।\n\nसही जानकारीका लागि कृपया **निर्वाचन आयोग नेपाल** को आधिकारिक वेबसाइट **https://www.election.gov.np** मा जानुहोस् वा सिधै सम्पर्क गर्नुहोस्।",
-      "model_citations": [],
+      "model_citations": [
+        "https://www.election.gov.np**"
+      ],
       "model_refused": true,
       "gold_answer": "मलाई यो प्रश्नको आधिकारिक स्रोत भेटिनँ — उम्मेदवारी दर्ता शुल्क र धरौटी फिर्ताको विस्तृत विवरण हाम्रो कार्यालयको डेटाबेसमा उपलब्ध छैन।\n\n**सम्बन्धित कार्यालय:** निर्वाचन आयोग, काठमाडौं\n**Website:** [https://election.gov.np](https://election.gov.np)\n\nवेबसाइटमा cert error देखिएमा सिधै **हेलो सरकार ११११** मा सम्पर्क गरी अद्यावधिक जानकारी लिनुहोस्।\n\n**हेलो सरकार 1111** (टोल-फ्री सरकारी सूचना हेल्पलाइन) मा सम्पर्क गर्न सक्नुहुन्छ।",
       "gold_urls": [
@@ -2974,7 +3055,9 @@
       "lang": "roman_nepali",
       "elapsed_ms": 11686,
       "model_output": "मलाई यो प्रश्नको आधिकारिक स्रोत भेटिनँ।\n\nतपाईंले सोध्नुभएको नयाँ लाइसेन्स प्रक्रिया (biometric visit, written exam को timing, र miss गर्दा 3 months ban हुने वा नहुने) बारे — प्रदान गरिएका कुनै पनि स्रोतले यो विषय cover गर्दैन।\n\n**सुझाव:**\nसही जानकारीको लागि सिधै सम्पर्क गर्नुहोस्:\n- **Department of Transport Management (DoTM):** [www.dotm.gov.np](https://www.dotm.gov.np)\n- आफ्नो नजिकको **यातायात व्यवस्था कार्यालय** मा फोन गरेर सोध्नुहोस् — उहाँहरूले exam reschedule वा miss गर्दाको नियम बताउन सक्नुहुन्छ।",
-      "model_citations": [],
+      "model_citations": [
+        "https://www.dotm.gov.np"
+      ],
       "model_refused": true,
       "gold_answer": "Yo prashnako confirmed process detail (exam schedule sequence ra 3-month ban rule) haami sanga bhako corpus bata verified garna sakindaina.\n\n**Sambandit Karyalaya:** यातायात व्यवस्था विभाग (Department of Transport Management)\n📞 01-4574921 / 9851253135\n📧 gunaso@dotm.gov.np\n**Website:** https://www.dotm.gov.np/\n🕐 Som–Shukra, 9:00 AM–5:00 PM\n\nPhone na lagey wa line busy bhaye, website ma \"Online Services\" section check gara — tyaha scheduling rules ra re-application policy ko official information paincha.\n\n**हेलो सरकार 1111** (toll-free sarkar helpline) ma pani contact garna sakincha — https://hellosarkar.gov.np/",
       "gold_urls": [
@@ -3008,7 +3091,10 @@
       "lang": "roman_nepali",
       "elapsed_ms": 9232,
       "model_output": "मलाई यो प्रश्नको आधिकारिक स्रोत भेटिनँ।\n\nप्रदान गरिएका स्रोतहरूमा Tribhuvan University (TU) वा Pokhara University (PU) को **private college admission** र **entrance exam** सम्बन्धी कुनै पनि आधिकारिक जानकारी छैन। त्यसैले यो प्रश्नको सही उत्तर दिन सकिँदैन।\n\nसही जानकारीका लागि सिधै सम्पर्क गर्नुहोस्:\n- **TU:** [www.tribhuvan-university.edu.np](http://www.tribhuvan-university.edu.np)\n- **PU:** [www.pu.edu.np](http://www.pu.edu.np)",
-      "model_citations": [],
+      "model_citations": [
+        "http://www.tribhuvan-university.edu.np",
+        "http://www.pu.edu.np"
+      ],
       "model_refused": true,
       "gold_answer": "Yo prashnako adhikarik srot haami sanga bhetena, tesaile confirmed jawab dina sakdaina.\n\n**Sambandkit Karyalay / Relevant Office:** Haalko corpus ma yo bishayako nirdishta karyalay patta lagena.\n**Website:** https://hellosarkar.gov.np/\n\nPhone najodiyeko khanda website bata jankari lina sakincha.\n**हेलो सरकार 1111** (टोल-फ्री सरकारी सूचना हेल्पलाइन) ma samparka garna saknu huncha — TU, PU, wa aru bishwavidyalayko entrance niti barema saahi jawab tyan bata paaunu hola.",
       "gold_urls": [
@@ -3024,7 +3110,9 @@
       "lang": "roman_nepali",
       "elapsed_ms": 16330,
       "model_output": "Yo prashnako adhikarik srot bhetina.\n\nTapaaile sodhnu bhayeko PAN card ma Nepali naam correction (dirgha/rashwa sudhar) ko process bare — provided sources maa kुनै पनि authoritative जानकारी छैन।\n\nयो प्रश्नको आधिकारिक स्रोत भेटिनँ।\n\n---\n\n**Suggestion:** Please directly contact the **Inland Revenue Department (IRD)** for accurate PAN correction process:\n\n- Website: [www.ird.gov.np](https://www.ird.gov.np)\n- Helpline: **1603**\n\nTyahan baata nai Nagrik app bata banako PAN card ma naam sudhar garne official process (same-day ho ki alag process chahincha) confirm garnu hola.",
-      "model_citations": [],
+      "model_citations": [
+        "https://www.ird.gov.np"
+      ],
       "model_refused": true,
       "gold_answer": "Yo prashnako nischit process hamro corpus ma bhetinana — PAN card name correction (Nagrik app bata banako) ko specific procedure confirm garna sakdaina.\n\n**Sambandith Karyalaya:** आन्तरिक राजस्व विभाग (Inland Revenue Department)\n📞 Main: 01-5970176\n📞 IT Support: 9762118258\n📞 Info Officer: 9851215939\n✉️ serviceird@ird.gov.np\n**Website:** https://ird.gov.np/\n\nSampark garda IRD lai directly sodhnu — Nagrik app bata banako PAN ma Nepali naam correction (dirgha correction) same-day hunchha ki alag process chainchha, tyo tiniharule confirm gardinchhan. Office hours: Som–Sukra, 9:00 AM – 5:00 PM (garmi) / 4:00 PM (jado).\n\nPhone nalaagyo wa website bata jawaf napayo bhane **हेलो सरकार 1111** (toll-free sarkar suchanaa helpline) ma samparka garna saknu hunchha।",
       "gold_urls": [
@@ -3042,7 +3130,9 @@
       "elapsed_ms": 17159,
       "model_output": "**No — Nepali citizenship and a Nepali passport are two separate documents.**\n\nBased on the available source:\n\n- A **citizenship certificate (नागरिकता प्रमाणपत्र)** and a **passport** are listed as distinct identity documents. Source [1] explicitly treats them separately:\n\n> *\"Number of citizenship certificate or passport (number and details) — **Citizenship certificate number is a must for Nepali citizenship**\"*\n> [https://www.sebon.gov.np/uploads/uploads/UUqlgCkhxAnGbqkZMirCcGEdtFnx4KBmNeQqdicw.pdf]\n\nThis means:\n- The **citizenship certificate** is the primary proof of Nepali citizenship.\n- A **passport** is accepted as an alternative identity document in some contexts, but it is a separate travel document — not a citizenship certificate.\n- For purposes requiring proof of Nepali citizenship specifically (e.g., securities registration per the SEBON rule cited above), the **citizenship certificate number is mandatory** — a passport alone is not sufficient.\n\n---\n\n**For the authoritative and complete legal distinction** (e.g., eligibility requirements, how to obtain each, and their respective legal uses), I cannot find a comprehensive source within the provided documents. Please refer directly to:\n- **Department of Passports**: https://www.dop.gov.np\n- **Ministry of Home Affairs (MoHA)**: https://www.moha.gov.np",
       "model_citations": [
-        "https://www.sebon.gov.np/uploads/uploads/UUqlgCkhxAnGbqkZMirCcGEdtFnx4KBmNeQqdicw.pdf"
+        "https://www.sebon.gov.np/uploads/uploads/UUqlgCkhxAnGbqkZMirCcGEdtFnx4KBmNeQqdicw.pdf",
+        "https://www.dop.gov.np",
+        "https://www.moha.gov.np"
       ],
       "model_refused": true,
       "gold_answer": "Yo prashnako adhikarik srot bhetina — citizenship ra passport farak kura hun, ra yo bishayako confirmed source hamare corpus ma chhaina.\n\n**Sambandhi Karyalay / Relevant Office:** हेलो सरकार सूचना केन्द्र\n**Phone:** 1111 (टोल-फ्री)\n**Website:** https://hellosarkar.gov.np/\n\nPhone najodne bhaye website ma gae pani janakari paauna saknu huncha.\n**हेलो सरकार 1111** (टोल-फ्री सरकारी सूचना हेल्पलाइन) मा सम्पर्क गर्न सक्नुहुन्छ।",
@@ -3075,7 +3165,9 @@
       "lang": "roman_nepali",
       "elapsed_ms": 11020,
       "model_output": "मलाई यो प्रश्नको आधिकारिक स्रोत भेटिनँ।\n\nराहदानी (Passport) सम्बन्धी जानकारीको लागि कृपया सीधै सम्पर्क गर्नुहोस्:\n\n- **Department of Passports**: [www.dopm.gov.np](https://www.dopm.gov.np)\n- **फोन**: 01-4416010",
-      "model_citations": [],
+      "model_citations": [
+        "https://www.dopm.gov.np"
+      ],
       "model_refused": true,
       "gold_answer": "Yo prashnako confirmed jawaf hamlai corpus bata bhetinā — arko jilla ko manchhey Kathmandu bata passport lina milcha ki mildinā, ra fees/timing ko bare ma exact niyam MoFA ko official source bata confirm garnuparchha.\n\n**सम्बन्धित कार्यालय:** परराष्ट्र मन्त्रालय (Ministry of Foreign Affairs)\n📞 01-4200182 (सोम–शुक्र, 9 AM–5 PM)\n**Website:** https://mofa.gov.np/\n\nPhone connect bhayena bhane website ma janu hola — tyo nai sabhabanda updated information painchha.\n\n**हेलो सरकार 1111** (टोल-फ्री सरकारी सूचना हेल्पलाइन) ma pani samma garnā sakinu huncha।",
       "gold_urls": [
@@ -3110,7 +3202,9 @@
       "lang": "roman_nepali",
       "elapsed_ms": 8908,
       "model_output": "मलाई यो प्रश्नको आधिकारिक स्रोत भेटिनँ।\n\nप्रदान गरिएका कुनै पनि स्रोतमा Emergency Passport वा E-Passport को processing time सम्बन्धी जानकारी उल्लेख छैन। त्यसैले यस विषयमा प्रामाणिक जवाफ दिन सक्दिनँ।\n\n**सही जानकारीका लागि सिधै यहाँ सम्पर्क गर्नुहोस्:**\n- Department of Passports (DoP): [www.dop.gov.np](https://www.dop.gov.np)\n- DoP को आधिकारिक सूचना वा हेल्पलाइनमा सोध्नुहोस्।",
-      "model_citations": [],
+      "model_citations": [
+        "https://www.dop.gov.np"
+      ],
       "model_refused": true,
       "gold_answer": "Yo prashnako (Emergency Passport processing time ra recent experience) adhikarik srot hamare corpus ma bhetina — direct jankari dina sakdaina.\n\n**Sambandhi Karyalay / Relevant Office:** राहदानी विभाग (Department of Passports)\n📞 Hotline: 01-5970330\n📞 Soochna Adhikari: 9851424502\n📧 info@nepalpassport.gov.np\n**Website:** https://nepalpassport.gov.np/\n🕘 Som–Shukra, 9:00 AM – 5:00 PM\n\nPhone connect nagare website check garnus ya email pathaunus — processing time ko latest update tya paaunu huncha.\n\n**हेलो सरकार 1111** (Toll-free Sarkar Soochna Helpline) ma pani samparka garna sakincha।",
       "gold_urls": [
