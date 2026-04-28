@@ -1,0 +1,146 @@
+{
+  "summary": {
+    "n_items": 5,
+    "n_errors": 0,
+    "by_type": {
+      "grounded": {
+        "n": 5,
+        "chrf_mean": 21.16250418489529,
+        "chrf_median": 7.90879708329955,
+        "url_recall_mean": 1.0,
+        "wrongly_refused": 1,
+        "wrongly_refused_pct": 20.0
+      }
+    },
+    "grounded_by_category": {
+      "business": {
+        "n": 1,
+        "chrf_mean": 47.054999425097535
+      },
+      "local_services": {
+        "n": 1,
+        "chrf_mean": 5.235419319929428
+      },
+      "other": {
+        "n": 2,
+        "chrf_mean": 23.201834064132292
+      },
+      "telecom": {
+        "n": 1,
+        "chrf_mean": 7.11843405118491
+      }
+    },
+    "by_lang": {
+      "devanagari": {
+        "n": 3,
+        "grounded_chrf_mean": 17.840700726483167,
+        "refusal_correct_pct": 0.0
+      },
+      "roman_nepali": {
+        "n": 2,
+        "grounded_chrf_mean": 26.14520937251348,
+        "refusal_correct_pct": 0.0
+      }
+    },
+    "label": "smoke",
+    "model": "meridian:claude-sonnet-4-6",
+    "wall_seconds": 48.4
+  },
+  "results": [
+    {
+      "id": "u_grnd_001",
+      "type": "grounded",
+      "category": "telecom",
+      "lang": "devanagari",
+      "elapsed_ms": 14779,
+      "model_output": "**डल्फिन नेट कम्युनिकेशन प्रा.लि.को अनुमतिपत्र रद्ध सम्बन्धी जानकारी**\n\n**कारण:** नवीकरणका लागि तोकिएको समयावधि भित्र नियमानुसार निवेदन पेश नगरेकोले उक्त अनुमतिपत्र स्वतः रद्ध भएको हो। [https://www.nta.gov.np/content/i-iil-a-e-b-a-2]\n\n**लागू मिति:** मिति **२०८१/०९/०६** देखि दूरसञ्चार ऐन, २०५३ को **दफा २५(५)** बमोजिम स्वतः रद्ध भएको। [https://www.nta.gov.np/content/i-iil-a-e-b-a-2]\n\n**थप जानकारी:**\n- मूल अनुमतिपत्र (फि.ज. १-१६६) मिति **२०७६/०९/०६** मा प्रदान गरिएको थियो। [https://www.nta.gov.np/content/i-iil-a-e-b-a-2]\n- सूचना जारी भएको मितिले **३० दिन भित्र** नेपाल दूरसञ्चार प्राधिकरणको कार्यालयमा बाँकी रकम तिर्न/बुझाउन सम्पर्क गर्न भनिएको छ, अन्यथा थप कानुनी कारवाही हुनेछ। [https://www.nta.gov.np/content/i-iil-a-e-b-a-2]\n\nसम्पर्कका लागि: नेपाल दूरसञ्चार प्राधिकरण, जमल, काठमाडौं — फोन: +९७७-१-५३५५२५०, इमेल: ntra@nta.gov.np [https://www.nta.gov.np/content/i-iil-a-e-b-a-2]",
+      "model_citations": [
+        "https://www.nta.gov.np/content/i-iil-a-e-b-a-2"
+      ],
+      "model_refused": false,
+      "gold_answer": "The license was automatically cancelled from 2081/09/06 under Telecommunication Act 2053, Section 25(5) because the company failed to submit a renewal application within the prescribed period.",
+      "gold_urls": [
+        "https://www.nta.gov.np/content/i-iil-a-e-b-a-2"
+      ],
+      "chrf": 7.11843405118491,
+      "url_recall": 1.0,
+      "wrongly_refused": false
+    },
+    {
+      "id": "u_grnd_003",
+      "type": "grounded",
+      "category": "other",
+      "lang": "devanagari",
+      "elapsed_ms": 15333,
+      "model_output": "प्रदान गरिएको स्रोत [https://moha.gov.np/upload/e66443e81e8cc9c4fa5c099a1fb1bb87/files/Sadachar_Sanhita_Pocket.pdf] मा विदेश तालिम/अध्ययन/गोष्ठीपछि प्रतिवेदन बुझाउने समयसीमाबारे कुनै उल्लेख भेटिएन।\n\nमलाई यो प्रश्नको आधिकारिक स्रोत भेटिनँ।\n\n---\n\n**सुझाव:** यो विषय सामान्यतः निजामती सेवा ऐन/नियमावली वा सम्बन्धित मन्त्रालयको आन्तरिक निर्देशिकाले व्यवस्था गर्छ। सटीक जानकारीका लागि:\n- [निजामती किताबखाना (OAG/MoGAC)](https://www.mofaga.gov.np/) वा\n- सम्बन्धित मन्त्रालयको प्रशासन शाखामा सोध्न सिफारिस गरिन्छ।",
+      "model_citations": [
+        "https://moha.gov.np/upload/e66443e81e8cc9c4fa5c099a1fb1bb87/files/Sadachar_Sanhita_Pocket.pdf"
+      ],
+      "model_refused": false,
+      "gold_answer": "According to the code of conduct, government employees must submit a written report to their ministry and working unit within one week (१ हप्ताभित्र) of returning from any foreign study, training, conference, seminar, or study tour.",
+      "gold_urls": [
+        "https://moha.gov.np/upload/e66443e81e8cc9c4fa5c099a1fb1bb87/files/Sadachar_Sanhita_Pocket.pdf"
+      ],
+      "chrf": 7.90879708329955,
+      "url_recall": 1.0,
+      "wrongly_refused": false
+    },
+    {
+      "id": "u_grnd_005",
+      "type": "grounded",
+      "category": "business",
+      "lang": "roman_nepali",
+      "elapsed_ms": 19605,
+      "model_output": "Trademark darta bhayeko mitiले **ek barsha (1 barsha)** bhitra prayo­gma nlyaema, त्यो trademark kharij huna sakcha।\n\nUse gareko jankari **Udyog Vibhag** (Department of Industry) lai dinuparchha।\n\n> *\"...darta bhayeko mitiले ek barsha­samma prayogma nlyaema kharij huna sakne vyavastha sohi Ainko Dafa 18ग le gareko chha... ek barsha­samma aniwarya­rupma prayogma lyai soko jankari yas Vibhaglaai dinu hun...\"*\n> [https://doind.gov.np/uploads/buletins/Buletins-20210528135804535.pdf]\n\n**Sankshep:**\n| Bishay | Vivaran |\n|---|---|\n| Kharij hune samay-seema | Darta miti dekhi **1 barsha** bhitra use nagare |\n| Kanooni adhar | Patent, Design/Trademark Ain, 2022, **Dafa 18ग** |\n| Jankari dinuparne nikaya | **Udyog Vibhag (Department of Industry)** |\n\nSamaya­ma use nagarema Vibhagले Ain bamojiim kharij garne kararbaahi suru garchha। [https://doind.gov.np/uploads/buletins/Buletins-20210528135804535.pdf]",
+      "model_citations": [
+        "https://doind.gov.np/uploads/buletins/Buletins-20210528135804535.pdf"
+      ],
+      "model_refused": false,
+      "gold_answer": "Patent, Design/Trademark Act 2022 ko dafa 18-ग anusaar darta bhaeko mitiley ek barsha bhitrai trademark prayog nagare kharij huna sakcha; prayog gareko jankari Udyog Bibhag (Department of Industry) laai dinuparchha.",
+      "gold_urls": [
+        "https://doind.gov.np/uploads/buletins/Buletins-20210528135804535.pdf"
+      ],
+      "chrf": 47.054999425097535,
+      "url_recall": 1.0,
+      "wrongly_refused": false
+    },
+    {
+      "id": "u_grnd_004",
+      "type": "grounded",
+      "category": "other",
+      "lang": "devanagari",
+      "elapsed_ms": 20689,
+      "model_output": "प्रदान गरिएको स्रोतमा सरस्वती ढुङ्गानाको मुद्दाको केही आधारभूत विवरण उल्लेख छ:\n\n- **प्रतिवादी:** जिल्ला ललितपुर, ललितपुर महानगरपालिका बस्ने स्व. केदारनाथ ढुङ्गानाकी श्रीमती **सरस्वती ढुङ्गाना**\n- **मुद्दा नं.:** ०६३-स.फौ.नं.३८३६ (गैरकानूनी सम्पत्ति आर्जन सम्बन्धी)\n\n[https://dmpc.moha.gov.np/upload/c0a46ed0d76684ce1d3affc3e56bf1db/files/FY_2080_81_Annual_Report.pdf]\n\n---\n\nतथापि, **कुन-कुन जिल्लामा जग्गा जफत गर्ने ठहर भयो** र **फैसला कहिले आयो** भन्ने विशिष्ट विवरण प्रदान गरिएको स्रोतमा उपलब्ध छैन — उक्त अनुच्छेद काटिएको (truncated) अवस्थामा छ।\n\n**मलाई यो प्रश्नको पूर्ण आधिकारिक स्रोत भेटिनँ।**\n\nथप विस्तृत जानकारीका लागि कसूर जन्य सम्पत्ति व्यवस्थापन विभाग (DMPC), गृह मन्त्रालयको वेबसाइट वा सर्वोच्च अदालतको आधिकारिक फैसला संग्रह हेर्नु उपयुक्त हुन्छ।",
+      "model_citations": [
+        "https://dmpc.moha.gov.np/upload/c0a46ed0d76684ce1d3affc3e56bf1db/files/FY_2080_81_Annual_Report.pdf"
+      ],
+      "model_refused": true,
+      "gold_answer": "सर्वोच्च अदालतको २०७४/०२/२२ को अन्तिम फैसलाअनुसार मुद्दा नं. ०६३-स.फौ.नं.३८३६ मा चितवन र ललितपुर जिल्लामा रहेका सरस्वती ढुङ्गानाका जग्गा तथा जग्गामा बनेको घर समेत जफत हुने ठहरिएको उल्लेख छ।",
+      "gold_urls": [
+        "https://dmpc.moha.gov.np/upload/c0a46ed0d76684ce1d3affc3e56bf1db/files/FY_2080_81_Annual_Report.pdf"
+      ],
+      "chrf": 38.49487104496504,
+      "url_recall": 1.0,
+      "wrongly_refused": true
+    },
+    {
+      "id": "u_grnd_006",
+      "type": "grounded",
+      "category": "local_services",
+      "lang": "roman_nepali",
+      "elapsed_ms": 13453,
+      "model_output": "घरमा कसैको मृत्यु भएमा निम्न जानकारी राख्नुहोस्:\n\n**१. कति दिन भित्र दर्ता गर्ने?**\nमृत्यु भएको **३५ दिन भित्र** नजिकका घरमूलीले दर्ता गराउनु पर्छ। [https://www.jirimun.gov.np/ne/content/मृत्यु-दर्ता]\n\n**२. शुल्क कति लाग्छ?**\n- ३५ दिन भित्र दर्ता गरेमा: **निःशुल्क**\n- ३५ दिन पछि दर्ता गरेमा: **रु. ५० प्रति घटना** [https://www.jirimun.gov.np/ne/content/मृत्यु-दर्ता]\n\n**३. कुन कार्यालयमा जाने?**\nआफ्नो **वडा कार्यालय** मा जानुपर्छ। जिम्मेवार अधिकारी: वडा अध्यक्ष, वडा सचिव, वा सम्बन्धित फाँटको कर्मचारी। [https://www.jirimun.gov.np/ne/content/मृत्यु-दर्ता]\n\n**४. आवश्यक कागजातहरु:**\n- निवेदन पत्र\n- मृतकको नागरिकता र सूचना दिन आउनेको नागरिकता\n- मृतकसँग सम्बन्ध जोडिने प्रमाणपत्र\n- अविवाहित मृतकको हकमा: स्थानीय सर्जमिन पत्र\n- मृतकको नागरिकता नभएको हकमा: स्थानीय सर्जमिन पत्र [https://www.jirimun.gov.np/ne/content/मृत्यु-दर्ता]",
+      "model_citations": [
+        "https://www.jirimun.gov.np/ne/content/मृत्यु-दर्ता"
+      ],
+      "model_refused": false,
+      "gold_answer": "Mrityu bhayeko 35 din bhitrai wada karyalayma nisulka darta garnu parchha; tyaspaachi gareko darta ma prati ghatana rupiya 50 shulka lagchha, ani jimmedaar adhikari wada adhyaksha wa wada sachib hun.",
+      "gold_urls": [
+        "https://www.jirimun.gov.np/ne/content/%E0%A4%AE%E0%A5%83%E0%A4%A4%E0%A5%8D%E0%A4%AF%E0%A5%81-%E0%A4%A6%E0%A4%B0%E0%A5%8D%E0%A4%A4%E0%A4%BE"
+      ],
+      "chrf": 5.235419319929428,
+      "url_recall": 1.0,
+      "wrongly_refused": false
+    }
+  ]
+}
