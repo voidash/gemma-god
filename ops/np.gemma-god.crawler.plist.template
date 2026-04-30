@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  launchd plist for the Nepal-gov crawler daemon.
+
+  Substitution markers (replaced by ops/install_daemon.sh):
+    @REPO_ROOT@       absolute path to the repo checkout
+    @CORPUS_ROOT@     where blobs/ + extracted/ + index.db live
+    @STATE_DIR@       PID file + log files
+    @CLAUDE_BIN@      path to the `claude` CLI (typically
+                      ~/.nvm/versions/node/<v>/bin/claude after `nvm use --lts`)
+    @PDFTOTEXT_BIN@   absolute path to the `pdftotext` binary (Poppler).
+                      Userland conda install lives at
+                      ~/miniconda3/bin/pdftotext on the install path
+                      install_daemon.sh wires up.
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>np.gemma-god.crawler</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>@REPO_ROOT@/target/release/crawl</string>
+        <string>--db</string>
+        <string>@CORPUS_ROOT@/index.db</string>
+        <string>daemon</string>
+        <string>--state-dir</string>
+        <string>@STATE_DIR@</string>
+        <string>--tick-interval-sec</string>
+        <string>60</string>
+        <string>--poll-concurrency</string>
+        <string>10</string>
+        <string>--recipes-dir</string>
+        <string>recipes</string>
+        <string>--repo-root</string>
+        <string>@REPO_ROOT@</string>
+        <string>--corpus-root</string>
+        <string>@CORPUS_ROOT@</string>
+        <string>--health-every-n-ticks</string>
+        <string>5</string>
+        <string>--max-repairs-per-tick</string>
+        <string>10</string>
+        <string>--auto-apply-tier-min</string>
+        <string>3</string>
+        <string>--agent-timeout-sec</string>
+        <string>600</string>
+        <string>--claude-cmd</string>
+        <string>@CLAUDE_BIN@</string>
+    </array>
+
+    <key>WorkingDirectory</key>
+    <string>@REPO_ROOT@</string>
+
+    <!-- Restart on crash. macOS launchd throttles automatic restarts to
+         no faster than every 10s; if the binary keeps crashing
+         immediately, ThrottleInterval prevents a tight loop. -->
+    <key>RunAtLoad</key>
+    <true/>
+    <key>KeepAlive</key>
+    <true/>
+    <key>ThrottleInterval</key>
+    <integer>30</integer>
+
+    <key>StandardOutPath</key>
+    <string>@STATE_DIR@/daemon.stdout.log</string>
+    <key>StandardErrorPath</key>
+    <string>@STATE_DIR@/daemon.stderr.log</string>
+
+    <!-- Inherit PATH so git + claude are findable. nvm-installed node
+         lives outside the default launchd PATH; install_daemon.sh
+         resolves the absolute claude binary path and substitutes it
+         above so we don't depend on PATH for the agent CLI. -->
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin</string>
+        <key>PDFTOTEXT_BIN</key>
+        <string>@PDFTOTEXT_BIN@</string>
+    </dict>
+</dict>
+</plist>

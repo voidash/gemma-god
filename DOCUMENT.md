@@ -472,3 +472,70 @@ Several credentials were shared during session setup for remote-machine access
 and API tokens. Values are NOT recorded here and were never written to any
 git-tracked file. Key auth is now established for the dev boxes; credentials
 should be rotated at session end as standard hygiene.
+
+---
+
+## 2026-04-19 — Pivot: training paused, dynamic RAG corpus becomes the spine
+
+### What changed
+
+Two conversation-level decisions that reshape the project:
+
+1. **Abandon Gemma 3 entirely.** Earlier work was built on `gemma-3-4b-it-bf16`
+   and `gemma-3-4b-pt-bf16`. Gemma 4 was released 2026-04-02 (E2B, E4B, 26B MoE,
+   31B dense; Apache 2.0). From now on, anything we train targets Gemma 4.
+2. **Pause training altogether.** The reasoning that surfaced: gov facts (form
+   numbers, fees, office addresses, circular IDs) do not belong in model weights.
+   They change. A model fine-tuned on them today is wrong next quarter, and wrong
+   without telling anyone it's wrong. The right layer for facts is a
+   retrieval corpus with citations. The model's job is *understanding the
+   query* and *composing a grounded answer*, not *holding the facts*.
+
+CPT v1 regressed on every benchmark (Belebele 0.63→0.52, FLORES EN→NE 38→33,
+Roman-NE ~30% degenerations). Gemma 4 baseline never ran. Both stay pending;
+neither is the bottleneck anymore.
+
+### What we preserve on T9
+
+- `cpt_data/{train,valid}.jsonl` — 42.3M-token packed corpus (7 slices)
+- `checkpoints/cpt_v1/*_adapters.safetensors` — 21 iter-snapshots (~590 MB)
+- `corpora/` — gov PDFs, Wikipedia NE, Reddit r/Nepal, Alpaca-NE, English replay
+- `hf_cache/` — downloaded base models
+
+Nothing deleted. The training story is on ice, not discarded.
+
+### Re-entry criteria for training
+
+Training returns to the critical path only if **both**:
+
+1. The RAG pipeline is functional end-to-end (retrieval + composed answers with
+   citations), and
+2. A Gemma 4 E4B IT baseline on Belebele + FLORES + Roman-NE shows a concrete
+   weakness that retrieval alone cannot paper over (e.g. query understanding
+   collapses on Roman-NE, or answer composition is stilted Devanagari).
+
+If both hold, the training scope is explicitly **language-only CPT** (Nepali
+fluency) — no gov facts in the corpus. Hyperparameters revised: LR 5e-5 (not
+1e-4), LoRA rank 8 (Unsloth Gemma 4 recipe default), instruction-replay slice
+≥25% (not 9.5%).
+
+### New architecture: dynamic RAG with recipe-driven fetchers
+
+Detailed in `PIPELINE.md`. One-line summary: a source registry
+(seeded from digobikas.gov.np's AJAX directory, ~850 sources), per-site JSON
+recipes that drive a deterministic Rust fetcher, tiered polling (6h→48h by
+authority), diff-based re-ingest, BM25 + BGE-M3 hybrid retrieval, and a
+coding-agent-in-the-loop repair path for when a site's structure drifts.
+
+Recipe design note: each site gets its own file, even when 500 palikas
+share a template. Isolation on breakage > deduplication savings.
+
+### Today's greenlit work
+
+- `PIPELINE.md` (design doc)
+- `scripts/seed_source_registry.py` (pulls all federal + province-level +
+  per-province local-body websites from digobikas into `corpora/sources.jsonl`)
+- This pause note in `DOCUMENT.md` + `STORY.md`
+
+Stale tasks deleted: #21 (during-CPT fast-eval) and #22 (post-CPT re-run).
+New task IDs #23–#33 cover the pipeline stages.

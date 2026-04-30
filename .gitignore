@@ -64,3 +64,8 @@ checkpoints/
 # --- Local overrides ---
 *.local
 local_settings.*
+
+# --- Session-local agent / launch artifacts (may contain instance IDs, tokens) ---
+.aws-launches/
+.claude/
+.playwright-mcp/

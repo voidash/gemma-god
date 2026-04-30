@@ -318,7 +318,13 @@ fn classify_word(word: &str) -> WordKind {
     // 2) Preeti word-indicator characters (broader than doc-level sig set — includes
     //    `:` `;` `/` `=` `+` etc. which appear inside Preeti words but also in normal
     //    text; safe at token level).
-    if word.chars().any(|c| PREETI_WORD_INDICATOR_CHARS.contains(&c)) {
+    //    BUT: the word must also contain at least one Latin alphabetic character.
+    //    A standalone `:` or `/` or `,` token is English punctuation — converting it
+    //    produces spurious Devanagari (trademark filings regressed on this).
+    let has_latin_alpha = word.chars().any(|c| c.is_ascii_alphabetic());
+    if has_latin_alpha
+        && word.chars().any(|c| PREETI_WORD_INDICATOR_CHARS.contains(&c))
+    {
         return WordKind::Convert;
     }
 
@@ -476,11 +482,22 @@ pub fn convert_mixed(input: &str, font: &str) -> String {
 /// produced real Nepali morphemes, not random Devanagari noise.
 /// Chosen for governmental/administrative document frequency.
 pub const NEPALI_HIGH_FREQ_WORDS: &[&str] = &[
+    // Administrative
     "नेपाल", "सरकार", "आर्थिक", "वर्ष", "मन्त्रालय", "कार्यालय", "विभाग",
     "समिति", "प्रतिवेदन", "नीति", "ऐन", "नियम", "सम्बन्धी", "प्रदेश", "जिल्ला",
     "गाउँ", "नगर", "पालिका", "राष्ट्र", "आयोग", "अधिकार", "व्यवस्थापन",
     "मिति", "प्रमुख", "बारेमा", "केन्द्रीय", "राजपत्र", "राजस्व", "कर",
     "बैंक", "भन्सार", "शिक्षा", "स्वास्थ्य", "सूचना", "सेवा", "प्रक्रिया",
+    // Legal / constitutional — a lot of our PDF corpus is laws, rules,
+    // and gazette notices. Empirical: the Constitution of Nepal article
+    // 39 sample from the real corpus yielded zero admin-vocab hits with
+    // the original list but plenty of these.
+    "धार्मिक", "धर्म", "प्रचलन", "माध्यम", "प्रकार", "व्यवहार", "शारीरिक",
+    "मानसिक", "शोषण", "बालबालिका", "न्याय", "विक्रमको", "संशोधन", "अध्यादेश",
+    "विधेयक", "संविधान", "धारा", "उपधारा", "हक", "कर्तव्य", "स्वतन्त्रता",
+    "समानता", "नागरिक", "नागरिकता", "समाज", "सङ्घ", "सङ्घीय", "प्रदेश",
+    "कानून", "कानुन", "कानूनी", "अनुसार", "बमोजिम", "उपलब्ध", "निर्णय",
+    "वादी", "प्रतिवादी", "मुद्दा", "फैसला", "अदालत",
 ];
 
 /// Count how many known high-frequency Nepali words appear in the text.
@@ -504,6 +521,45 @@ pub struct BestEffortResult {
     /// signal. A result with >=3 hits is likely a correct font identification;
     /// 0 hits after conversion means no supported font matches the source.
     pub nepali_word_hits: usize,
+}
+
+/// Try SEGMENT-AWARE conversion with each supported font. Uses
+/// [`convert_mixed`] rather than the raw `convert`, so pure-Unicode
+/// Devanagari words pass through untouched — safe to apply to mixed-content
+/// documents that have BOTH proper Devanagari and Preeti mojibake side by
+/// side. Scoring is identical to [`best_effort_convert`].
+///
+/// This is the function PDF extraction should use by default.
+pub fn best_effort_convert_mixed(input: &str) -> BestEffortResult {
+    let mut best: Option<BestEffortResult> = None;
+    for font in supported_fonts() {
+        let text = convert_mixed(input, font);
+        let deva = devanagari_ratio(&text);
+        let hits = nepali_word_hits(&text);
+        let candidate = BestEffortResult {
+            font,
+            text,
+            devanagari_ratio: deva,
+            nepali_word_hits: hits,
+        };
+        let take = match &best {
+            None => true,
+            Some(b) => {
+                candidate.nepali_word_hits > b.nepali_word_hits
+                    || (candidate.nepali_word_hits == b.nepali_word_hits
+                        && candidate.devanagari_ratio > b.devanagari_ratio)
+            }
+        };
+        if take {
+            best = Some(candidate);
+        }
+    }
+    best.unwrap_or(BestEffortResult {
+        font: "unknown",
+        text: input.to_string(),
+        devanagari_ratio: 0.0,
+        nepali_word_hits: 0,
+    })
 }
 
 /// Try converting the input with each supported legacy font. Scores results by

@@ -1,0 +1,5 @@
+{
+  "source_id": "jirimun_gov_np",
+  "version": 1,
+  "notes": "Drupal palika site (newmun theme). Standard Tier-5 cadence; all defaults are appropriate. The recipe exists only to anchor a notes field documenting the theme; the worker reads zero non-default fields here."
+}

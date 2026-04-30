@@ -29,15 +29,25 @@ import sacrebleu
 from datasets import load_dataset
 from mlx_lm import generate, load
 
-MODEL_NAME = "mlx-community/gemma-3-4b-it-bf16"
+MODEL_NAME = "mlx-community/gemma-3-4b-it-bf16"  # default; override with --model
 SEED = 42
 
 
 def chat(model, tokenizer, user_msg: str, max_tokens: int = 300) -> str:
     messages = [{"role": "user", "content": user_msg}]
-    prompt = tokenizer.apply_chat_template(
-        messages, add_generation_prompt=True, tokenize=False
-    )
+    # Gemma 4 (and similar) have thinking-on-by-default in their chat template.
+    # Suppress it so MC-letter and short-translation benchmarks don't drown in
+    # reasoning traces. Older templates that don't know the flag will raise
+    # TypeError; fall back to the plain call in that case.
+    try:
+        prompt = tokenizer.apply_chat_template(
+            messages, add_generation_prompt=True, tokenize=False,
+            enable_thinking=False,
+        )
+    except TypeError:
+        prompt = tokenizer.apply_chat_template(
+            messages, add_generation_prompt=True, tokenize=False,
+        )
     try:
         return generate(
             model, tokenizer, prompt=prompt, max_tokens=max_tokens, verbose=False
@@ -307,12 +317,13 @@ def eval_roman_nepali_qualitative(model, tokenizer, out_dir: Path) -> dict:
     return out
 
 
-def write_report(all_results: dict, out_dir: Path) -> None:
-    report = out_dir / "gemma3_nepali_baseline.md"
+def write_report(all_results: dict, out_dir: Path, model_name: str) -> None:
+    slug = model_name.replace("/", "__").replace(":", "_")
+    report = out_dir / f"{slug}_nepali_baseline.md"
     lines = [
-        "# Gemma 3 4B — Nepali Baseline Report",
+        f"# {model_name} — Nepali Baseline Report",
         "",
-        f"**Model:** `{MODEL_NAME}`",
+        f"**Model:** `{model_name}`",
         f"**Date:** {time.strftime('%Y-%m-%d %H:%M:%S')}",
         f"**Seed:** {SEED}",
         "",
@@ -363,7 +374,10 @@ def write_report(all_results: dict, out_dir: Path) -> None:
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--out", default="/Volumes/T9/gemma-god/eval")
+    ap.add_argument("--model", default=MODEL_NAME,
+                    help="HF repo id or local path. Default: %(default)s")
+    ap.add_argument("--out", default=None,
+                    help="output dir. Default: /Volumes/T9/gemma-god/eval/<model-slug>")
     ap.add_argument("--n-belebele", type=int, default=200)
     ap.add_argument("--n-flores", type=int, default=100)
     ap.add_argument("--skip-belebele", action="store_true")
@@ -371,14 +385,19 @@ def main():
     ap.add_argument("--skip-roman", action="store_true")
     args = ap.parse_args()
 
-    out_dir = Path(args.out)
+    model_name = args.model
+    if args.out is None:
+        slug = model_name.replace("/", "__").replace(":", "_")
+        out_dir = Path(f"/Volumes/T9/gemma-god/eval/{slug}")
+    else:
+        out_dir = Path(args.out)
     out_dir.mkdir(parents=True, exist_ok=True)
     print(f"[cfg] output dir: {out_dir}", flush=True)
     print(f"[cfg] seed: {SEED}", flush=True)
 
-    print(f"[load] {MODEL_NAME}")
+    print(f"[load] {model_name}")
     t0 = time.time()
-    model, tokenizer = load(MODEL_NAME)
+    model, tokenizer = load(model_name)
     print(f"[load] ready in {time.time()-t0:.1f}s", flush=True)
 
     all_results: dict[str, dict | None] = {}
@@ -409,7 +428,7 @@ def main():
             traceback.print_exc()
             all_results["roman_nepali"] = None
 
-    write_report(all_results, out_dir)
+    write_report(all_results, out_dir, model_name)
     print("\n[done]", flush=True)
 
 

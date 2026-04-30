@@ -338,3 +338,86 @@ The plan is a website (or WhatsApp/Viber bot) where:
    ask, and logs the question so we can add that info to the knowledge base.
 
 Goal: zero rupees to middlemen. Verify everything.
+
+---
+
+## Day 2 — We changed our minds about teaching the model the facts
+
+### The realization
+
+We were about to spend another week teaching the model (Gemma) to *remember*
+how to register a company in Nepal. The form number, the office address, the
+fee, which days the counter is open.
+
+Then we noticed something obvious we'd been ignoring: **these things change.**
+
+- The fee changed last year.
+- The office moved two years ago.
+- A new rule dropped in February that we weren't aware of.
+
+If we bake the 2026 fee into the model and ship it, then someone asks next
+year, the model will confidently tell them the 2026 fee. Wrong, and worse —
+*sounding right*. That's exactly the middleman problem, with a better UI.
+
+So: **teaching a model the facts is the wrong job.** The right job is:
+
+1. Keep the facts in a library. A living library that updates itself when the
+   government websites update.
+2. Teach the model to *search* the library, *read* what it found, and *answer
+   with a citation* — here's the fee, here's the link to the page that says so,
+   here's the date that page was last updated.
+3. If the library doesn't cover the question, the model should say so. Not make
+   something up.
+
+### What this means for the project
+
+**Paused:** further training of the model. The Gemma 3 experiments regressed
+(we taught it our corpus, it forgot how to follow instructions). Gemma 4 was
+released a couple of weeks ago and we haven't run numbers on it yet. That's
+fine — training isn't the bottleneck anymore. We've set it aside.
+
+**The new spine:** a **living library** of every Nepal government website,
+every PDF they publish, every circular, every form. It updates itself on a
+schedule (important ministries every 6 hours, a village municipality's site
+every 2 days). When a page changes, we notice, re-read the page, and update
+our library. When we can't read a page anymore because the website got
+redesigned, a coding assistant (like the one writing this) gets dispatched to
+figure out the new layout and fix our reader. Humans only get pulled in when
+even the assistant is stuck.
+
+### The simple picture
+
+- **Before:** train the model to memorize 42 million tokens of Nepali gov text.
+  Hope it retains it. Hope it answers questions from memory. Pray it doesn't
+  hallucinate fees.
+- **Now:** crawl every gov website on a schedule. Keep fresh copies. When a
+  user asks something, look it up in the library, hand the relevant page to
+  a model, and have the model say "here's the answer, here's the link,
+  here's the page." If the library doesn't know, the model says so.
+
+The model is a librarian and a translator. It is not the library. The library
+is the library, and it refreshes itself.
+
+### Why "every site is its own recipe, even when 500 sites look the same"
+
+There are 753 local municipalities in Nepal. Most of their websites use the
+same boilerplate theme — same layout, same buttons, same page structure. We
+could write one "reader recipe" that works for all of them. Sounds efficient.
+
+We decided not to. Here's why: if that one template changes, 500 of our
+readers break at once. If each site has its own recipe, a break is a break
+in one place, and our coding-assistant-in-the-loop fixes it without touching
+the other 499. Small waste of disk space; big win on reliability.
+
+### What continues
+
+- The corpus pipeline (the Rust code that classifies, converts Preeti,
+  OCR's, and cleans PDFs) — keeps working; it's now the input layer of the
+  library instead of the training pipeline.
+- The Reddit data (100 000 real user questions in Nepali/Roman/mixed) —
+  becomes our source of *real questions to test against*, never the source
+  of answers.
+- The GPL-3.0 Preeti mapping — still unlocks ~16% of old gov PDFs.
+
+Goal hasn't changed: zero rupees to middlemen. The path just got shorter and
+the answer is now auditable by anyone with the link.
