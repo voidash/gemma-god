@@ -62,8 +62,10 @@ from eval_groundedness import (  # noqa: E402
     SYSTEM_PROMPT,
     AnthropicShapeBackend,
     aggregate as ground_aggregate,
+    build_user_prompt,
     eval_one as ground_eval_one,
     load_gold,
+    score_one as ground_score_one,
 )
 
 
@@ -105,7 +107,7 @@ class HFTransformersBackend:
         self,
         base_model_id: str,
         adapter_path: str | None,
-        max_new_tokens: int = 800,
+        max_new_tokens: int = 500,
         device: str = "cuda",
         torch_dtype: str = "bfloat16",
         chat_template_repo_id: str | None = None,
@@ -211,6 +213,72 @@ class HFTransformersBackend:
         text = self.tokenizer.decode(new_ids, skip_special_tokens=True)
         return text.strip()
 
+    def chat_batch(
+        self,
+        msgs_list: list[tuple[str, str]],
+        max_tokens: int | None = None,
+    ) -> list[str]:
+        """Batched generation. Left-pads prompts so newly-generated tokens
+        align at the right edge across the batch, then slices each item's
+        completion using its prompt length.
+
+        Returns one decoded completion string per input pair (system, user).
+        """
+        import torch  # type: ignore[import-not-found]
+
+        if not msgs_list:
+            return []
+
+        max_new = max_tokens if max_tokens is not None else self.max_new_tokens
+
+        prompt_texts: list[str] = []
+        for system, user in msgs_list:
+            msgs: list[dict] = []
+            if system:
+                msgs.append({"role": "system", "content": system})
+            msgs.append({"role": "user", "content": user})
+            prompt_texts.append(
+                self.tokenizer.apply_chat_template(
+                    msgs, tokenize=False, add_generation_prompt=True
+                )
+            )
+
+        # Left-pad: generation appends to the right, so right-edge alignment
+        # means we can slice everything past prompt_len at once.
+        prev_side = self.tokenizer.padding_side
+        self.tokenizer.padding_side = "left"
+        try:
+            encoded = self.tokenizer(
+                prompt_texts,
+                return_tensors="pt",
+                padding=True,
+                add_special_tokens=False,
+            )
+        finally:
+            self.tokenizer.padding_side = prev_side
+
+        input_ids = encoded["input_ids"].to(self.device)
+        attention_mask = encoded["attention_mask"].to(self.device)
+        prompt_len = input_ids.size(1)
+
+        with torch.no_grad():
+            out_ids = self.model.generate(
+                input_ids,
+                attention_mask=attention_mask,
+                max_new_tokens=max_new,
+                do_sample=False,
+                temperature=1.0,
+                pad_token_id=self.tokenizer.pad_token_id or self.tokenizer.eos_token_id,
+                eos_token_id=self.tokenizer.eos_token_id,
+            )
+
+        completions: list[str] = []
+        for i in range(out_ids.size(0)):
+            new_ids = out_ids[i, prompt_len:]
+            text = self.tokenizer.decode(new_ids, skip_special_tokens=True)
+            completions.append(text.strip())
+        return completions
+
 
 # ---- DeepSeek judge backend (Anthropic-shape) ------------------------------
 
@@ -257,26 +325,71 @@ def _deepseek_backend() -> AnthropicShapeBackend:
 
 
 def run_full_gold(
-    backend, gold_path: Path, out_path: Path, limit: int = 0
+    backend, gold_path: Path, out_path: Path, limit: int = 0, batch_size: int = 4
 ) -> dict:
-    """Run model on all gold items, score, write report. Returns summary."""
+    """Run model on all gold items, score, write report. Returns summary.
+
+    Uses HFTransformersBackend.chat_batch when available (~3-5x faster than
+    sequential greedy decode at batch_size=4 on a single L40S/H100). Falls
+    back to per-item ground_eval_one for Anthropic-shape backends.
+    """
     items = load_gold(gold_path)
     if limit > 0:
         items = items[:limit]
 
     type_counts = Counter(r["type"] for r in items)
-    logging.info("[full-gold] %d items %s", len(items), dict(type_counts))
+    logging.info(
+        "[full-gold] %d items %s batch=%d",
+        len(items), dict(type_counts), batch_size,
+    )
 
+    use_batch = batch_size > 1 and hasattr(backend, "chat_batch")
     results: list[dict] = []
     t0 = time.time()
-    for i, item in enumerate(items, 1):
-        res = ground_eval_one(item, backend)
-        results.append(res)
-        if i % 10 == 0 or i == len(items):
+
+    if use_batch:
+        for start in range(0, len(items), batch_size):
+            batch_items = items[start : start + batch_size]
+            prompts = [
+                (SYSTEM_PROMPT, build_user_prompt(it["question"], it.get("candidate_chunks") or []))
+                for it in batch_items
+            ]
+            tb = time.time()
+            try:
+                outputs = backend.chat_batch(prompts)
+            except Exception as e:
+                # On batch failure, record errors for each item and continue.
+                err = f"{type(e).__name__}: {str(e)[:200]}"
+                for it in batch_items:
+                    results.append({
+                        "id": it["id"],
+                        "type": it["type"],
+                        "category": it.get("question_category"),
+                        "lang": it.get("question_lang"),
+                        "error": err,
+                    })
+            else:
+                # Charge wall-time per item evenly across the batch (rough but
+                # honest; per-item time is meaningless inside a fused batch).
+                per_item_ms = int((time.time() - tb) * 1000 / len(batch_items))
+                for it, out_text in zip(batch_items, outputs):
+                    results.append(ground_score_one(it, out_text, per_item_ms))
+
+            done = len(results)
             n_err = sum(1 for r in results if r.get("error"))
             logging.info(
-                "[full-gold] %d/%d err=%d (%.1fs)", i, len(items), n_err, time.time() - t0
+                "[full-gold] %d/%d err=%d (%.1fs)",
+                done, len(items), n_err, time.time() - t0,
             )
+    else:
+        for i, item in enumerate(items, 1):
+            res = ground_eval_one(item, backend)
+            results.append(res)
+            if i % 10 == 0 or i == len(items):
+                n_err = sum(1 for r in results if r.get("error"))
+                logging.info(
+                    "[full-gold] %d/%d err=%d (%.1fs)", i, len(items), n_err, time.time() - t0
+                )
 
     summary = ground_aggregate(results)
     summary["wall_seconds"] = round(time.time() - t0, 1)
@@ -940,6 +1053,10 @@ def main() -> int:
     ap.add_argument("--out-root", default="eval/reports")
     ap.add_argument("--gold", default="eval/gov_helpdesk_gold_v1.jsonl")
     ap.add_argument("--limit", type=int, default=0, help="limit gold items (0 = all)")
+    ap.add_argument(
+        "--batch-size", type=int, default=4,
+        help="batch size for HF backend full-gold pass (1 = sequential)",
+    )
     ap.add_argument("--judge-n", type=int, default=50)
     ap.add_argument("--belebele-n", type=int, default=50)
     ap.add_argument("--gsm8k-n", type=int, default=30)
@@ -1002,7 +1119,11 @@ def main() -> int:
         gold_items_by_id = {r["id"]: r for r in gold_items}
 
         full_gold_summary = run_full_gold(
-            sft_backend, Path(args.gold), out_dir / "full_gold.json", limit=args.limit
+            sft_backend,
+            Path(args.gold),
+            out_dir / "full_gold.json",
+            limit=args.limit,
+            batch_size=args.batch_size,
         )
         # Reload the results from disk so downstream parts can use them.
         with (out_dir / "full_gold.json").open() as f:

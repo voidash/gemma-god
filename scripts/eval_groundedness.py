@@ -77,12 +77,18 @@ class AnthropicShapeBackend:
         self.label = label or base_url
 
     def chat(self, system: str, user: str, max_tokens: int = MAX_TOKENS) -> str:
+        # `thinking: {type: disabled}` — DeepSeek V4 series defaults thinking-on,
+        # which consumes the full max_tokens budget on internal reasoning and
+        # returns empty content blocks. Caused n=46 silently-empty judge calls
+        # in v3a eval (and 49/50 in v2's first pass). Other Anthropic-shape
+        # endpoints (Meridian, Kimi) ignore the field. Always send it.
         payload = json.dumps(
             {
                 "model": self.model_id,
                 "max_tokens": max_tokens,
                 "system": system,
                 "messages": [{"role": "user", "content": user}],
+                "thinking": {"type": "disabled"},
             }
         ).encode("utf-8")
         last_err: Exception | None = None
@@ -333,33 +339,22 @@ def url_recall(model_urls: list[str], gold_urls: list[str]) -> float | None:
 # ---- Per-item evaluation ---------------------------------------------------
 
 
-def eval_one(item: dict, backend) -> dict:
-    """Run model on one item; score; return result row.
-
-    On model error, returns a row with error=str(...) and no scores.
-    """
-    chunks = item.get("candidate_chunks") or []
-    user_prompt = build_user_prompt(item["question"], chunks)
-
+def score_one(item: dict, model_output: str, elapsed_ms: int | None = None) -> dict:
+    """Score a precomputed model_output against an item. Pure scoring — no
+    backend call. Used by both eval_one (sequential) and the batched
+    eval_sft_v1 path so the scoring stays in one place."""
     out = {
         "id": item["id"],
         "type": item["type"],
         "category": item.get("question_category"),
         "lang": item.get("question_lang"),
     }
-    try:
-        t0 = time.time()
-        model_output = backend.chat(SYSTEM_PROMPT, user_prompt)
-        out["elapsed_ms"] = int((time.time() - t0) * 1000)
-    except Exception as e:
-        out["error"] = f"{type(e).__name__}: {str(e)[:200]}"
-        return out
-
+    if elapsed_ms is not None:
+        out["elapsed_ms"] = elapsed_ms
     out["model_output"] = model_output
     out["model_citations"] = extract_citations(model_output)
     out["model_refused"] = is_refusal(model_output)
 
-    # Gold extraction
     rev = item.get("review") or {}
     gold_answer = rev.get("gold_answer") or item.get("draft_answer") or ""
     gold_urls = rev.get("gold_source_urls") or item.get("draft_citations") or []
@@ -379,6 +374,30 @@ def eval_one(item: dict, backend) -> dict:
         out["url_recall"] = url_recall(out["model_citations"], gold_urls)
         out["model_refused_when_partial"] = bool(out["model_refused"])
     return out
+
+
+def eval_one(item: dict, backend) -> dict:
+    """Run model on one item; score; return result row.
+
+    On model error, returns a row with error=str(...) and no scores.
+    """
+    chunks = item.get("candidate_chunks") or []
+    user_prompt = build_user_prompt(item["question"], chunks)
+
+    try:
+        t0 = time.time()
+        model_output = backend.chat(SYSTEM_PROMPT, user_prompt)
+        elapsed_ms = int((time.time() - t0) * 1000)
+    except Exception as e:
+        return {
+            "id": item["id"],
+            "type": item["type"],
+            "category": item.get("question_category"),
+            "lang": item.get("question_lang"),
+            "error": f"{type(e).__name__}: {str(e)[:200]}",
+        }
+
+    return score_one(item, model_output, elapsed_ms)
 
 
 # ---- Aggregation ----------------------------------------------------------
