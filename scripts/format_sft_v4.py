@@ -180,13 +180,31 @@ def format_capability(rec: dict) -> dict | None:
     }
 
 
+# v4-minimal+ data sources. The v4 plan was originally full retrieval-
+# realistic rebuild, but codex agreed with the user's pushback:
+#   - filter v3 grounded for clean chunks via DB language labels (NO rebuild)
+#   - keep v3 refusals as-is (the 90% target is end-to-end, not SFT-only;
+#     server-side BM25 relevance gate is the right fix per codex)
+#   - REBUILD anti-template only — v3's 270 had FAKE invented URLs
+#   - clean English replay via multi-seed TULU pulls (free)
+#
+# scripts/distill_grounded_v4.py + synthesize_refusal_v4.py are still in
+# the tree as opt-in escalation paths if v4-minimal+ eval shows we actually
+# need them — see SFT_V3A_RESULTS.md "Suggested next steps" for the
+# decision criterion.
 SLICE_FORMATTERS: dict[str, tuple[str, callable]] = {
-    # Retrieval-realistic (built against cleaned k2 corpus)
-    "grounded":              ("corpora/sft_v4_grounded.jsonl",              format_grounded),
-    "refusal_v4":            ("corpora/sft_v4_refusal.jsonl",               format_grounded),
+    # Grounded — filtered v3 carry (joined against current SQLite chunks.language;
+    # 624/9166 records dropped because their chunks no longer exist post-rebuild)
+    "grounded":              ("corpora/sft_v4_grounded_v3carry.jsonl",      format_grounded),
+    # Refusal — v3 carry (2500 items). Phrase-teaching, not boundary-teaching;
+    # codex says the boundary belongs to the server-side BM25 gate.
+    "refusal_v4":            ("corpora/sft_v3_refusals.jsonl",              format_grounded),
+    # Anti-template — REBUILT with REAL chunks (v3's 270 had fake URLs;
+    # synthesize_anti_template_v4.py produces 600 items via real retrieval).
     "anti_template":         ("corpora/sft_v4_anti_template.jsonl",         format_grounded),
+    # Grounded-terse — pruned from v3 (58 items, dropped 139 open-ended).
     "grounded_terse":        ("corpora/sft_v4_grounded_terse.jsonl",        format_grounded),
-    # Carryover + new buckets
+    # Capability + replay carryovers / new pulls
     "brief_qa":              ("corpora/sft_v4_brief_qa.jsonl",              format_capability),
     "english_replay_math":   ("corpora/sft_v4_english_replay_math.jsonl",   format_english),
     "english_replay_instr":  ("corpora/sft_v4_english_replay_instr.jsonl",  format_english),
