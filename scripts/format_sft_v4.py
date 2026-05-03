@@ -69,17 +69,17 @@ names."""
 
 CHUNK_TEXT_MAX_CHARS = 1200
 
-# Target counts per codex v4 spec — for assertion/warn during composition.
+# Target counts per v4-minimal+ plan (codex-vetted scale-down from full
+# rebuild). The grounded slice is filtered v3 carry — we sample down to
+# ~5500 if larger; refusal stays as v3 carry (2500) since codex agreed
+# the boundary fix is server-side BM25 gate territory.
 TARGET_COUNTS: dict[str, int] = {
     "grounded": 5500,
-    "refusal_v4": 3600,
+    "refusal_v4": 2500,         # v3 carry, not the 3600 full-rebuild target
     "anti_template": 600,
     "grounded_terse": 350,
     "brief_qa": 700,
-    "english_replay_math": 1200,
-    "english_replay_instr": 1200,
-    "english_replay_mc": 400,
-    "english_replay_reasn": 200,
+    "english_replay": 3000,     # combined across math/instr/MC/reasoning buckets
     "native_ne": 1200,
     "translation": 500,
     "mc": 550,
@@ -206,10 +206,11 @@ SLICE_FORMATTERS: dict[str, tuple[str, callable]] = {
     "grounded_terse":        ("corpora/sft_v4_grounded_terse.jsonl",        format_grounded),
     # Capability + replay carryovers / new pulls
     "brief_qa":              ("corpora/sft_v4_brief_qa.jsonl",              format_capability),
-    "english_replay_math":   ("corpora/sft_v4_english_replay_math.jsonl",   format_english),
-    "english_replay_instr":  ("corpora/sft_v4_english_replay_instr.jsonl",  format_english),
-    "english_replay_mc":     ("corpora/sft_v4_english_replay_mc.jsonl",     format_english),
-    "english_replay_reasn":  ("corpora/sft_v4_english_replay_reasn.jsonl",  format_english),
+    # English replay: combined from 4 multi-seed TULU pulls (each lands on
+    # a different shard cluster — math / instruction / MC / reasoning).
+    # See scripts/assemble_v4_english_replay.py which concatenates +
+    # samples down from 4 × 1500 to 3000.
+    "english_replay":        ("corpora/sft_v4_english_replay.jsonl",        format_english),
     "native_ne":             ("corpora/sft_v1_native_ne.jsonl",             format_native_ne),
     "translation":           ("corpora/sft_v2_translation.jsonl",           format_capability),
     "mc":                    ("corpora/sft_v4_mc.jsonl",                    format_capability),
