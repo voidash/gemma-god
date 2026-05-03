@@ -413,6 +413,14 @@ def main() -> int:
     ap.add_argument("--eval-every-steps", type=int, default=200)
     ap.add_argument("--save-every-steps", type=int, default=500)
     ap.add_argument("--push-every-steps", type=int, default=500)
+    ap.add_argument(
+        "--checkpoint-steps",
+        default="",
+        help="comma-separated list of step indices to save as step-N/ subdirs "
+        "(in addition to best/). Codex v4 spec: '0,200,400,600,800,1000,1200,1400'. "
+        "Each gets pushed to HF as a separate path so post-train selection can "
+        "pick the actually-best by behavioral gate, not val loss alone.",
+    )
     ap.add_argument("--max-wall-hours", type=float, default=6.0)
     ap.add_argument("--hf-repo", default=None, help="HF private repo to push to (e.g. voidash/nepal-helpdesk-sft-v1-seed42)")
     ap.add_argument("--max-val-examples", type=int, default=200, help="cap val for in-training eval speed")
@@ -539,12 +547,15 @@ def main() -> int:
     def _run_val() -> dict[str, float]:
         return _per_slice_val_loss(model, val_examples, pad_id, device, batch_size=args.val_batch)
 
-    def _save_best_and_push(reason: str = "checkpoint") -> None:
-        ckpt_dir = output_dir / "best"
-        ckpt_dir.mkdir(parents=True, exist_ok=True)
-        model.save_pretrained(str(ckpt_dir))
-        tokenizer.save_pretrained(str(ckpt_dir))
-        # Save state JSON
+    # Parse --checkpoint-steps once.
+    explicit_ckpt_steps: set[int] = set()
+    if args.checkpoint_steps:
+        for tok in args.checkpoint_steps.split(","):
+            tok = tok.strip()
+            if tok:
+                explicit_ckpt_steps.add(int(tok))
+
+    def _write_state_json() -> None:
         with (output_dir / "state.json").open("w", encoding="utf-8") as f:
             json.dump(
                 {
@@ -554,17 +565,36 @@ def main() -> int:
                     "per_slice_history": dict(state.per_slice_history),
                     "abort_reason": state.abort_reason,
                     "aborted_at_step": state.aborted_at_step,
+                    "explicit_ckpt_steps": sorted(explicit_ckpt_steps),
                 },
                 f,
                 ensure_ascii=False,
                 indent=2,
             )
+
+    def _save_to(subdir_name: str, reason: str) -> None:
+        """Save model + tokenizer to output_dir/<subdir_name>/, write state.json,
+        then optionally push to HF. Used by all checkpoint paths.
+        """
+        ckpt_dir = output_dir / subdir_name
+        ckpt_dir.mkdir(parents=True, exist_ok=True)
+        model.save_pretrained(str(ckpt_dir))
+        tokenizer.save_pretrained(str(ckpt_dir))
+        _write_state_json()
         if args.hf_repo:
             try:
                 _push_to_hub(output_dir, args.hf_repo, hf_token, reason)
-                logging.info("pushed to HF: %s", args.hf_repo)
+                logging.info("pushed to HF (%s): %s", subdir_name, args.hf_repo)
             except Exception as e:
-                logging.warning("HF push failed: %s", e)
+                logging.warning("HF push failed for %s: %s", subdir_name, e)
+
+    def _save_best_and_push(reason: str = "checkpoint") -> None:
+        """Save the CURRENT model as the best/ checkpoint. Caller must have
+        verified this is actually a new best — this function does NOT check.
+        v3a regression: this function got called from periodic-push paths too,
+        overwriting best/ with non-best weights. Now only call from new-best
+        paths."""
+        _save_to("best", reason)
 
     def _maybe_abort(reason: str, step: int) -> bool:
         state.abort_reason = reason
@@ -654,6 +684,10 @@ def main() -> int:
                         for s, vv in v.items():
                             if not s.startswith("_"):
                                 state.per_slice_history[s].append((global_step, vv))
+                        logging.info(
+                            "val @ step=%d overall=%.4f (initial=%.4f best_so_far=%.4f)",
+                            global_step, v["_overall"], state.initial_val_loss, state.best_val_loss,
+                        )
                         if v["_overall"] > state.initial_val_loss * 1.2:
                             if _maybe_abort(
                                 f"val loss exploded by step 500 "
@@ -682,6 +716,15 @@ def main() -> int:
                         for s, vv in v.items():
                             if not s.startswith("_"):
                                 state.per_slice_history[s].append((global_step, vv))
+                        # ALWAYS log val per-step. v3a regression: trainer only
+                        # logged when a new best fired, so we couldn't see val
+                        # trajectory in train_v3a.log without combing through
+                        # state.json.
+                        logging.info(
+                            "val @ step=%d overall=%.4f (initial=%.4f best_so_far=%.4f best_step=%d)",
+                            global_step, v["_overall"],
+                            state.initial_val_loss, state.best_val_loss, state.best_step,
+                        )
                         # English-replay catastrophic-forgetting check
                         if "english_replay" in state.per_slice_initial:
                             cur = v.get("english_replay")
@@ -692,7 +735,7 @@ def main() -> int:
                                     global_step,
                                 ):
                                     return 2
-                        # Save best
+                        # Save best ONLY when val actually improves.
                         if v["_overall"] < state.best_val_loss:
                             state.best_val_loss = v["_overall"]
                             state.best_step = global_step
@@ -709,13 +752,35 @@ def main() -> int:
                             logging.info("val rising 3 evals in a row; early stop with best")
                             state.abort_reason = "early_stop_val_divergence"
                             state.aborted_at_step = global_step
-                            _save_best_and_push("early-stop")
                             _write_failure_report(output_dir, state, args)
+                            # Don't overwrite best/ on early-stop — best/ already
+                            # holds the actual best from earlier.
                             return 0
 
-                    # ---- Periodic push ----
-                    if global_step % args.push_every_steps == 0:
-                        _save_best_and_push(f"step{global_step}")
+                    # ---- Explicit checkpoint saves (codex v4 spec) ----
+                    # Save AT each requested step into step-N/ subdir. Separate
+                    # from best/ — these are for downstream selection by
+                    # behavioral gate (run eval on each, pick the one that
+                    # passes the most tests). Pushes the WHOLE output_dir to HF
+                    # so step-N appears as a path in the repo.
+                    if global_step in explicit_ckpt_steps:
+                        _save_to(f"step{global_step}", f"checkpoint-step{global_step}")
+
+                    # ---- Periodic push (without explicit checkpoint flag) ----
+                    # When --checkpoint-steps is set, the step-N saves above
+                    # provide crash-recovery snapshots. When it's NOT set, fall
+                    # back to a periodic-push of best/ as a fail-safe.
+                    elif global_step % args.push_every_steps == 0 and not explicit_ckpt_steps:
+                        # Push the CURRENT state of best/ (whatever it last was)
+                        # to HF as a crash-recovery snapshot. Doesn't OVERWRITE
+                        # best/ with current weights — just re-uploads what's
+                        # already on disk.
+                        if args.hf_repo and (output_dir / "best").exists():
+                            try:
+                                _push_to_hub(output_dir, args.hf_repo, hf_token, f"periodic-step{global_step}")
+                                logging.info("pushed periodic snapshot to HF: %s", args.hf_repo)
+                            except Exception as e:
+                                logging.warning("HF push failed: %s", e)
 
                     if global_step % 20 == 0:
                         logging.info(
@@ -733,7 +798,11 @@ def main() -> int:
         state.abort_reason = f"crash: {type(e).__name__}: {str(e)[:200]}"
         state.aborted_at_step = global_step
         try:
-            _save_best_and_push(state.abort_reason)
+            # On crash, save current weights to crashed/ — do NOT overwrite
+            # best/ which may hold an earlier good checkpoint. v3a regression:
+            # we used to call _save_best_and_push here, which overwrote best/
+            # with the crash-state weights.
+            _save_to("crashed", state.abort_reason)
         except Exception:
             pass
         _write_failure_report(output_dir, state, args)
@@ -741,15 +810,23 @@ def main() -> int:
 
     # Training complete (didn't early-stop, didn't crash)
     logging.info("training complete, %d steps total", global_step)
-    # Final val
+    # Final val — always log
     v = _run_val()
+    state.val_history.append((global_step, v["_overall"]))
+    logging.info(
+        "FINAL val @ step=%d overall=%.4f (best=%.4f at step=%d)",
+        global_step, v["_overall"], state.best_val_loss, state.best_step,
+    )
     if v["_overall"] < state.best_val_loss:
         state.best_val_loss = v["_overall"]
         state.best_step = global_step
         _save_best_and_push("final-best")
-    state.val_history.append((global_step, v["_overall"]))
     state.abort_reason = None
-    _save_best_and_push("training-complete")
+    # Save the LAST checkpoint to final/ — kept separately from best/ so
+    # downstream selection (e.g. behavioral-gate eval per codex v4 spec)
+    # can compare best-by-val vs last-step. v3a regression: we used to
+    # overwrite best/ here unconditionally, losing the actual best.
+    _save_to("final", "training-complete")
     _write_failure_report(output_dir, state, args, extra={"final_step": global_step})
     return 0
 

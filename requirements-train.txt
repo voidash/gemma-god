@@ -1,0 +1,30 @@
+# SFT v4 training environment — pinned to the v3a-tested combination.
+#
+# Why these exact versions:
+#   - transformers 5.5.1: handles Gemma 4 tokenizer's `extra_special_tokens: ["<|video|>"]`
+#     (a list, which transformers 4.x base class barfs on with
+#     `AttributeError: 'list' object has no attribute 'keys'`)
+#   - peft 0.19.1: latest available. NEEDS PATCH for transformers 5.x compat:
+#     `peft/utils/constants.py:16` does `from transformers import BloomPreTrainedModel`
+#     which 5.x removed. setup_v4_venv.sh applies the patch automatically.
+#   - bitsandbytes 0.49.2: 0.45 imports `triton.ops.matmul_perf_model` which
+#     triton >=3.x removed. 0.49.2 is compatible with triton 3.6+.
+#   - torch 2.11.0+cu130 transitively pulled by the others; matches the
+#     g6e.xlarge L40S DLAMI driver (CUDA 13).
+#
+# Install order matters: torch via the cu130 index FIRST, then everything
+# else from PyPI default index. setup_v4_venv.sh handles this.
+
+# ---- core training stack (versions known good on g6e.xlarge L40S) ----
+transformers==5.5.1
+peft==0.19.1
+accelerate==1.2.1
+datasets==3.2.0
+bitsandbytes==0.49.2
+huggingface_hub>=0.26
+sentencepiece
+sacrebleu
+protobuf
+
+# ---- eval-side ----
+# (eval_sft_v1.py + eval_groundedness.py have no extra deps beyond stdlib + above)
