@@ -1,0 +1,24 @@
+{
+  "source_id": "jirimun_gov_np",
+  "version": 2,
+  "entry_points": [
+    "https://jirimun.gov.np/",
+    "https://jirimun.gov.np/ne",
+    "https://jirimun.gov.np/en",
+    "https://jirimun.gov.np/ne/services",
+    "https://jirimun.gov.np/en/services",
+    "https://jirimun.gov.np/ne/citizen-charter",
+    "https://jirimun.gov.np/en/content/contact",
+    "https://jirimun.gov.np/faq"
+  ],
+  "max_depth": 3,
+  "max_pdf_depth": 3,
+  "max_html_fetches": 900,
+  "max_total_fetches": 3000,
+  "max_elapsed_sec": 3600,
+  "rate_limit_ms": 1000,
+  "allowed_subdomains": [
+    "www"
+  ],
+  "notes": "Drupal palika site (newmun theme). v1 hit the default html_cap at 250 HTML fetches, so coverage was broad but not whole-site. v2 raises the budget and starts from service/contact/FAQ/citizen-charter entry points because Jiri local-service answers are a primary RAG target."
+}

@@ -1,0 +1,11 @@
+{
+  "source_id": "feb_gov_np",
+  "version": 1,
+  "entry_points": ["https://feb.gov.np"],
+  "max_depth": 2,
+  "max_html_fetches": 120,
+  "max_total_fetches": 500,
+  "max_elapsed_sec": 900,
+  "rate_limit_ms": 800,
+  "notes": "Foreign Employment Board source for welfare and foreign-employment service questions."
+}

@@ -1,0 +1,8 @@
+{
+  "source_id": "supremecourt_gov_np",
+  "version": 1,
+  "deny_paths": ["calendar", "search", "node", "user", "comment"],
+  "max_html_fetches": 100,
+  "rate_limit_ms": 1500,
+  "notes": "Drupal site with infinite calendar/search permutations and Drupal node/user routes. Without deny_paths the frontier explodes (the prototype Python crawler trapped overnight here). HTML cap lowered to 100 because the site is slow; rate-limit bumped to 1.5s for politeness."
+}

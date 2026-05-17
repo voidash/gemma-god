@@ -1,0 +1,15 @@
+{
+  "source_id": "tmolkaski_gandaki_gov_np",
+  "version": 1,
+  "entry_points": [
+    "https://tmolkaski.gandaki.gov.np",
+    "https://tmolkaski.gandaki.gov.np/notices",
+    "https://tmolkaski.gandaki.gov.np/downloads"
+  ],
+  "max_depth": 2,
+  "max_html_fetches": 100,
+  "max_total_fetches": 220,
+  "max_elapsed_sec": 600,
+  "rate_limit_ms": 900,
+  "notes": "Official Gandaki/Kaski transport management office source for Pokhara driving-license routing."
+}

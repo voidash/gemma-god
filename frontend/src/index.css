@@ -1,0 +1,321 @@
+/* Latin sans (geometric, friendly): Outfit for headings, Plus Jakarta Sans for body. */
+/* Devanagari pairing: Anek Devanagari for headings, Mukta for body. */
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Anek+Devanagari:wght@400;500;600;700;800&family=Mukta:wght@400;500;600;700&display=swap");
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ---------------------------------------------------------------------------
+ * Playful Geometric design tokens
+ *
+ * Two type stacks (Latin + Devanagari) so headings keep their geometric
+ * personality across scripts. The "ink" color is the dark slate that anchors
+ * every hard shadow — we name it so component code can reference it directly
+ * (rgb space) without round-tripping through OKLCH conversions.
+ * ------------------------------------------------------------------------- */
+
+@theme inline {
+  --font-sans:
+    "Plus Jakarta Sans", "Mukta", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Inter", sans-serif;
+  --font-display:
+    "Outfit", "Anek Devanagari", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, monospace;
+
+  --radius: 1rem;
+  --radius-sm: calc(var(--radius) - 8px);
+  --radius-md: calc(var(--radius) - 4px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 8px);
+
+  /* shadcn token plumbing */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Brand palette (named so components can reach for them directly) */
+  --color-ink: var(--ink);
+  --color-cream: var(--cream);
+  --color-violet: var(--violet);
+  --color-pink: var(--pink);
+  --color-amber: var(--amber);
+  --color-mint: var(--mint);
+  --color-sky: var(--sky);
+}
+
+:root {
+  /* Anchors */
+  --ink: #1e293b; /* slate-800 — every hard shadow lands here */
+  --cream: #fffdf5;
+
+  /* Confetti palette */
+  --violet: #8b5cf6;
+  --pink: #f472b6;
+  --amber: #fbbf24;
+  --mint: #34d399;
+  --sky: #38bdf8;
+
+  /* shadcn surface tokens */
+  --background: var(--cream);
+  --foreground: var(--ink);
+  --card: #ffffff;
+  --card-foreground: var(--ink);
+  --popover: #ffffff;
+  --popover-foreground: var(--ink);
+  --primary: var(--violet);
+  --primary-foreground: #ffffff;
+  --secondary: #f1f5f9; /* slate-100 */
+  --secondary-foreground: var(--ink);
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --accent: #f9f5ff; /* faint violet */
+  --accent-foreground: var(--ink);
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: #e2e8f0; /* slate-200 */
+  --input: #ffffff;
+  --ring: var(--violet);
+
+  --chart-1: var(--violet);
+  --chart-2: var(--pink);
+  --chart-3: var(--amber);
+  --chart-4: var(--mint);
+  --chart-5: var(--sky);
+
+  --sidebar: var(--card);
+  --sidebar-foreground: var(--ink);
+  --sidebar-primary: var(--violet);
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: var(--accent);
+  --sidebar-accent-foreground: var(--ink);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--violet);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html,
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+  body {
+    font-feature-settings:
+      "rlig" 1,
+      "calt" 1;
+  }
+
+  /* Headings inherit the display stack and feel cut from heavier paper. */
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+ * Utilities
+ * ------------------------------------------------------------------------- */
+
+@utility pop-shadow {
+  box-shadow: 4px 4px 0 0 var(--ink);
+}
+@utility pop-shadow-lg {
+  box-shadow: 6px 6px 0 0 var(--ink);
+}
+@utility pop-shadow-sm {
+  box-shadow: 2px 2px 0 0 var(--ink);
+}
+@utility pop-shadow-violet {
+  box-shadow: 6px 6px 0 0 var(--violet);
+}
+@utility pop-shadow-pink {
+  box-shadow: 6px 6px 0 0 var(--pink);
+}
+@utility pop-shadow-amber {
+  box-shadow: 6px 6px 0 0 var(--amber);
+}
+@utility pop-shadow-mint {
+  box-shadow: 6px 6px 0 0 var(--mint);
+}
+
+/* The signature "sticker" card silhouette */
+@utility sticker {
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-lg);
+  box-shadow: 6px 6px 0 0 var(--ink);
+  background: var(--card);
+  transition:
+    transform 250ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 250ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+@utility sticker-pink {
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-lg);
+  box-shadow: 6px 6px 0 0 var(--pink);
+  background: var(--card);
+}
+@utility sticker-amber {
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-lg);
+  box-shadow: 6px 6px 0 0 var(--amber);
+  background: var(--card);
+}
+@utility sticker-mint {
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-lg);
+  box-shadow: 6px 6px 0 0 var(--mint);
+  background: var(--card);
+}
+@utility sticker-violet {
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-lg);
+  box-shadow: 6px 6px 0 0 var(--violet);
+  background: var(--card);
+}
+
+/* Background patterns */
+@utility dot-grid {
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    rgba(30, 41, 59, 0.16) 1px,
+    transparent 0
+  );
+  background-size: 18px 18px;
+}
+@utility dot-grid-soft {
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    rgba(30, 41, 59, 0.08) 1px,
+    transparent 0
+  );
+  background-size: 14px 14px;
+}
+@utility stripes {
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(30, 41, 59, 0.08) 0,
+    rgba(30, 41, 59, 0.08) 2px,
+    transparent 2px,
+    transparent 8px
+  );
+}
+
+/* Speech-bubble (3 round corners + 1 sharp) */
+@utility blob-tl {
+  border-radius: 9999px 9999px 9999px 0;
+}
+@utility blob-tr {
+  border-radius: 9999px 9999px 0 9999px;
+}
+@utility blob-bl {
+  border-radius: 9999px 0 9999px 9999px;
+}
+@utility blob-br {
+  border-radius: 0 9999px 9999px 9999px;
+}
+
+/* ---------------------------------------------------------------------------
+ * Motion — bouncy on press, restrained when the user asks for it.
+ * ------------------------------------------------------------------------- */
+
+@keyframes pg-wiggle {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(2.5deg);
+  }
+  75% {
+    transform: rotate(-2.5deg);
+  }
+}
+@keyframes pg-pop-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.85) translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+@keyframes pg-marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+@keyframes pg-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(3deg);
+  }
+}
+
+@utility wiggle-on-hover {
+  &:hover {
+    animation: pg-wiggle 0.6s
+      cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+}
+@utility animate-pop-in {
+  animation: pg-pop-in 450ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+@utility animate-marquee {
+  animation: pg-marquee 28s linear infinite;
+}
+@utility animate-float {
+  animation: pg-float 6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

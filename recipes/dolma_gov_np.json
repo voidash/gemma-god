@@ -1,0 +1,11 @@
+{
+  "source_id": "dolma_gov_np",
+  "version": 1,
+  "entry_points": ["https://www.dolma.gov.np/home"],
+  "max_depth": 2,
+  "max_html_fetches": 80,
+  "max_total_fetches": 300,
+  "max_elapsed_sec": 900,
+  "rate_limit_ms": 1000,
+  "notes": "Department of Land Management and Archive source for land record/lalpurja questions. Site currently redirects to www and has TLS quirks; crawler accepts invalid certificates."
+}

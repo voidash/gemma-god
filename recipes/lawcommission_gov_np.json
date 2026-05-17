@@ -1,0 +1,9 @@
+{
+  "source_id": "lawcommission_gov_np",
+  "version": 1,
+  "max_pdf_depth": 5,
+  "max_html_fetches": 400,
+  "max_total_fetches": 3000,
+  "max_elapsed_sec": 2400,
+  "notes": "Heavy archive of Nepal Acts, ordinances, and Constitution PDFs nested under /content/* and /law-archive/*. Default max_pdf_depth=3 misses everything below the second listing page; raised to 5. Total budget bumped 2x because the archive is ~1500 PDFs."
+}
