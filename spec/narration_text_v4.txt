@@ -1,0 +1,264 @@
+# PreVillage Narration V4 - Interviews Become Infrastructure
+
+Source basis:
+
+- Curated footage set: `footage/selects/govspeak-2`
+- Gemini clip index: `analysis/gemini/govspeak-2/clip_index.md`
+- Duration report: `analysis/gemini/govspeak-2/duration_report.tsv`
+- Jiri phone UX quote: `analysis/transcripts/chirp2/jiri_man_bahadur_phone_ux_quote`
+- Bihe darta WhatsApp Chirp2 pass: `analysis/transcripts/chirp2/bihe_darta_whatsapp_kala`
+- Human-loop interview source: `footage/selects/human_loop_interview/PXL_20260505_072911948_human_loop_interview_full.mp4`
+- Product captures:
+  - `footage/selects/helpdesk_product_captures/helpdesk_chat_ask_first_sources.mp4`
+  - `footage/selects/helpdesk_product_captures/helpdesk_admin_interview_review.mp4`
+  - `footage/selects/helpdesk_product_captures/helpdesk_whatsapp_officer_outreach.mp4`
+- Government source montage:
+  - `footage/selects/gov_homepage_montage/gov_homepage_montage_20sites.mp4`
+  - `analysis/gov_homepage_montage/capture_manifest.tsv`
+
+Confirmed staged footage:
+
+- GovSpeak 2 curated clips: 24 videos, 4:41 total.
+- Separate Jiri phone UX quote select: 0:24.
+- Bihe darta WhatsApp usable ask: 01.44-04.48, with subclips in `footage/selects/whatsapp_bihe_darta`.
+- 20 government-homepage montage: 1:19.8.
+- Product proof captures: chat ask-first/source answer 0:12.2, admin interview review 0:13.8, WhatsApp officer outreach 0:09.3.
+- Final target: 3:00, so use hard selects and let text/graphics carry what footage cannot.
+
+## Narration Direction
+
+This cut should not start as a tech demo. It should start as a civic story:
+
+> Public information exists, but the route to use it is still privileged.
+
+The product claim:
+
+> PreVillage turns hidden routes into shared infrastructure.
+
+The most important technical proof chain:
+
+```text
+field interview -> reviewed practical source -> cited answer
+missing answer  -> officer outreach       -> future practical source
+```
+
+That is what makes the human loop meaningful. Interviews are not only research footage. They become reviewed, local, practical knowledge. And when the system still lacks a reliable answer, it routes the question to a real contact/officer path instead of hallucinating.
+
+The key visual language:
+
+> Natural speech becomes routeable structure.
+
+When someone says:
+
+```text
+किर्तिपुर नगरपालिकामा बिहे दर्ता कसरी गर्न सकिन्छ?
+```
+
+Break it into weighted intent words:
+
+```text
+किर्तिपुर नगरपालिका  ->  WHERE
+बिहे दर्ता           ->  SERVICE
+कसरी गर्न सकिन्छ?    ->  INTENT
+```
+
+This is the clearest way to show why PreVillage is a navigator, not a chatbot.
+
+## 3:00 Voice Script
+
+### 0:00-0:16 - Hidden Route
+
+Three weeks. Four offices. Four versions of the same form. Almost eight thousand rupees paid to middlemen.
+
+The law was public. The route was privileged.
+
+People were not paying for the service. They were paying for the path.
+
+### 0:16-0:35 - Privilege
+
+I could keep pushing.
+
+I had GPU access, technical knowledge, people who helped me record voices, and enough obsession to keep debugging after every failed answer.
+
+But Kathmandu is also a privilege. So I travelled 180 kilometers to Jiri to see how an office actually works, and where the real gap lives.
+
+### 0:35-0:50 - Let The Office Speak
+
+Use the Jiri quote here, with subtitles:
+
+```text
+Android phone त TikTok हेर्ने, Facebook हेर्ने,
+अनि फोन गर्नेभन्दा अरू जान्दै जान्दैनन्।
+```
+
+English subtitle option:
+
+```text
+For many people, Android means TikTok, Facebook,
+and phone calls. They do not know much beyond that.
+```
+
+### 0:50-1:12 - The Real Interface
+
+That sentence changed the product.
+
+This was not just a bad website problem. It was an interface problem, a routing problem, and a needle-in-the-haystack problem.
+
+A citizen does not begin with a portal URL. She asks naturally:
+
+```text
+किर्तिपुर नगरपालिकामा बिहे दर्ता कसरी गर्न सकिन्छ?
+```
+
+Kirtipur Municipality. Marriage registration. How do I do it?
+
+That is the job: turn a human sentence into a route.
+
+### 1:12-1:35 - Why Gemma
+
+So PreVillage is not a generic answering machine.
+
+It is a government-service navigator. Gemma was pivotal because it can run small enough for local deployment, but still reason through messy speech, repair noisy Nepali text, ask the next question, and compose an answer from sources.
+
+The first job is not to answer. The first job is to understand the case.
+
+### 1:35-1:58 - RAG Is Not Enough
+
+RAG alone is weak when the truth is scattered across old websites, PDFs, office habits, and the memory of one contact officer.
+
+So we built a registry of government sources, crawlers, health checks, and a self-healing pipeline.
+
+Official websites give the law. But the path often lives somewhere else.
+
+### 1:58-2:24 - Interviews Become Practical Sources
+
+That is why we interviewed people inside offices.
+
+Which counter first? Which room? What time is easiest? Which document do people forget? Why are they sent back?
+
+Those answers go through an admin review, become practical sources, and can be cited later beside official government sources.
+
+Tacit knowledge is only unfair when it stays trapped in one office corridor.
+
+### 2:24-2:42 - Human Loop When The Source Is Missing
+
+When PreVillage does not know, it should not hallucinate.
+
+It says what is missing, shows what sources it checked, and turns the citizen's question into an officer outreach message through the WhatsApp bridge.
+
+The answer is not invented. It is asked, reviewed, and folded back into the system for the next person.
+
+### 2:42-2:55 - Voice, WhatsApp, Kiosk
+
+Nepal was never voice-poor. The internet UX was not built for us.
+
+A citizen speaks. Our Nepali ASR transcribes. Gemma fixes the rough text and plans the intent. Retrieval finds official and practical sources. Our Nepali TTS speaks back.
+
+On WhatsApp and kiosks, help starts where people already ask for help.
+
+### 2:55-3:00 - Local Office Helpdesk
+
+The point is not that every office needs an L40 GPU.
+
+A small local model can sit inside the office as a low-cost helpdesk.
+
+I used privilege to find the path. PreVillage exists so the next person does not need privilege to use their own government.
+
+## Must-Use Visual Beats
+
+### Bihe Darta WhatsApp
+
+Use:
+
+- `footage/selects/whatsapp_bihe_darta/bihe_darta_ask_only_01s20_05s20.mp4`
+- or `footage/selects/whatsapp_bihe_darta/bihe_darta_compact_workflow_01s20_08s50.mp4`
+
+Overlay text from:
+
+- `analysis/transcripts/chirp2/bihe_darta_whatsapp_kala/visual_phrase_beats.tsv`
+- `analysis/transcripts/chirp2/bihe_darta_whatsapp_kala/chirp2_word_beats.tsv`
+
+Suggested animated sequence:
+
+```text
+किर्तिपुर नगरपालिका  [WHERE]
+बिहे दर्ता           [SERVICE]
+कसरी गर्न सकिन्छ?    [INTENT]
+```
+
+### Jiri Phone UX Quote
+
+Use:
+
+- `footage/selects/jiri_man_bahadur_phone_ux_quote_00m28s_24s.mp4`
+
+Subtitle from:
+
+- `analysis/transcripts/chirp2/jiri_man_bahadur_phone_ux_quote/subtitle_corrected_ne.srt`
+- `analysis/transcripts/chirp2/jiri_man_bahadur_phone_ux_quote/subtitle_translation_en.srt`
+
+Keep only 10-14 seconds unless the mayor's delivery is stronger in the edit.
+
+### Government Web Proof
+
+Use:
+
+- `footage/selects/gov_homepage_montage/gov_homepage_montage_20sites.mp4`
+
+Cut as a fast cascade while saying:
+
+```text
+old websites
+PDFs
+source registry
+crawlers
+health checks
+self-healing
+```
+
+Do not linger on any one site. The point is volume and messiness.
+
+### Product Proof
+
+Use:
+
+- `footage/selects/helpdesk_product_captures/helpdesk_chat_ask_first_sources.mp4`
+  - shows vague prompt -> follow-up -> cited citizen interview answer.
+- `footage/selects/helpdesk_product_captures/helpdesk_admin_interview_review.mp4`
+  - shows interviews becoming reviewed practical sources.
+- `footage/selects/helpdesk_product_captures/helpdesk_whatsapp_officer_outreach.mp4`
+  - shows missing-source refusal and officer outreach draft.
+
+### Human Loop Interview
+
+Use:
+
+- `footage/selects/human_loop_interview/PXL_20260505_072911948_human_loop_interview_full.mp4`
+- `footage/selects/govspeak-2/timeline1_cut_11_PXL_20260505_072911948.mp4`
+
+The interview should sit directly before or during the admin-review capture. Make the connection explicit:
+
+```text
+interview answer -> reviewed source -> cited helpdesk answer
+```
+
+## Maximum Impact Use Of Current Footage
+
+Use the current footage like proof, not decoration:
+
+- Road/Jiri cuts: fast opening texture, not full scenic montage.
+- Jiri phone quote: central human proof point; give it breathing room.
+- Bihe darta WhatsApp: the clearest "natural speech to intent" example.
+- EC2/training/sister voice/TTS: compress into privilege plus grunt-work montage.
+- Government homepage montage + tmux/RAG screens: use as architecture proof while narrating self-healing RAG.
+- Interview/admin/product captures: prove the human loop, not just fieldwork.
+- WhatsApp outreach capture: prove "we ask the right human when sources fail."
+- Kiosk/Pi clips: use as deployment proof; do not over-explain terminals.
+- TTS/G2P/Hugging Face: show that the Nepali voice stack is real, not planned.
+
+## Remaining Visual Gaps
+
+Only two gaps remain high-value:
+
+1. A final polished kiosk/person-using-system shot for the "normal person can use it" claim.
+2. A compact V1-to-V6 evolution card showing the resolver/SFT/RAG improvements without slowing the story.

@@ -1,0 +1,57 @@
+Three weeks. Four offices. Four versions of the same form. Almost eight
+thousand rupees to middlemen.
+
+I was not paying for the government service. I was paying for the map.
+
+The law was public. The route was privileged.
+
+I could keep pushing because I had privilege: my sister helping with voice
+data, GPU access, technical knowledge, and the stubbornness to keep breaking
+the system until it moved.
+
+Then I travelled 180 kilometers to Jiri to understand the grounded reality of a
+real office. Because Kathmandu is also a privilege.
+
+In Jiri, the gap became clearer. People may not read government websites, but
+they already know how to call, speak, scroll, watch videos, and use WhatsApp.
+So this was not only an information problem. It was a user-interface problem.
+
+Gemma was pivotal because this could not just be a cloud chatbot. Government
+help should work at the counter, on a kiosk, on WhatsApp, and inside the office
+itself.
+
+But the answer is not plain Gemma. The answer is PreVillage: a government
+service navigator built around Gemma.
+
+A normal chatbot guesses. PreVillage does intake. It asks what service, which
+ward or district, which office, which document, which room, and which case.
+Then it retrieves.
+
+Behind that is the real infrastructure: government directories, PDFs, contact
+pages, source registry, periodic crawls, health checks, and a self-healing RAG
+pipeline that knows which source matters for which question.
+
+RAG alone is still weak, because the most useful office knowledge is often
+practical: which counter, which time, which document people forget, who
+actually knows the answer.
+
+So PreVillage has a tight human loop. When the system sees a real gap, it does
+not hallucinate. It finds the relevant contact officer from official sources,
+opens a direct WhatsApp conversation, and turns the answer back into reviewed
+practical knowledge.
+
+We also trained the voice layer for this. Nepali ASR, and Nepali TTS with Piper
+and VITS, including a real voice collected at home. Voice is not decoration.
+It is how this becomes usable for people who do not want another website.
+
+A citizen speaks. ASR transcribes. Gemma fixes the messy text and plans the
+question. RAG retrieves official and practical sources. If the source is not
+enough, the human loop asks the officer. Then TTS speaks back, and WhatsApp
+keeps the same help where people already talk.
+
+The point is not that every office needs an L40 GPU. The heavy work builds the
+knowledge. A Raspberry Pi or office computer can run a capable local helpdesk
+onsite, close to the citizen and close to the data.
+
+I used privilege to find the path. PreVillage exists so the next person does
+not need privilege to use their own government.

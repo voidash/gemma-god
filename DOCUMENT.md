@@ -214,10 +214,10 @@ directly (they're line-aligned, one sentence per line in each language).
 
 **HF account mistake to not repeat.** There were TWO HF accounts at play:
 - `trishuli` (email `thapa_aashish@proton.me`) — token `hf_YCp...` was found on
-  cdjk@100.117.21.47 at `~/.cache/huggingface/token`. This token does NOT have
+  cdjk@<private-storage-tailnet-ip> at `~/.cache/huggingface/token`. This token does NOT have
   access to flores_plus.
 - `voidash` (no email set) — token `hf_CvO...` at
-  cdjk@100.117.21.47 `~/.ssh/.env_tokens`. This is the account that accepted
+  cdjk@<private-storage-tailnet-ip> `~/.ssh/.env_tokens`. This is the account that accepted
   the flores_plus gate. Use this for any gated-dataset work.
 
 The k2 HF token was updated to `hf_CvO...` (voidash) in ~/.cache/huggingface/token,

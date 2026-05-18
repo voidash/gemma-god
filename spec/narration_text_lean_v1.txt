@@ -1,0 +1,89 @@
+# PreVillage Narration - Lean VO Draft
+
+Target runtime: 3:00.
+
+## 0:00-0:16
+
+Three weeks. Four offices. Four versions of the same form. Almost eight thousand rupees paid to middlemen.
+
+The law was public. The route was privileged.
+
+People were not paying for the service. They were paying for the path.
+
+## 0:16-0:35
+
+I could keep pushing.
+
+I had GPU access, technical knowledge, people who helped me record voices, and enough obsession to keep debugging after every failed answer.
+
+But Kathmandu is also a privilege. So I travelled 180 kilometers to Jiri to see how an office actually works, and where the real gap lives.
+
+## 0:35-0:50
+
+That trip changed the product.
+
+The problem was not only bad websites. It was an interface problem, a routing problem, and a needle-in-the-haystack problem.
+
+People already know how to speak, call, and use WhatsApp. Government help should start there.
+
+## 0:50-1:12
+
+A citizen does not begin with a portal URL.
+
+She asks naturally: Kirtipur Municipality, marriage registration, how do I do it?
+
+That is the job: turn a human sentence into a route.
+
+Where is this? What service is this? What intent is hidden inside the sentence?
+
+## 1:12-1:35
+
+So PreVillage is not a generic answering machine.
+
+It is a government-service navigator.
+
+Gemma was pivotal because it can run small enough for local deployment, but still reason through messy speech, repair noisy Nepali text, ask the next question, and compose from sources.
+
+The first job is not to answer. The first job is to understand the case.
+
+## 1:35-1:58
+
+RAG alone is weak when truth is scattered across old websites, PDFs, office habits, and the memory of one contact officer.
+
+So we built a registry of government sources, crawlers, health checks, and a self-healing pipeline.
+
+Official websites give the law. But the path often lives somewhere else.
+
+## 1:58-2:24
+
+That is why we interviewed people inside offices.
+
+Which counter first? Which room? What time is easiest? Which document do people forget? Why are they sent back?
+
+Those answers go through admin review, become practical sources, and can be cited later beside official government sources.
+
+Tacit knowledge is only unfair when it stays trapped in one office corridor.
+
+## 2:24-2:42
+
+When PreVillage does not know, it should not hallucinate.
+
+It says what is missing, shows what sources it checked, and turns the citizen's question into an officer outreach message through the WhatsApp bridge.
+
+The answer is not invented. It is asked, reviewed, and folded back into the system for the next person.
+
+## 2:42-2:55
+
+Nepal was never voice-poor. The internet UX was not built for us.
+
+A citizen speaks. Our Nepali ASR transcribes. Gemma fixes the rough text and plans the intent. Retrieval finds official and practical sources. Our Nepali TTS speaks back.
+
+On WhatsApp and kiosks, help starts where people already ask for help.
+
+## 2:55-3:00
+
+The point is not that every office needs an L40 GPU.
+
+A small local model can sit inside the office as a low-cost helpdesk.
+
+I used privilege to find the path. PreVillage exists so the next person does not need privilege to use their own government.

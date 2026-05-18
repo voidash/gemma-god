@@ -240,7 +240,7 @@ generation kernels and doesn't use HF logits processors.
 ### 11. v2 GGUF exists. Pi 5 deploy is unblocked
 
 `voidash/gemma-helpdesk-v2-e2b-seed42/gguf/` has both Q4_K_M (3.26 GB) and
-bf16 (8.84 GB). Pi 5 8GB target is Q4_K_M. The `pi@100.86.86.45` Tailscale
+bf16 (8.84 GB). Pi 5 8GB target is Q4_K_M. The `pi@<pi-tailnet-ip>` Tailscale
 node lost its SSH password during 2026-04-29 demo prep — recovery is the
 `init=/bin/sh` trick on the SD card's `cmdline.txt`. If v3 ships a GGUF, the
 Pi deploy is one llama-server invocation.

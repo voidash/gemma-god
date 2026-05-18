@@ -1,0 +1,15 @@
+{
+  "source_id": "daotanahu_moha_gov_np",
+  "version": 1,
+  "entry_points": [
+    "https://daotanahu.moha.gov.np",
+    "https://daotanahu.moha.gov.np/page/na-gara-kata-pa-rata-l-pa"
+  ],
+  "max_depth": 2,
+  "max_pdf_depth": 1,
+  "max_html_fetches": 80,
+  "max_total_fetches": 160,
+  "max_elapsed_sec": 600,
+  "rate_limit_ms": 1000,
+  "notes": "Focused DAO Tanahun source for duplicate/lost citizenship FAQ coverage. The central MoHA source has laws/reports but not the citizen-facing duplicate citizenship checklist."
+}

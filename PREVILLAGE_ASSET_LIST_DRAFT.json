@@ -1,0 +1,116 @@
+{
+  "project": "previllage-gemma-for-good-2026",
+  "updated_at": "2026-05-17",
+  "assets": [
+    {
+      "id": "reddit_origin_post",
+      "type": "screenshot",
+      "query": "User-provided Reddit post screenshot or browser capture",
+      "context": "Origin story: company/PAN registration took weeks and middlemen because the practical route was hidden.",
+      "needed_for": ["B01", "B02"],
+      "source_hints": ["r/Nepal pasted content", "capture manually if logged in"],
+      "priority": "must_have",
+      "status": "pending"
+    },
+    {
+      "id": "jiri_road_mountains",
+      "type": "video_clip",
+      "query": "Raw Jiri travel and mountain footage",
+      "context": "Shows 180 km trip and remote-office reality.",
+      "needed_for": ["B03", "B06", "B08"],
+      "source_hints": ["user phone/camera"],
+      "priority": "must_have",
+      "status": "pending"
+    },
+    {
+      "id": "mayor_pitch",
+      "type": "video_clip",
+      "query": "Footage of presenting PreVillage idea to Jiri mayor",
+      "context": "Proves field validation and real municipal pitch.",
+      "needed_for": ["B06"],
+      "source_hints": ["user phone/camera"],
+      "priority": "must_have",
+      "status": "pending"
+    },
+    {
+      "id": "cdo_pitch",
+      "type": "video_clip",
+      "query": "Footage of presenting or discussing with CDO/officials",
+      "context": "Shows government-office stakeholder engagement.",
+      "needed_for": ["B06"],
+      "source_hints": ["user phone/camera"],
+      "priority": "nice_to_have",
+      "status": "pending"
+    },
+    {
+      "id": "information_officer_interview",
+      "type": "video_clip",
+      "query": "Interview with Jiri information officer",
+      "context": "Human practical source layer: room routes, documents, office reality.",
+      "needed_for": ["B06"],
+      "source_hints": ["user phone/camera"],
+      "priority": "must_have",
+      "status": "pending"
+    },
+    {
+      "id": "training_screens",
+      "type": "video_clip",
+      "query": "Screens during ASR/TTS/SFT/training/eval",
+      "context": "Technical privilege and real grunt work: L40S, training logs, eval gates.",
+      "needed_for": ["B03", "B05"],
+      "source_hints": ["screen recordings", "screenshots"],
+      "priority": "must_have",
+      "status": "pending"
+    },
+    {
+      "id": "sister_voice_tts",
+      "type": "video_clip",
+      "query": "Sister voice recording or TTS data preparation footage",
+      "context": "Human and family layer behind Nepali voice interface.",
+      "needed_for": ["B07"],
+      "source_hints": ["user phone/camera"],
+      "priority": "must_have",
+      "status": "pending"
+    },
+    {
+      "id": "kiosk_voice_demo",
+      "type": "video_clip",
+      "query": "Citizen speaking into kiosk/web interface and receiving answer",
+      "context": "Main product demonstration: voice -> fixer -> RAG -> TTS.",
+      "needed_for": ["B05", "B07", "B08"],
+      "source_hints": ["to be recorded after kiosk v0 exists"],
+      "priority": "must_have",
+      "status": "pending"
+    },
+    {
+      "id": "whatsapp_outreach_demo",
+      "type": "video_clip",
+      "query": "WhatsApp demo showing known answer and missing-source contact-officer outreach",
+      "context": "Shows human-in-loop for information the corpus lacks.",
+      "needed_for": ["B07"],
+      "source_hints": ["separate WhatsApp agent output"],
+      "priority": "must_have",
+      "status": "pending"
+    },
+    {
+      "id": "product_chat_screens",
+      "type": "screenshot",
+      "query": "Existing frontend chat screenshots",
+      "context": "Fallback visual for current RAG UI.",
+      "needed_for": ["B05"],
+      "source_hints": ["repo screenshots"],
+      "priority": "nice_to_have",
+      "status": "pending"
+    },
+    {
+      "id": "previ_lays_animation",
+      "type": "svg",
+      "query": "Hand-drawn chicken laying egg labeled privilege, cracking into infrastructure boxes",
+      "context": "Visual metaphor for privilege laying public infrastructure.",
+      "needed_for": ["B04"],
+      "source_hints": ["generate in Remotion/SVG"],
+      "priority": "nice_to_have",
+      "status": "pending"
+    }
+  ]
+}

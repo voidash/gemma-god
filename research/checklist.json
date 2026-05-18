@@ -1,0 +1,41 @@
+{
+  "project": "previllage-gemma-for-good-2026",
+  "updated": "2026-05-18",
+  "tasks": [
+    {
+      "id": "sync_local_spec",
+      "status": "done",
+      "notes": "rough_spec_v3_timeline.md synced to SSD"
+    },
+    {
+      "id": "stage_local_assets",
+      "status": "done",
+      "notes": "PDF, reference video, reference images, hen clip staged"
+    },
+    {
+      "id": "capture_middlemen_news",
+      "status": "done",
+      "notes": "Captured 6 article screenshots plus a corrected MyRepublica AMP screenshot for the 0:07-0:15 montage"
+    },
+    {
+      "id": "research_four_office_route",
+      "status": "done",
+      "notes": "Captured OCR/CAMIS plus IRD Tripureshwor/Kalimati/Kalanki pages and created four_office_route_map_1920x1080 SVG/PNG"
+    },
+    {
+      "id": "design_reddit_origin_card",
+      "status": "done",
+      "notes": "Created recreated Reddit-origin card as SVG/PNG and validated preview"
+    },
+    {
+      "id": "design_form_process_animation",
+      "status": "done",
+      "notes": "Created form_process_overlay_1920x1080 SVG/PNG showing online form -> print/check -> office visit -> redirection -> repeat"
+    },
+    {
+      "id": "sequence_spec_v1",
+      "status": "done",
+      "notes": "Created full 3-minute source-of-truth sequence spec at spec/sequence_spec_v1.md"
+    }
+  ]
+}

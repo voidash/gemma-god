@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0f172a" />
+  <title>Tacit Collection · helpdesk.ampixa.com</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🎙️%3C/text%3E%3C/svg%3E" />
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg-2: #1e293b;
+      --bg-3: #334155;
+      --text: #e2e8f0;
+      --text-dim: #94a3b8;
+      --primary: #38bdf8;
+      --record: #f87171;
+      --record-active: #ef4444;
+      --success: #34d399;
+      --warning: #fbbf24;
+      --border: #334155;
+      --radius: 12px;
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f8fafc;
+        --bg-2: #ffffff;
+        --bg-3: #e2e8f0;
+        --text: #0f172a;
+        --text-dim: #475569;
+        --border: #cbd5e1;
+      }
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+      min-height: 100vh;
+    }
+    header {
+      background: var(--bg-2);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 { font-size: 17px; font-weight: 600; flex: 1; }
+    header h1 .sub { color: var(--text-dim); font-weight: 400; font-size: 13px; }
+    header a { color: var(--text-dim); font-size: 13px; text-decoration: none; padding: 6px 10px; border-radius: 6px; }
+    header a:hover { background: var(--bg-3); color: var(--text); }
+
+    main { max-width: 720px; margin: 0 auto; padding: 24px 20px 80px; }
+    .intro {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px 18px;
+      margin-bottom: 24px;
+      color: var(--text-dim);
+      font-size: 14px;
+    }
+    .intro strong { color: var(--text); }
+
+    .field-group { margin-bottom: 24px; }
+    .field-group h2 {
+      font-size: 13px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 10px;
+    }
+    label { display: block; font-size: 13px; color: var(--text-dim); margin-bottom: 4px; }
+    input[type="text"] {
+      width: 100%;
+      padding: 11px 14px;
+      background: var(--bg-2);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 15px;
+    }
+    input[type="text"]:focus { outline: 2px solid var(--primary); outline-offset: -1px; }
+    .row-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    @media (max-width: 600px) { .row-2col { grid-template-columns: 1fr; } }
+
+    .q-card {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      margin-bottom: 14px;
+    }
+    .q-card.recorded { border-color: var(--success); }
+    .q-card .q-num {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--bg);
+      background: var(--text-dim);
+      padding: 2px 8px;
+      border-radius: 12px;
+      margin-bottom: 8px;
+    }
+    .q-card.recorded .q-num { background: var(--success); }
+    .q-card .q-en { font-size: 15px; font-weight: 500; margin-bottom: 4px; }
+    .q-card .q-ne { font-size: 14px; color: var(--text-dim); margin-bottom: 12px; }
+    .q-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .rec-btn {
+      width: 44px; height: 44px;
+      border: none;
+      border-radius: 50%;
+      background: var(--record);
+      color: white;
+      cursor: pointer;
+      font-size: 18px;
+      display: grid;
+      place-items: center;
+      transition: background 100ms, transform 100ms;
+    }
+    .rec-btn:hover { transform: scale(1.05); }
+    .rec-btn.recording { background: var(--record-active); animation: pulse 1.4s ease-in-out infinite; }
+    @keyframes pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(239,68,68,0.6); } 50% { box-shadow: 0 0 0 10px rgba(239,68,68,0); } }
+    .rec-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .rec-status { font-size: 13px; color: var(--text-dim); flex: 1; }
+    .rec-status.live { color: var(--record-active); font-weight: 600; }
+    .rec-status.done { color: var(--success); }
+    audio { max-width: 100%; height: 36px; }
+    .reset-btn {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+      padding: 6px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+    .reset-btn:hover { background: var(--bg-3); color: var(--text); }
+
+    .photo-input {
+      background: var(--bg-2);
+      border: 1px dashed var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      cursor: pointer;
+      text-align: center;
+      color: var(--text-dim);
+      font-size: 14px;
+    }
+    .photo-input:hover { border-color: var(--primary); color: var(--primary); }
+    .photo-input input { display: none; }
+    .photo-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+    .photo-thumb {
+      width: 80px; height: 80px;
+      border-radius: 8px;
+      object-fit: cover;
+      border: 1px solid var(--border);
+    }
+
+    .submit-row {
+      margin-top: 28px;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    .submit-btn {
+      padding: 14px 28px;
+      border: none;
+      border-radius: 10px;
+      background: var(--primary);
+      color: var(--bg);
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 600;
+    }
+    .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .submit-status {
+      flex: 1;
+      font-size: 14px;
+      color: var(--text-dim);
+      font-family: ui-monospace, "SF Mono", monospace;
+    }
+    .submit-status.success { color: var(--success); }
+    .submit-status.error { color: var(--record); }
+
+    .thank-you {
+      text-align: center;
+      padding: 40px 20px;
+      background: var(--bg-2);
+      border: 1px solid var(--success);
+      border-radius: var(--radius);
+      margin-top: 30px;
+    }
+    .thank-you h2 { color: var(--success); margin-bottom: 10px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Tacit Collection <span class="sub">· share what you know</span></h1>
+    <a href="/">← home</a>
+    <a href="/chat">chat</a>
+  </header>
+
+  <main>
+    <div class="intro" id="intro"></div>
+
+    <div id="form-section">
+      <div class="field-group">
+        <h2>About you</h2>
+        <div class="row-2col">
+          <div>
+            <label for="nameInput">Your name</label>
+            <input id="nameInput" type="text" placeholder="e.g. Ram Bahadur Karki" autocomplete="name" />
+          </div>
+          <div>
+            <label for="officeInput">Office (where you work / what you describe)</label>
+            <input id="officeInput" type="text" placeholder="e.g. Jiri Municipality, Ward 4" autocomplete="organization" />
+          </div>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <h2>Questions</h2>
+        <div id="questions"></div>
+      </div>
+
+      <div class="field-group">
+        <h2>Photos (optional)</h2>
+        <label class="photo-input" for="photoFiles">
+          📷 Tap to add photos · max 5 · 5MB each
+          <input id="photoFiles" type="file" accept="image/*" multiple capture="environment" />
+        </label>
+        <div class="photo-grid" id="photoGrid"></div>
+      </div>
+
+      <div class="submit-row">
+        <button id="submitBtn" class="submit-btn">Submit</button>
+        <span id="submitStatus" class="submit-status"></span>
+      </div>
+    </div>
+
+    <div id="thankYou" style="display:none">
+      <div class="thank-you">
+        <h2>धन्यवाद · Thank you</h2>
+        <p>Your contribution has been received. Our team will review and add the useful parts to the helpdesk.</p>
+        <p style="margin-top:14px;font-size:13px;color:var(--text-dim)">
+          Submission ID: <span id="thankId" style="font-family:ui-monospace,monospace"></span>
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const introEl = document.getElementById("intro");
+    const questionsEl = document.getElementById("questions");
+    const photoFilesInput = document.getElementById("photoFiles");
+    const photoGrid = document.getElementById("photoGrid");
+    const submitBtn = document.getElementById("submitBtn");
+    const submitStatus = document.getElementById("submitStatus");
+    const formSection = document.getElementById("form-section");
+    const thankYou = document.getElementById("thankYou");
+    const thankId = document.getElementById("thankId");
+    const nameInput = document.getElementById("nameInput");
+    const officeInput = document.getElementById("officeInput");
+
+    // Per-question state: {qid: {blob, mime, ext, status, mediaRecorder, chunks, stream}}
+    const recordings = {};
+    const photoFiles = [];
+
+    function escapeHtml(s) {
+      return (s || "").replace(/[&<>"']/g, (c) => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+    }
+
+    async function loadQuestionnaire() {
+      try {
+        const r = await fetch("/interview/questionnaire");
+        if (!r.ok) throw new Error("HTTP " + r.status);
+        const data = await r.json();
+        introEl.innerHTML = `<strong>${escapeHtml(data.title || "Interview")}</strong><br>${escapeHtml(data.intro || "")}`;
+        renderQuestions(data.questions || []);
+      } catch (e) {
+        introEl.innerHTML = `<strong style="color:var(--record)">Could not load questionnaire:</strong> ${escapeHtml(e.message || e)}`;
+      }
+    }
+
+    function renderQuestions(questions) {
+      questionsEl.innerHTML = "";
+      questions.forEach((q, i) => {
+        const card = document.createElement("div");
+        card.className = "q-card";
+        card.id = "q-" + q.id;
+        card.innerHTML = `
+          <div class="q-num">Q${i + 1}</div>
+          <div class="q-en">${escapeHtml(q.question || "")}</div>
+          <div class="q-ne">${escapeHtml(q.question_ne || "")}</div>
+          <div class="q-controls">
+            <button class="rec-btn" data-qid="${q.id}" aria-label="Record" title="Tap to record">●</button>
+            <span class="rec-status" data-qid="${q.id}">Tap the red button to record</span>
+            <audio data-qid="${q.id}" controls style="display:none"></audio>
+            <button class="reset-btn" data-qid="${q.id}" data-action="reset" style="display:none">↺ re-record</button>
+          </div>
+        `;
+        questionsEl.appendChild(card);
+      });
+      questionsEl.querySelectorAll(".rec-btn[data-qid]").forEach((btn) => {
+        btn.addEventListener("click", () => toggleRecord(btn.dataset.qid));
+      });
+      questionsEl.querySelectorAll(".reset-btn[data-action='reset']").forEach((btn) => {
+        btn.addEventListener("click", () => resetRecording(btn.dataset.qid));
+      });
+    }
+
+    function pickMime() {
+      // Try the common formats most browsers support. webm/opus is the broadest.
+      const candidates = [
+        "audio/webm;codecs=opus",
+        "audio/webm",
+        "audio/mp4",
+        "audio/ogg;codecs=opus",
+      ];
+      for (const m of candidates) {
+        if (window.MediaRecorder && MediaRecorder.isTypeSupported(m)) return m;
+      }
+      return "";
+    }
+    function extFromMime(m) {
+      if (m.startsWith("audio/webm")) return "webm";
+      if (m.startsWith("audio/mp4")) return "m4a";
+      if (m.startsWith("audio/ogg")) return "ogg";
+      return "webm";
+    }
+
+    async function toggleRecord(qid) {
+      const state = recordings[qid];
+      if (state && state.mediaRecorder && state.mediaRecorder.state === "recording") {
+        // stop
+        state.mediaRecorder.stop();
+        return;
+      }
+      // start
+      let stream;
+      try {
+        stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      } catch (e) {
+        setStatus(qid, "Mic permission denied: " + (e.message || e), "live");
+        return;
+      }
+      const mime = pickMime();
+      const mr = mime ? new MediaRecorder(stream, { mimeType: mime }) : new MediaRecorder(stream);
+      const chunks = [];
+      mr.ondataavailable = (ev) => { if (ev.data && ev.data.size > 0) chunks.push(ev.data); };
+      mr.onstop = () => {
+        const finalMime = mr.mimeType || mime || "audio/webm";
+        const blob = new Blob(chunks, { type: finalMime });
+        const ext = extFromMime(finalMime);
+        recordings[qid] = { blob, mime: finalMime, ext, status: "done" };
+        finalizeRecording(qid, blob);
+        // release the mic
+        if (stream) stream.getTracks().forEach((t) => t.stop());
+      };
+      const startTs = Date.now();
+      recordings[qid] = { mediaRecorder: mr, chunks, mime, status: "recording", stream };
+      mr.start();
+      const recBtn = document.querySelector(`.rec-btn[data-qid="${qid}"]`);
+      recBtn.classList.add("recording");
+      recBtn.textContent = "■";
+      setStatus(qid, "Recording… tap ■ to stop", "live");
+      const tick = setInterval(() => {
+        if (!recordings[qid] || recordings[qid].status !== "recording") {
+          clearInterval(tick);
+          return;
+        }
+        const sec = Math.floor((Date.now() - startTs) / 1000);
+        setStatus(qid, `Recording… ${sec}s`, "live");
+      }, 500);
+    }
+
+    function finalizeRecording(qid, blob) {
+      const recBtn = document.querySelector(`.rec-btn[data-qid="${qid}"]`);
+      recBtn.classList.remove("recording");
+      recBtn.textContent = "●";
+      const audioEl = document.querySelector(`audio[data-qid="${qid}"]`);
+      audioEl.src = URL.createObjectURL(blob);
+      audioEl.style.display = "";
+      const resetBtn = document.querySelector(`.reset-btn[data-qid="${qid}"][data-action='reset']`);
+      resetBtn.style.display = "";
+      const sizeKb = Math.round(blob.size / 1024);
+      setStatus(qid, `Recorded · ${sizeKb} KB`, "done");
+      document.getElementById("q-" + qid).classList.add("recorded");
+    }
+
+    function resetRecording(qid) {
+      delete recordings[qid];
+      const audioEl = document.querySelector(`audio[data-qid="${qid}"]`);
+      audioEl.style.display = "none";
+      audioEl.src = "";
+      const resetBtn = document.querySelector(`.reset-btn[data-qid="${qid}"][data-action='reset']`);
+      resetBtn.style.display = "none";
+      setStatus(qid, "Tap the red button to record", "");
+      document.getElementById("q-" + qid).classList.remove("recorded");
+    }
+
+    function setStatus(qid, text, kind) {
+      const el = document.querySelector(`.rec-status[data-qid="${qid}"]`);
+      el.textContent = text;
+      el.className = "rec-status" + (kind ? " " + kind : "");
+    }
+
+    photoFilesInput.addEventListener("change", () => {
+      for (const f of photoFilesInput.files) {
+        if (photoFiles.length >= 5) break;
+        if (f.size > 5 * 1024 * 1024) continue;
+        photoFiles.push(f);
+        const img = document.createElement("img");
+        img.className = "photo-thumb";
+        img.src = URL.createObjectURL(f);
+        photoGrid.appendChild(img);
+      }
+      photoFilesInput.value = "";
+    });
+
+    submitBtn.addEventListener("click", async () => {
+      const name = nameInput.value.trim();
+      const office = officeInput.value.trim();
+      if (!name || !office) {
+        submitStatus.textContent = "Please fill in your name and office.";
+        submitStatus.className = "submit-status error";
+        return;
+      }
+      const recorded = Object.entries(recordings).filter(([_, v]) => v.blob);
+      if (recorded.length === 0) {
+        submitStatus.textContent = "Record at least one answer before submitting.";
+        submitStatus.className = "submit-status error";
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitStatus.textContent = "Uploading…";
+      submitStatus.className = "submit-status";
+
+      const fd = new FormData();
+      fd.append("name", name);
+      fd.append("office", office);
+      for (const [qid, st] of recorded) {
+        fd.append("question_ids", qid);
+        fd.append("audio_files", st.blob, `${qid}.${st.ext}`);
+      }
+      for (const f of photoFiles) fd.append("photo_files", f, f.name);
+
+      try {
+        const r = await fetch("/interview/submit", { method: "POST", body: fd });
+        if (!r.ok) {
+          const t = await r.text();
+          throw new Error(`HTTP ${r.status}: ${t.slice(0, 300)}`);
+        }
+        const j = await r.json();
+        formSection.style.display = "none";
+        thankYou.style.display = "";
+        thankId.textContent = j.id;
+      } catch (e) {
+        submitStatus.textContent = "Submit failed: " + (e.message || e);
+        submitStatus.className = "submit-status error";
+        submitBtn.disabled = false;
+      }
+    });
+
+    loadQuestionnaire();
+  </script>
+</body>
+</html>

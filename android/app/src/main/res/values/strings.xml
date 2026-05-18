@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Nepal Gov Helpdesk</string>
+    <string name="hint_input">Ask in Nepali, Roman-Nepali, or English…</string>
+    <string name="action_send">Send</string>
+    <string name="action_settings">Settings</string>
+    <string name="settings_server_url">Server URL</string>
+    <string name="settings_bearer_token">Bearer token (optional)</string>
+    <string name="settings_save">Save</string>
+    <string name="settings_test">Test connection</string>
+    <string name="placeholder_no_chat">Hi! Ask anything about Nepal-government services. I cite my sources, and refuse if I can\'t find an authoritative one.</string>
+    <string name="label_thinking">Thinking…</string>
+    <string name="label_refusal">No authoritative source found</string>
+    <string name="action_dial_hello_sarkar">Call Hello Sarkar 1111</string>
+    <string name="label_citizen_interview">CITIZEN INTERVIEW</string>
+    <string name="label_govnp">GOV.NP</string>
+</resources>

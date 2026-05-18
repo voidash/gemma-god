@@ -79,14 +79,12 @@ def _unwrap_gemma4_clippable_linears(model) -> int:
     in a custom clipping module that PEFT doesn't recognise. We unwrap before
     LoRA injection / adapter loading.
     """
-    import torch.nn as nn  # type: ignore[import-not-found]
-
     n_replaced = 0
     for parent in list(model.modules()):
         for child_name, child in list(parent.named_children()):
             if type(child).__name__ == "Gemma4ClippableLinear":
                 inner = getattr(child, "linear", None)
-                if isinstance(inner, nn.Linear):
+                if inner is not None:
                     setattr(parent, child_name, inner)
                     n_replaced += 1
     return n_replaced
@@ -111,6 +109,8 @@ class HFTransformersBackend:
         device: str = "cuda",
         torch_dtype: str = "bfloat16",
         chat_template_repo_id: str | None = None,
+        load_in_4bit: bool = False,
+        load_in_8bit: bool = False,
     ):
         import torch  # type: ignore[import-not-found]
         from transformers import AutoModelForCausalLM, AutoTokenizer  # type: ignore[import-not-found]
@@ -155,6 +155,7 @@ class HFTransformersBackend:
             torch_dtype=dtype,
             device_map=device,
             trust_remote_code=True,
+            **self._quantization_kwargs(load_in_4bit, load_in_8bit, dtype),
         )
         logging.info("base model loaded in %.1fs", time.time() - t0)
 
@@ -180,6 +181,25 @@ class HFTransformersBackend:
 
         self.device = next(self.model.parameters()).device
         logging.info("backend ready on %s", self.device)
+
+    @staticmethod
+    def _quantization_kwargs(load_in_4bit: bool, load_in_8bit: bool, dtype):
+        if load_in_4bit and load_in_8bit:
+            raise ValueError("--load-in-4bit and --load-in-8bit are mutually exclusive")
+        if not load_in_4bit and not load_in_8bit:
+            return {}
+        from transformers import BitsAndBytesConfig  # type: ignore[import-not-found]
+
+        if load_in_4bit:
+            return {
+                "quantization_config": BitsAndBytesConfig(
+                    load_in_4bit=True,
+                    bnb_4bit_quant_type="nf4",
+                    bnb_4bit_compute_dtype=dtype,
+                    bnb_4bit_use_double_quant=True,
+                )
+            }
+        return {"quantization_config": BitsAndBytesConfig(load_in_8bit=True)}
 
     def chat(self, system: str, user: str, max_tokens: int | None = None) -> str:
         import torch  # type: ignore[import-not-found]
@@ -1065,6 +1085,14 @@ def main() -> int:
     ap.add_argument("--skip", default="", help="comma-separated parts to skip")
     ap.add_argument("--device", default="cuda")
     ap.add_argument("--torch-dtype", default="bfloat16")
+    ap.add_argument("--load-in-4bit", action="store_true", help="load HF backend in 4-bit NF4")
+    ap.add_argument("--load-in-8bit", action="store_true", help="load HF backend in 8-bit")
+    ap.add_argument(
+        "--max-new-tokens",
+        type=int,
+        default=500,
+        help="default generation budget for backend calls that do not override max_tokens",
+    )
     ap.add_argument("--seed", type=int, default=42)
     ap.add_argument("--verbose", action="store_true")
     args = ap.parse_args()
@@ -1094,8 +1122,11 @@ def main() -> int:
         sft_backend = HFTransformersBackend(
             base_model_id=args.base,
             adapter_path=args.adapter,
+            max_new_tokens=args.max_new_tokens,
             device=args.device,
             torch_dtype=args.torch_dtype,
+            load_in_4bit=args.load_in_4bit,
+            load_in_8bit=args.load_in_8bit,
         )
 
     judge_backend = None

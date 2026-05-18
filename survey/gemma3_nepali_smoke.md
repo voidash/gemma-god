@@ -4,7 +4,7 @@
 **Host:** k2 (Mac Studio M2 Ultra, 64 GB), via `mlx-lm` in `~/.venvs/gemma-god`
 **Model:** `mlx-community/gemma-3-4b-it-bf16` (bf16, ~9.3 GB) cached at `/Volumes/T9/hf_cache/`
 **Load time:** 263 s (first load from disk), <5 s inference per prompt after load
-**Environment:** `HF_HOME=/Volumes/T9/hf_cache`, HF token installed, MLX 0.31.1
+**Environment:** local HF cache, authenticated Hugging Face session, MLX 0.31.1
 
 ## Three-prompt smoke test
 
@@ -76,5 +76,6 @@ Base Gemma 3 4B in bf16, with no adaptation, is NOT viable for a Nepali gov help
 
 - LM Studio IS installed on k2 under `khatradev` admin account (`~/khatradev/.lmstudio/`, with mlx-llm-mac-arm64 backend). Could be used if we want a GUI browse-and-compare workflow, but headless `mlx_lm.server` under k2 is what we're standardizing on.
 - APFS reformat of T9 succeeded; symlinks work (critical for HF Hub cache structure).
-- `cdjk@100.117.21.47` HF token installed to `~/.cache/huggingface/token` and `$HF_HOME/token` on k2, `HF_TOKEN` persisted in `~/.zshrc`.
+- Hugging Face auth was configured locally for the smoke host. Do not commit or
+  document token file paths in public runbooks.
 - 263 s cold load time for bf16 Gemma 3 4B — acceptable for long-running server process, not interactive per-query.

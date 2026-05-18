@@ -98,15 +98,13 @@ def _unwrap_gemma4_clippable_linears(model) -> int:
 
     Returns the number of replacements made.
     """
-    import torch.nn as nn
-
     n_replaced = 0
     # Snapshot the module list — we mutate during iteration, so capture first.
     for parent in list(model.modules()):
         for child_name, child in list(parent.named_children()):
             if type(child).__name__ == "Gemma4ClippableLinear":
                 inner = getattr(child, "linear", None)
-                if isinstance(inner, nn.Linear):
+                if inner is not None:
                     setattr(parent, child_name, inner)
                     n_replaced += 1
     return n_replaced
@@ -409,6 +407,8 @@ def main() -> int:
     ap.add_argument("--lora-dropout", type=float, default=0.05)
     ap.add_argument("--use-rslora", action="store_true", default=True)
     ap.add_argument("--no-rslora", dest="use_rslora", action="store_false")
+    ap.add_argument("--load-in-4bit", action="store_true", help="load base model in 4-bit NF4 for QLoRA")
+    ap.add_argument("--load-in-8bit", action="store_true", help="load base model in 8-bit for LoRA")
     ap.add_argument("--max-seq-length", type=int, default=2048)
     ap.add_argument("--eval-every-steps", type=int, default=200)
     ap.add_argument("--save-every-steps", type=int, default=500)
@@ -438,7 +438,7 @@ def main() -> int:
     # Lazy imports — keep startup time low for failure detection.
     import torch
     from transformers import AutoModelForCausalLM, AutoTokenizer
-    from peft import LoraConfig, get_peft_model
+    from peft import LoraConfig, get_peft_model, prepare_model_for_kbit_training
 
     hf_token = _hf_token()
     chat_template = _load_chat_template_jinja(args.model_id, hf_token)
@@ -449,13 +449,33 @@ def main() -> int:
     if tokenizer.pad_token_id is None:
         tokenizer.pad_token_id = tokenizer.eos_token_id
 
-    model = AutoModelForCausalLM.from_pretrained(
-        args.model_id,
-        token=hf_token,
-        torch_dtype=torch.bfloat16,
-        device_map="auto",
-        attn_implementation="sdpa",
-    )
+    if args.load_in_4bit and args.load_in_8bit:
+        logging.error("--load-in-4bit and --load-in-8bit are mutually exclusive")
+        return 1
+
+    load_kwargs: dict[str, Any] = {
+        "token": hf_token,
+        "torch_dtype": torch.bfloat16,
+        "device_map": "auto",
+        "attn_implementation": "sdpa",
+    }
+    if args.load_in_4bit:
+        from transformers import BitsAndBytesConfig
+
+        load_kwargs["quantization_config"] = BitsAndBytesConfig(
+            load_in_4bit=True,
+            bnb_4bit_quant_type="nf4",
+            bnb_4bit_compute_dtype=torch.bfloat16,
+            bnb_4bit_use_double_quant=True,
+        )
+        logging.info("loading base in 4-bit NF4 QLoRA mode")
+    elif args.load_in_8bit:
+        from transformers import BitsAndBytesConfig
+
+        load_kwargs["quantization_config"] = BitsAndBytesConfig(load_in_8bit=True)
+        logging.info("loading base in 8-bit LoRA mode")
+
+    model = AutoModelForCausalLM.from_pretrained(args.model_id, **load_kwargs)
     model.config.use_cache = False  # required for grad checkpointing later if needed
 
     # Gemma 4 wraps every Linear in a custom `Gemma4ClippableLinear` (inference-time
@@ -466,6 +486,16 @@ def main() -> int:
     n_unwrapped = _unwrap_gemma4_clippable_linears(model)
     if n_unwrapped:
         logging.info("unwrapped %d Gemma4ClippableLinear → nn.Linear for PEFT compatibility", n_unwrapped)
+
+    if args.load_in_4bit or args.load_in_8bit:
+        model = prepare_model_for_kbit_training(
+            model,
+            use_gradient_checkpointing=args.gradient_checkpointing,
+        )
+        logging.info("prepared quantized base model for k-bit adapter training")
+        if torch.cuda.is_available():
+            torch.cuda.empty_cache()
+            logging.info("cleared CUDA cache before adapter injection")
 
     logging.info("applying rsLoRA r=%d α=%d (rsLoRA=%s)", args.lora_rank, args.lora_alpha, args.use_rslora)
     lora_cfg = LoraConfig(

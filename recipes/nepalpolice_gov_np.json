@@ -1,0 +1,22 @@
+{
+  "source_id": "nepalpolice_gov_np",
+  "version": 2,
+  "entry_points": [
+    "https://nepalpolice.gov.np",
+    "https://www.nepalpolice.gov.np/public-services/",
+    "https://www.nepalpolice.gov.np/public-services/general-police-services/",
+    "https://cid.nepalpolice.gov.np/information-police-clearance-report/",
+    "https://operation.nepalpolice.gov.np/information-police-clearance-report/"
+  ],
+  "max_depth": 3,
+  "max_html_fetches": 240,
+  "max_total_fetches": 500,
+  "max_elapsed_sec": 900,
+  "rate_limit_ms": 1000,
+  "allowed_subdomains": [
+    "www",
+    "cid",
+    "operation"
+  ],
+  "notes": "Nepal Police source for police report and clearance retrieval. v2 adds official CID/operation police-clearance procedure entry points and subdomains; v1 only surfaced the main homepage for clearance queries."
+}

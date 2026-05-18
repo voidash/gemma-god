@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0f172a" />
+  <title>helpdesk.ampixa.com · Nepal Government Helpdesk</title>
+  <meta name="description" content="A bilingual (Nepali / Roman-Nepali / English) helpdesk for navigating Nepal-government services, grounded in 877 .gov.np sources and citizen interviews." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🇳🇵%3C/text%3E%3C/svg%3E" />
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg-2: #1e293b;
+      --bg-3: #334155;
+      --text: #e2e8f0;
+      --text-dim: #94a3b8;
+      --primary: #38bdf8;
+      --tacit: #34d399;
+      --gov: #60a5fa;
+      --warning: #fbbf24;
+      --border: #334155;
+      --radius: 12px;
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f8fafc;
+        --bg-2: #ffffff;
+        --bg-3: #e2e8f0;
+        --text: #0f172a;
+        --text-dim: #475569;
+        --border: #cbd5e1;
+      }
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    .nav {
+      background: var(--bg-2);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 24px;
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .nav .brand { font-weight: 700; font-size: 15px; flex: 1; }
+    .nav .brand span { color: var(--text-dim); font-weight: 400; font-size: 13px; }
+    .nav a {
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 14px;
+      padding: 6px 12px;
+      border-radius: 6px;
+    }
+    .nav a:hover { color: var(--text); background: var(--bg-3); }
+    .nav a.cta { background: var(--primary); color: var(--bg); font-weight: 600; }
+    .nav a.cta:hover { opacity: 0.9; }
+
+    .wrap { max-width: 920px; margin: 0 auto; padding: 0 24px; }
+
+    .hero {
+      padding: 60px 0 40px;
+      text-align: center;
+    }
+    .hero .flag { font-size: 56px; margin-bottom: 12px; }
+    .hero h1 {
+      font-size: clamp(28px, 5vw, 44px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin-bottom: 14px;
+    }
+    .hero h1 .grad {
+      background: linear-gradient(90deg, var(--tacit), var(--primary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .hero .tagline {
+      color: var(--text-dim);
+      font-size: 17px;
+      max-width: 640px;
+      margin: 0 auto 28px;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn {
+      padding: 12px 22px;
+      border-radius: 10px;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 15px;
+      transition: transform 80ms;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary { background: var(--primary); color: var(--bg); }
+    .btn-secondary { background: var(--bg-3); color: var(--text); border: 1px solid var(--border); }
+
+    section { padding: 36px 0; border-top: 1px solid var(--border); }
+    section.no-divider { border-top: 0; }
+    section h2 {
+      font-size: 22px;
+      margin-bottom: 14px;
+      letter-spacing: -0.01em;
+    }
+    section p { color: var(--text-dim); margin-bottom: 12px; }
+    section p strong { color: var(--text); font-weight: 600; }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 18px;
+    }
+    @media (max-width: 700px) { .grid-2 { grid-template-columns: 1fr; } }
+    .card {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+    }
+    .card h3 { font-size: 15px; margin-bottom: 6px; }
+    .card .num {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: -0.02em;
+    }
+    .card.tacit .num { color: var(--tacit); }
+    .card.warn .num { color: var(--warning); }
+    .card p { font-size: 13px; color: var(--text-dim); margin-top: 6px; }
+
+    .arch {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+      margin-top: 16px;
+      overflow-x: auto;
+    }
+    .arch svg { display: block; margin: 0 auto; max-width: 100%; height: auto; }
+
+    .stack-list { list-style: none; }
+    .stack-list li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 14px;
+    }
+    .stack-list li:last-child { border-bottom: 0; }
+    .stack-list .label {
+      font-weight: 600;
+      min-width: 140px;
+      color: var(--primary);
+    }
+    .stack-list .val { color: var(--text-dim); }
+
+    .bullet-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+      margin-top: 14px;
+    }
+    @media (max-width: 700px) { .bullet-row { grid-template-columns: 1fr; } }
+    .bullet {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      padding: 14px;
+      border-radius: 10px;
+      font-size: 14px;
+    }
+    .bullet b { display: block; margin-bottom: 4px; color: var(--text); }
+    .bullet { color: var(--text-dim); }
+
+    footer {
+      padding: 30px 0 50px;
+      text-align: center;
+      color: var(--text-dim);
+      font-size: 13px;
+      border-top: 1px solid var(--border);
+      margin-top: 24px;
+    }
+    code {
+      background: var(--bg-3);
+      padding: 1px 6px;
+      border-radius: 4px;
+      font-family: ui-monospace, "SF Mono", monospace;
+      font-size: 0.92em;
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="brand">helpdesk.ampixa.com <span>· Nepal Gov Helpdesk</span></div>
+    <a href="/chat">Chat</a>
+    <a href="/interview" class="cta">Contribute</a>
+  </nav>
+
+  <header class="hero">
+    <div class="flag">🇳🇵</div>
+    <h1>A helpdesk that <span class="grad">actually answers</span> Nepal-government questions</h1>
+    <p class="tagline">
+      Ask in Nepali, Roman-Nepali, or English. Answers cite real <code>.gov.np</code> sources
+      and tacit knowledge from people who work the counter — not hallucinated guesses.
+    </p>
+    <div class="hero-buttons">
+      <a class="btn btn-primary" href="/chat">Try the chat →</a>
+      <a class="btn btn-secondary" href="/interview">Share what you know</a>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <section class="no-divider">
+      <h2>The problem</h2>
+      <p>
+        Nepal's government services are scattered across hundreds of <code>.gov.np</code> websites —
+        many in legacy fonts (Preeti, Kantipur), behind PDFs no search engine indexes,
+        with procedural details that change ward-by-ward.
+      </p>
+      <p>
+        Hello Sarkar 1111 helps over the phone, but is unreachable from a queue at 9 AM.
+        Search engines return form templates, not <em>"which counter do I go to first."</em>
+        The practical knowledge — the thing every experienced agent knows in their head —
+        rarely makes it onto a webpage.
+      </p>
+    </section>
+
+    <section>
+      <h2>What we built</h2>
+      <div class="grid-2">
+        <div class="card gov">
+          <div class="num">877</div>
+          <h3>Gov.np sources crawled</h3>
+          <p>A custom Rust crawler keeps a living corpus of federal, provincial,
+          and palika sites — Devanagari + Preeti font conversion, PDF text extraction,
+          deduplication, freshness scoring.</p>
+        </div>
+        <div class="card tacit">
+          <div class="num">growing</div>
+          <h3>Tacit corpus from interviews</h3>
+          <p>Citizens, ward officers, and consultants record what they know about the offices
+          they work — counter routes, timing, paperwork pitfalls. Stored as immutable audio,
+          curated by an admin before joining the corpus.</p>
+        </div>
+        <div class="card">
+          <div class="num">Gemma 4</div>
+          <h3>Fine-tuned LoRA composer</h3>
+          <p>Built on Google's Gemma 4 E2B, fine-tuned with a refusal-when-no-source
+          discipline and bilingual citation grammar. Composer over a hybrid retrieval
+          pipeline — not a free-form chatbot.</p>
+        </div>
+        <div class="card warn">
+          <div class="num">cite</div>
+          <h3>Or refuse</h3>
+          <p>Every factual claim carries the source URL it came from.
+          If no source meaningfully addresses your question, the system says so —
+          and tells you to call Hello Sarkar 1111.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>How it works</h2>
+      <div class="arch">
+        <svg viewBox="0 0 760 380" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+              <path d="M0,0 L0,6 L9,3 z" fill="#94a3b8" />
+            </marker>
+            <style>
+              .box { fill: #1e293b; stroke: #334155; stroke-width: 1.2; }
+              .box-tacit { fill: #064e3b; stroke: #34d399; }
+              .box-gov { fill: #1e3a8a; stroke: #60a5fa; }
+              .box-prim { fill: #0c4a6e; stroke: #38bdf8; }
+              .lbl { fill: #e2e8f0; font: 600 13px -apple-system, sans-serif; }
+              .sub { fill: #94a3b8; font: 400 11px -apple-system, sans-serif; }
+              .arrow-line { stroke: #94a3b8; stroke-width: 1.4; fill: none; marker-end: url(#arrow); }
+              .arrow-tacit { stroke: #34d399; stroke-width: 1.4; fill: none; marker-end: url(#arrow); }
+            </style>
+          </defs>
+
+          <!-- Citizen path (top) -->
+          <rect x="20" y="20" width="120" height="56" rx="8" class="box" />
+          <text x="80" y="46" class="lbl" text-anchor="middle">Citizen</text>
+          <text x="80" y="62" class="sub" text-anchor="middle">/chat</text>
+
+          <line x1="140" y1="48" x2="200" y2="48" class="arrow-line" />
+
+          <rect x="200" y="20" width="180" height="56" rx="8" class="box-prim" />
+          <text x="290" y="46" class="lbl" text-anchor="middle">FastAPI</text>
+          <text x="290" y="62" class="sub" text-anchor="middle">helpdesk.ampixa.com</text>
+
+          <line x1="380" y1="48" x2="440" y2="48" class="arrow-line" />
+
+          <rect x="440" y="20" width="160" height="56" rx="8" class="box" />
+          <text x="520" y="46" class="lbl" text-anchor="middle">Hybrid Retrieval</text>
+          <text x="520" y="62" class="sub" text-anchor="middle">tacit + gov.np</text>
+
+          <line x1="520" y1="76" x2="520" y2="120" class="arrow-line" />
+
+          <rect x="440" y="120" width="160" height="56" rx="8" class="box-tacit" />
+          <text x="520" y="146" class="lbl" text-anchor="middle">Tacit corpus</text>
+          <text x="520" y="162" class="sub" text-anchor="middle">interview claims</text>
+
+          <line x1="600" y1="148" x2="660" y2="148" class="arrow-line" />
+
+          <rect x="660" y="120" width="80" height="56" rx="8" class="box-gov" />
+          <text x="700" y="146" class="lbl" text-anchor="middle">Gov.np</text>
+          <text x="700" y="162" class="sub" text-anchor="middle">SQLite + FTS5</text>
+
+          <line x1="380" y1="76" x2="380" y2="220" class="arrow-line" />
+          <line x1="380" y1="220" x2="440" y2="220" class="arrow-line" />
+
+          <rect x="440" y="200" width="160" height="60" rx="8" class="box-prim" />
+          <text x="520" y="226" class="lbl" text-anchor="middle">Composer</text>
+          <text x="520" y="242" class="sub" text-anchor="middle">Gemma 4 + LoRA</text>
+          <text x="520" y="256" class="sub" text-anchor="middle">on Mac Studio (k2)</text>
+
+          <line x1="290" y1="76" x2="290" y2="320" class="arrow-line" />
+
+          <!-- Interviewee path (bottom) -->
+          <rect x="20" y="300" width="120" height="56" rx="8" class="box" />
+          <text x="80" y="326" class="lbl" text-anchor="middle">Interviewee</text>
+          <text x="80" y="342" class="sub" text-anchor="middle">/interview</text>
+
+          <line x1="140" y1="328" x2="200" y2="328" class="arrow-tacit" />
+
+          <rect x="200" y="300" width="180" height="56" rx="8" class="box-prim" />
+          <text x="290" y="326" class="lbl" text-anchor="middle">Audio + photos</text>
+          <text x="290" y="342" class="sub" text-anchor="middle">stored, awaiting review</text>
+
+          <line x1="380" y1="328" x2="440" y2="328" class="arrow-tacit" />
+
+          <rect x="440" y="300" width="160" height="56" rx="8" class="box" />
+          <text x="520" y="320" class="lbl" text-anchor="middle">Admin</text>
+          <text x="520" y="336" class="sub" text-anchor="middle">Vertex transcribe</text>
+          <text x="520" y="350" class="sub" text-anchor="middle">→ tacit corpus</text>
+
+          <line x1="520" y1="300" x2="520" y2="180" class="arrow-tacit" />
+        </svg>
+      </div>
+      <div class="bullet-row">
+        <div class="bullet">
+          <b>Citizen path</b>
+          Question → retrieval over both corpora → composed answer with citations.
+          Public, no auth.
+        </div>
+        <div class="bullet">
+          <b>Interview path</b>
+          Anyone records short answers per question. Audio is the source of truth.
+          Admin reviews, transcribes via Vertex, then promotes to corpus.
+        </div>
+        <div class="bullet">
+          <b>Where it runs</b>
+          The model lives on a Mac Studio (M2 Ultra) over Tailscale.
+          A Hetzner reverse-proxy on the public domain.
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Stack</h2>
+      <ul class="stack-list">
+        <li><span class="label">Crawler</span><span class="val">Rust + SQLite + custom recipe-driven crawler over 877 sources</span></li>
+        <li><span class="label">Retrieval</span><span class="val">SQLite FTS5 + bilingual anchor expansion (English/Roman-NE → Devanagari)</span></li>
+        <li><span class="label">Composer</span><span class="val">Gemma 4 E2B-IT + LoRA adapter trained on grounded-answer / refusal / anti-template slices</span></li>
+        <li><span class="label">Server</span><span class="val">FastAPI on Mac Studio M2 Ultra · transformers + MPS</span></li>
+        <li><span class="label">Tacit ASR</span><span class="val">Vertex AI (Gemini 2.5) for transcription on admin approve</span></li>
+        <li><span class="label">Hosting</span><span class="val">Traefik + Let's Encrypt on Hetzner Cloud → tailnet → k2</span></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Try it</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Ask a question</h3>
+          <p>Open the chat, type in any of three languages.
+          You'll get an answer with cited sources or an honest refusal.</p>
+          <p style="margin-top:12px"><a class="btn btn-primary" href="/chat">Open /chat</a></p>
+        </div>
+        <div class="card">
+          <h3>Contribute knowledge</h3>
+          <p>Work at a gov office? Visited one recently?
+          Record a few minutes of practical advice — what counter, what hours, what to bring.</p>
+          <p style="margin-top:12px"><a class="btn btn-primary" href="/interview">Open /interview</a></p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    Built for the Gemma hackathon · Mac Studio M2 Ultra + Hetzner CAX21 + Tailscale
+  </footer>
+</body>
+</html>

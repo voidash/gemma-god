@@ -1,0 +1,16 @@
+{
+  "source_id": "qa_nepalembassy_gov_np",
+  "version": 1,
+  "entry_points": [
+    "https://qa.nepalembassy.gov.np",
+    "https://qa.nepalembassy.gov.np/pages/passport-7/",
+    "https://qa.nepalembassy.gov.np/pages/contact-detail-15/",
+    "https://qa.nepalembassy.gov.np/pages/consular-service-25"
+  ],
+  "max_depth": 2,
+  "max_html_fetches": 80,
+  "max_total_fetches": 180,
+  "max_elapsed_sec": 600,
+  "rate_limit_ms": 900,
+  "notes": "Official Embassy of Nepal, Doha source for Qatar passport, contact, and consular routing."
+}

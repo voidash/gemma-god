@@ -1,0 +1,67 @@
+{
+  "project": "previllage-gemma-for-good-2026",
+  "phase": "phase_1_research_and_rough_spec",
+  "updated_at": "2026-05-17",
+  "items": [
+    {
+      "id": "lock_public_name",
+      "task": "Use PreVillage as public/video name; keep SpeakGov as internal repo/product-contract name.",
+      "status": "done",
+      "notes": "Documented in story file."
+    },
+    {
+      "id": "origin_reddit",
+      "task": "Ground origin story in Reddit post about 3 weeks, 4 offices, repeated forms, and middlemen.",
+      "status": "done",
+      "notes": "Reddit blocked tool access; user pasted full content. Summary and short quotes captured."
+    },
+    {
+      "id": "rough_spec",
+      "task": "Create creator-facing spec/rough_spec_v1.md from current timed script.",
+      "status": "pending",
+      "notes": "Next artifact for approval."
+    },
+    {
+      "id": "narration_text",
+      "task": "Create clean spec/narration_text.txt teleprompter script.",
+      "status": "pending",
+      "notes": "Narration drives final timing."
+    },
+    {
+      "id": "asset_manifest",
+      "task": "Create assets/asset_list.json and assets/manifest.json from available footage and required shots.",
+      "status": "pending",
+      "notes": "Needs user to drop footage into footage/raw."
+    },
+    {
+      "id": "asr_artifact",
+      "task": "Identify exact ASR model/artifact and inference command.",
+      "status": "blocked",
+      "notes": "Waiting for user."
+    },
+    {
+      "id": "tts_artifact",
+      "task": "Identify exact TTS model/voice and inference command.",
+      "status": "blocked",
+      "notes": "Waiting for user."
+    },
+    {
+      "id": "consent_jiri",
+      "task": "Confirm which Jiri mayor/CDO/information-officer footage can be public.",
+      "status": "blocked",
+      "notes": "Waiting for user."
+    },
+    {
+      "id": "whatsapp_demo",
+      "task": "Coordinate known-answer and missing-source WhatsApp flows with separate agent.",
+      "status": "in_progress",
+      "notes": "Contract in PREVILLAGE_DEMO_V0_COORDINATION.md."
+    },
+    {
+      "id": "kiosk_demo",
+      "task": "Build web/kiosk voice demo path for recording, transcript fixing, RAG answer, and TTS playback.",
+      "status": "pending",
+      "notes": "Needed for final video shots."
+    }
+  ]
+}

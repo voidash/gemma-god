@@ -1,0 +1,46 @@
+{
+  "title": "Tacit Collection Questionnaire",
+  "intro": "Help future citizens by sharing what you know about this office. Eight short questions. Speak in whichever language is comfortable — Nepali, Roman-Nepali, English, or mixed.",
+  "questions": [
+    {
+      "id": "office_identity",
+      "question": "What is the official name of this office? What do citizens commonly call it?",
+      "question_ne": "यो कार्यालयको आधिकारिक नाम के हो? नागरिकहरूले यसलाई के भनेर बोलाउँछन्?"
+    },
+    {
+      "id": "office_location",
+      "question": "Where exactly is the office? Building, floor, ward, nearby landmarks.",
+      "question_ne": "कार्यालय कहाँ छ? भवन, तला, वडा, नजिकैका चिन्हहरू।"
+    },
+    {
+      "id": "first_counter",
+      "question": "When a citizen walks in for the first time, which counter do they visit first, and what happens there?",
+      "question_ne": "नागरिक पहिलो पटक आउँदा कुन काउन्टरमा जान्छन्, र त्यहाँ के हुन्छ?"
+    },
+    {
+      "id": "documents_forgotten",
+      "question": "Which documents do people most often forget to bring? What happens when they do?",
+      "question_ne": "मानिसहरूले सबैभन्दा बढी कुन कागजात ल्याउन बिर्सन्छन्? बिर्सिएमा के हुन्छ?"
+    },
+    {
+      "id": "best_worst_times",
+      "question": "Best time of day to come? Worst time (long queues, lunch break, busy season)?",
+      "question_ne": "आउने सबैभन्दा राम्रो समय कुन हो? सबैभन्दा खराब समय (लामो लाइन, खाजा, व्यस्त मौसम)?"
+    },
+    {
+      "id": "rejection_reasons",
+      "question": "What are the top three reasons people get rejected or sent back from this office?",
+      "question_ne": "मानिसहरूलाई यो कार्यालयबाट फिर्ता पठाउने तीन प्रमुख कारण के हुन्?"
+    },
+    {
+      "id": "parking_transport",
+      "question": "Where do people park? What public transport options are nearby?",
+      "question_ne": "मानिसहरू कहाँ पार्किङ गर्छन्? नजिकै कुन सार्वजनिक यातायात उपलब्ध छ?"
+    },
+    {
+      "id": "wish_citizens_knew",
+      "question": "What's one thing you wish every citizen knew before walking into this office?",
+      "question_ne": "हरेक नागरिकले यो कार्यालय आउनु अघि जान्नैपर्ने एउटा कुरा के हो?"
+    }
+  ]
+}

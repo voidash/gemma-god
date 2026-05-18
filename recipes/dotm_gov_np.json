@@ -1,0 +1,11 @@
+{
+  "source_id": "dotm_gov_np",
+  "version": 1,
+  "entry_points": ["https://dotm.gov.np"],
+  "max_depth": 2,
+  "max_html_fetches": 120,
+  "max_total_fetches": 500,
+  "max_elapsed_sec": 900,
+  "rate_limit_ms": 800,
+  "notes": "Citizen-facing Department of Transport Management source for driving license and vehicle services. Keep crawl focused but allow same-site subdomains so online license portals can surface."
+}

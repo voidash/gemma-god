@@ -1,0 +1,26 @@
+# Gradle
+.gradle/
+build/
+local.properties
+.idea/
+*.iml
+captures/
+.cxx/
+
+# Android
+*.apk
+*.aab
+*.ap_
+*.dex
+*.class
+proguard/
+.externalNativeBuild/
+output.json
+
+# Keystores
+*.jks
+*.keystore
+release/
+
+# Mac
+.DS_Store

@@ -1,0 +1,77 @@
+{"district":"achham","display_name":"Achham","province":"Sudurpashchim Province","aliases":["achham"],"dao_domains":["daoachham.moha.gov.np"]}
+{"district":"arghakhanchi","display_name":"Arghakhanchi","province":"Lumbini Province","aliases":["arghakhanchi"],"dao_domains":["daoarghakhanchi.moha.gov.np"]}
+{"district":"baglung","display_name":"Baglung","province":"Gandaki Province","aliases":["baglung"],"dao_domains":["daobaglung.moha.gov.np"]}
+{"district":"baitadi","display_name":"Baitadi","province":"Sudurpashchim Province","aliases":["baitadi"],"dao_domains":["daobaitadi.moha.gov.np"]}
+{"district":"bajhang","display_name":"Bajhang","province":"Sudurpashchim Province","aliases":["daobajhang"],"dao_domains":["daobajhang.moha.gov.np"]}
+{"district":"bajura","display_name":"Bajura","province":"Sudurpashchim Province","aliases":["bajura"],"dao_domains":["daobajura.moha.gov.np"]}
+{"district":"banke","display_name":"Banke","province":"Lumbini Province","aliases":["banke","nepalgunj"],"dao_domains":["daobanke.moha.gov.np"]}
+{"district":"bara","display_name":"Bara","province":"Madhesh Province","aliases":["bara"],"dao_domains":["daobara.moha.gov.np"]}
+{"district":"bardiya","display_name":"Bardiya","province":"Lumbini Province","aliases":["bardiya","bardia"],"dao_domains":["daobardiya.moha.gov.np","daobardia.moha.gov.np"]}
+{"district":"bhaktapur","display_name":"Bhaktapur","province":"Bagmati Province","aliases":["bhaktapur"],"dao_domains":["daobhaktapur.moha.gov.np"]}
+{"district":"bhojpur","display_name":"Bhojpur","province":"Koshi Province","aliases":["bhojpur"],"dao_domains":["daobhojpur.moha.gov.np"]}
+{"district":"chitwan","display_name":"Chitwan","province":"Bagmati Province","aliases":["chitwan","bharatpur"],"dao_domains":["daochitwan.moha.gov.np"]}
+{"district":"dadeldhura","display_name":"Dadeldhura","province":"Sudurpashchim Province","aliases":["dadeldhura"],"dao_domains":["daodadeldhura.moha.gov.np"]}
+{"district":"dailekh","display_name":"Dailekh","province":"Karnali Province","aliases":["dailekh"],"dao_domains":["daodailekh.moha.gov.np"]}
+{"district":"dang","display_name":"Dang","province":"Lumbini Province","aliases":["dang","ghorahi","tulsipur"],"dao_domains":["daodang.moha.gov.np"]}
+{"district":"darchula","display_name":"Darchula","province":"Sudurpashchim Province","aliases":["darchula"],"dao_domains":["daodarchula.moha.gov.np"]}
+{"district":"dhading","display_name":"Dhading","province":"Bagmati Province","aliases":["dhading"],"dao_domains":["daodhading.moha.gov.np"]}
+{"district":"dhankuta","display_name":"Dhankuta","province":"Koshi Province","aliases":["dhankuta"],"dao_domains":["daodhankuta.moha.gov.np"]}
+{"district":"dhanusha","display_name":"Dhanusha","province":"Madhesh Province","aliases":["dhanusha","janakpur"],"dao_domains":["daodhanusha.moha.gov.np"]}
+{"district":"dolakha","display_name":"Dolakha","province":"Bagmati Province","aliases":["dolakha","charikot"],"dao_domains":["daodolakha.moha.gov.np"]}
+{"district":"dolpa","display_name":"Dolpa","province":"Karnali Province","aliases":["dolpa","dolpa district"],"dao_domains":["daodolpa.moha.gov.np"]}
+{"district":"doti","display_name":"Doti","province":"Sudurpashchim Province","aliases":["doti"],"dao_domains":["daodoti.moha.gov.np"]}
+{"district":"gorkha","display_name":"Gorkha","province":"Gandaki Province","aliases":["gorkha"],"dao_domains":["daogorkha.moha.gov.np"]}
+{"district":"gulmi","display_name":"Gulmi","province":"Lumbini Province","aliases":["gulmi"],"dao_domains":["daogulmi.moha.gov.np"]}
+{"district":"humla","display_name":"Humla","province":"Karnali Province","aliases":["humla"],"dao_domains":["daohumla.moha.gov.np"]}
+{"district":"ilam","display_name":"Ilam","province":"Koshi Province","aliases":["ilam"],"dao_domains":["daoilam.moha.gov.np"]}
+{"district":"jajarkot","display_name":"Jajarkot","province":"Karnali Province","aliases":["jajarkot"],"dao_domains":["daojajarkot.moha.gov.np"]}
+{"district":"jhapa","display_name":"Jhapa","province":"Koshi Province","aliases":["jhapa"],"dao_domains":["daojhapa.moha.gov.np"]}
+{"district":"jumla","display_name":"Jumla","province":"Karnali Province","aliases":["jumla"],"dao_domains":["daojumla.moha.gov.np"]}
+{"district":"kailali","display_name":"Kailali","province":"Sudurpashchim Province","aliases":["kailali","dhangadhi"],"dao_domains":["daokailali.moha.gov.np"]}
+{"district":"kalikot","display_name":"Kalikot","province":"Karnali Province","aliases":["kalikot","kalikot district"],"dao_domains":["daokalikot.moha.gov.np"]}
+{"district":"kanchanpur","display_name":"Kanchanpur","province":"Sudurpashchim Province","aliases":["kanchanpur","mahendranagar"],"dao_domains":["daokanchanpur.moha.gov.np"]}
+{"district":"kapilvastu","display_name":"Kapilvastu","province":"Lumbini Province","aliases":["kapilvastu"],"dao_domains":["daokapilvastu.moha.gov.np"]}
+{"district":"kaski","display_name":"Kaski","province":"Gandaki Province","aliases":["kaski","pokhara"],"dao_domains":["daokaski.moha.gov.np"]}
+{"district":"kathmandu","display_name":"Kathmandu","province":"Bagmati Province","aliases":["kathmandu","ktm"],"dao_domains":["daokathmandu.moha.gov.np"]}
+{"district":"kavrepalanchok","display_name":"Kavrepalanchok","province":"Bagmati Province","aliases":["kavrepalanchok","kavre","kabhre","banepa","dhulikhel"],"dao_domains":["daokavrepalanchok.moha.gov.np","daokavre.moha.gov.np","daokabhre.moha.gov.np"]}
+{"district":"khotang","display_name":"Khotang","province":"Koshi Province","aliases":["khotang"],"dao_domains":["daokhotang.moha.gov.np"]}
+{"district":"lalitpur","display_name":"Lalitpur","province":"Bagmati Province","aliases":["lalitpur","patan"],"dao_domains":["daolalitpur.moha.gov.np"]}
+{"district":"lamjung","display_name":"Lamjung","province":"Gandaki Province","aliases":["lamjung"],"dao_domains":["daolamjung.moha.gov.np"]}
+{"district":"mahottari","display_name":"Mahottari","province":"Madhesh Province","aliases":["mahottari"],"dao_domains":["daomahottari.moha.gov.np"]}
+{"district":"makwanpur","display_name":"Makwanpur","province":"Bagmati Province","aliases":["makwanpur","hetauda"],"dao_domains":["daomakwanpur.moha.gov.np"]}
+{"district":"manang","display_name":"Manang","province":"Gandaki Province","aliases":["manang"],"dao_domains":["daomanang.moha.gov.np"]}
+{"district":"morang","display_name":"Morang","province":"Koshi Province","aliases":["morang","biratnagar"],"dao_domains":["daomorang.moha.gov.np"]}
+{"district":"mugu","display_name":"Mugu","province":"Karnali Province","aliases":["mugu"],"dao_domains":["daomugu.moha.gov.np"]}
+{"district":"mustang","display_name":"Mustang","province":"Gandaki Province","aliases":["mustang"],"dao_domains":["daomustang.moha.gov.np"]}
+{"district":"myagdi","display_name":"Myagdi","province":"Gandaki Province","aliases":["myagdi"],"dao_domains":["daomyagdi.moha.gov.np"]}
+{"district":"nawalparasi_east","display_name":"Nawalparasi East / Nawalpur","province":"Gandaki Province","aliases":["nawalparasi east","nawalpur","nawalparasi bardaghat susta east"],"dao_domains":["daonawalpur.moha.gov.np","daonawalparasieast.moha.gov.np"]}
+{"district":"nawalparasi_west","display_name":"Nawalparasi West","province":"Lumbini Province","aliases":["nawalparasi west","parasi","nawalparasi bardaghat susta west"],"dao_domains":["daonawalparasi.moha.gov.np","daonawalparasiwest.moha.gov.np"]}
+{"district":"nuwakot","display_name":"Nuwakot","province":"Bagmati Province","aliases":["nuwakot"],"dao_domains":["daonuwakot.moha.gov.np"]}
+{"district":"okhaldhunga","display_name":"Okhaldhunga","province":"Koshi Province","aliases":["okhaldhunga"],"dao_domains":["daookhaldhunga.moha.gov.np"]}
+{"district":"palpa","display_name":"Palpa","province":"Lumbini Province","aliases":["palpa","tansen"],"dao_domains":["daopalpa.moha.gov.np"]}
+{"district":"panchthar","display_name":"Panchthar","province":"Koshi Province","aliases":["panchthar","panchthar district"],"dao_domains":["daopanchthar.moha.gov.np"]}
+{"district":"parbat","display_name":"Parbat","province":"Gandaki Province","aliases":["parbat"],"dao_domains":["daoparbat.moha.gov.np"]}
+{"district":"parsa","display_name":"Parsa","province":"Madhesh Province","aliases":["parsa","birgunj"],"dao_domains":["daoparsa.moha.gov.np"]}
+{"district":"pyuthan","display_name":"Pyuthan","province":"Lumbini Province","aliases":["pyuthan"],"dao_domains":["daopyuthan.moha.gov.np"]}
+{"district":"ramechhap","display_name":"Ramechhap","province":"Bagmati Province","aliases":["ramechhap"],"dao_domains":["daoramechhap.moha.gov.np"]}
+{"district":"rasuwa","display_name":"Rasuwa","province":"Bagmati Province","aliases":["rasuwa"],"dao_domains":["daorasuwa.moha.gov.np"]}
+{"district":"rautahat","display_name":"Rautahat","province":"Madhesh Province","aliases":["rautahat"],"dao_domains":["daorautahat.moha.gov.np"]}
+{"district":"rolpa","display_name":"Rolpa","province":"Lumbini Province","aliases":["rolpa"],"dao_domains":["daorolpa.moha.gov.np"]}
+{"district":"rukum_east","display_name":"Rukum East","province":"Lumbini Province","aliases":["rukum east","east rukum","eastern rukum","rukum purba"],"dao_domains":["daorukumeast.moha.gov.np","daoeasternrukum.moha.gov.np","daorukumpurba.moha.gov.np"]}
+{"district":"rukum_west","display_name":"Rukum West","province":"Karnali Province","aliases":["rukum west","west rukum","western rukum","rukum paschim"],"dao_domains":["daorukumwest.moha.gov.np","daowesternrukum.moha.gov.np","daorukumpaschim.moha.gov.np"]}
+{"district":"rupandehi","display_name":"Rupandehi","province":"Lumbini Province","aliases":["rupandehi","butwal","bhairahawa"],"dao_domains":["daorupandehi.moha.gov.np"]}
+{"district":"salyan","display_name":"Salyan","province":"Karnali Province","aliases":["salyan"],"dao_domains":["daosalyan.moha.gov.np"]}
+{"district":"sankhuwasabha","display_name":"Sankhuwasabha","province":"Koshi Province","aliases":["sankhuwasabha","sankhuwasava"],"dao_domains":["daosankhuwasabha.moha.gov.np"]}
+{"district":"saptari","display_name":"Saptari","province":"Madhesh Province","aliases":["saptari"],"dao_domains":["daosaptari.moha.gov.np"]}
+{"district":"sarlahi","display_name":"Sarlahi","province":"Madhesh Province","aliases":["sarlahi"],"dao_domains":["daosarlahi.moha.gov.np"]}
+{"district":"sindhuli","display_name":"Sindhuli","province":"Bagmati Province","aliases":["sindhuli"],"dao_domains":["daosindhuli.moha.gov.np"]}
+{"district":"sindhupalchok","display_name":"Sindhupalchok","province":"Bagmati Province","aliases":["sindhupalchok","sindhupalchowk"],"dao_domains":["daosindhupalchok.moha.gov.np","daosindhupalchowk.moha.gov.np"]}
+{"district":"siraha","display_name":"Siraha","province":"Madhesh Province","aliases":["siraha"],"dao_domains":["daosiraha.moha.gov.np"]}
+{"district":"solukhumbu","display_name":"Solukhumbu","province":"Koshi Province","aliases":["solukhumbu","solu"],"dao_domains":["daosolukhumbu.moha.gov.np"]}
+{"district":"sunsari","display_name":"Sunsari","province":"Koshi Province","aliases":["sunsari","dharan","itahari","inaruwa"],"dao_domains":["daosunsari.moha.gov.np"]}
+{"district":"surkhet","display_name":"Surkhet","province":"Karnali Province","aliases":["surkhet","birendranagar"],"dao_domains":["daosurkhet.moha.gov.np"]}
+{"district":"syangja","display_name":"Syangja","province":"Gandaki Province","aliases":["syangja"],"dao_domains":["daosyangja.moha.gov.np"]}
+{"district":"tanahun","display_name":"Tanahun","province":"Gandaki Province","aliases":["tanahun","tanahu"],"dao_domains":["daotanahu.moha.gov.np","daotanahun.moha.gov.np"]}
+{"district":"taplejung","display_name":"Taplejung","province":"Koshi Province","aliases":["taplejung"],"dao_domains":["daotaplejung.moha.gov.np"]}
+{"district":"terhathum","display_name":"Terhathum","province":"Koshi Province","aliases":["terhathum","tehrathum"],"dao_domains":["daoterhathum.moha.gov.np","daotehrathum.moha.gov.np"]}
+{"district":"udayapur","display_name":"Udayapur","province":"Koshi Province","aliases":["udayapur","gaighat"],"dao_domains":["daoudayapur.moha.gov.np"]}

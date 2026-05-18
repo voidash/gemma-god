@@ -1,0 +1,102 @@
+# PreVillage Narration - Lean VO Draft
+
+Target runtime: 3:00.
+
+## 0:00-0:16
+
+Nepal has a problem.
+Three weeks. Four offices. Four versions of the same form. Almost eight thousand rupees paid to middlemen.
+people are leveraging lack of proper pipeline and well documentation. i wanted to solve this.
+
+it's the gap that every country transitioning into modern world of egovernance faces.
+nepal has internet forms but you still have to visit offices. Turns out problem is much deeper
+it's a problem of UX, documented and undocumented tacit knowledge
+
+
+
+## 0:16-0:35
+
+I had previlege :
+GPU access, technical knowledge, people who helped me,
+and obsession to keep debugging
+with which v0 was born.
+
+it was a web interface where people could type questions.
+But that is a kathmandu solution
+
+and Kathmandu is also a privilege.
+So I travelled 180 kilometers to Jiri to see how an remote gov office actually works
+
+
+## 0:35-0:50
+
+That trip changed the product.
+
+The problem was not only lack of information but also a UX problem
+
+to not Lay:
+the internet of nepal wasn't built for pdfs, html forms and buttons which has brought in
+interface problem, routing problem, read 20 page pdf for information problem.
+
+To Lay:
+but nepal that exports labor imports internet to connect with people abroad.
+people already know how to speak, call, and use WhatsApp.
+I thought maybe we should start there.
+
+## 0:50-1:12
+
+A citizen does not begin with a portal URL.
+
+they ask naturally: dharmadevi nagarpalika, marriage registration, how do I do it?
+
+That is the job: turn a human sentence into a route.
+
+## 1:12-1:35
+
+Gemma was pivotal because it is small enough for local deployment,
+but still can reason through messy ASR text,
+ask the next question, and compose from sources.
+
+The first job is not to answer but understand the case.
+
+## 1:35-1:58
+
+RAG alone is weak when truth is scattered across
+old websites, PDFs, office habits, and the memory of one contact officer.
+
+So i built a registry of 800+ government sources, crawlers, health checks, and a self-healing pipeline
+
+
+## 1:58-2:24
+
+with this i also have created a pipeline to capture tacit knowledge.
+government officials can answer simple questions that never go documented
+Which counter first? Which room? What time is easiest? Which document do people forget? Why are they sent back?
+
+Those answers go through review, become practical sources, and can be cited later beside official government sources.
+
+Tacit knowledge is only unfair when it stays trapped in one office corridor.
+
+## 2:24-2:42
+
+When PreVillage does not know, it should not hallucinate.
+
+It says what is missing, shows what sources it checked, and turns the citizen's question into an officer outreach message through the WhatsApp bridge.
+
+The answer is not invented. It is asked, reviewed, and folded back into the system for the next person. (Pre will age)
+
+## 2:42-2:55
+
+As we established the internet UX of forms and buttons wasn't made with Nepali people in mind.
+But nepal is voice and language rich.
+so i trained our own TTS and ASR too.
+
+A citizen speaks. Our Nepali ASR transcribes.
+Gemma fixes the rough text and plans the intent.
+Retrieval finds official and practical sources. Our Nepali TTS speaks back.
+
+On WhatsApp and kiosks in the office, help starts where people already ask for help.
+
+PreVillage is small enough to run on raspberry pi for compute and centralized enough to share and capture tacit knowledge.
+
+PreVillage exists because it's still a privilege to navigate our government services.

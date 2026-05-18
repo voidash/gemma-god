@@ -44,6 +44,7 @@ import json
 import logging
 import random
 import sys
+from collections import Counter
 from pathlib import Path
 from typing import Iterable
 
@@ -68,6 +69,11 @@ the question's language.
 names."""
 
 CHUNK_TEXT_MAX_CHARS = 1200
+REFUSAL_MARKERS = (
+    "मलाई यो प्रश्नको आधिकारिक स्रोत",
+    "Yo prashnako adhikarik",
+    "I cannot find an authoritative source",
+)
 
 # Target counts per v4-minimal+ plan (codex-vetted scale-down from full
 # rebuild). The grounded slice is filtered v3 carry — we sample down to
@@ -84,6 +90,18 @@ TARGET_COUNTS: dict[str, int] = {
     "translation": 500,
     "mc": 550,
 }
+
+
+def assistant_text(rec: dict) -> str:
+    for msg in reversed(rec.get("messages") or []):
+        if msg.get("role") == "assistant":
+            return msg.get("content") or ""
+    return ""
+
+
+def has_refusal_marker(rec: dict) -> bool:
+    text = assistant_text(rec)
+    return any(m in text for m in REFUSAL_MARKERS)
 
 
 def _chunks_text(chunks: list) -> str:
@@ -257,6 +275,87 @@ def stratified_split(
     return train, val
 
 
+def cap_to_targets(
+    records_by_slice: dict[str, list[dict]],
+    targets: dict[str, int],
+    rng: random.Random,
+) -> None:
+    """Deterministically sample down oversize slices.
+
+    v4-minimal accidentally trained on 6297 grounded records even though the
+    target was 5500 because the composer only warned. For v4b, use
+    --cap-to-targets so composition changes are explicit and reproducible.
+    """
+    for slice_name, target in targets.items():
+        records = records_by_slice.get(slice_name)
+        if not records or target <= 0 or len(records) <= target:
+            continue
+        rng.shuffle(records)
+        del records[target:]
+        logging.info("capped slice %s to target=%d", slice_name, target)
+
+
+def cap_refusal_fraction(
+    records: list[dict],
+    max_frac: float,
+    rng: random.Random,
+) -> tuple[int, int, int]:
+    """Cap refusal-marker records within a mixed slice.
+
+    Retrieval-realistic grounded distillation can validly produce refusals when
+    prod retrieval misses the seed fact. v4 already over-refused, so v4b may
+    need to keep those boundary examples without letting them dominate the new
+    grounded slice.
+
+    Returns (kept_total, kept_refusals, dropped_refusals).
+    """
+    if max_frac < 0 or max_frac >= 1:
+        return len(records), sum(1 for r in records if has_refusal_marker(r)), 0
+    refused = [r for r in records if has_refusal_marker(r)]
+    answered = [r for r in records if not has_refusal_marker(r)]
+    if not records or not refused:
+        return len(records), 0, 0
+    max_refused = int((max_frac * len(answered)) / max(1e-9, 1.0 - max_frac))
+    max_refused = max(0, min(max_refused, len(refused)))
+    if len(refused) <= max_refused:
+        return len(records), len(refused), 0
+    rng.shuffle(refused)
+    kept = answered + refused[:max_refused]
+    rng.shuffle(kept)
+    dropped = len(refused) - max_refused
+    records[:] = kept
+    return len(records), max_refused, dropped
+
+
+def fill_slice_from_fallback(
+    records: list[dict],
+    fallback_path: Path,
+    formatter,
+    target: int,
+    rng: random.Random,
+) -> tuple[int, int]:
+    """Fill a slice up to target from a fallback JSONL, deduping by prompt text."""
+    need = target - len(records)
+    if need <= 0:
+        return 0, 0
+    existing_prompts = {
+        "\n".join(m.get("content", "") for m in r.get("messages") or [] if m.get("role") == "user")
+        for r in records
+    }
+    pool: list[dict] = []
+    for rec in load_and_format("grounded_fallback", formatter, fallback_path):
+        prompt = "\n".join(
+            m.get("content", "") for m in rec.get("messages") or [] if m.get("role") == "user"
+        )
+        if prompt in existing_prompts:
+            continue
+        pool.append(rec)
+    rng.shuffle(pool)
+    take = min(need, len(pool))
+    records.extend(pool[:take])
+    return take, max(0, need - take)
+
+
 def write_jsonl(records: Iterable[dict], path: Path) -> int:
     n = 0
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -274,6 +373,51 @@ def main() -> int:
     ap.add_argument("--val-frac", type=float, default=0.05)
     ap.add_argument("--seed", type=int, default=42)
     ap.add_argument(
+        "--grounded-path",
+        default="corpora/sft_v4_grounded_v3carry.jsonl",
+        help="grounded slice path. For v4b use corpora/sft_v4_grounded.jsonl.",
+    )
+    ap.add_argument(
+        "--grounded-fallback-path",
+        default="",
+        help="optional fallback grounded JSONL used to fill the grounded target "
+        "after refusal-capping a partial retrieval-realistic slice.",
+    )
+    ap.add_argument(
+        "--brief-qa-path",
+        default="corpora/sft_v4_brief_qa.jsonl",
+        help="base no-chunk brief QA slice.",
+    )
+    ap.add_argument(
+        "--roman-ne-open-qa-path",
+        default="",
+        help="optional v4b Roman-Nepali no-chunk service QA top-up.",
+    )
+    ap.add_argument(
+        "--roman-ne-open-qa-target",
+        type=int,
+        default=400,
+        help="target count for --roman-ne-open-qa-path when --cap-to-targets is set.",
+    )
+    ap.add_argument(
+        "--english-replay-path",
+        default="corpora/sft_v4_english_replay.jsonl",
+        help="English replay path; lets v4b swap in a less math-only replay file.",
+    )
+    ap.add_argument(
+        "--cap-to-targets",
+        action="store_true",
+        help="deterministically sample down any slice above TARGET_COUNTS. "
+        "Under-target slices are kept and reported.",
+    )
+    ap.add_argument(
+        "--grounded-max-refusal-frac",
+        type=float,
+        default=-1.0,
+        help="optional cap for refusal-marker records inside the grounded slice, "
+        "e.g. 0.15. Default -1 leaves the grounded slice unchanged.",
+    )
+    ap.add_argument(
         "--allow-missing", action="store_true",
         help="if set, treat missing slice files as empty (warn) instead of bailing. "
         "Default: bail if any slice file is missing — safer for production runs.",
@@ -284,22 +428,72 @@ def main() -> int:
         level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s"
     )
 
+    slice_formatters = dict(SLICE_FORMATTERS)
+    slice_formatters["grounded"] = (args.grounded_path, format_grounded)
+    slice_formatters["brief_qa"] = (args.brief_qa_path, format_capability)
+    slice_formatters["english_replay"] = (args.english_replay_path, format_english)
+
+    target_counts = dict(TARGET_COUNTS)
+    if args.roman_ne_open_qa_path:
+        slice_formatters["roman_ne_open_qa"] = (
+            args.roman_ne_open_qa_path,
+            format_capability,
+        )
+        target_counts["roman_ne_open_qa"] = args.roman_ne_open_qa_target
+
     # Pre-flight: check all slice files exist (unless --allow-missing).
-    missing = [name for name, (path, _) in SLICE_FORMATTERS.items()
+    missing = [name for name, (path, _) in slice_formatters.items()
                if not Path(path).exists()]
+    if args.grounded_fallback_path and not Path(args.grounded_fallback_path).exists():
+        missing.append("grounded_fallback")
     if missing and not args.allow_missing:
         print(f"\nERROR: missing slice files for v4:", file=sys.stderr)
         for name in missing:
-            print(f"  - {name}: {SLICE_FORMATTERS[name][0]}", file=sys.stderr)
+            if name == "grounded_fallback":
+                print(f"  - {name}: {args.grounded_fallback_path}", file=sys.stderr)
+            else:
+                print(f"  - {name}: {slice_formatters[name][0]}", file=sys.stderr)
         print("\nRe-run with --allow-missing to compose a partial mix, or "
               "build the missing slices first.", file=sys.stderr)
         return 1
 
     records_by_slice: dict[str, list[dict]] = {}
-    for slice_name, (path_str, fmt) in SLICE_FORMATTERS.items():
+    for slice_name, (path_str, fmt) in slice_formatters.items():
         records_by_slice[slice_name] = load_and_format(
             slice_name, fmt, Path(path_str)
         )
+
+    rng = random.Random(args.seed)
+    if args.grounded_max_refusal_frac >= 0:
+        kept_total, kept_ref, dropped_ref = cap_refusal_fraction(
+            records_by_slice.get("grounded", []),
+            args.grounded_max_refusal_frac,
+            rng,
+        )
+        logging.info(
+            "grounded refusal cap %.1f%%: kept_total=%d kept_refusals=%d dropped_refusals=%d",
+            100 * args.grounded_max_refusal_frac,
+            kept_total,
+            kept_ref,
+            dropped_ref,
+        )
+    if args.grounded_fallback_path:
+        added, short = fill_slice_from_fallback(
+            records_by_slice.get("grounded", []),
+            Path(args.grounded_fallback_path),
+            format_grounded,
+            target_counts["grounded"],
+            rng,
+        )
+        logging.info(
+            "grounded fallback fill: added=%d shortfall_after_fill=%d from %s",
+            added,
+            short,
+            args.grounded_fallback_path,
+        )
+    if args.cap_to_targets:
+        cap_to_targets(records_by_slice, target_counts, rng)
+
     total = sum(len(v) for v in records_by_slice.values())
     logging.info("total formatted: %d (target 16000)", total)
     if total == 0:
@@ -308,13 +502,12 @@ def main() -> int:
 
     # Composition warnings: flag any slice that's significantly off-target.
     print("\n  composition vs target:", file=sys.stderr)
-    for slice_name, target in TARGET_COUNTS.items():
+    for slice_name, target in target_counts.items():
         actual = len(records_by_slice.get(slice_name, []))
         delta = actual - target
         flag = "  " if abs(delta) <= max(50, target // 10) else "!!"
         print(f"  {flag} {slice_name:<26s} actual={actual:>5d} target={target:>5d} delta={delta:+d}", file=sys.stderr)
 
-    rng = random.Random(args.seed)
     train, val = stratified_split(records_by_slice, args.val_frac, rng)
 
     for r in train:
@@ -331,23 +524,34 @@ def main() -> int:
     print(f"  val   ({n_val}): {args.val_out}", file=sys.stderr)
     print(f"  val fraction: {n_val / total:.1%}", file=sys.stderr)
 
-    from collections import Counter
     train_counts = Counter(r["source"] for r in train)
     val_counts = Counter(r["source"] for r in val)
     print(f"\n  composition by source field (train / val):", file=sys.stderr)
     for src in sorted(set(list(train_counts) + list(val_counts))):
         print(f"    {src:>26s}: {train_counts.get(src, 0):>5d} / {val_counts.get(src, 0):>4d}", file=sys.stderr)
 
-    # Refusal-share check — codex §5 target was 25-30%.
-    refusal_total = (
-        train_counts.get("refusal_distilled", 0) + val_counts.get("refusal_distilled", 0)
-        + train_counts.get("refusal_v4", 0) + val_counts.get("refusal_v4", 0)
-        # Anti-template chunks teach refusal of un-grounded sub-questions
-        + train_counts.get("anti_template_distilled", 0) + val_counts.get("anti_template_distilled", 0)
+    # Refusal-share check — source names changed across v3/v4, so report both
+    # source-bucket share and actual assistant-text marker share.
+    refusal_sources = {
+        "refusal_distilled",
+        "refusal_v4",
+        "v4_refusal_retrieval",
+        "anti_template_distilled",
+        "v4_anti_template",
+    }
+    source_refusal_total = sum(train_counts.get(s, 0) + val_counts.get(s, 0) for s in refusal_sources)
+    marker_refusal_total = sum(1 for r in train + val if has_refusal_marker(r))
+    source_pct = 100 * source_refusal_total / total if total else 0.0
+    marker_pct = 100 * marker_refusal_total / total if total else 0.0
+    print(
+        f"\n  refusal share by source buckets: {source_refusal_total} / {total} = {source_pct:.1f}%",
+        file=sys.stderr,
     )
-    pct = 100 * refusal_total / total if total else 0.0
-    print(f"\n  refusal share (incl. anti-template): {refusal_total} / {total} = {pct:.1f}%", file=sys.stderr)
-    print(f"  (codex v4 target: 25-30%)", file=sys.stderr)
+    print(
+        f"  refusal share by answer markers: {marker_refusal_total} / {total} = {marker_pct:.1f}%",
+        file=sys.stderr,
+    )
+    print(f"  (codex v4 source-bucket target was 25-30%)", file=sys.stderr)
     return 0
 
 

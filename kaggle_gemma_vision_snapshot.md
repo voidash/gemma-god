@@ -1,0 +1,131 @@
+- generic [ref=e2]:
+  - navigation "Main Kaggle page navigation" [ref=e3]:
+    - generic [ref=e5]:
+      - button "Navigation menu" [ref=e7] [cursor=pointer]: menu
+      - link "Skip to content" [ref=e8] [cursor=pointer]:
+        - /url: "#site-content"
+        - text: Skip to
+        - text: content
+      - link "Return to Kaggle home page" [ref=e10] [cursor=pointer]:
+        - /url: /
+        - img "Kaggle" [ref=e11]
+    - button "Create" [ref=e13] [cursor=pointer]:
+      - img [ref=e14]
+      - generic [ref=e19]: Create
+    - generic [ref=e22]:
+      - list [ref=e23]:
+        - listitem "Home List Item" [ref=e24]:
+          - link "Home" [ref=e26] [cursor=pointer]:
+            - /url: /
+        - listitem "Competitions List Item" [ref=e33]:
+          - link "Competitions" [ref=e35] [cursor=pointer]:
+            - /url: /competitions
+        - listitem "Benchmarks List Item" [ref=e42]:
+          - link "Benchmarks" [ref=e44] [cursor=pointer]:
+            - /url: /benchmarks
+        - listitem "Game Arena List Item" [ref=e51]:
+          - link "Game Arena" [ref=e53] [cursor=pointer]:
+            - /url: /game-arena
+      - list [ref=e60]:
+        - listitem "Data Hub List Item" [ref=e61]:
+          - generic [ref=e62]
+      - list [ref=e72]:
+        - listitem "More on Kaggle List Item" [ref=e73]:
+          - generic [ref=e74]
+  - navigation "Main menu, search and your account" [ref=e85]:
+    - generic [ref=e87]:
+      - button "Navigation menu" [ref=e89] [cursor=pointer]: menu
+      - link "Skip to content" [ref=e90] [cursor=pointer]:
+        - /url: "#site-content"
+        - text: Skip to
+        - text: content
+      - link "Return to Kaggle home page" [ref=e92] [cursor=pointer]:
+        - /url: /
+        - img "Kaggle" [ref=e93]
+    - generic [ref=e97]:
+      - link "Sign In" [ref=e99] [cursor=pointer]:
+        - /url: /account/login?phase=startSignInTab&returnUrl=%2Fcompetitions%2Fgoogle-gemma-3n-hackathon%2Fwriteups%2Fgemma-vision
+        - button "Sign In" [ref=e100]:
+          - generic [ref=e101]: Sign In
+      - link "Register" [ref=e103] [cursor=pointer]:
+        - /url: /account/login?phase=startRegisterTab&returnUrl=%2Fcompetitions%2Fgoogle-gemma-3n-hackathon%2Fwriteups%2Fgemma-vision
+        - button "Register" [ref=e104]:
+          - generic [ref=e105]: Register
+  - main [ref=e106]:
+    - generic [ref=e108]:
+      - generic [ref=e109]: Kaggle uses cookies from Google to deliver and enhance the quality of its services and to analyze traffic.
+      - generic [ref=e110]:
+        - link "Learn more" [ref=e111] [cursor=pointer]:
+          - /url: /cookies
+          - generic [ref=e112]: Learn more
+        - generic [ref=e113] [cursor=pointer]: OK, Got it.
+    - generic [ref=e116]:
+      - button "Writeups" [ref=e117] [cursor=pointer]:
+        - generic [ref=e118]: chevron_left
+        - generic [ref=e119]: Writeups
+      - generic [ref=e120]:
+        - heading "Gemma Vision" [level=1] [ref=e121]
+        - paragraph [ref=e122]: AI vision assistant for the blind
+        - generic [ref=e123]:
+          - link "Google - The Gemma 3n Impact Challenge" [ref=e124] [cursor=pointer]:
+            - /url: /competitions/google-gemma-3n-hackathon
+          - paragraph [ref=e127]: Hackathon Writeup · Aug 7, 2025
+      - generic [ref=e128]:
+        - generic [ref=e129]:
+          - generic [ref=e131]
+          - generic [ref=e149]
+        - generic [ref=e197]:
+          - generic [ref=e198]
+          - generic [ref=e217]
+          - separator [ref=e227]
+          - generic [ref=e228]
+          - generic [ref=e236]
+      - heading "Project Links" [level=2] [ref=e242]
+      - generic [ref=e243]:
+        - link "undefined opens in new window" [ref=e245] [cursor=pointer]:
+          - /url: https://gemmavision.com/
+          - generic [ref=e247]
+        - link "undefined opens in new window" [ref=e259] [cursor=pointer]:
+          - /url: https://github.com/TGTech06/gemma-vision/
+          - generic [ref=e261]
+        - link "undefined opens in new window" [ref=e273] [cursor=pointer]:
+          - /url: https://github.com/TGTech06/gemma-vision/releases
+          - generic [ref=e275]
+        - link "undefined opens in new window" [ref=e287] [cursor=pointer]:
+          - /url: https://youtu.be/Fx6IuEggeac
+          - generic [ref=e289]
+        - link "undefined opens in new window" [ref=e301] [cursor=pointer]:
+          - /url: https://youtube.com/shorts/uY4y0Mu_LI0
+          - generic [ref=e303]
+      - heading "License" [level=2] [ref=e314]
+      - paragraph [ref=e315]:
+        - text: This Writeup has been released under the
+        - link "Attribution 4.0 International (CC BY 4.0)" [ref=e316] [cursor=pointer]:
+          - /url: https://creativecommons.org/licenses/by/4.0/
+        - text: license.
+      - heading "Citation" [level=2] [ref=e317]
+      - paragraph [ref=e318]: Tommaso Giovannini. Gemma Vision. https://www.kaggle.com/competitions/google-gemma-3n-hackathon/writeups/gemma-vision. 2025. Kaggle
+      - separator [ref=e319]
+      - generic [ref=e320]:
+        - generic [ref=e322]:
+          - img [ref=e324]
+          - generic [ref=e325]: "2"
+        - generic [ref=e327]:
+          - img [ref=e329]
+          - generic [ref=e330]: "6"
+        - generic [ref=e332]:
+          - img [ref=e334]
+          - generic [ref=e335]: "1"
+      - separator [ref=e336]
+      - generic [ref=e337]:
+        - generic [ref=e339]:
+          - generic [ref=e340]
+          - generic [ref=e346]
+        - generic [ref=e350]:
+          - generic [ref=e351]
+          - generic [ref=e385]
+          - generic [ref=e419]
+          - generic [ref=e459]
+          - generic [ref=e493]
+          - generic [ref=e531]
+  - alert [ref=e562]

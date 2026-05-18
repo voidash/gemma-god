@@ -177,7 +177,8 @@ SYSTEM_PROMPT = """\
 You are a Nepal-government helpdesk. Use ONLY the provided sources to answer.
 
 HARD RULES:
-1. Cite each factual claim with the source URL in square brackets, e.g. [https://www.moha.gov.np/...].
+1. Cite each factual claim with source IDs in square brackets, e.g. [S1] or [S2].
+   Do not cite raw URLs. Do not use numeric citations like [1].
 2. If a claim is not directly supported by ANY source, drop it or mark `[unverified]`.
 3. If NO source meaningfully addresses the question, refuse with: "मलाई यो प्रश्नको आधिकारिक स्रोत भेटिनँ" (Devanagari) or "Yo prashnako adhikarik srot bhetina" (Roman-Nepali) or "I cannot find an authoritative source for this" (English) — match the question's language.
 4. Respond in the same language/script as the question.
@@ -191,7 +192,7 @@ def build_user_prompt(question: str, chunks: list) -> str:
         parts.append("(no candidate sources surfaced)")
     for c in chunks[:TOP_K_CHUNKS]:
         text = (c.get("text") or "")[:CHUNK_TEXT_MAX_CHARS]
-        parts.append(f"\n[{c.get('rank', '?')}] {c.get('url', '')}")
+        parts.append(f"\n[S{c.get('rank', '?')}] {c.get('url', '')}")
         parts.append(text)
     parts.append("\nCompose a grounded answer following the rules.")
     return "\n".join(parts)
@@ -202,6 +203,8 @@ def build_user_prompt(question: str, chunks: list) -> str:
 
 URL_BRACKETED_RE = re.compile(r"\[(https?://[^\]\s]+)\]")
 URL_BARE_RE = re.compile(r"https?://[^\s\)\]\>'\"`]+")
+SOURCE_ID_RE = re.compile(r"\[S(\d{1,2})\]")
+NUMERIC_CITATION_RE = re.compile(r"(?<!S)\[(\d{1,2})\]")
 TRAILING_PUNCT = ",.;:!?)>\"'"
 
 
@@ -223,6 +226,43 @@ def extract_citations(text: str) -> list[str]:
         if u:
             cleaned.append(u)
     return list(dict.fromkeys(cleaned))
+
+
+def extract_source_ids(text: str) -> list[str]:
+    """Extract product-style source IDs, e.g. [S1], in order."""
+    if not text:
+        return []
+    return list(dict.fromkeys(f"S{m.group(1)}" for m in SOURCE_ID_RE.finditer(text)))
+
+
+def source_id_urls(item: dict, source_ids: list[str]) -> list[str]:
+    """Map [S#] citations back to candidate chunk URLs for recall scoring."""
+    chunks = item.get("candidate_chunks") or []
+    urls: list[str] = []
+    for sid in source_ids:
+        try:
+            n = int(sid[1:])
+        except Exception:
+            continue
+        # The prompt numbers candidate chunks as [rank] in order. Prefer rank,
+        # then fall back to 1-based list index.
+        match = None
+        for chunk in chunks:
+            if int(chunk.get("rank") or -1) == n:
+                match = chunk
+                break
+        if match is None and 1 <= n <= len(chunks):
+            match = chunks[n - 1]
+        if match and match.get("url"):
+            urls.append(str(match["url"]))
+    return list(dict.fromkeys(urls))
+
+
+def extract_cited_urls(item: dict, text: str) -> list[str]:
+    """Extract raw URL citations plus URLs implied by [S#] source IDs."""
+    urls = extract_citations(text)
+    urls.extend(source_id_urls(item, extract_source_ids(text)))
+    return list(dict.fromkeys(urls))
 
 
 # Refusal-detector patterns. We scan for any of these in the model output.
@@ -352,7 +392,10 @@ def score_one(item: dict, model_output: str, elapsed_ms: int | None = None) -> d
     if elapsed_ms is not None:
         out["elapsed_ms"] = elapsed_ms
     out["model_output"] = model_output
-    out["model_citations"] = extract_citations(model_output)
+    out["model_source_ids"] = extract_source_ids(model_output)
+    out["model_raw_url_citations"] = extract_citations(model_output)
+    out["model_numeric_citations"] = list(dict.fromkeys(NUMERIC_CITATION_RE.findall(model_output or "")))
+    out["model_citations"] = extract_cited_urls(item, model_output)
     out["model_refused"] = is_refusal(model_output)
 
     rev = item.get("review") or {}

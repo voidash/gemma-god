@@ -26,6 +26,7 @@ venv/
 # --- Secrets / credentials ---
 .env
 .env.*
+!.env.example
 *.pem
 *.key
 *_rsa
@@ -33,14 +34,31 @@ venv/
 *.token
 hf_token*
 **/huggingface_token*
+.admin_password
+.whatsapp_bridge_token
+whatsapp-auth/
+**/whatsapp-auth/
 
 # --- Large binary/generated artifacts ---
+node_modules/
+**/node_modules/
+dist/
+**/dist/
+build/
+coverage/
+tmp/
+*.sqlite
+*.db
+
 # Downloaded gov PDFs — regenerate via scripts/download_batch.py
 survey/cdn_batch/
 survey/ocr_output/
 
-# CPT corpus assembly outputs — large, regenerable from source scripts
-corpora/
+# CPT/SFT corpus assembly outputs — large, regenerable from source scripts.
+# Keep the small public registries needed by the resolver and source-router.
+corpora/*
+!corpora/nepal_districts.jsonl
+!corpora/sources_tiered.jsonl
 
 # Pipeline outputs — regenerable from source PDFs + code
 survey/corpus_chunks.jsonl
@@ -60,6 +78,23 @@ hf_cache/
 checkpoints/
 *.safetensors
 *.gguf
+
+# Demo capture artifacts kept outside the share branch.
+/*.png
+/*.jpg
+/*.jpeg
+/*.webp
+/*.mp4
+/video_*/
+/whatsapp-demo-local.png
+
+# Raw video/audio capture and render workspaces. Curated public screenshots live
+# under assets/ and are intentionally not ignored.
+footage/
+audio/
+renders/
+analysis/transcripts/
+remotion/public/project/
 
 # --- Local overrides ---
 *.local

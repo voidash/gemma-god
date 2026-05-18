@@ -13,10 +13,10 @@ helpful answer in matching language. ~50% Roman-NE focus to address the
 specific degen issue, with smaller Devanagari + English buckets for
 balance.
 
-Topics are intentionally diverse and slightly *off* the gov-helpdesk core
-so the model learns "general assistant" mode for non-grounded prompts:
-weather small-talk, food/recipe questions, daily life, polite chit-chat,
-study tips, basic explanations, etc.
+Topics default to diverse, slightly *off* the gov-helpdesk core so the model
+learns "general assistant" mode for non-grounded prompts. For v4b Roman-NE
+recovery, use `--profile gov_service_roman_recovery --lang-mix roman_nepali=1`
+to synthesize no-chunk Roman-Nepali service questions matching the degen eval.
 
 Output schema:
     {
@@ -33,6 +33,13 @@ Output schema:
 Usage:
     python scripts/synthesize_brief_qa.py --n 30   # smoke
     python scripts/synthesize_brief_qa.py --n 300  # full
+    python scripts/synthesize_brief_qa.py \\
+        --n 400 \\
+        --profile gov_service_roman_recovery \\
+        --lang-mix roman_nepali=1 \\
+        --source v4_roman_ne_open_qa \\
+        --id-prefix sft_v4_rn_open \\
+        --output corpora/sft_v4_roman_ne_open_qa.jsonl
 """
 from __future__ import annotations
 
@@ -139,16 +146,58 @@ _LANG_INSTR = {
 }
 
 
-SYSTEM_GENERATOR = (
-    "You generate brief, friendly conversational Q&A pairs for an LLM "
-    "training set. Topics are everyday life, casual learning, opinions, "
-    "small-talk — NOT government services, NOT formal documents. The "
-    "answer should be conversational and brief (1-3 sentences), without "
-    "citations or formal structure. Reply with JSON ONLY."
-)
+SYSTEM_GENERATOR_BY_PROFILE = {
+    "casual": (
+        "You generate brief, friendly conversational Q&A pairs for an LLM "
+        "training set. Topics are everyday life, casual learning, opinions, "
+        "small-talk — NOT government services, NOT formal documents. The "
+        "answer should be conversational and brief (1-3 sentences), without "
+        "citations or formal structure. Reply with JSON ONLY."
+    ),
+    "gov_service_roman_recovery": (
+        "You generate short no-citation Q&A pairs for an LLM training set. "
+        "The goal is stable Roman-Nepali answers to common Nepal public-service "
+        "questions when no source chunks are provided. Keep answers procedural, "
+        "high-level, and cautious: do not invent exact fees, deadlines, phone "
+        "numbers, or URLs. Reply with JSON ONLY."
+    ),
+}
 
 
-def build_prompt(lang: str, n_per_call: int) -> str:
+def build_prompt(lang: str, n_per_call: int, profile: str) -> str:
+    if profile == "gov_service_roman_recovery":
+        return f"""\
+Generate exactly {n_per_call} brief Nepal public-service Q&A pairs.
+
+Language: {_LANG_INSTR[lang]}
+
+Topics — mix of common citizen-service questions:
+  - nagarikta / citizenship
+  - passport renewal / emergency passport
+  - PAN, VAT, online tax filing
+  - company registration
+  - driving license
+  - birth, death, marriage registration
+  - jagga / malpot / land revenue
+  - NID / national identity card
+  - lost certificate replacement
+
+Format:
+  - Question: short, natural, like a citizen typing into chat (under 25 words)
+  - Answer: brief, procedural, 1-3 sentences. Match the question script.
+  - Do NOT cite URLs. Do NOT include a "Sources:" header.
+  - Do NOT invent exact current fees, deadlines, phone numbers, or office hours.
+  - If exact current details are needed, say to confirm with the relevant office
+    or official portal, but keep it short.
+
+Reply with JSON ONLY:
+{{"pairs": [
+  {{"question": "...", "answer": "..."}},
+  ...
+]}}
+
+Diverse phrasings — no two questions near-duplicates."""
+
     return f"""\
 Generate exactly {n_per_call} brief, conversational Q&A pairs.
 
@@ -219,10 +268,15 @@ def _validate_pair(pair: dict, expect_lang: str) -> tuple[bool, str]:
     return True, ""
 
 
-def generate_batch(lang: str, n_per_call: int = 10) -> list[dict]:
-    prompt = build_prompt(lang, n_per_call)
+def generate_batch(lang: str, n_per_call: int = 10, profile: str = "casual") -> list[dict]:
+    prompt = build_prompt(lang, n_per_call, profile)
     try:
-        resp = deepseek_chat(SYSTEM_GENERATOR, prompt, max_tokens=2400, temperature=0.9)
+        resp = deepseek_chat(
+            SYSTEM_GENERATOR_BY_PROFILE[profile],
+            prompt,
+            max_tokens=2400,
+            temperature=0.9,
+        )
     except Exception as e:
         logging.warning("deepseek %s: %s", lang, str(e)[:120])
         return []
@@ -240,6 +294,33 @@ def generate_batch(lang: str, n_per_call: int = 10) -> list[dict]:
     return out
 
 
+def parse_lang_mix(spec: str, n: int) -> dict[str, int]:
+    if not spec:
+        weights = {"roman_nepali": 0.50, "devanagari": 0.25, "english": 0.25}
+    else:
+        weights: dict[str, float] = {}
+        for part in spec.split(","):
+            if not part.strip():
+                continue
+            k, v = part.split("=", 1)
+            lang = k.strip()
+            if lang not in _LANG_INSTR:
+                raise ValueError(f"unknown language in --lang-mix: {lang}")
+            weights[lang] = float(v.strip())
+        if not weights:
+            raise ValueError("--lang-mix parsed to no languages")
+    total_w = sum(weights.values())
+    if total_w <= 0:
+        raise ValueError("--lang-mix weights must sum to > 0")
+    raw = {k: (v / total_w) * n for k, v in weights.items()}
+    targets = {k: int(v) for k, v in raw.items()}
+    remainder = n - sum(targets.values())
+    order = sorted(raw, key=lambda k: raw[k] - targets[k], reverse=True)
+    for lang in order[:remainder]:
+        targets[lang] += 1
+    return {k: v for k, v in targets.items() if v > 0}
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--n", type=int, default=300)
@@ -247,6 +328,20 @@ def main() -> int:
     ap.add_argument("--n-per-call", type=int, default=10)
     ap.add_argument("--concurrency", type=int, default=8)
     ap.add_argument("--seed", type=int, default=42)
+    ap.add_argument(
+        "--profile",
+        choices=sorted(SYSTEM_GENERATOR_BY_PROFILE),
+        default="casual",
+        help="topic/prompt profile. Use gov_service_roman_recovery for v4b Roman-NE top-up.",
+    )
+    ap.add_argument(
+        "--lang-mix",
+        default="",
+        help="comma-separated language weights, e.g. roman_nepali=1 or "
+        "roman_nepali=0.5,devanagari=0.25,english=0.25",
+    )
+    ap.add_argument("--source", default="brief_qa_distilled")
+    ap.add_argument("--id-prefix", default="sft_brief_qa")
     ap.add_argument("--verbose", action="store_true")
     args = ap.parse_args()
 
@@ -255,12 +350,8 @@ def main() -> int:
         format="%(asctime)s %(levelname)s %(message)s",
     )
 
-    # Roman-NE biased — that's the slice we're underweight on
-    targets = {
-        "roman_nepali": int(args.n * 0.50),
-        "devanagari": int(args.n * 0.25),
-        "english": int(args.n * 0.25),
-    }
+    # Roman-NE biased by default — that's the slice we're underweight on.
+    targets = parse_lang_mix(args.lang_mix, args.n)
     total_target = sum(targets.values())
     logging.info("targets per lang: %s (total %d)", targets, total_target)
 
@@ -273,7 +364,7 @@ def main() -> int:
         nonlocal n_calls
         with write_lock:
             n_calls += 1
-        return lang, generate_batch(lang, args.n_per_call)
+        return lang, generate_batch(lang, args.n_per_call, args.profile)
 
     rng = random.Random(args.seed)
     initial: list[str] = []
@@ -315,8 +406,8 @@ def main() -> int:
             seen_qs.add(q_norm)
             n_id += 1
             final.append({
-                "id": f"sft_brief_qa_{n_id:05d}",
-                "source": "brief_qa_distilled",
+                "id": f"{args.id_prefix}_{n_id:05d}",
+                "source": args.source,
                 "question": p["question"],
                 "question_lang": lang,
                 "category": "brief_qa",

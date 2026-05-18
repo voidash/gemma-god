@@ -71,6 +71,7 @@ DATA_VERSION="${DATA_VERSION:-v1}"
 TRAIN_FILE="${TRAIN_FILE:-sft_${DATA_VERSION}_train.jsonl}"
 VAL_FILE="${VAL_FILE:-sft_${DATA_VERSION}_val.jsonl}"
 TRAINER_SCRIPT="${TRAINER_SCRIPT:-train_sft_v1.py}"
+TRAIN_EXTRA_ARGS="${TRAIN_EXTRA_ARGS:-}"
 
 # Run label prefix to disambiguate runs in checkpoint repo + tags.
 # For E2B v2: RUN_LABEL_PREFIX=sft_v2_e2b ./scripts/launch_aws_train.sh launch
@@ -285,6 +286,7 @@ python scripts/__TRAINER_SCRIPT__ \
     --hf-repo \"$HF_CHECKPOINT_REPO\" \
     --max-wall-hours $MAX_WALL_HOURS \
     --epochs __EPOCHS__ \
+    __TRAIN_EXTRA_ARGS__ \
     2>&1 | tee -a train.log
 TRAIN_RC=\$?
 echo \"=== train done rc=\$TRAIN_RC \$(date -u +%FT%TZ) ===\" | tee -a train.log
@@ -355,6 +357,7 @@ TEMPLATE_EOF
         "__VAL_FILE__=$VAL_FILE" \
         "__TRAINER_SCRIPT__=$TRAINER_SCRIPT" \
         "__EPOCHS__=$EPOCHS" \
+        "__TRAIN_EXTRA_ARGS__=$TRAIN_EXTRA_ARGS" \
         <<'PY_HELPER'
 import sys
 template = sys.argv[1]

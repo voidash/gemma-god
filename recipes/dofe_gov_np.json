@@ -1,0 +1,11 @@
+{
+  "source_id": "dofe_gov_np",
+  "version": 1,
+  "entry_points": ["https://dofe.gov.np"],
+  "max_depth": 2,
+  "max_html_fetches": 120,
+  "max_total_fetches": 500,
+  "max_elapsed_sec": 900,
+  "rate_limit_ms": 800,
+  "notes": "Current DOFE site lives at the HTTPS root; older /Home.aspx now returns a 404. Needed for foreign employment labor permit retrieval."
+}

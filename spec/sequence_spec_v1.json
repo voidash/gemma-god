@@ -1,0 +1,1759 @@
+{
+  "version": "1.0.0",
+  "schema": "footage.sequence_spec",
+  "title": "PreVillage: public-service knowledge before privilege",
+  "project_id": "previllage-gemma-for-good-2026",
+  "created": "2026-05-18",
+  "updated": "2026-05-18",
+  "timing_source": "narration",
+  "timing_notes": "B01-B07 are on the original narration clock. B08 inserts the Jiri mayor quote; B09-B20 are retimed to the editorial output clock after the mayor insert and the small WhatsApp example-phrase replacement. Only the spoken example phrase is removed from founder VO; the rest of the narration remains intact.",
+  "codex_review_applied": true,
+  "codex_fixes": [
+    "Added global_assets so narration audio and Chirp2 timing files are accounted for outside visible beat assets.",
+    "Bound montage/source assets to visible layers instead of leaving them only in beat-level assets.",
+    "Made the B04 process reference image explicitly visible as faint texture instead of a non-visible reference.",
+    "Selected B14 interview source window 0:50-1:14 for practical-source proof.",
+    "Reduced late architecture repetition by using the architecture graphic primarily as a system reveal, not every closing beat.",
+    "Shifted B09 from confusing wordplay toward already-learned UX, with the hen only as a sub-second easter egg.",
+    "Added clearer ASR, Gemma correction, retrieval, TTS, and kiosk proof across B17-B18.",
+    "Applied delivery-v2 fixes: removed unsupported PDF placeholder from B02, added selected Jiri source audio, added scratch spoken close, removed beat fade-through-black, and promoted WhatsApp/RAG/Pi/voice proof beats to custom layouts.",
+    "Replaced the scratch spoken close with an eleven-person question grid using Chirp2 word-level timestamps."
+  ],
+  "rules": {
+    "dimensions": {
+      "width": 1920,
+      "height": 1080,
+      "fps": 30,
+      "duration_seconds": 180
+    },
+    "language": "ne+en",
+    "palette": {
+      "ink": "#151515",
+      "paper": "#FBFAF6",
+      "warm_bg": "#F3F0E8",
+      "source_blue": "#2F5B7C",
+      "warning_red": "#B8342F",
+      "human_green": "#8CCFB0",
+      "gemma_coral": "#FF817B",
+      "muted": "#6D716A"
+    },
+    "typography": {
+      "latin_display": "Inter Black or equivalent local sans",
+      "latin_body": "Inter / system sans",
+      "nepali": "Noto Sans Devanagari / system Devanagari fallback",
+      "caption": "large, high contrast, no decorative letter spacing"
+    },
+    "audio_design": {
+      "narration_priority": "Narration is the lead instrument. Background score must stay quiet enough that every word remains intelligible.",
+      "score_asset": "audio/music/previllage_score_bed.wav",
+      "score_character": "A restrained original ambient bed: low drone, soft field-noise texture, and a small pulse only during build/system sections. No stock cinematic swell.",
+      "section_volume_plan": [
+        {
+          "range_sec": "0-2.2",
+          "volume": "0.00-0.025",
+          "intent": "Let the first sentence land with almost no music."
+        },
+        {
+          "range_sec": "2.2-23",
+          "volume": "0.035",
+          "intent": "Low pressure under the origin/problem evidence."
+        },
+        {
+          "range_sec": "23-42",
+          "volume": "0.045",
+          "intent": "Slight lift for privilege, v0, and the ride to Jiri."
+        },
+        {
+          "range_sec": "42-65",
+          "volume": "0.028",
+          "intent": "Duck for fieldwork and the phone/UX quote so the point is heard."
+        },
+        {
+          "range_sec": "65-125",
+          "volume": "0.04-0.05",
+          "intent": "Steady build while Gemma, intake, RAG, and interviews assemble into a system."
+        },
+        {
+          "range_sec": "125-144",
+          "volume": "0.028",
+          "intent": "Hold back during the anti-hallucination and officer-loop claim."
+        },
+        {
+          "range_sec": "144-165",
+          "volume": "0.045",
+          "intent": "Controlled lift for custom ASR/TTS and voice pipeline proof."
+        },
+        {
+          "range_sec": "165-180",
+          "volume": "0.035 then fade to 0",
+          "intent": "Stay under real one-word question cuts while the human grid and final definition land."
+        }
+      ]
+    },
+    "global_motion": {
+      "ambient": "grain, subtle parallax on footage, slow push on photos and static cards",
+      "intentional": "hard cuts for evidence, mask reveal for Jiri, assembly animation for systems",
+      "banned": [
+        "linear easing",
+        "backdropFilter",
+        "emoji",
+        "decorative blobs",
+        "generic purple gradients"
+      ]
+    },
+    "min_meaningful_layers_per_frame": 3,
+    "text_rule": "On-screen text must add information beyond narration, except subtitles and title cards.",
+    "asset_rule": "Every ready render asset in assets/manifest.json must appear in at least one visible beat layer. Global narration/ASR assets must appear in global_assets. Reference assets must either be visible in a beat or moved out of ready assets.",
+    "validation_required": [
+      "render start/mid/end still for every beat",
+      "verify hero/support/atmosphere hierarchy",
+      "verify every referenced asset is visible at least once",
+      "verify text is readable and not overlapping",
+      "verify animation evidence from start to mid frames"
+    ],
+    "layout_non_repetition": "No more than two adjacent beats may use the same screen-plus-text-plus-diagram grammar; pattern breaks are required at B07, B10, B16, and B20.",
+    "beat_readiness_rule": "A beat marked ready must include selected source windows or explicit layer-level asset bindings, not only a vague source clip."
+  },
+  "narration": {
+    "audio_path": "audio/narration/previllage_narration_20260518_113426_16k_mono.wav",
+    "script_path": "spec/narration_text.txt",
+    "asr_word_beats": "analysis/transcripts/chirp2/narration_20260518_113426/chirp2_word_beats.tsv",
+    "asr_subtitles": "analysis/transcripts/chirp2/narration_20260518_113426/chirp2_subtitle_en.srt",
+    "recorded_vo_start_sec": 1.04,
+    "recorded_vo_end_sec": 162.84,
+    "editorial_close_audio_path": "",
+    "editorial_close_start_sec": 165,
+    "caption_corrections": {
+      "VZERA": "v0",
+      "JMA": "Gemma",
+      "P portal": "pivotal",
+      "SR": "ASR",
+      "ESR": "ASR",
+      "TS": "TTS",
+      "TDS": "TTS",
+      "root": "route",
+      "dataset knowledge": "tacit knowledge",
+      "and ASR 2": "and ASR, too",
+      "help privilege": "help. PreVillage",
+      "for computer and centralized": "for compute, and centralized"
+    }
+  },
+  "beats": [
+    {
+      "id": "B01",
+      "name": "Cold Open",
+      "section": "Origin",
+      "start_sec": 0,
+      "end_sec": 2.2,
+      "duration_sec": 2.2,
+      "timing_source": "narration",
+      "density_mode": "dense",
+      "break": true,
+      "purpose": "Establish lived public-service pain before any tech appears.",
+      "narration_cue": "Nepal has a problem.",
+      "overlay_text": [
+        "Nepal has a problem."
+      ],
+      "assets": [
+        "assets/graphics/reddit_origin_card_1920x1080.png"
+      ],
+      "transition_in": "fade up from black",
+      "transition_out": "hard cut on word Three",
+      "layers": [
+        {
+          "id": "reddit_card",
+          "role": "hero",
+          "kind": "image",
+          "description": "Recreated r/Nepal post card fills 80 percent of frame, slightly off-center over dark textured background.",
+          "validation": "reddit_card is visible, readable if textual, and supports the beat purpose.",
+          "asset": "assets/graphics/reddit_origin_card_1920x1080.png",
+          "position": "center, 1428x880 card, slight 0.4deg rotation",
+          "animation": "slow 102 percent to 100 percent settle, expo out"
+        },
+        {
+          "id": "hook_text",
+          "role": "support",
+          "kind": "text",
+          "description": "Large title text slams on top: Nepal has a problem.",
+          "validation": "hook_text is visible, readable if textual, and supports the beat purpose.",
+          "text": "Nepal has a problem.",
+          "position": "lower-left safe area",
+          "animation": "2-frame anticipation then 10-frame slam, back easing"
+        },
+        {
+          "id": "origin_texture",
+          "role": "atmosphere",
+          "kind": "shape",
+          "description": "Subtle red and blue circles from the card background, with 4 percent grain.",
+          "validation": "origin_texture is visible, readable if textual, and supports the beat purpose."
+        }
+      ],
+      "validation_criteria": [
+        "At least three meaningful visual layers are present unless this is a deliberate title-card hold.",
+        "The hero element is identifiable within one second.",
+        "Referenced assets appear on screen and match the described purpose.",
+        "No text overlaps or falls outside the 1920x1080 frame.",
+        "Motion or editorial change is visible between start, middle, and end validation frames."
+      ],
+      "status": "ready",
+      "notes": []
+    },
+    {
+      "id": "B02",
+      "name": "Hidden Knowledge Has A Price",
+      "section": "Origin",
+      "start_sec": 2.2,
+      "end_sec": 7,
+      "duration_sec": 4.8,
+      "timing_source": "narration",
+      "density_mode": "dense",
+      "break": false,
+      "purpose": "Turn origin story into concrete numbers and route pain.",
+      "narration_cue": "Three weeks. Four offices. Four versions of the same form. Almost eight thousand rupees paid to middlemen.",
+      "overlay_text": [
+        "3 weeks / 4 offices / 4 forms / Rs 8k"
+      ],
+      "assets": [
+        "assets/graphics/four_office_route_annotated_large.png",
+        "assets/sources/four_office_route/crops/01_company_registrar_office.png",
+        "assets/sources/four_office_route/crops/02_company_online_form.png",
+        "assets/sources/four_office_route/crops/03_ocr_pdf_credentials.png",
+        "assets/sources/four_office_route/crops/04_ird_online_form.png",
+        "assets/sources/four_office_route/crops/05_ird_tripureshwor_office.png",
+        "assets/sources/four_office_route/crops/06_ird_kalimati_office.png",
+        "assets/sources/four_office_route/crops/07_ird_kalanki_office.png",
+        "assets/sources/four_office_route/capture_manifest.tsv"
+      ],
+      "transition_in": "hard cut",
+      "transition_out": "smash cut to headlines",
+      "layers": [
+        {
+          "id": "route_map",
+          "role": "hero",
+          "kind": "image",
+          "description": "Annotated route board from the real company/PAN journey fills the frame and shows office hops, repeated forms, and route failure.",
+          "validation": "route_map is visible, readable if textual, and supports the beat purpose.",
+          "asset": "assets/graphics/four_office_route_annotated_large.png",
+          "animation": "static readable proof board; number chips live in the side gutter so they do not cover the diagram",
+          "assets": [
+            "assets/graphics/four_office_route_annotated_large.png"
+          ],
+          "position": "center contain, side-gutter number chips"
+        },
+        {
+          "id": "route_crops",
+          "role": "hero",
+          "kind": "image_sequence",
+          "description": "Extracted pieces from the user's annotated route image: online form, company registrar office, IRD offices, and final office.",
+          "validation": "The route is animated from extracted pieces; the full annotated board is not just used as a static foreground.",
+          "assets": [
+            "assets/sources/four_office_route/crops/02_company_online_form.png",
+            "assets/sources/four_office_route/crops/01_company_registrar_office.png",
+            "assets/sources/four_office_route/crops/05_ird_tripureshwor_office.png",
+            "assets/sources/four_office_route/crops/06_ird_kalimati_office.png",
+            "assets/sources/four_office_route/crops/07_ird_kalanki_office.png",
+            "assets/sources/four_office_route/crops/03_ocr_pdf_credentials.png",
+            "assets/sources/four_office_route/crops/04_ird_online_form.png"
+          ],
+          "animation": "cards enter in route order; user marker travels from online form to offices; form-version chips count up"
+        },
+        {
+          "id": "number_chips",
+          "role": "support",
+          "kind": "text_chips",
+          "description": "3 weeks, 4 offices, 4 forms, Rs 8k extra remain readable on left.",
+          "validation": "All four chips readable at 1080p."
+        },
+        {
+          "id": "source_note",
+          "role": "support",
+          "kind": "source_label",
+          "description": "Side-gutter note says people are paying for information, not the service, while the annotated board carries OCR/CAMIS and IRD Tripureshwor, Kalimati, Kalanki evidence.",
+          "validation": "source_note is visible, readable if textual, and supports the beat purpose.",
+          "assets": [
+            "assets/sources/four_office_route/capture_manifest.tsv"
+          ],
+          "position": "bottom-right, 20px mono text on paper strip"
+        }
+      ],
+      "validation_criteria": [
+        "At least three meaningful visual layers are present unless this is a deliberate title-card hold.",
+        "The hero element is identifiable within one second.",
+        "Referenced assets appear on screen and match the described purpose.",
+        "No text overlaps or falls outside the 1920x1080 frame.",
+        "Motion or editorial change is visible between start, middle, and end validation frames."
+      ],
+      "status": "ready",
+      "notes": []
+    },
+    {
+      "id": "B03",
+      "name": "Not A One-Off",
+      "section": "Origin",
+      "start_sec": 7,
+      "end_sec": 15,
+      "duration_sec": 8,
+      "timing_source": "narration",
+      "density_mode": "dense",
+      "break": false,
+      "purpose": "Show middlemen/routing problem is broad, not one Reddit post.",
+      "narration_cue": "People are leveraging lack of proper pipeline and well documentation. I wanted to solve this.",
+      "overlay_text": [
+        "People pay for information, not the service."
+      ],
+      "assets": [
+        "assets/sources/middlemen_news/SELECTS.tsv",
+        "assets/sources/middlemen_news/screenshots/01b_myrepublica_amp_good_governance_on_hold.png",
+        "assets/sources/middlemen_news/screenshots/02_rising_nepal_ending_sway_middlemen.png",
+        "assets/sources/middlemen_news/screenshots/03_ekantipur_middlemen_prohibited_land_revenue.png",
+        "assets/sources/middlemen_news/screenshots/04_ratopati_land_revenue_middlemen_crackdown.png",
+        "assets/sources/middlemen_news/screenshots/05_nepalnews_brokers_hijack_services.png",
+        "assets/sources/middlemen_news/screenshots/06_arthasarokar_sarlahi_middlemen.png"
+      ],
+      "transition_in": "smash cut",
+      "transition_out": "push into process diagram",
+      "layers": [
+        {
+          "id": "headline_montage",
+          "role": "hero",
+          "kind": "image_sequence",
+          "description": "Receipt wall, not decorative montage: first two headlines become large hero cards for readability, remaining four stack as smaller but legible proof around them.",
+          "validation": "At least two publisher names and two headline phrases are readable at 1080p; SELECTS.tsv mapping is reflected in card labels.",
+          "animation": "hard cuts on narration clauses; red underline locks to visible words middlemen/brokers; no screenshot held under 30 frames",
+          "assets": [
+            "assets/sources/middlemen_news/SELECTS.tsv",
+            "assets/sources/middlemen_news/screenshots/01b_myrepublica_amp_good_governance_on_hold.png",
+            "assets/sources/middlemen_news/screenshots/02_rising_nepal_ending_sway_middlemen.png",
+            "assets/sources/middlemen_news/screenshots/03_ekantipur_middlemen_prohibited_land_revenue.png",
+            "assets/sources/middlemen_news/screenshots/04_ratopati_land_revenue_middlemen_crackdown.png",
+            "assets/sources/middlemen_news/screenshots/05_nepalnews_brokers_hijack_services.png",
+            "assets/sources/middlemen_news/screenshots/06_arthasarokar_sarlahi_middlemen.png"
+          ],
+          "position": "hero card at right 68 percent width for 0-3.4s, then six-card evidence wall with publisher labels"
+        },
+        {
+          "id": "cost_line",
+          "role": "support",
+          "kind": "text",
+          "description": "A concise line reframes the issue as a repeatable route problem, not only personal frustration.",
+          "validation": "cost_line is visible, readable if textual, and supports the beat purpose.",
+          "text": "Not one office. Not one website. A missing route.",
+          "position": "bottom third on black solid strip"
+        },
+        {
+          "id": "publisher_labels",
+          "role": "support",
+          "kind": "text_chips",
+          "description": "Publisher/source chips identify the evidence wall without exposing raw filenames.",
+          "validation": "Publisher/source chips are readable and no JPG/PNG filenames are visible.",
+          "text": "public reporting / repeated middleman problem"
+        },
+        {
+          "id": "grain",
+          "role": "atmosphere",
+          "kind": "texture",
+          "description": "5 percent paper grain and faint page shadows.",
+          "validation": "grain is visible, readable if textual, and supports the beat purpose."
+        }
+      ],
+      "validation_criteria": [
+        "At least three meaningful visual layers are present unless this is a deliberate title-card hold.",
+        "The hero element is identifiable within one second.",
+        "Referenced assets appear on screen and match the described purpose.",
+        "No text overlaps or falls outside the 1920x1080 frame.",
+        "Motion or editorial change is visible between start, middle, and end validation frames."
+      ],
+      "status": "ready",
+      "notes": []
+    },
+    {
+      "id": "B04",
+      "name": "E-Governance Gap",
+      "section": "Diagnosis",
+      "start_sec": 15,
+      "end_sec": 23,
+      "duration_sec": 8,
+      "timing_source": "narration",
+      "density_mode": "building",
+      "break": false,
+      "purpose": "Diagnose UX plus documented and undocumented knowledge.",
+      "narration_cue": "It's the gap every country transitioning into modern e-governance faces. Nepal has internet forms, but you still have to visit offices.",
+      "overlay_text": [
+        "documented knowledge",
+        "tacit knowledge"
+      ],
+      "assets": [
+        "footage/selects/story_clips/forms_process_reference_20260518_122823.mp4",
+        "assets/sources/four_office_route/crops/01_company_registrar_office.png",
+        "assets/sources/four_office_route/crops/05_ird_tripureshwor_office.png",
+        "assets/sources/four_office_route/crops/06_ird_kalimati_office.png",
+        "assets/sources/four_office_route/crops/07_ird_kalanki_office.png"
+      ],
+      "transition_in": "push in",
+      "transition_out": "hard cut to privilege flex",
+      "layers": [
+        {
+          "id": "process_bg",
+          "role": "hero",
+          "kind": "video",
+          "description": "Form/process reference video plays under warm translucent grade.",
+          "validation": "process_bg is visible, readable if textual, and supports the beat purpose.",
+          "asset": "footage/selects/story_clips/forms_process_reference_20260518_122823.mp4",
+          "animation": "slow 1.02x push, muted contrast"
+        },
+        {
+          "id": "process_animation",
+          "role": "support",
+          "kind": "remotion_animation",
+          "description": "Custom animated journey derived from the user's reference: fill an online form, print/prepare documents, visit office validation, wait in line, then finish.",
+          "validation": "The process is animated as separate steps; the reference image is not used as a static foreground.",
+          "assets": [
+            "assets/sources/four_office_route/crops/01_company_registrar_office.png",
+            "assets/sources/four_office_route/crops/05_ird_tripureshwor_office.png",
+            "assets/sources/four_office_route/crops/06_ird_kalimati_office.png",
+            "assets/sources/four_office_route/crops/07_ird_kalanki_office.png"
+          ],
+          "animation": "nodes assemble left-to-right, a citizen marker travels through the process, queue/waiting appears before the done stamp"
+        },
+        {
+          "id": "knowledge_split",
+          "role": "support",
+          "kind": "text",
+          "description": "Documented knowledge and tacit knowledge labels stay visible at bottom.",
+          "validation": "knowledge_split is visible, readable if textual, and supports the beat purpose."
+        }
+      ],
+      "validation_criteria": [
+        "At least three meaningful visual layers are present unless this is a deliberate title-card hold.",
+        "The hero element is identifiable within one second.",
+        "Referenced assets appear on screen and match the described purpose.",
+        "No text overlaps or falls outside the 1920x1080 frame.",
+        "Motion or editorial change is visible between start, middle, and end validation frames."
+      ],
+      "status": "ready",
+      "notes": []
+    },
+    {
+      "id": "B05",
+      "name": "Privilege Flex",
+      "section": "Privilege",
+      "start_sec": 23,
+      "end_sec": 30,
+      "duration_sec": 7,
+      "timing_source": "narration",
+      "density_mode": "dense",
+      "break": false,
+      "purpose": "Own the privilege that made the attempt possible.",
+      "narration_cue": "I had privilege: GPU access, technical knowledge, people who helped me, and obsession to keep debugging.",
+      "overlay_text": [
+        "Privilege = ability to keep pushing"
+      ],
+      "assets": [
+        "footage/selects/story_clips/voice_collection_sister_framed.mp4",
+        "footage/selects/story_clips/aws_ec2_gpu_access.mp4",
+        "footage/selects/story_clips/training_tmux_status.mp4"
+      ],
+      "transition_in": "hard cut",
+      "transition_out": "cut to web UI",
+      "layers": [
+        {
+          "id": "sister_voice",
+          "role": "hero",
+          "kind": "video",
+          "description": "Voice contributor footage starts full frame, human help first.",
+          "validation": "sister_voice is visible, readable if textual, and supports the beat purpose.",
+          "asset": "footage/selects/story_clips/voice_collection_sister_framed.mp4",
+          "animation": "full frame for first third, then resizes into left column"
+        },
+        {
+          "id": "aws_gpu",
+          "role": "support",
+          "kind": "video",
+          "description": "AWS/GPU access joins as second column.",
+          "validation": "aws_gpu is visible, readable if textual, and supports the beat purpose.",
+          "asset": "footage/selects/story_clips/aws_ec2_gpu_access.mp4",
+          "animation": "slides in from right, no generic cloud icons"
+        },
+        {
+          "id": "training_tmux",
+          "role": "support",
+          "kind": "video",
+          "description": "Training terminal becomes third column with epoch/log motion.",
+          "validation": "training_tmux is visible, readable if textual, and supports the beat purpose.",
+          "asset": "footage/selects/story_clips/training_tmux_status.mp4",
+          "animation": "enters as the right half after the sister footage; playbackRate 0.5 so terminal details are readable"
+        },
+        {
+          "id": "privilege_labels",
+          "role": "support",
+          "kind": "text_chips",
+          "description": "GPU access, technical knowledge, people who helped, obsession to debug.",
+          "validation": "Custom renderer sequence: sister full screen, then 50/50 sister and slowed tmux, then 33/33/33 sister, tmux, AWS. Labels do not obscure faces or terminal evidence."
+        }
+      ],
+      "validation_criteria": [
+        "At least three meaningful visual layers are present unless this is a deliberate title-card hold.",
+        "The hero element is identifiable within one second.",
+        "Referenced assets appear on screen and match the described purpose.",
+        "No text overlaps or falls outside the 1920x1080 frame.",
+        "Motion or editorial change is visible between start, middle, and end validation frames."
+      ],
+      "status": "ready",
+      "notes": []
+    },
+    {
+      "id": "B06",
+      "name": "Joined Fieldwork Cuts",
+      "section": "Fieldwork",
+      "start_sec": 30,
+      "end_sec": 36,
+      "duration_sec": 6,
+      "timing_source": "narration",
+      "density_mode": "simple",
+      "break": false,
+      "purpose": "Hold the web/Kathmandu solution until the spoken privilege cue, then begin the Jiri travel footage through a real text mask.",
+      "narration_cue": "With which v0 was born. It was a web interface where people could type questions. But that was a Kathmandu solution.",
+      "overlay_text": [
+        "fieldwork evidence",
+        "one route, one screen"
+      ],
+      "assets": [
+        "footage/selects/story_clips/web_question_box_or_chat.mp4",
+        "footage/selects/govspeak-2/timeline1_cut_01_GX012647.mp4",
+        "footage/selects/govspeak-2/timeline1_cut_02_GX012652.mp4",
+        "footage/selects/govspeak-2/timeline1_cut_03_GX012653.mp4",
+        "footage/selects/govspeak-2/timeline1_cut_07_GX012668.mp4"
+      ],
+      "transition_in": "hard cut",
+      "transition_out": "hard cut",
+      "layers": [
+        {
+          "id": "web_chat_intro",
+          "role": "hero",
+          "kind": "video",
+          "description": "V0 web-chat interface holds until 'Kathmandu itself is a privilege'.",
+          "validation": "web_chat_intro is the only video visible before the privilege/travel cue.",
+          "asset": "footage/selects/story_clips/web_question_box_or_chat.mp4",
+          "animation": "full-frame hold, then hard cut to masked travel"
+        },
+        {
+          "id": "joined_fieldwork_cuts",
+          "role": "hero",
+          "kind": "video_sequence",
+          "description": "Travel footage begins on the spoken word privilege. B06 starts the sequence with timeline1_cut_01_GX012647 under the PRIVILEGE mask.",
+          "validation": "Travel does not appear before the privilege cue; when it appears, it is one full-frame video under the text-mask overlay.",
+          "assets": [
+            "footage/selects/govspeak-2/timeline1_cut_01_GX012647.mp4",
+            "footage/selects/govspeak-2/timeline1_cut_02_GX012652.mp4",
+            "footage/selects/govspeak-2/timeline1_cut_03_GX012653.mp4",
+            "footage/selects/govspeak-2/timeline1_cut_07_GX012668.mp4"
+          ],
+          "animation": "starts at about 35.15s, full-frame video only"
+        },
+        {
+          "id": "privilege_text_mask",
+          "role": "support",
+          "kind": "text_mask",
+          "description": "PRIVILEGE is a transparent cutout in a dark overlay, not white text. The overlay opacity begins fading as travel starts.",
+          "validation": "The word is visible because video shows through the cutout; the dark overlay fades down smoothly."
+        },
+        {
+          "id": "cut_order",
+          "role": "support",
+          "kind": "editing_note",
+          "description": "Cut order is fixed as GX012647 -> GX012652 -> GX012653 -> GX012668.",
+          "validation": "Preview frames across the beat show the requested order."
+        }
+      ],
+      "validation_criteria": [
+        "At least three meaningful visual layers are present unless this is a deliberate title-card hold.",
+        "The hero element is identifiable within one second.",
+        "Referenced assets appear on screen and match the described purpose.",
+        "No text overlaps or falls outside the 1920x1080 frame.",
+        "Motion or editorial change is visible between start, middle, and end validation frames."
+      ],
+      "status": "ready",
+      "notes": []
+    },
+    {
+      "id": "B07",
+      "name": "Leaving Kathmandu",
+      "section": "Fieldwork",
+      "start_sec": 36,
+      "end_sec": 42,
+      "duration_sec": 6,
+      "timing_source": "narration",
+      "density_mode": "simple",
+      "break": true,
+      "purpose": "Move from desk privilege to remote office reality with one clean full-frame travel clip at a time.",
+      "narration_cue": "Kathmandu itself is a privilege. So I travelled 180 kilometers to Jiri...",
+      "overlay_text": [
+        "180 km to Jiri",
+        "Kathmandu is also privilege"
+      ],
+      "assets": [
+        "footage/selects/govspeak-2/timeline1_cut_01_GX012647.mp4",
+        "footage/selects/govspeak-2/timeline1_cut_02_GX012652.mp4",
+        "footage/selects/govspeak-2/timeline1_cut_03_GX012653.mp4",
+        "footage/selects/govspeak-2/timeline1_cut_07_GX012668.mp4"
+      ],
+      "transition_in": "text mask",
+      "transition_out": "cut to meeting room",
+      "layers": [
+        {
+          "id": "privilege_mask",
+          "role": "hero",
+          "kind": "text_mask",
+          "description": "The PRIVILEGE mask continues from B06 and fades fully transparent by the time the narration reaches 'I travelled 180 km to Jiri'.",
+          "validation": "The mask is still present at the B07 start, then disappears into full travel footage before the Jiri-office line.",
+          "animation": "dark overlay opacity fades from the B06 mask state to zero by about 37.52s"
+        },
+        {
+          "id": "continued_fieldwork_cuts",
+          "role": "hero",
+          "kind": "video_sequence",
+          "description": "Continuation of the requested travel chain after B06: GX012652, GX012653, then GX012668 full-frame.",
+          "validation": "Only one travel video is visible at any frame in B07; no inset video is stacked on top.",
+          "assets": [
+            "footage/selects/govspeak-2/timeline1_cut_01_GX012647.mp4",
+            "footage/selects/govspeak-2/timeline1_cut_02_GX012652.mp4",
+            "footage/selects/govspeak-2/timeline1_cut_03_GX012653.mp4",
+            "footage/selects/govspeak-2/timeline1_cut_07_GX012668.mp4"
+          ],
+          "animation": "non-overlapping full-frame segments, continuing the B06 travel start"
+        },
+        {
+          "id": "mask_timing_note",
+          "role": "support",
+          "kind": "editing_note",
+          "description": "Travel starts on the spoken privilege cue and the mask clears by the travelled-180-km phrase.",
+          "validation": "Preview frames around 35.15s, 36.0s, and 37.52s show start, fade, and full reveal."
+        }
+      ],
+      "validation_criteria": [
+        "At least three meaningful visual layers are present unless this is a deliberate title-card hold.",
+        "The hero element is identifiable within one second.",
+        "Referenced assets appear on screen and match the described purpose.",
+        "No text overlaps or falls outside the 1920x1080 frame.",
+        "Motion or editorial change is visible between start, middle, and end validation frames."
+      ],
+      "status": "ready",
+      "notes": []
+    },
+    {
+      "id": "B08",
+      "name": "Fieldwork Changed Product",
+      "section": "Fieldwork",
+      "start_sec": 42,
+      "end_sec": 51.05,
+      "duration_sec": 9.05,
+      "timing_source": "narration",
+      "density_mode": "simple",
+      "break": false,
+      "purpose": "Give the Jiri mayor quote its own uninterrupted slot after the 'trip changed the product' line.",
+      "narration_cue": "That trip changed the product. [pause for mayor quote] The problem was not only lack of information, but also a UX problem.",
+      "overlay_text": [
+        "fieldwork changed the product"
+      ],
+      "assets": [
+        "footage/selects/story_clips/jiri_meeting_phone_ux_context.mp4",
+        "footage/selects/story_clips/jiri_android_tiktok_facebook_call_quote_1p25.mp4",
+        "footage/selects/story_clips/public_pitch_gemma_screen.mp4"
+      ],
+      "transition_in": "hard cut",
+      "transition_out": "split to UX comparison",
+      "layers": [
+        {
+          "id": "meeting_room",
+          "role": "hero",
+          "kind": "video",
+          "description": "Jiri meeting room establishes real public office context.",
+          "validation": "meeting_room is visible, readable if textual, and supports the beat purpose.",
+          "asset": "footage/selects/story_clips/jiri_meeting_phone_ux_context.mp4",
+          "animation": "conversational push-in"
+        },
+        {
+          "id": "android_quote_sped",
+          "role": "support",
+          "kind": "video_quote",
+          "description": "Speed-adjusted 1.25x Jiri mayor quote about Android phones, TikTok, Facebook, and calls; given its own narration-free slot.",
+          "validation": "The mayor quote is the dominant visual, bordered/highlighted, with no founder narration underneath.",
+          "asset": "footage/selects/story_clips/jiri_android_tiktok_facebook_call_quote_1p25.mp4",
+          "audio_asset": "audio/selects/jiri_mayor_phone_ux_quote_1p25.wav",
+          "animation": "large centered quote panel with subtle green pulse, playback already baked at 1.25x"
+        },
+        {
+          "id": "pitch_screen",
+          "role": "support",
+          "kind": "video",
+          "description": "Presenter near Gemma/public pitch screen becomes the large post-quote visual when the narration says lack of information was only half the problem.",
+          "validation": "At the post-quote/lack-of-information moment, the municipality pitch is large enough to read as the main scene, not a small inset.",
+          "asset": "footage/selects/story_clips/public_pitch_gemma_screen.mp4",
+          "animation": "expands into a wide hero panel after the mayor quote fades"
+        },
+        {
+          "id": "nepali_subtitle",
+          "role": "support",
+          "kind": "subtitle",
+          "description": "Timed Nepali cue subtitles from remotion/src/generated/mayorQuoteCaptions.json, mapped from analysis/transcripts/chirp2/jiri_man_bahadur_phone_ux_quote/subtitle_corrected_ne.srt to the 1.25x trimmed clip: Android phone, TikTok, Facebook, phone calls, and not knowing much beyond that.",
+          "validation": "One corrected Nepali cue is visible at a time, changes roughly second by second, and the English conversion remains readable underneath."
+        }
+      ],
+      "validation_criteria": [
+        "At least three meaningful visual layers are present unless this is a deliberate title-card hold.",
+        "The hero element is identifiable within one second.",
+        "Referenced assets appear on screen and match the described purpose.",
+        "No text overlaps or falls outside the 1920x1080 frame.",
+        "Motion or editorial change is visible between start, middle, and end validation frames."
+      ],
+      "status": "ready",
+      "notes": []
+    },
+    {
+      "id": "B09",
+      "name": "Already Learned UX",
+      "section": "UX Pivot",
+      "start_sec": 51.05,
+      "end_sec": 70.61,
+      "duration_sec": 19.56,
+      "timing_source": "narration",
+      "density_mode": "dense",
+      "break": true,
+      "purpose": "Show that the solution must use interfaces Nepalis already understand: voice, call, WhatsApp, kiosk.",
+      "narration_cue": "The internet of Nepal wasn't built for PDFs, HTML forms, and buttons. People already know how to speak, call, and use WhatsApp. I thought maybe we should start there.",
+      "overlay_text": [
+        "already learned UX",
+        "voice / call / WhatsApp / kiosk"
+      ],
+      "assets": [
+        "footage/selects/story_clips/gov_homepage_montage_20sites.mp4",
+        "footage/selects/story_clips/whatsapp_company_darta_user.mp4",
+        "footage/selects/story_clips/whatsapp_bihe_darta_user.mp4",
+        "footage/selects/story_clips/kiosk_voice_asr_pi.mp4",
+        "footage/selects/story_clips/privi_lays_hen_user_06s_08s.mp4"
+      ],
+      "transition_in": "split-screen build",
+      "transition_out": "cut to WhatsApp sentence",
+      "layers": [
+        {
+          "id": "bad_fit",
+          "role": "hero",
+          "kind": "animated_web_confusion",
+          "description": "Left side shows a confusing government-web experience: portal choices, PDF reading, invalid submission, missing room/counter, and unanswered phone.",
+          "validation": "The left side clearly communicates a person not knowing how to operate the web/form flow, not merely a neutral website montage.",
+          "asset": "footage/selects/story_clips/gov_homepage_montage_20sites.mp4",
+          "position": "left 48 percent"
+        },
+        {
+          "id": "already_known",
+          "role": "hero",
+          "kind": "animated_whatsapp_usage",
+          "description": "Right side shows WhatsApp as the already-learned UX: voice note, ASR text, follow-up, municipality clarification, answer with sources.",
+          "validation": "The right side foregrounds WhatsApp usage as the familiar behavior people already know.",
+          "assets": [
+            "footage/selects/story_clips/whatsapp_company_darta_user.mp4",
+            "footage/selects/story_clips/whatsapp_bihe_darta_user.mp4",
+            "footage/selects/story_clips/kiosk_voice_asr_pi.mp4"
+          ],
+          "position": "right 48 percent"
+        },
+        {
+          "id": "hen_flash",
+          "role": "support",
+          "kind": "video",
+          "description": "Hen clip appears at about 01:09:03 in the output timeline, using the pre-trimmed 6s source moment for roughly one second.",
+          "validation": "The hen appears only during the To Lay / To Not Lay contrast and does not become the whole point.",
+          "asset": "footage/selects/story_clips/privi_lays_hen_user_06s_08s.mp4",
+          "animation": "top-center clipped video, one-second flash at global 69.1s"
+        },
+        {
+          "id": "to_lay_labels",
+          "role": "support",
+          "kind": "text",
+          "description": "Labels anchor the real point: website UX is not enough; already-learned voice and WhatsApp behavior is the deployment surface.",
+          "validation": "to_lay_labels is visible, readable if textual, and supports the beat purpose.",
+          "text": "WEB-FIRST: portals, PDFs, hidden rooms\nVOICE-FIRST: ask like a person, route like a system"
+        }
+      ],
+      "validation_criteria": [
+        "At least three meaningful visual layers are present unless this is a deliberate title-card hold.",
+        "The hero element is identifiable within one second.",
+        "Referenced assets appear on screen and match the described purpose.",
+        "No text overlaps or falls outside the 1920x1080 frame.",
+        "Motion or editorial change is visible between start, middle, and end validation frames."
+      ],
+      "status": "ready",
+      "notes": []
+    },
+    {
+      "id": "B10",
+      "name": "Hold UX Contrast Before Source Question",
+      "section": "Resolver",
+      "start_sec": 70.61,
+      "end_sec": 74.21,
+      "duration_sec": 3.6,
+      "timing_source": "narration",
+      "density_mode": "building",
+      "break": false,
+      "purpose": "Do not introduce a new route/phone sequence here; continue the previous To Lay / To Not Lay contrast until the real WhatsApp source question takes over.",
+      "narration_cue": "A citizen does not begin with a portal URL. They ask naturally...",
+      "overlay_text": [
+        "same contrast holds",
+        "the learned UX is the setup"
+      ],
+      "assets": [
+        "footage/selects/story_clips/gov_homepage_montage_20sites.mp4",
+        "footage/selects/story_clips/whatsapp_company_darta_user.mp4",
+        "footage/selects/story_clips/whatsapp_bihe_darta_user.mp4",
+        "footage/selects/story_clips/kiosk_voice_asr_pi.mp4"
+      ],
+      "transition_in": "continue previous contrast",
+      "transition_out": "cut to real WhatsApp voice source",
+      "layers": [
+        {
+          "id": "continued_bad_fit",
+          "role": "hero",
+          "kind": "continued_animated_web_confusion",
+          "description": "Continuation of B09 left-side To Not Lay web/form confusion through the old frame-1996 route slot.",
+          "validation": "At frame 1996 the left side still shows web-first confusion from the previous contrast, not the old route sequence.",
+          "asset": "footage/selects/story_clips/gov_homepage_montage_20sites.mp4",
+          "position": "left 48 percent"
+        },
+        {
+          "id": "continued_already_known",
+          "role": "hero",
+          "kind": "continued_animated_whatsapp_usage",
+          "description": "Continuation of B09 right-side To Lay WhatsApp/voice/call UI through the setup line before the source question.",
+          "validation": "The right side remains the already-learned UX argument until the real WhatsApp source clip starts.",
+          "assets": [
+            "footage/selects/story_clips/whatsapp_company_darta_user.mp4",
+            "footage/selects/story_clips/whatsapp_bihe_darta_user.mp4",
+            "footage/selects/story_clips/kiosk_voice_asr_pi.mp4"
+          ],
+          "position": "right 48 percent"
+        },
+        {
+          "id": "continued_labels",
+          "role": "support",
+          "kind": "text",
+          "description": "The To Lay / To Not Lay labels remain visible so the viewer understands this is a hold of the previous contrast.",
+          "validation": "Labels remain readable and do not introduce a new visual grammar before the source voice cutaway.",
+          "text": "TO NOT LAY: portals and hidden rooms\nTO LAY: voice, WhatsApp, call"
+        }
+      ],
+      "validation_criteria": [
+        "At least three meaningful visual layers are present unless this is a deliberate title-card hold.",
+        "The hero element is identifiable within one second.",
+        "Referenced assets appear on screen and match the described purpose.",
+        "No text overlaps or falls outside the 1920x1080 frame.",
+        "Motion or editorial change is visible between start, middle, and end validation frames."
+      ],
+      "status": "ready",
+      "notes": []
+    },
+    {
+      "id": "B11",
+      "name": "Case Understanding Route",
+      "section": "Resolver",
+      "start_sec": 74.21,
+      "end_sec": 80.85,
+      "duration_sec": 6.64,
+      "timing_source": "narration",
+      "density_mode": "dense",
+      "break": false,
+      "purpose": "Give the real WhatsApp source question its full-screen slot, then use the post-question filler to show what That is the job means: extract service, place, missing detail, and route before answering. Do not show the Gemma pivotal title in this beat.",
+      "narration_cue": "[real WhatsApp source voice] That is the job: turn a human sentence into a route.",
+      "overlay_text": [
+        "understand the case",
+        "route before answer"
+      ],
+      "assets": [
+        "footage/selects/story_clips/bihe_darta_question_tight.mp4",
+        "assets/graphics/speakgov_architecture_tldraw_board_2560x1440.png"
+      ],
+      "transition_in": "source-voice cutaway",
+      "transition_out": "cut to Gemma capability proof",
+      "layers": [
+        {
+          "id": "phone_question",
+          "role": "hero",
+          "kind": "video",
+          "description": "Full-screen real WhatsApp voice question during the small founder-VO cutaway.",
+          "validation": "At the source slot, the WhatsApp clip fills the screen and the founder narration is not present.",
+          "asset": "footage/selects/story_clips/bihe_darta_question_tight.mp4"
+        },
+      {
+        "id": "planner_router_architecture",
+        "role": "hero",
+        "kind": "image_crop",
+        "description": "SpeakGov architecture crop focused on planner contract/resolver/intake and source router when the narration says That is the job.",
+        "validation": "During That is the job, the architecture board and planner/router crop are visible, with the case-understanding path highlighted instead of Gemma typography.",
+        "asset": "assets/graphics/speakgov_architecture_tldraw_board_2560x1440.png",
+        "position": "full board background plus large planner/router crop"
+      },
+      {
+        "id": "case_fields",
+        "role": "support",
+        "kind": "animated_fields",
+        "description": "The voice prompt is resolved into service, place, missing detail, and next move.",
+        "validation": "The field extraction is visible and clearly frames the system as intake-first, not answer-first.",
+        "text": "service: marriage registration\nplace: Dharmadevi municipality\nmissing: ward / counter / checklist\nnext move: ask compact follow-up"
+      },
+      {
+        "id": "route_steps",
+        "role": "support",
+        "kind": "animated_route_rail",
+        "description": "listen -> repair ASR -> resolve case -> route source -> ask/fetch.",
+        "validation": "The route rail animates after the source question and does not introduce the Gemma pivotal visual yet.",
+        "text": "listen -> repair ASR -> resolve case -> route source -> ask/fetch"
+      }
+      ],
+      "validation_criteria": [
+        "At least three meaningful visual layers are present unless this is a deliberate title-card hold.",
+        "The hero element is identifiable within one second.",
+        "Referenced assets appear on screen and match the described purpose.",
+        "No text overlaps or falls outside the 1920x1080 frame.",
+        "Motion or editorial change is visible between start, middle, and end validation frames."
+      ],
+      "status": "ready",
+      "notes": []
+    },
+    {
+      "id": "B12",
+      "name": "Ask First, Answer Second",
+      "section": "Gemma",
+      "start_sec": 80.85,
+      "end_sec": 93.97,
+      "duration_sec": 13.12,
+      "timing_source": "narration",
+      "density_mode": "building",
+      "break": false,
+      "purpose": "Start the Gemma pivotal proof at the spoken 1:21 cue, clarify the CPT/SFT training story, then switch to the real annotated WhatsApp flow exactly when the narration says the first job is not to answer but understand the case.",
+      "narration_cue": "Gemma was pivotal because it is small enough for local deployment, but still can reason through messy ASR text, ask the next question, and compose from sources. The first job is not to answer, but to understand the case.",
+      "overlay_text": [
+        "understand first",
+        "answer second"
+      ],
+      "assets": [
+        "footage/selects/story_clips/pi_gemma_local_inference_smoke_test.mp4",
+        "assets/graphics/speakgov_architecture_tldraw_board_2560x1440.png",
+        "assets/graphics/whatsapp_real_flow_20260518_165639.png"
+      ],
+      "transition_in": "case route proof",
+      "transition_out": "diagram push",
+      "layers": [
+        {
+          "id": "gemma_pivotal",
+          "role": "hero",
+          "kind": "typography_plus_video",
+          "description": "Gemma was pivotal title with Raspberry Pi local inference proof and planner/router crop.",
+          "validation": "The beginning of B12 explains both small-machine deployment and planner/router ability, without stealing the B11 That is the job slot.",
+          "asset": "footage/selects/story_clips/pi_gemma_local_inference_smoke_test.mp4"
+        },
+        {
+          "id": "planner_router_proof",
+          "role": "support",
+          "kind": "image_crop",
+          "description": "Architecture crop focused on the planner contract and source router.",
+          "validation": "Planner contract/resolver and source router are visible beside the Pi proof.",
+          "asset": "assets/graphics/speakgov_architecture_tldraw_board_2560x1440.png"
+        },
+        {
+          "id": "training_clarifier",
+          "role": "support",
+          "kind": "text_cards",
+          "description": "Clarify that CPT helped with domain language but SFT trained planner/composer behavior from synthetic Q/A validation and source-context examples.",
+          "validation": "CPT and SFT are explained in plain terms; the viewer does not mistake the v0-v6 strip for unexplained training data.",
+          "text": "CPT: domain language, not enough for routing\nSFT: synthetic Q/A validation and source-context planner/composer behavior\nRule: no government fact memorization"
+        },
+        {
+          "id": "real_whatsapp_flow",
+          "role": "hero",
+          "kind": "image",
+          "description": "Real annotated WhatsApp flow: voice note, ASR correction, follow-up question, source-backed answer, and TTS.",
+          "validation": "At output 1:31 the real WhatsApp flow dominates the frame and the message is understand the case first.",
+          "asset": "assets/graphics/whatsapp_real_flow_20260518_165639.png"
+        }
+      ],
+      "validation_criteria": [
+        "At least three meaningful visual layers are present unless this is a deliberate title-card hold.",
+        "The hero element is identifiable within one second.",
+        "Referenced assets appear on screen and match the described purpose.",
+        "No text overlaps or falls outside the 1920x1080 frame.",
+        "Motion or editorial change is visible between start, middle, and end validation frames."
+      ],
+      "status": "ready",
+      "notes": []
+    },
+    {
+      "id": "B13",
+      "name": "RAG Is Necessary But Not Enough",
+      "section": "RAG",
+      "start_sec": 93.97,
+      "end_sec": 106.65,
+      "duration_sec": 12.68,
+      "timing_source": "narration",
+      "density_mode": "dense",
+      "break": false,
+      "purpose": "First show the scattered-truth problem, then show the maintained corpus as infrastructure: DigoBikas seed index, source registry, crawlers, extraction, searchable chunks, messy crawler edge cases, and evidence-path repair.",
+      "narration_cue": "RAG alone is weak when truth is scattered across old websites, PDFs, office habits, and the memory of one contact officer. So I built a registry of 800+ government sources, crawlers, health checks, and a self-healing pipeline.",
+      "overlay_text": [
+        "1,071 sources",
+        "46,051 live documents",
+        "272,718 searchable chunks",
+        "self-healing = evidence-path repair"
+      ],
+      "assets": [
+        "footage/selects/story_clips/gov_homepage_montage_20sites.mp4",
+        "footage/selects/story_clips/digobikas_scraping_tmux.mp4",
+        "assets/sources/forms/mock_government_form_document.png",
+        "assets/sources/four_office_route/crops/04_ird_online_form.png",
+        "assets/previllage-writeup-gallery/submission/source_registry_screen.jpg"
+      ],
+      "transition_in": "diagram push",
+      "transition_out": "hold the RAG claim into B14 before interview appears",
+      "layers": [
+        {
+          "id": "truth_scattered_board",
+          "role": "hero",
+          "kind": "animated_board",
+          "description": "Four evidence fragments appear at the RAG line: old websites, PDF rules, office habits, and contact-officer memory.",
+          "validation": "At around 1:34 the viewer sees the phrase truth is scattered and four concrete source fragments, not just a generic website background.",
+          "assets": [
+            "footage/selects/story_clips/gov_homepage_montage_20sites.mp4",
+            "assets/sources/forms/mock_government_form_document.png",
+            "assets/sources/four_office_route/crops/04_ird_online_form.png"
+          ]
+        },
+        {
+          "id": "crawl_tmux",
+          "role": "support",
+          "kind": "video",
+          "description": "DigoBikas scraping tmux appears inside the corpus infrastructure board as crawler proof.",
+          "validation": "crawl_tmux is visible, readable if textual, and supports the beat purpose.",
+          "asset": "footage/selects/story_clips/digobikas_scraping_tmux.mp4"
+        },
+        {
+          "id": "corpus_infrastructure",
+          "role": "hero",
+          "kind": "animated_board",
+          "description": "DigoBikas source index flows into registry, crawl, extract, chunks, and source-pack evidence. The hardening snapshot stats are visible: 1,071 sources, 46,051 live documents, 272,718 chunks.",
+          "validation": "Around 1:40 the viewer sees corpus as infrastructure, the DigoBikas seed, exact hardening counts, and the pipeline from registry to source pack.",
+          "assets": [
+            "assets/previllage-writeup-gallery/submission/source_registry_screen.jpg",
+            "footage/selects/story_clips/digobikas_scraping_tmux.mp4"
+          ]
+        },
+        {
+          "id": "messy_crawler_work",
+          "role": "support",
+          "kind": "text_chips",
+          "description": "Broken sites, old PDF encodings, scanned notices, zero-text docs, duplicates, and stale/dead pages appear as the actual work.",
+          "validation": "Crawler edge cases are visible as concrete failure modes, not hidden behind a generic pipeline label.",
+          "text": "broken sites\nold PDF encodings\nscanned notices\nzero-text documents\nduplicates\nstale / dead pages"
+        },
+        {
+          "id": "evidence_path_repair",
+          "role": "support",
+          "kind": "repair_queue",
+          "description": "Self-healing is described as evidence-path repair: missing source -> crawl, stale page -> repair recipe, zero-text PDF -> parse/OCR, weak ranking -> eval/rerank, practical gap -> interview/review.",
+          "validation": "The repair queue explicitly maps evidence gaps to crawl, parsing, review, or interview work.",
+          "text": "missing source -> crawl / discover\ndead or stale page -> repair recipe\nzero-text PDF -> parse / OCR\nduplicate docs -> dedupe index\nweak ranking -> eval + rerank\npractical gap -> interview / review"
+        },
+        {
+          "id": "answer_contract",
+          "role": "support",
+          "kind": "text_chips",
+          "description": "Answer contract: legal facts from official websites, practical facts from reviewed humans, answer states uncertainty, contact and source support each claim.",
+          "validation": "The answer contract is visible at the bottom of the infrastructure board.",
+          "text": "legal facts: official websites\npractical facts: reviewed humans\nanswer states uncertainty\ncontact + source supports claim"
+        }
+      ],
+      "validation_criteria": [
+        "At least three meaningful visual layers are present unless this is a deliberate title-card hold.",
+        "The hero element is identifiable within one second.",
+        "Referenced assets appear on screen and match the described purpose.",
+        "No text overlaps or falls outside the 1920x1080 frame.",
+        "Motion or editorial change is visible between start, middle, and end validation frames."
+      ],
+      "status": "ready",
+      "notes": []
+    },
+    {
+      "id": "B14",
+      "name": "Field Interviews Capture Practical Truth",
+      "section": "Practical Sources",
+      "start_sec": 106.65,
+      "end_sec": 114.57,
+      "duration_sec": 7.92,
+      "timing_source": "narration",
+      "density_mode": "simple",
+      "break": false,
+      "purpose": "Show tacit office knowledge entering the system through interviews, after the RAG/self-healing claim has landed.",
+      "narration_cue": "With this I also created a pipeline to capture tacit knowledge. Government officials can answer simple questions that never go documented.",
+      "overlay_text": [
+        "Which counter first?",
+        "Which room?",
+        "Which document do people forget?"
+      ],
+      "assets": [
+        "footage/selects/story_clips/jiri_officer_interview_full.mp4"
+      ],
+      "transition_in": "hard cut from self-healing source system to practical human source",
+      "transition_out": "match cut to admin review",
+      "layers": [
+        {
+          "id": "officer_interview",
+          "role": "hero",
+          "kind": "video",
+          "description": "Use 0:50-1:14 from the Jiri information officer interview: inquiry counter and routing citizens to departments.",
+          "validation": "Interview starts when the narration moves into practical/tacit source capture, not during the source-registry claim.",
+          "asset": "footage/selects/story_clips/jiri_officer_interview_full.mp4",
+          "animation": "slow conversational push-in",
+          "source_range_sec": [
+            50,
+            74
+          ]
+        },
+        {
+          "id": "question_cards",
+          "role": "support",
+          "kind": "text_cards",
+          "description": "Questions appear one by one: counter, room, time, forgotten document, why sent back.",
+          "validation": "question_cards is visible, readable if textual, and supports the beat purpose.",
+          "text": "Which counter first?\nWhich room?\nWhich document do people forget?\nWhy are they sent back?",
+          "position": "right side stacked cards, entering only after interview face is established"
+        },
+        {
+          "id": "source_tag",
+          "role": "support",
+          "kind": "lower_third",
+          "description": "Jiri municipality practical-source interview",
+          "validation": "source_tag is visible, readable if textual, and supports the beat purpose.",
+          "text": "Jiri municipality practical-source interview"
+        }
+      ],
+      "validation_criteria": [
+        "At least three meaningful visual layers are present unless this is a deliberate title-card hold.",
+        "The hero element is identifiable within one second.",
+        "Referenced assets appear on screen and match the described purpose.",
+        "No text overlaps or falls outside the 1920x1080 frame.",
+        "Motion or editorial change is visible between start, middle, and end validation frames."
+      ],
+      "status": "ready",
+      "notes": [
+        "Selected source window from Gemini analysis: 0:50-1:14, covering inquiry counter and practical routing context. Optional cutaways: 1:00-1:35 forgotten documents; 1:55-2:20 sent-back reasons."
+      ]
+    },
+    {
+      "id": "B15",
+      "name": "Self-Healing Evidence Repair",
+      "section": "Self-Healing RAG",
+      "start_sec": 114.57,
+      "end_sec": 126.85,
+      "duration_sec": 12.28,
+      "timing_source": "narration",
+      "density_mode": "building",
+      "break": false,
+      "purpose": "Explain how stale, missing, weak, or tacit evidence becomes repair work instead of hallucinated answers.",
+      "narration_cue": "Those answers go through review, become practical sources, and can be cited later beside official government sources. Tacit knowledge is only unfair when it stays trapped in one office corridor.",
+      "overlay_text": [
+        "self-healing = evidence repair",
+        "gap detector",
+        "repair queue"
+      ],
+      "assets": [
+        "assets/previllage-writeup-gallery/submission/source_registry_screen.jpg",
+        "footage/selects/story_clips/digobikas_scraping_tmux.mp4",
+        "assets/previllage-writeup-gallery/submission/whatsapp_self_heal_flow.png"
+      ],
+      "transition_in": "match cut",
+      "transition_out": "cut to missing-source flow",
+      "layers": [
+        {
+          "id": "repair_flowchart",
+          "role": "hero",
+          "kind": "animated_flowchart",
+          "description": "Self-healing flowchart: stale/dead sources, zero-chunk pages, tacit room/counter questions, and weak retrieval signals feed a gap detector and repair queue.",
+          "validation": "At 1:56 the viewer sees a clear flowchart, not the WhatsApp-only image; WhatsApp officer outreach appears only as one repair path.",
+          "text": "signals -> gap detector -> repair queue -> repair paths -> reviewed evidence returns",
+          "position": "full-frame flowchart with signals on left, repair queue center, repair paths on right, return loop at bottom",
+          "animation": "nodes reveal from left to right; flow arrows draw through the repair queue"
+        },
+        {
+          "id": "source_registry_receipt",
+          "role": "support",
+          "kind": "image",
+          "description": "Small source registry receipt anchors the claim that repair returns to the maintained registry.",
+          "validation": "source_registry_receipt is visible, readable if textual, and supports the beat purpose.",
+          "asset": "assets/previllage-writeup-gallery/submission/source_registry_screen.jpg"
+        },
+        {
+          "id": "crawler_receipt",
+          "role": "support",
+          "kind": "video",
+          "description": "Crawler/tmux receipt anchors crawl and parsing repair work.",
+          "validation": "crawler_receipt is visible, readable if textual, and supports the beat purpose.",
+          "asset": "footage/selects/story_clips/digobikas_scraping_tmux.mp4"
+        },
+        {
+          "id": "whatsapp_one_path",
+          "role": "support",
+          "kind": "image",
+          "description": "The WhatsApp officer outreach board appears only as the human-contact path for tacit gaps, not as the whole self-healing system.",
+          "validation": "whatsapp_one_path is visible as a small support receipt and does not dominate the B15 hero.",
+          "asset": "assets/previllage-writeup-gallery/submission/whatsapp_self_heal_flow.png"
+        },
+        {
+          "id": "repair_paths",
+          "role": "support",
+          "kind": "text_chips",
+          "description": "Repair paths are listed as recrawl/discover, parse/OCR, dedupe/rerank, interview/review, and WhatsApp officer bridge.",
+          "validation": "repair_paths is visible, readable if textual, and supports the beat purpose.",
+          "text": "recrawl / discover\nparse / OCR\ndedupe / rerank\ninterview + review\nWhatsApp officer bridge"
+        }
+      ],
+      "validation_criteria": [
+        "At least three meaningful visual layers are present unless this is a deliberate title-card hold.",
+        "The hero element is identifiable within one second.",
+        "Referenced assets appear on screen and match the described purpose.",
+        "No text overlaps or falls outside the 1920x1080 frame.",
+        "Motion or editorial change is visible between start, middle, and end validation frames."
+      ],
+      "status": "ready",
+      "notes": []
+    },
+    {
+      "id": "B16",
+      "name": "Human Loop When Source Is Missing",
+      "section": "Human Loop",
+      "start_sec": 126.85,
+      "end_sec": 144.49,
+      "duration_sec": 17.64,
+      "timing_source": "narration",
+      "density_mode": "dense",
+      "break": true,
+      "purpose": "Show anti-hallucination and WhatsApp officer outreach loop.",
+      "narration_cue": "When PreVillage does not know, it should not hallucinate. It says what is missing, shows what sources it checked, and turns the citizen's question into an officer outreach message through the WhatsApp bridge. The answer is not invented. It is asked, reviewed, and folded back into the system for the next person.",
+      "overlay_text": [
+        "no source?",
+        "do not hallucinate",
+        "ask officer",
+        "fold back"
+      ],
+      "assets": [
+        "assets/previllage-writeup-gallery/submission/whatsapp_self_heal_flow.png",
+        "assets/graphics/whatsapp_officer_outreach_receipt.png",
+        "footage/selects/story_clips/admin_interview_review_transcribe.mp4"
+      ],
+      "transition_in": "hard cut",
+      "transition_out": "cut to voice training",
+      "layers": [
+        {
+          "id": "no_source_flow",
+          "role": "hero",
+          "kind": "image",
+          "description": "Large self-healing evidence-path board showing the complete missing-source loop: user asks, pipeline states the gap, contact is found from scraped web content, WhatsApp message is sent to the authority, and the reply becomes reviewed evidence.",
+          "validation": "no_source_flow is visible, readable if textual, and supports the beat purpose.",
+          "asset": "assets/previllage-writeup-gallery/submission/whatsapp_self_heal_flow.png"
+        },
+        {
+          "id": "human_loop_flow",
+          "role": "support",
+          "kind": "animated_flow",
+          "description": "Timed right-side callouts explain why the system does not hallucinate: it says what it checked, exposes the missing fact, routes to the contact authority, and folds the reviewed answer back.",
+          "validation": "At 2:10 the WhatsApp self-healing flow is readable and the callouts emphasize the gap-to-contact-to-review path.",
+          "text": "citizen asks -> gap exposed -> contact found -> WhatsApp bridge -> reviewed source",
+          "position": "right-side numbered cards beside the readable evidence-path board",
+          "animation": "four numbered callouts enter in sequence; gap highlight pulses over the WhatsApp response"
+        },
+        {
+          "id": "officer_outreach_receipt",
+          "role": "support",
+          "kind": "image",
+          "description": "Receipt still from the WhatsApp bridge: paired officer channel and drafted government-service question, embedded inside the larger evidence-path board.",
+          "validation": "officer_outreach_receipt is visible or represented inside the evidence-path flow and supports the no-hallucination claim.",
+          "asset": "assets/graphics/whatsapp_officer_outreach_receipt.png"
+        },
+        {
+          "id": "review_return",
+          "role": "support",
+          "kind": "video",
+          "description": "Admin review returns for only the last 4 seconds to show the reply can be reviewed and folded back.",
+          "validation": "review_return is visible, readable if textual, and supports the beat purpose.",
+          "asset": "footage/selects/story_clips/admin_interview_review_transcribe.mp4"
+        },
+        {
+          "id": "no_hallucination_labels",
+          "role": "support",
+          "kind": "text_chips",
+          "description": "no source? do not hallucinate; ask officer; review reply; fold back",
+          "validation": "no_hallucination_labels is visible, readable if textual, and supports the beat purpose.",
+          "text": "no source?\ndo not hallucinate\nask officer\nreview reply\nfold back"
+        }
+      ],
+      "validation_criteria": [
+        "At least three meaningful visual layers are present unless this is a deliberate title-card hold.",
+        "The hero element is identifiable within one second.",
+        "Referenced assets appear on screen and match the described purpose.",
+        "No text overlaps or falls outside the 1920x1080 frame.",
+        "Motion or editorial change is visible between start, middle, and end validation frames."
+      ],
+      "status": "ready",
+      "notes": []
+    },
+    {
+      "id": "B17",
+      "name": "Custom Voice Stack",
+      "section": "Voice",
+      "start_sec": 144.49,
+      "end_sec": 154.37,
+      "duration_sec": 9.88,
+      "timing_source": "narration",
+      "density_mode": "dense",
+      "break": false,
+      "purpose": "Show ASR/TTS grunt work and why voice matters.",
+      "narration_cue": "The internet UX of forms and buttons was not made with Nepali people in mind. Nepal is voice and language rich. So I trained our own TTS and ASR too.",
+      "overlay_text": [
+        "custom Nepali ASR",
+        "custom Nepali TTS"
+      ],
+      "assets": [
+        "footage/selects/story_clips/voice_collection_sister.mp4",
+        "footage/selects/story_clips/tts_huggingface_kala.mp4",
+        "footage/selects/story_clips/tts_epoch_g2p_comparison.mp4",
+        "footage/selects/story_clips/g2p_newari_dialect_review.mp4",
+        "footage/selects/story_clips/training_tmux_status.mp4",
+        "footage/selects/story_clips/kiosk_voice_asr_pi.mp4"
+      ],
+      "transition_in": "hard cut",
+      "transition_out": "cut to pipeline in action",
+      "layers": [
+        {
+          "id": "voice_collection",
+          "role": "hero",
+          "kind": "video",
+          "description": "Sister voice collection returns as human data/work proof.",
+          "validation": "voice_collection is visible, readable if textual, and supports the beat purpose.",
+          "asset": "footage/selects/story_clips/voice_collection_sister.mp4"
+        },
+        {
+          "id": "custom_asr_receipt",
+          "role": "support",
+          "kind": "video",
+          "description": "Kiosk/ASR clip is cropped to the live Nepali transcript area as proof that custom Nepali ASR is part of the stack.",
+          "validation": "A spoken Nepali input and live transcript are visible; it must not read as generic chat UI.",
+          "asset": "footage/selects/story_clips/kiosk_voice_asr_pi.mp4",
+          "position": "top-right 38 percent, transcript crop emphasized",
+          "animation": "slide in after sister voice, 8-frame expo out"
+        },
+        {
+          "id": "tts_space",
+          "role": "support",
+          "kind": "video",
+          "description": "Hugging Face TTS space plays Real Nepali TTS Kala.",
+          "validation": "tts_space is visible, readable if textual, and supports the beat purpose.",
+          "asset": "footage/selects/story_clips/tts_huggingface_kala.mp4"
+        },
+        {
+          "id": "g2p_review",
+          "role": "support",
+          "kind": "video",
+          "description": "G2P/Newari review UI demonstrates language-specific work.",
+          "validation": "g2p_review is visible, readable if textual, and supports the beat purpose.",
+          "asset": "footage/selects/story_clips/g2p_newari_dialect_review.mp4"
+        },
+        {
+          "id": "tts_training",
+          "role": "support",
+          "kind": "video",
+          "description": "TTS epoch/G2P comparison is visible as the training-quality receipt, not just a terminal flash.",
+          "validation": "tts_training is visible, readable if textual, and supports the beat purpose.",
+          "asset": "footage/selects/story_clips/tts_epoch_g2p_comparison.mp4"
+        },
+        {
+          "id": "voice_labels",
+          "role": "support",
+          "kind": "text_chips",
+          "description": "custom Nepali ASR; custom Nepali TTS; G2P review; voice data collection",
+          "validation": "voice_labels is visible, readable if textual, and supports the beat purpose.",
+          "text": "ASR trained for Nepali speech\nTTS trained from collected voice\nG2P review for Nepali + local variants"
+        },
+        {
+          "id": "voice_training_terminal",
+          "role": "support",
+          "kind": "video",
+          "description": "Training tmux appears as a narrow terminal strip showing ASR/TTS jobs, epochs, and checkpoints.",
+          "validation": "Terminal strip is visible long enough to read epoch/checkpoint/log motion, but does not dominate the human voice footage.",
+          "asset": "footage/selects/story_clips/training_tmux_status.mp4",
+          "position": "bottom 18 percent full width",
+          "animation": "vertical crop pan over logs, no more than 4 seconds continuous"
+        }
+      ],
+      "validation_criteria": [
+        "At least three meaningful visual layers are present unless this is a deliberate title-card hold.",
+        "The hero element is identifiable within one second.",
+        "Referenced assets appear on screen and match the described purpose.",
+        "No text overlaps or falls outside the 1920x1080 frame.",
+        "Motion or editorial change is visible between start, middle, and end validation frames."
+      ],
+      "status": "ready",
+      "notes": []
+    },
+    {
+      "id": "B18",
+      "name": "Voice Pipeline In Action",
+      "section": "Voice",
+      "start_sec": 154.37,
+      "end_sec": 167.21,
+      "duration_sec": 12.84,
+      "timing_source": "editorial_tail",
+      "density_mode": "building",
+      "break": false,
+      "purpose": "Show the complete speak-to-answer loop as product evidence: speech, ASR, Gemma fixing/planning, retrieval, and TTS response.",
+      "narration_cue": "A citizen speaks. Our Nepali ASR transcribes. Gemma fixes the rough text and plans the intent. Retrieval finds official and practical sources. Our Nepali TTS speaks back.",
+      "overlay_text": [
+        "speak -> ASR -> Gemma fix -> intent -> retrieve -> TTS"
+      ],
+      "assets": [
+        "footage/selects/story_clips/kiosk_voice_asr_pi.mp4",
+        "assets/graphics/chat_ask_first_sources_receipt.png",
+        "footage/selects/story_clips/tts_huggingface_kala.mp4"
+      ],
+      "transition_in": "hard cut",
+      "transition_out": "cut to office deployment",
+      "layers": [
+        {
+          "id": "kiosk_asr",
+          "role": "hero",
+          "kind": "video",
+          "description": "Kiosk voice demo shows speech becoming transcript with Pi visible.",
+          "validation": "kiosk_asr is visible, readable if textual, and supports the beat purpose.",
+          "asset": "footage/selects/story_clips/kiosk_voice_asr_pi.mp4"
+        },
+        {
+          "id": "pipeline_overlay",
+          "role": "support",
+          "kind": "text",
+          "description": "speak -> ASR -> Gemma fix -> intent -> retrieve -> TTS",
+          "validation": "pipeline_overlay is visible, readable if textual, and supports the beat purpose.",
+          "text": "speak -> ASR -> Gemma fix -> ask/retrieve -> TTS",
+          "position": "bottom rail, icons/labels above actual clips, not center text card"
+        },
+        {
+          "id": "gemma_fix_retrieve_receipt",
+          "role": "support",
+          "kind": "image",
+          "description": "Chat receipt still proves Gemma asks first before retrieval instead of guessing.",
+          "validation": "Follow-up question and source-backed answer are visible; this is the Gemma correction/planner/retrieval receipt.",
+          "asset": "assets/graphics/chat_ask_first_sources_receipt.png",
+          "position": "right 42 percent, stacked above TTS receipt",
+          "animation": "snap crop to follow-up, then source-card area"
+        },
+        {
+          "id": "tts_answer_receipt",
+          "role": "support",
+          "kind": "video",
+          "description": "TTS Hugging Face Kala clip plays as the spoken answer proof after retrieval.",
+          "validation": "A TTS play control or waveform/output area is visible; viewer can connect text answer to spoken Nepali audio.",
+          "asset": "footage/selects/story_clips/tts_huggingface_kala.mp4",
+          "position": "right 42 percent lower stack",
+          "animation": "enter after retrieve word, 10-frame expo out"
+        }
+      ],
+      "validation_criteria": [
+        "At least three meaningful visual layers are present unless this is a deliberate title-card hold.",
+        "The hero element is identifiable within one second.",
+        "Referenced assets appear on screen and match the described purpose.",
+        "No text overlaps or falls outside the 1920x1080 frame.",
+        "Motion or editorial change is visible between start, middle, and end validation frames."
+      ],
+      "status": "ready",
+      "notes": []
+    },
+    {
+      "id": "B19",
+      "name": "Human Question Grid Build",
+      "section": "Close",
+      "start_sec": 167.21,
+      "end_sec": 175.03,
+      "duration_sec": 7.82,
+      "timing_source": "editorial_tail",
+      "density_mode": "dense",
+      "break": false,
+      "purpose": "Replace the editorial close narration with real people asking government-service questions, one Chirp2-timed word at a time, so the final proof is human demand rather than more narration.",
+      "narration_cue": "Founder VO has ended; the close is driven by real user question audio cuts.",
+      "overlay_text": [
+        "eleven people, eleven questions",
+        "the interface people already know becomes public-service access"
+      ],
+      "assets": [
+        "footage/selects/closing_question_grid/VID-20260518-WA0000.mp4",
+        "footage/selects/closing_question_grid/VID-20260518-WA0001.mp4",
+        "footage/selects/closing_question_grid/VID-20260518-WA0002.mp4",
+        "footage/selects/closing_question_grid/VID-20260518-WA0004.mp4",
+        "footage/selects/closing_question_grid/VID-20260518-WA0005.mp4",
+        "footage/selects/closing_question_grid/VID-20260518-WA0009.mp4",
+        "footage/selects/closing_question_grid/VID-20260518-WA0010.mp4",
+        "footage/selects/closing_question_grid/VID-20260518-WA0011.mp4",
+        "footage/selects/closing_question_grid/VID-20260518-WA0012.mp4",
+        "footage/selects/closing_question_grid/VID-20260518-WA0013.mp4",
+        "footage/selects/closing_question_grid/VID-20260518-WA0014.mp4",
+        "analysis/transcripts/chirp2/question_grid_20260518/question_grid_word_beats.tsv",
+        "analysis/transcripts/chirp2/question_grid_20260518/question_grid_transcripts.json"
+      ],
+      "transition_in": "hard cut",
+      "transition_out": "grid holds into final title overlay",
+      "layers": [
+        {
+          "id": "question_grid_reveal",
+          "role": "hero",
+          "kind": "video_grid",
+          "description": "Eleven vertical phone videos fill a 4x3 grid one by one. Each tile starts slightly before the selected word and speaks only the Chirp2-timed word.",
+          "validation": "By the end of B19 at least ten tiles are visible; no tile shows a filename; each tile has a readable Nepali word chip.",
+          "assets": [
+            "footage/selects/closing_question_grid/VID-20260518-WA0000.mp4",
+            "footage/selects/closing_question_grid/VID-20260518-WA0001.mp4",
+            "footage/selects/closing_question_grid/VID-20260518-WA0002.mp4",
+            "footage/selects/closing_question_grid/VID-20260518-WA0004.mp4",
+            "footage/selects/closing_question_grid/VID-20260518-WA0005.mp4",
+            "footage/selects/closing_question_grid/VID-20260518-WA0009.mp4",
+            "footage/selects/closing_question_grid/VID-20260518-WA0010.mp4",
+            "footage/selects/closing_question_grid/VID-20260518-WA0011.mp4",
+            "footage/selects/closing_question_grid/VID-20260518-WA0012.mp4",
+            "footage/selects/closing_question_grid/VID-20260518-WA0013.mp4",
+            "footage/selects/closing_question_grid/VID-20260518-WA0014.mp4"
+          ],
+          "position": "4 columns x 3 rows, centered below the headline",
+          "animation": "tiles spring in sequentially; audio uses selected word windows from Chirp2 timestamps"
+        },
+        {
+          "id": "word_timing_source",
+          "role": "support",
+          "kind": "transcript_reference",
+          "description": "Chirp2 word-level timestamps define the exact one-word cuts; this is a production reference, not visible text.",
+          "validation": "Selected words in the visible chips match question_grid_word_beats.tsv.",
+          "assets": [
+            "analysis/transcripts/chirp2/question_grid_20260518/question_grid_word_beats.tsv",
+            "analysis/transcripts/chirp2/question_grid_20260518/question_grid_transcripts.json"
+          ],
+          "animation": "selected windows: ghar, bikeko, janmadarta, kasari, banaun, sakincha, dharmadevi, nagarpalikama, janmadarta, kasari, sakincha"
+        },
+        {
+          "id": "close_claim",
+          "role": "support",
+          "kind": "text",
+          "description": "The top line reframes the close as access through familiar interfaces, not a technical slogan.",
+          "validation": "Headline and subline are readable and do not overlap the grid.",
+          "text": "eleven people, eleven questions\nthe interface people already know becomes public-service access",
+          "position": "top-left; one short chip at top-right"
+        }
+      ],
+      "validation_criteria": [
+        "At least three meaningful visual layers are present unless this is a deliberate title-card hold.",
+        "The hero element is identifiable within one second.",
+        "Referenced assets appear on screen and match the described purpose.",
+        "No text overlaps or falls outside the 1920x1080 frame.",
+        "Motion or editorial change is visible between start, middle, and end validation frames."
+      ],
+      "status": "ready",
+      "notes": []
+    },
+    {
+      "id": "B20",
+      "name": "Human Question Grid Title Close",
+      "section": "Close",
+      "start_sec": 175.03,
+      "end_sec": 180,
+      "duration_sec": 4.97,
+      "timing_source": "editorial_tail",
+      "density_mode": "simple",
+      "break": true,
+      "purpose": "Let the human question grid remain visible while the final PreVillage definition lands visually.",
+      "narration_cue": "Founder VO has ended; final title and tagline land over the completed grid.",
+      "overlay_text": [
+        "PreVillage",
+        "public-service knowledge before privilege"
+      ],
+      "assets": [
+        "footage/selects/closing_question_grid/VID-20260518-WA0000.mp4",
+        "footage/selects/closing_question_grid/VID-20260518-WA0001.mp4",
+        "footage/selects/closing_question_grid/VID-20260518-WA0002.mp4",
+        "footage/selects/closing_question_grid/VID-20260518-WA0004.mp4",
+        "footage/selects/closing_question_grid/VID-20260518-WA0005.mp4",
+        "footage/selects/closing_question_grid/VID-20260518-WA0009.mp4",
+        "footage/selects/closing_question_grid/VID-20260518-WA0010.mp4",
+        "footage/selects/closing_question_grid/VID-20260518-WA0011.mp4",
+        "footage/selects/closing_question_grid/VID-20260518-WA0012.mp4",
+        "footage/selects/closing_question_grid/VID-20260518-WA0013.mp4",
+        "footage/selects/closing_question_grid/VID-20260518-WA0014.mp4"
+      ],
+      "transition_in": "continued grid hold",
+      "transition_out": "fade to black",
+      "layers": [
+        {
+          "id": "completed_question_grid",
+          "role": "hero",
+          "kind": "video_grid",
+          "description": "The completed eleven-person question grid remains as the background proof while the title appears.",
+          "validation": "Grid remains visible behind the title; final black fade does not hide the title before 179s.",
+          "assets": [
+            "footage/selects/closing_question_grid/VID-20260518-WA0000.mp4",
+            "footage/selects/closing_question_grid/VID-20260518-WA0001.mp4",
+            "footage/selects/closing_question_grid/VID-20260518-WA0002.mp4",
+            "footage/selects/closing_question_grid/VID-20260518-WA0004.mp4",
+            "footage/selects/closing_question_grid/VID-20260518-WA0005.mp4",
+            "footage/selects/closing_question_grid/VID-20260518-WA0009.mp4",
+            "footage/selects/closing_question_grid/VID-20260518-WA0010.mp4",
+            "footage/selects/closing_question_grid/VID-20260518-WA0011.mp4",
+            "footage/selects/closing_question_grid/VID-20260518-WA0012.mp4",
+            "footage/selects/closing_question_grid/VID-20260518-WA0013.mp4",
+            "footage/selects/closing_question_grid/VID-20260518-WA0014.mp4"
+          ],
+          "position": "same grid from B19",
+          "animation": "background dims slowly after 178.5s"
+        },
+        {
+          "id": "final_definition",
+          "role": "support",
+          "kind": "text",
+          "description": "The close says what PreVillage is without restarting narration.",
+          "validation": "Final definition and title are both readable over the dimmed grid.",
+          "text": "PreVillage\npublic-service knowledge before privilege\nPrivilege found the path. People make it public.",
+          "position": "lower third over dimmed grid"
+        },
+        {
+          "id": "final_title",
+          "role": "hero",
+          "kind": "text",
+          "description": "PreVillage title and public-service knowledge before privilege close the video.",
+          "validation": "final_title is visible, readable if textual, and supports the beat purpose.",
+          "text": "PreVillage\npublic-service knowledge before privilege",
+          "position": "final 3 seconds, lower-left, over completed human grid"
+        }
+      ],
+      "validation_criteria": [
+        "At least three meaningful visual layers are present unless this is a deliberate title-card hold.",
+        "The hero element is identifiable within one second.",
+        "Referenced assets appear on screen and match the described purpose.",
+        "No text overlaps or falls outside the 1920x1080 frame.",
+        "Motion or editorial change is visible between start, middle, and end validation frames."
+      ],
+      "status": "ready",
+      "notes": [
+        "Do not reintroduce scratch TTS here. The human question cuts are the close."
+      ]
+    }
+  ],
+  "sections": [
+    {
+      "id": "origin",
+      "name": "Origin and Problem",
+      "beats": [
+        "B01",
+        "B02",
+        "B03",
+        "B04"
+      ]
+    },
+    {
+      "id": "privilege",
+      "name": "Privilege and Fieldwork",
+      "beats": [
+        "B05",
+        "B06",
+        "B07",
+        "B08"
+      ]
+    },
+    {
+      "id": "ux",
+      "name": "UX Pivot",
+      "beats": [
+        "B09",
+        "B10"
+      ]
+    },
+    {
+      "id": "gemma",
+      "name": "Gemma and Navigator Behavior",
+      "beats": [
+        "B11",
+        "B12"
+      ]
+    },
+    {
+      "id": "sources",
+      "name": "RAG, Practical Sources, Human Loop",
+      "beats": [
+        "B13",
+        "B14",
+        "B15",
+        "B16"
+      ]
+    },
+    {
+      "id": "voice",
+      "name": "Voice and Deployment",
+      "beats": [
+        "B17",
+        "B18",
+        "B19"
+      ]
+    },
+    {
+      "id": "close",
+      "name": "Definition and Close",
+      "beats": [
+        "B20"
+      ]
+    }
+  ],
+  "project": {
+    "title": "PreVillage: public-service knowledge before privilege",
+    "working_runtime_sec": 180,
+    "language": "ne+en",
+    "source_of_truth": "spec/sequence_spec_v1.json",
+    "human_readable_context": "spec/sequence_spec_v1.md",
+    "remote_media_root": "/Volumes/TRANSCEND/video-creation/previllage-gemma-for-good-2026"
+  },
+  "global_assets": [
+    {
+      "path": "audio/narration/previllage_narration_20260518_113426_16k_mono.wav",
+      "usage": "locked narration audio; never warp or stretch"
+    },
+    {
+      "path": "audio/music/previllage_score_bed.wav",
+      "usage": "quiet original score bed with section-level ducking under narration"
+    },
+    {
+      "path": "audio/selects/jiri_man_bahadur_phone_ux_quote_00m28s_24s.wav",
+      "usage": "selected field quote under B08, trimmed from about 11.15s so the real Android/TikTok/Facebook/call line lands audibly"
+    },
+    {
+      "path": "spec/narration_text.txt",
+      "usage": "approved/locked narration text"
+    },
+    {
+      "path": "analysis/transcripts/chirp2/narration_20260518_113426/chirp2_word_beats.tsv",
+      "usage": "Chirp2 timing source for beat mapping and subtitles"
+    },
+    {
+      "path": "analysis/transcripts/chirp2/narration_20260518_113426/chirp2_subtitle_en.srt",
+      "usage": "rough ASR subtitle source with correction map"
+    },
+    {
+      "path": "analysis/transcripts/chirp2/question_grid_20260518/question_grid_word_beats.tsv",
+      "usage": "Chirp2 word-level timing source for the eleven-person closing question grid"
+    },
+    {
+      "path": "analysis/transcripts/chirp2/question_grid_20260518/question_grid_transcripts.json",
+      "usage": "Chirp2 transcript source for the eleven-person closing question grid"
+    }
+  ],
+  "asset_resolution": {
+    "semantic_story_clip_paths": "footage/selects/story_clips/*.mp4 are semantic aliases used by the spec and manifest.",
+    "alias_manifest": "footage/selects/story_clips/ALIASES.tsv",
+    "remote_note": "On the SSD project, create symlinks for semantic aliases or resolve through ALIASES.tsv before rendering. Do not duplicate source footage unnecessarily."
+  }
+}

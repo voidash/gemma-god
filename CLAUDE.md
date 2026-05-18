@@ -23,6 +23,10 @@ crawler v2 daemon keeps fresh. Current demo scope: **Jiri Municipality**
 
 | Doc | Read when | What it covers |
 |---|---|---|
+| `SERVICE_NAVIGATOR_MODUS_OPERANDI.md` | **always, first** | canonical product behavior: intake before RAG, follow-up rules, memory, source routing, human-source policy, gap logging |
+| `PROACTIVE_WHATSAPP_OUTREACH.md` | changing missing-info escalation or WhatsApp contact routing | operator-reviewed outreach queue: draft from source gap, official contact discovery, Baileys send, audit/safety rules |
+| `SFT_V5_POSTMORTEM_AND_NEXT_PASS.md` | before any SFT/data/eval work | 2026-05-13 v5 run result, smoke failures, and the new planner/composer SFT direction |
+| `AGENTS.md` | any coding-agent session | shortest repo-level instruction pointer for future agents |
 | `STORY.md` | starting fresh | plain-English narrative of how we got here, the CPT-v1 failure, why we pivoted to RAG |
 | `PIPELINE.md` | designing/changing the RAG pipeline | retrieval architecture, polling cadence, recipe schema, eval-set plan |
 | `CRAWLER.md` | touching `src/crawler_v2/*` | full crawler design: types, schema, frontier, recipe loader, daemon |
@@ -302,6 +306,15 @@ ssh k2 '/Volumes/T9/gemma-god/bin/crawl \
 ---
 
 ## What the SFT pilot should look like
+
+2026-05-14 update: the old final-answer-heavy SFT pilot direction below is
+superseded by `SFT_V5_POSTMORTEM_AND_NEXT_PASS.md`.
+
+The 2026-05-13 E4B v5 adapter trained successfully but failed smoke testing.
+Future SFT should train resolver/intake, answerability, source selection, and
+composer behavior over provided context. It should not train the model to
+memorize government facts. Exact contacts, fees, office holders, URLs, and dates
+belong in deterministic extraction/source-grounded paths.
 
 (Captured before context-switch; if you're picking this up cold:)
 
