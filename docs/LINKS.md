@@ -13,6 +13,7 @@
 | Public dataset entry point | [`datasets/`](../datasets/) |
 | Public benchmark entry point | [`benchmarks/`](../benchmarks/) |
 | Raspberry Pi edge runbook | [`docs/raspberrypi.md`](raspberrypi.md) |
+| License | [`LICENSE`](../LICENSE) (`CC-BY-4.0`) |
 
 ## Should Be Public Before Submission
 
@@ -27,3 +28,6 @@
 
 Do not share admin-only endpoints, private model repos, local tailnet IPs,
 tokens, or raw officer/citizen interview material without consent review.
+
+Use `license: cc-by-4.0` for Hugging Face and Kaggle project artifacts unless
+an upstream third-party artifact requires its own license note.

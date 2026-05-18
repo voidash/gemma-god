@@ -12,6 +12,14 @@
 | Hugging Face  | <https://huggingface.co/collections/voidash/govspeak-previllage-model-stack> | This repo. |
 
 
+## License
+
+This repository and public project artifacts are released under
+[Creative Commons Attribution 4.0 International](LICENSE) (`CC-BY-4.0`).
+Use `license: cc-by-4.0` for the Hugging Face and Kaggle dataset/model cards.
+Third-party dependencies and vendored components keep their original licenses;
+see [NOTICE.md](NOTICE.md).
+
 
 ## Start Here For Reviewers
 

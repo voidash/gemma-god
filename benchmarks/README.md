@@ -4,6 +4,9 @@ This directory is the reviewer-facing benchmark entry point. The operational
 eval scripts still live in `scripts/` and some historical eval files still live
 under `eval/`, but the important public benchmark data is mirrored here.
 
+Unless a row explicitly points to an upstream source with different terms, the
+benchmark files published from this project should use `license: cc-by-4.0`.
+
 ## Included Benchmarks
 
 | File | Purpose |

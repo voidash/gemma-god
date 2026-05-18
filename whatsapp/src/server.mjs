@@ -28,6 +28,8 @@ const AUTO_REPLY = !["0", "false", "no", "off"].includes(String(process.env.AUTO
 const AUTO_CONNECT = ["1", "true", "yes", "on"].includes(String(process.env.AUTO_CONNECT || "false").toLowerCase());
 const ALLOW_GROUPS = ["1", "true", "yes", "on"].includes(String(process.env.ALLOW_GROUPS || "false").toLowerCase());
 const SEND_VOICE_REPLIES = !["0", "false", "no", "off"].includes(String(process.env.SEND_VOICE_REPLIES || "true").toLowerCase());
+const SEND_VOICE_FOR_TEXT_REPLIES = !["0", "false", "no", "off"].includes(String(process.env.SEND_VOICE_FOR_TEXT_REPLIES || String(SEND_VOICE_REPLIES)).toLowerCase());
+const FORCE_FIRST_REPLY_NEPALI = !["0", "false", "no", "off"].includes(String(process.env.FORCE_FIRST_REPLY_NEPALI || "true").toLowerCase());
 const MAX_HISTORY_TURNS = Number(process.env.MAX_HISTORY_TURNS || 8);
 const MAX_REPLY_CHARS = Number(process.env.MAX_REPLY_CHARS || 3600);
 const MAX_VOICE_REPLY_CHARS = Number(process.env.MAX_VOICE_REPLY_CHARS || 420);
@@ -110,6 +112,8 @@ function publicStatus() {
     autoReply: AUTO_REPLY,
     allowGroups: ALLOW_GROUPS,
     sendVoiceReplies: SEND_VOICE_REPLIES,
+    sendVoiceForTextReplies: SEND_VOICE_FOR_TEXT_REPLIES,
+    forceFirstReplyNepali: FORCE_FIRST_REPLY_NEPALI,
     proactiveOutreachDemo: PROACTIVE_OUTREACH_DEMO,
     proactiveOutreachAutoSend: PROACTIVE_OUTREACH_AUTO_SEND,
     proactiveOutreachTrigger: PROACTIVE_OUTREACH_TRIGGER,
@@ -295,7 +299,7 @@ function markIncomingOnce(message) {
   return true;
 }
 
-async function callHelpdesk(jid, question, historyOverride = null) {
+async function callHelpdesk(jid, question, historyOverride = null, options = {}) {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), QUERY_TIMEOUT_MS);
   try {
@@ -308,6 +312,7 @@ async function callHelpdesk(jid, question, historyOverride = null) {
         top_k_tacit: 3,
         top_k_gov: 3,
         max_new_tokens: 320,
+        response_language: options.responseLanguage || undefined,
       }),
       signal: controller.signal,
     });
@@ -679,9 +684,13 @@ async function handleIncoming(message) {
   try {
     await sock.sendPresenceUpdate?.("composing", remoteJid);
     const priorHistory = histories.get(remoteJid) || [];
-    const data = await callHelpdesk(remoteJid, text, priorHistory);
+    const isFirstAssistantReply = !priorHistory.some((turn) => turn?.role === "assistant");
+    const data = await callHelpdesk(remoteJid, text, priorHistory, {
+      responseLanguage: isFirstAssistantReply && FORCE_FIRST_REPLY_NEPALI ? "devanagari" : undefined,
+    });
     const reply = formatReply(data);
-    if (isAudio && SEND_VOICE_REPLIES) {
+    const shouldSendVoice = SEND_VOICE_REPLIES && (isAudio || SEND_VOICE_FOR_TEXT_REPLIES);
+    if (shouldSendVoice) {
       let sentTextReply = false;
       try {
         const voiceReply = formatVoiceReply(data);

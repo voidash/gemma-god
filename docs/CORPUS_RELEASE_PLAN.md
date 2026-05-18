@@ -7,6 +7,10 @@ The government corpus should be released, but not as an unreviewed dump.
 Publish a public, versioned **official-source corpus** on Hugging Face Datasets
 and mirror a lightweight copy on Kaggle.
 
+Use `license: cc-by-4.0` for the dataset card, with a provenance note that
+source URLs point back to official government pages and that any upstream
+third-party material keeps its own terms.
+
 Hugging Face is better for reproducible ML/RAG workflows: dataset versions,
 Parquet/JSONL loading, model-card links, and programmatic access. Kaggle is
 better for hackathon judges and notebook-style exploration. Use Hugging Face as
@@ -66,6 +70,6 @@ artifacts.
 3. Keep official public contact info only when it came from public office pages.
 4. Include source URLs and crawl timestamps so every chunk is auditable.
 5. Add a dataset card explaining provenance, limitations, stale-source risk,
-   language/script quality, and takedown/contact process.
+   language/script quality, `license: cc-by-4.0`, and takedown/contact process.
 6. Upload to `voidash/previllage-nepal-gov-corpus` on Hugging Face.
 7. Create a Kaggle mirror with the same README and a small starter notebook.

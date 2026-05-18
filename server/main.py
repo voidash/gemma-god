@@ -39,6 +39,7 @@ import time
 import urllib.parse
 import uuid
 from contextlib import asynccontextmanager
+from dataclasses import replace
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -2659,6 +2660,7 @@ def build_user_prompt(
     tacit: list[dict],
     gov: list[dict],
     history: list[ChatHistoryTurn] | None = None,
+    answer_language: str | None = None,
 ) -> str:
     """Tacit claims FIRST (high-priority practical knowledge from interviews),
     then gov.np chunks. Sources are labeled so the composer knows to surface
@@ -2669,7 +2671,7 @@ def build_user_prompt(
         parts.extend([history_text, ""])
     parts.extend([f"Current question: {question.strip()}", "", "Sources:"])
     topic = _detect_retrieval_topic(question)
-    lang = _detect_lang(question)
+    lang = answer_language or _detect_lang(question)
     if lang == "roman_nepali":
         parts.extend([
             "",
@@ -3533,6 +3535,7 @@ class QueryRequest(BaseModel):
     max_new_tokens: int = Field(default=MAX_NEW_TOKENS, ge=32, le=2048)
     seed: int | None = None
     history: list[ChatHistoryTurn] = Field(default_factory=list, max_length=8)
+    response_language: str | None = Field(default=None, max_length=32)
 
 
 class RetrieveRequest(BaseModel):
@@ -4149,13 +4152,32 @@ def _last_user_question(history: list[ChatHistoryTurn] | None) -> str:
     return ""
 
 
+def _response_language(payload: RetrieveRequest | QueryRequest) -> str:
+    override = (getattr(payload, "response_language", None) or "").strip().lower()
+    aliases = {
+        "ne": "devanagari",
+        "nepali": "devanagari",
+        "devanagari": "devanagari",
+        "roman": "roman_nepali",
+        "roman-nepali": "roman_nepali",
+        "roman_nepali": "roman_nepali",
+        "en": "english",
+        "english": "english",
+    }
+    return aliases.get(override) or _detect_lang(payload.question)
+
+
 def _navigator_frame(payload: RetrieveRequest | QueryRequest) -> CaseFrame:
     history = _history_without_current_turn(payload.history, payload.question)
-    return resolve_case(
+    frame = resolve_case(
         payload.question.strip(),
         history,
         registry_path=SOURCE_REGISTRY_PATH,
     )
+    response_language = _response_language(payload)
+    if response_language != frame.language:
+        frame = replace(frame, language=response_language)
+    return frame
 
 
 def _retrieval_question(payload: RetrieveRequest | QueryRequest) -> str:
@@ -6251,7 +6273,13 @@ def retrieve(request: Request, payload: RetrieveRequest):
 
     prompt = None
     if payload.include_prompt:
-        prompt = build_user_prompt(_prompt_question(payload), tacit_results, gov_results, _prompt_history(payload))
+        prompt = build_user_prompt(
+            _prompt_question(payload),
+            tacit_results,
+            gov_results,
+            _prompt_history(payload),
+            _response_language(payload),
+        )
 
     return RetrieveResponse(
         question=payload.question,
@@ -6260,7 +6288,7 @@ def retrieve(request: Request, payload: RetrieveRequest):
         retrieved_tacit=len(tacit_results),
         retrieved_gov=len(gov_results),
         latency_ms={"retrieval": retrieval_ms, "total": retrieval_ms},
-        detected_lang=_detect_lang(payload.question),
+        detected_lang=_response_language(payload),
         prompt=prompt,
         planner=planner,
     )
@@ -6273,7 +6301,7 @@ def query(request: Request, payload: QueryRequest):
     tacit: TacitRetriever = request.app.state.tacit
 
     t0 = time.time()
-    detected_lang = _detect_lang(payload.question)
+    detected_lang = _response_language(payload)
     if _is_identity_question(payload.question):
         elapsed_ms = int((time.time() - t0) * 1000)
         return QueryResponse(
@@ -6415,7 +6443,13 @@ def query(request: Request, payload: QueryRequest):
             planner=planner,
         )
 
-    user_prompt = build_user_prompt(prompt_question, tacit_results, gov_results, _prompt_history(payload))
+    user_prompt = build_user_prompt(
+        prompt_question,
+        tacit_results,
+        gov_results,
+        _prompt_history(payload),
+        detected_lang,
+    )
     answer = composer.generate(
         SYSTEM_GROUNDED, user_prompt, max_tokens=payload.max_new_tokens, seed=payload.seed,
     )
@@ -6451,7 +6485,7 @@ def query_stream(request: Request, payload: QueryRequest):
     tacit: TacitRetriever = request.app.state.tacit
 
     t0 = time.time()
-    detected_lang = _detect_lang(payload.question)
+    detected_lang = _response_language(payload)
 
     if _is_identity_question(payload.question):
         elapsed_ms = int((time.time() - t0) * 1000)
@@ -6514,7 +6548,13 @@ def query_stream(request: Request, payload: QueryRequest):
 
     prompt_question = _prompt_question(payload)
     retrieval_quality = _assess_retrieval_quality(prompt_question, tacit_results, gov_results)
-    user_prompt = build_user_prompt(prompt_question, tacit_results, gov_results, _prompt_history(payload))
+    user_prompt = build_user_prompt(
+        prompt_question,
+        tacit_results,
+        gov_results,
+        _prompt_history(payload),
+        detected_lang,
+    )
     sources = _build_source_out(tacit_results, gov_results)
     pre_quality_fallback = _citizenship_duplicate_practical_fallback_answer(
         prompt_question, tacit_results, gov_results, detected_lang,

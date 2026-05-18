@@ -3,6 +3,7 @@ name = "gemma-god"
 version = "0.1.0"
 edition = "2021"
 description = "PDF corpus detector for the Nepal government helpdesk (Gemma hackathon)"
+license = "CC-BY-4.0"
 
 [dependencies]
 serde = { version = "1", features = ["derive"] }

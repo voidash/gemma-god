@@ -3,6 +3,9 @@
 This directory is the reviewer-facing data entry point. It intentionally holds
 small, public, source-controlled dataset artifacts only.
 
+Public dataset releases for this project should use `license: cc-by-4.0`
+and link back to the repository `LICENSE` / `NOTICE.md`.
+
 ## Included Here
 
 | File | Purpose |
@@ -22,6 +25,12 @@ chunks.parquet
 crawl_manifest.json
 checksums.txt
 README.md / dataset card
+```
+
+Dataset-card license field:
+
+```yaml
+license: cc-by-4.0
 ```
 
 Canonical target:

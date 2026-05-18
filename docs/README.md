@@ -20,6 +20,10 @@ If you are reviewing the project, read in this order:
 9. [Corpus release plan](CORPUS_RELEASE_PLAN.md) - what should be published as
    a dataset and what should stay private/redacted.
 
+License: project-authored public artifacts use
+[CC-BY-4.0](../LICENSE). Third-party components keep their upstream licenses;
+see [NOTICE.md](../NOTICE.md).
+
 ## Code Layout
 
 | Path | Purpose |
