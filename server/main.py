@@ -55,6 +55,7 @@ from pydantic import BaseModel, Field
 
 from server.navigator import (
     CaseFrame,
+    _simple_math_answer,
     filter_gov_results_for_frame,
     filter_tacit_results_for_frame,
     followup_answer,
@@ -4176,7 +4177,10 @@ def _navigator_frame(payload: RetrieveRequest | QueryRequest) -> CaseFrame:
     )
     response_language = _response_language(payload)
     if response_language != frame.language:
-        frame = replace(frame, language=response_language)
+        off_domain_answer = frame.off_domain_answer
+        if off_domain_answer:
+            off_domain_answer = _simple_math_answer(payload.question, response_language) or off_domain_answer
+        frame = replace(frame, language=response_language, off_domain_answer=off_domain_answer)
     return frame
 
 
